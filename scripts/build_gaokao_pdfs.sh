@@ -42,6 +42,22 @@ echo "共 ${#dirs[@]} 套试卷，开始编译（JOBS=$JOBS）..."
 printf '%s\0' "${dirs[@]}" | xargs -0 -P "$JOBS" -I{} \
   sh -c 'make -C "{}" all > "{}/build.log" 2>&1 && echo "OK   {}" || echo "FAIL {}"'
 
+# Fandol 字体缺少个别生僻字（如 2022 福建卷的「躄躠」）：对日志报缺字的卷，
+# 以 Noto Serif CJK SC 作为 xeCJK 回退字体重编（需 fonts-noto-cjk）
+FALLBACK='\AddToHook{begindocument/before}{\xeCJKsetup{AutoFallBack=true}\setCJKfallbackfamilyfont{\CJKrmdefault}{Noto Serif CJK SC}}'
+for d in "${dirs[@]}"; do
+  region="$(basename "$d")"
+  grep -q "Missing character" "$d/${region}_学生版.log" "$d/${region}_教师版.log" 2>/dev/null || continue
+  echo "缺字回退重编：$d"
+  (
+    cd "$d"
+    export TEXINPUTS="$ARCHIVE_DIR:" PATH="$ARCHIVE_DIR/tools/bin:$PATH"
+    mk=(latexmk -xelatex -shell-escape -interaction=nonstopmode -halt-on-error -g)
+    "${mk[@]}" -jobname="${region}_学生版" -usepretex="$FALLBACK" "$region.tex" > /dev/null 2>&1
+    "${mk[@]}" -jobname="${region}_教师版" -usepretex="\\def\\gkver{teacher}$FALLBACK" "$region.tex" > /dev/null 2>&1
+  ) || echo "FAIL 回退重编 $d"
+done
+
 for d in "${dirs[@]}"; do
   region="$(basename "$d")"
   year="$(basename "$(dirname "$d")")"
