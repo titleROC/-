@@ -1,20 +1,24 @@
-# 高考物理真题 PDF（2020—2026）
+# 高考物理真题 PDF + LaTeX 源码（2020—2026）
 
-收录 2020—2026 年全国各省（区、市）高考物理真题，共 **131 套、262 个 PDF**。
-每套卷有两个版本：
+收录 2020—2026 年全国各省（区、市）高考物理真题，共 **131 套**：262 个 PDF，外加对应的 LaTeX 源码。
+每套卷的 PDF 有两个版本：
 
 - `学生版`：只有试题，答案留空，适合刷题和打印
 - `教师版`：含答案和详细解析
 
 所有 PDF 都由 LaTeX 源重新排版生成，文字和公式是矢量的，放大不失真，也可以复制和搜索。
+LaTeX 源码放在 [`LaTeX源码/`](LaTeX源码/) 里，可以改题、重新排版或抽取题目，用法见 [`LaTeX源码/README.md`](LaTeX源码/README.md)。
 
 ## 目录结构
 
 ```
 高考真题/<年份>/<年份>_<地区>_学生版.pdf
 高考真题/<年份>/<年份>_<地区>_教师版.pdf
-联考/README.md                 重要联考（八省联考、九省联考等）索引
-scripts/build_gaokao_pdfs.sh   从上游 LaTeX 源重新编译的脚本
+LaTeX源码/<年份>/<地区>/<地区>.tex     对应的 LaTeX 源（含 Makefile、figs/ 图片）
+LaTeX源码/异常记录/<年份>.md           上游记录的逐卷异常与待核验事项
+联考/README.md                        重要联考（八省联考、九省联考等）索引
+scripts/sync_latex_sources.sh         从上游导出 LaTeX 源到 LaTeX源码/
+scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真题/
 ```
 
 ## 收录范围
@@ -49,18 +53,19 @@ scripts/build_gaokao_pdfs.sh   从上游 LaTeX 源重新编译的脚本
 试卷内容来自开源项目 [YLXDXX/gaokao-physics-archive](https://github.com/YLXDXX/gaokao-physics-archive)
 （Gitee 镜像：[ylxdxx/gaokao-physics-archive](https://gitee.com/ylxdxx/gaokao-physics-archive)）。
 该项目把历年高考物理真题逐题校对后做成 LaTeX 源，并附上答案和详解。
-本仓库中的 PDF 是用该项目提交 `5a60bb3`（2026-10-11）的源文件，以 XeLaTeX 编译生成的；
+`LaTeX源码/` 是该项目提交 `5a60bb3`（2026-10-11）中 2020—2026 年的源文件，`高考真题/` 中的 PDF 由它用 XeLaTeX 编译生成；
 中文字体使用 TeX Live 自带的 Fandol 字体，生僻字回退到 Noto Serif CJK。
 
 试题是重新排版的，不是原卷扫描件，个别题目的图片和版式可能与原卷不同；部分卷的解析暂不完整。
-上游记录的异常和待核验事项见其 `异常记录/` 目录。正式使用前，请对照各省教育考试院公布的原卷核对。
+上游记录的异常和待核验事项见 [`LaTeX源码/异常记录/`](LaTeX源码/异常记录/)。正式使用前，请对照各省教育考试院公布的原卷核对。
 
 重新编译（Ubuntu/Debian）：
 
 ```bash
 sudo apt-get install texlive-xetex texlive-lang-chinese texlive-latex-extra \
   texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk
-scripts/build_gaokao_pdfs.sh 2020 2026      # 可改年份范围，JOBS=8 可加速
+scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源（会覆盖 LaTeX源码/ 中这些年份）
+scripts/build_gaokao_pdfs.sh 2020 2026      # 用 LaTeX源码/ 编译，可改年份范围，JOBS=8 可加速
 ```
 
 高考试题的著作权归命题单位所有，本仓库仅供个人学习和研究使用。

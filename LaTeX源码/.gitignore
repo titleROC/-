@@ -1,0 +1,20 @@
+# 编译产物（make 生成，不入库）
+# 注意：<年份>/<地区>/figs/ 下的 PDF 是个别题的源图，必须保留，下面的规则不会匹配到它们
+/[0-9]*/*/*.pdf
+/[0-9]*/*/TikZ/*.pdf
+svg-inkscape/
+*.aux
+*.log
+*.fls
+*.out
+*.toc
+*.xdv
+*.fdb_latexmk
+*.synctex.gz
+
+# make links 生成的公共文件软链接
+/[0-9]*/*/gaokaozhenti.cls
+/[0-9]*/*/PhyUnit.sty
+/[0-9]*/*/ChoiceQuestion.sty
+/[0-9]*/*/package
+/[0-9]*/*/TikZ/PhyUnit.sty
