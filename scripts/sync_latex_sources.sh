@@ -32,8 +32,10 @@ DEST="$REPO_ROOT/LaTeX源码"
 if [ ! -d "$ARCHIVE_DIR/.git" ]; then
   git clone "$ARCHIVE_URL" "$ARCHIVE_DIR"
 fi
-git -C "$ARCHIVE_DIR" fetch --quiet origin "$ARCHIVE_REV" 2>/dev/null || true
-git -C "$ARCHIVE_DIR" checkout --quiet "$ARCHIVE_REV"
+# 只读取提交内容（git archive），不切换上游克隆的工作区
+git -C "$ARCHIVE_DIR" cat-file -e "$ARCHIVE_REV^{commit}" 2>/dev/null \
+  || git -C "$ARCHIVE_DIR" fetch --quiet origin "$ARCHIVE_REV" \
+  || git -C "$ARCHIVE_DIR" fetch --quiet origin
 
 # 导出 = 上游提交里的文件（git archive 只含跟踪文件，不受本地编译产物影响）
 tmp="$(mktemp -d)"
@@ -41,11 +43,17 @@ trap 'rm -rf "$tmp"' EXIT
 paths=(gaokaozhenti.cls ChoiceQuestion.sty PhyUnit.sty package LICENSE
        ChoiceQuestion-manual.md PhyUnit-manual.md LaTeX_format_ReadMe.md
        tools/tex_links.py tools/bin/inkscape)
+years=()
 for year in $(seq "$FROM" "$TO"); do
   git -C "$ARCHIVE_DIR" cat-file -e "$ARCHIVE_REV:试卷/$year" 2>/dev/null || continue
   paths+=("试卷/$year")
   git -C "$ARCHIVE_DIR" cat-file -e "$ARCHIVE_REV:异常记录/$year.md" 2>/dev/null && paths+=("异常记录/$year.md")
+  years+=("$year")
 done
+if [ "${#years[@]}" -eq 0 ]; then
+  echo "上游提交 $ARCHIVE_REV 中没有 $FROM—$TO 年的试卷，未做任何改动" >&2
+  exit 1
+fi
 git -C "$ARCHIVE_DIR" archive --format=tar "$ARCHIVE_REV" -- "${paths[@]}" | tar -x -C "$tmp"
 
 mkdir -p "$DEST"
@@ -57,8 +65,8 @@ for p in gaokaozhenti.cls ChoiceQuestion.sty PhyUnit.sty package LICENSE \
 done
 mkdir -p "$DEST/异常记录"
 
-for ydir in "$tmp/试卷"/*/; do
-  year="$(basename "$ydir")"
+for year in "${years[@]}"; do
+  ydir="$tmp/试卷/$year"
   rm -rf "${DEST:?}/$year"
   cp -a "$ydir" "$DEST/$year"
   # 1. Makefile 的项目根少一层
