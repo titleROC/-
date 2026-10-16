@@ -54,7 +54,7 @@ scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真�
 （Gitee 镜像：[ylxdxx/gaokao-physics-archive](https://gitee.com/ylxdxx/gaokao-physics-archive)）。
 该项目把历年高考物理真题逐题校对后做成 LaTeX 源，并附上答案和详解。
 `LaTeX源码/` 是该项目提交 `5a60bb3`（2026-10-11）中 2020—2026 年的源文件，`高考真题/` 中的 PDF 由它用 XeLaTeX 编译生成；
-中文字体使用 TeX Live 自带的 Fandol 字体，生僻字回退到 Noto Serif CJK。
+中文字体使用 TeX Live 自带的 Fandol 字体；Fandol 缺少的生僻字和个别卷中 ⑪ 以上的圈码用 Noto CJK 字体。
 
 试题是重新排版的，不是原卷扫描件，个别题目的图片和版式可能与原卷不同；部分卷的解析暂不完整。
 上游记录的异常和待核验事项见 [`LaTeX源码/异常记录/`](LaTeX源码/异常记录/)。正式使用前，请对照各省教育考试院公布的原卷核对。
@@ -62,9 +62,9 @@ scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真�
 重新编译（Ubuntu/Debian）：
 
 ```bash
-sudo apt-get install texlive-xetex texlive-lang-chinese texlive-latex-extra \
+sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
   texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk
-scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源（会覆盖 LaTeX源码/ 中这些年份）
+scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源，会覆盖这些年份的试卷和公共宏包，见 LaTeX源码/README.md
 scripts/build_gaokao_pdfs.sh 2020 2026      # 用 LaTeX源码/ 编译，可改年份范围，JOBS=8 可加速
 ```
 

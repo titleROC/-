@@ -18,16 +18,26 @@
 # 环境变量：
 #   ARCHIVE_DIR   上游仓库的本地克隆位置（默认 ./.cache/gaokao-physics-archive）
 #   ARCHIVE_REV   上游提交（默认为下方固定的提交，保证可复现）
+#   FORCE=1       LaTeX源码/ 有未提交的改动时也照样覆盖（默认拒绝运行）
+#
+# 注意：无论年份范围是什么，公共文档类、宏包和 tools/ 都会整体替换为上游版本。
 set -euo pipefail
 
 FROM="${1:-2020}"
 TO="${2:-2026}"
-REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+REPO_ROOT="$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)"
 ARCHIVE_URL="https://github.com/YLXDXX/gaokao-physics-archive.git"
 ARCHIVE_WEB="https://github.com/YLXDXX/gaokao-physics-archive/blob"
 ARCHIVE_DIR="${ARCHIVE_DIR:-$REPO_ROOT/.cache/gaokao-physics-archive}"
 ARCHIVE_REV="${ARCHIVE_REV:-5a60bb3e120613c366030bfe886f78cfb3c066a7}"
 DEST="$REPO_ROOT/LaTeX源码"
+
+# 同步会覆盖 LaTeX源码/ 中的文件，有未提交的改动时先停下
+if [ -z "${FORCE:-}" ] && git -C "$REPO_ROOT" rev-parse --is-inside-work-tree >/dev/null 2>&1 \
+   && [ -n "$(git -C "$REPO_ROOT" status --porcelain -- LaTeX源码)" ]; then
+  echo "LaTeX源码/ 有未提交的改动，同步会覆盖它们；确认不需要后用 FORCE=1 重新运行" >&2
+  exit 1
+fi
 
 if [ ! -d "$ARCHIVE_DIR/.git" ]; then
   git clone "$ARCHIVE_URL" "$ARCHIVE_DIR"
