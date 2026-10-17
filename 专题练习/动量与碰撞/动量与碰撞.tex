@@ -50,7 +50,6 @@
 \item 动量 $p=mv$、冲量 $I=Ft$ 都是矢量。某个力的冲量只由这个力和它的作用时间决定，与物体是否运动、这个力是否做功无关；$F-t$ 图线与 $t$ 轴围成的面积表示冲量。
 \item 动量与动能的关系：$E_{k}=\frac{p^{2}}{2m}$。动量变化时动能不一定变化（例如只有速度方向改变）。
 \item 动量定理：$I_{\text{合}}=\Delta p=mv'-mv$。先规定正方向，再代入带正负号的量；求冲击力时，要想清楚重力能不能忽略。
-\item 连续的气体、水流：取极短时间 $\Delta t$ 内的一小段质量 $\Delta m$ 为研究对象，$F\Delta t=\Delta m\cdot\Delta v$。
 \end{itemize}
 \end{yaodian}
 \begin{enumerate}[series=tiku]
@@ -262,7 +261,232 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 鸡蛋由 25 层楼坠下，由于居民楼每层高约 $3\Um$，故下落高度 $h=3\times24\Um=72\Um$，鸡蛋做自由落体运动，由动能定理可知 $mgh=\frac{1}{2}mv^{2}$，解得 $v\approx38\Ums$。鸡蛋与地面碰撞后速度变为零，取向下为正方向，由动量定理得 $(mg-F_{N})t=0-mv$，解得 $F_{N}\approx950\UN$，由牛顿第三定律可知鸡蛋对地面产生的冲击力约为 $10^{3}\UN$，故 C 正确。
 }
 
-% ---- 第 7 题：2019 全国Ⅰ卷第 16 题（上游 gaokao-physics-archive 试卷/2019/全国理综Ⅰ/全国理综Ⅰ.tex）
+\end{enumerate}
+
+\section{动量定理的应用：曲线运动与流体}
+\begin{yaodian}
+\begin{itemize}
+\item 动量是矢量：速度大小不变、方向改变时，动量也在变（如匀速圆周运动）。初、末动量不在一条直线上时，按矢量相减，或分方向分别用动量定理。
+\item 恒力的冲量 $I=Ft$ 与物体怎样运动无关，例如转一周重力的冲量是 $mgT$，不为零。方向不断改变的力（如向心力、摆线的拉力）不能用 $Ft$ 计算，要用动量定理 $I=\Delta p$ 求。
+\item 连续的气体、水流：取极短时间 $\Delta t$ 内的一小段质量 $\Delta m$ 为研究对象，$F\Delta t=\Delta m\cdot\Delta v$。流体以速度 $v$ 垂直冲到物体上、速度变为零时，$\Delta m=\rho Sv\Delta t$，冲击力 $F=\rho Sv^{2}$。
+\end{itemize}
+\end{yaodian}
+\begin{enumerate}[resume=tiku]
+% ---- 第 7 题：2025 天津卷第 3 题（LaTeX源码/2025/天津/天津.tex）
+\item
+%% number: 3
+%% paperName: 2025年天津高考第 3 题 5 分
+%% typeId: 1
+%% type: 单选题
+%% chapter: 曲线运动
+%% point: 圆周运动的应用
+%% method: 无
+%% score: 5
+%% degree: 650
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2025·天津卷}{1}一种名为“飞椅”的游乐设施如图所示，该设施中钢绳一端系着座椅，另一端系在悬臂边缘。绕竖直轴转动的悬臂带动座椅在水平面内做匀速圆周运动，座椅可视为质点，则某座椅运动一周的过程中\xzanswer{B}
+
+\onepicture[w=3.6cm, h=3.25cm]{figs/07.jpg}
+
+\fourchoices[answer=B]
+{动量保持不变}
+{所受合外力做功为零}
+{所受重力的冲量为零}
+{始终处于受力平衡状态}
+\end{tibody}
+
+%% answer: B
+%% memo:
+\memoanswer{
+座椅在水平面内做匀速圆周运动，速度大小不变，方向改变
+
+A．根据 $p = mv$ 可知动量大小不变，方向改变，故 A 错误；
+
+B．速度大小不变，则座椅的动能不变，根据动能定理可知所受合外力做功为零，故 B 正确；
+
+C．根据 $I_{G} = mgt$ 可知所受重力的冲量不为零，故 C 错误；
+
+D．座椅在水平面内做匀速圆周运动，一定有向心加速度，所以不是处于受力平衡状态，故 D 错误。
+
+故选 B。
+}
+
+% ---- 第 8 题：2021 北京卷第 10 题（LaTeX源码/2021/北京/北京.tex）
+\item
+%% number: 10
+%% paperName: 2021年北京高考第 10 题 3 分
+%% typeId: 1
+%% type: 单选题
+%% chapter: 曲线运动
+%% point: 圆周运动的应用
+%% method: 无
+%% score: 3
+%% degree: 650
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2021·北京卷}{2}如图所示，圆盘在水平面内以角速度 $\omega$ 绕中心轴匀速转动，圆盘上距轴 $r$ 处的 P 点有一质量为 $m$ 的小物体随圆盘一起转动。某时刻圆盘突然停止转动，小物体由 P 点滑至圆盘上的某点停止。下列说法正确的是\xzanswer{D}
+
+\onepicture[w=5.5cm]{figs/08.png}
+
+\fourchoices[answer=D]
+{圆盘停止转动前，小物体所受摩擦力的方向沿运动轨迹切线方向}
+{圆盘停止转动前，小物体运动一圈所受摩擦力的冲量大小为 $2m\omega r$}
+{圆盘停止转动后，小物体沿圆盘半径方向运动}
+{圆盘停止转动后，小物体整个滑动过程所受摩擦力的冲量大小为 $m\omega r$}
+\end{tibody}
+
+%% answer: D
+%% memo:
+\memoanswer{
+A．圆盘停止转动前，小物体随圆盘一起转动，小物体所受摩擦力提供向心力，方向沿半径方向，故 A 错误；
+
+B．圆盘停止转动前，摩擦力提供向心力，大小 $f = mr\omega^{2}$ 不变，但方向时刻在变，不能用 $I = ft$ 计算冲量。小物体在水平方向只受摩擦力，运动一圈后速度回到原来的值，动量变化为零，由动量定理可知，运动一圈摩擦力的冲量为零，故 B 错误；
+
+C．圆盘停止转动后，小物体沿切线方向运动，故 C 错误；
+
+D．圆盘停止转动后，根据动量定理可知，小物体整个滑动过程所受摩擦力的冲量大小为
+$I' = \Delta p = mv = mr\omega$
+故 D 正确。
+
+故选 D。
+}
+
+% ---- 第 9 题：2022 北京卷第 17 题（LaTeX源码/2022/北京/北京.tex）
+\item
+%% number: 17
+%% paperName: 2022年北京高考第 17 题 9 分
+%% typeId: 6
+%% type: 计算题
+%% chapter: 曲线运动
+%% point: 平抛运动
+%% method: 无
+%% score: 9
+%% degree: 650
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2022·北京卷}{2}体育课上，甲同学在距离地面高 $h_{1} = 2.5\Um$ 处将排球击出，球的初速度沿水平方向，大小为 $v_{0} = 8.0\Ums$；乙同学在离地 $h_{2} = 0.7\Um$ 处将排球垫起，垫起前后球的速度大小相等，方向相反。已知排球质量 $m = 0.3\Ukg$，取重力加速度 $g = 10\Umsq$。不计空气阻力。求：
+\begin{enumerate}
+	\item
+	排球被垫起前在水平方向飞行的距离 $x$；
+	\item
+	排球被垫起前瞬间的速度大小 $v$ 及方向；
+	\item
+	排球与乙同学作用过程中所受冲量的大小 $I$。
+\end{enumerate}
+
+\onepicture[w=5.60cm, h=1.96cm, align=right]{figs/09.png}
+\end{tibody}
+
+%% answer:
+\jdanswer{
+\begin{enumerate}
+	\item
+	$x = 4.8\Um$
+
+	\item
+	$v = 10.0\Ums$，方向与水平方向夹角满足 $\tan\theta = 0.75$
+
+	\item
+	$I = 6.0\UNs$
+\end{enumerate}
+}
+%% memo:
+\memoanswer{
+（1）设排球在空中飞行的时间为 $t$，则
+
+$h_{1} - h_{2} = \frac{1}{2}gt^{2}$
+
+解得 $t = 0.6\Us$；则排球在空中飞行的水平距离
+
+$x = v_{0}t = 4.8\Um$
+
+（2）乙同学垫起排球前瞬间排球在竖直方向速度的大小
+
+$v_{y} = gt = 10 \times 0.6\Ums = 6\Ums$
+
+根据 $v = \sqrt{v_{0}^{2} + v_{y}^{2}}$
+
+得 $v = 10.0\Ums$；设速度方向与水平方向夹角为 $\theta$（如答图所示）
+
+\onepicture[w=2.40cm, h=1.98cm, align=right]{figs/09an.png}
+
+则有 $\tan\theta = \frac{v_{y}}{v_{0}} = 0.75$
+
+（3）根据动量定理，排球与乙同学作用过程中所受冲量的大小 $I = 2mv = 6.0\UNs$
+}
+
+% ---- 第 10 题：2026 北京卷第 18 题（LaTeX源码/2026/北京/北京.tex）
+\item
+%% number: 18
+%% paperName: 2026年北京高考第 18 题 9 分
+%% typeId: 6
+%% type: 计算题
+%% chapter: 机械振动
+%% point: 单摆
+%% method: 无
+%% score: 9
+%% degree: 550
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2026·北京卷}{2}长为 $l$ 的轻绳一端固定在 $O$ 点，另一端系一个质量为 $m$ 的小球。重力加速度为 $g$，不计空气阻力。
+\begin{enumerate}
+	\item
+	如图~\ref{2026北京18a} 所示，将小球拉至某一位置，轻绳与竖直方向夹角为 $\theta$，静止释放小球。
+
+	a．求小球运动到最低点时受到绳的拉力大小 $F$；
+
+	b．若 $\theta$ 较小，释放后小球做简谐运动。求一个周期内绳对小球拉力的冲量大小 $I$。
+	\item
+	如图~\ref{2026北京18b} 所示，使小球在水平面内做匀速圆周运动，轻绳与竖直方向夹角为 $\theta$，求小球运动的周期，并与（1）b 中小球运动的周期比较大小。
+\end{enumerate}
+\twopicture[numA=1, numB=2, labelA=2026北京18a, labelB=2026北京18b, h=3.6cm, align=right]
+{figs/10a.png}
+{figs/10b.png}
+\end{tibody}
+
+%% answer:
+\jdanswer{
+\begin{enumerate}
+	\item
+	a．$F=mg(3-2\cos\theta)$；b．$I=2\pi m\sqrt{gl}$
+
+	\item
+	$T'=2\pi\sqrt{\frac{l\cos\theta}{g}}$，小于（1）b 中小球运动的周期
+\end{enumerate}
+}
+%% memo:
+\memoanswer{
+（1）a．小球从静止释放到最低点的过程中，根据机械能守恒可得
+\[ mgl(1-\cos\theta)=\frac{1}{2}mv^{2} \]
+解得 $v=\sqrt{2gl(1-\cos\theta)}$。
+
+在最低点，由牛顿第二定律可得 $F-mg=m\frac{v^{2}}{l}$，
+
+解得 $F=mg(3-2\cos\theta)$。
+
+b．若 $\theta$ 较小，释放后小球做简谐运动，根据单摆周期公式可得 $T=2\pi\sqrt{\frac{l}{g}}$。
+
+根据动量定理可得 $I-mgT=\Delta p=0$，
+
+联立解得一个周期内绳对小球拉力的冲量大小为 $I=2\pi m\sqrt{gl}$。
+
+（2）使小球在水平面内做匀速圆周运动，轻绳与竖直方向夹角为 $\theta$，根据牛顿第二定律可得 $mg\tan\theta=m\frac{4\pi^{2}}{T^{2}}r$，
+
+其中 $r=l\sin\theta$，
+
+解得小球运动的周期为 $T'=2\pi\sqrt{\frac{l\cos\theta}{g}}$。
+
+而（1）b 中小球运动的周期为 $T=2\pi\sqrt{\frac{l}{g}}$，
+
+由于 $\cos\theta<1$，可得 $T'<T$，即（2）中小球运动的周期小于（1）b 中小球运动的周期。
+}
+
+% ---- 第 11 题：2019 全国Ⅰ卷第 16 题（上游 gaokao-physics-archive 试卷/2019/全国理综Ⅰ/全国理综Ⅰ.tex）
 \item
 %% number: 16
 %% paperName: 2019年全国理综Ⅰ第 16 题 6 分
@@ -291,6 +515,104 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 设发动机单位时间内喷射气体的质量为 $\Delta m$，对喷出的气体进行研究有 $F\Delta t=\Delta mv$，代入数据解得 $\Delta m=1.6\times10^{3}\Ukg$，故 B 正确。
 }
 
+% ---- 第 12 题：2021 福建卷第 4 题（LaTeX源码/2021/福建/福建.tex）
+\item
+%% number: 4
+%% paperName: 2021年福建高考第 4 题 4 分
+%% typeId: 1
+%% type: 单选题
+%% chapter: 运动和力
+%% point: 动量定理
+%% method: 建立模型
+%% score: 4
+%% degree: 650
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2021·福建卷}{2}福建属于台风频发地区，各类户外设施建设都要考虑台风影响。已知 10 级台风的风速范围为 $24.5 \Ums \sim 28.4 \Ums$，16 级台风的风速范围为 $51.0 \Ums \sim 56.0 \Ums$。若台风迎面垂直吹向一固定的交通标志牌，则 16 级台风对该交通标志牌的作用力大小约为 10 级台风的 \xzanswer{B}
+
+\fourchoices[answer=B]
+{2 倍}
+{4 倍}
+{8 倍}
+{16 倍}
+\end{tibody}
+
+%% answer: B
+%% memo:
+\memoanswer{
+	设空气的密度为 $\rho$，风迎面垂直吹向一固定的交通标志牌的横截面积为 $S$，在时间 $\Delta t$ 的空气质量为 $\Delta m=\rho Sv\cdot\Delta t$，假定台风迎面垂直吹向一固定的交通标志牌的末速度变为零，对风由动量定理有 $-F\cdot\Delta t=0-\Delta mv$，可得 $F=\rho Sv^{2}$，10 级台风的风速 $v_{1}\approx25 \Ums$，16 级台风的风速 $v_{2}\approx50 \Ums$，则有 $\frac{F_{2}}{F_{1}}=\frac{v_{2}^{2}}{v_{1}^{2}}\approx4$；
+	
+	故选 B。
+}
+
+% ---- 第 13 题：2016 全国Ⅰ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2016/全国理综Ⅰ/全国理综Ⅰ.tex）
+\item
+%% number: 35
+%% paperName: 2016年全国理综Ⅰ第 35 题第（2）问
+%% typeId: 6
+%% type: 计算题
+%% chapter: 运动和力
+%% point: 动量定理
+%% method: 微元
+%% score: 10
+%% degree: 450
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2016·全国Ⅰ卷}{3}某游乐园入口旁有一喷泉，喷出的水柱将一质量为 $M$ 的卡通玩具稳定地悬停在空中。为计算方便起见，假设水柱从横截面积为 $S$ 的喷口持续以速度 $v_{0}$ 竖直向上喷出；玩具底部为平板（面积略大于 $S$）；水柱冲击到玩具底板后，在竖直方向水的速度变为零，在水平方向朝四周均匀散开。忽略空气阻力。已知水的密度为 $\rho$，重力加速度大小为 $g$。求：
+\begin{enumerate}
+	\item
+	喷泉单位时间内喷出的水的质量；
+	\item
+	玩具在空中悬停时，其底面相对于喷口的高度。
+\end{enumerate}
+\end{tibody}
+
+%% answer:
+\jdanswer{
+\begin{enumerate}
+	\item
+	$\rho v_{0}S$
+	\item
+	$\frac{v_{0}^{2}}{2g}-\frac{M^{2}g}{2\rho^{2}v_{0}^{2}S^{2}}$
+\end{enumerate}
+}
+%% memo:
+\memoanswer{
+	（1）设 $\Delta t$ 时间内，从喷口喷出的水的体积为 $\Delta V$、质量为 $\Delta m$，则
+
+	$\Delta m=\rho\Delta V$\ccnum{①}，
+
+	$\Delta V=v_{0}S\Delta t$\ccnum{②}，
+
+	由\ccnum{①}\ccnum{②}式得，单位时间内从喷口喷出的水的质量为
+
+	$\frac{\Delta m}{\Delta t}=\rho v_{0}S$\ccnum{③}。
+
+	（2）设玩具悬停时其底面相对于喷口的高度为 $h$，水从喷口喷出后到达玩具底面时的速度大小为 $v$。对于 $\Delta t$ 时间内喷出的水，由能量守恒得
+
+	$\frac{1}{2}(\Delta m)v^{2}+(\Delta m)gh=\frac{1}{2}(\Delta m)v_{0}^{2}$\ccnum{④}，
+
+	在 $h$ 高度处，$\Delta t$ 时间内喷射到玩具底面的水沿竖直方向的动量变化量的大小为
+
+	$\Delta p=(\Delta m)v$\ccnum{⑤}，
+
+	设水对玩具的作用力的大小为 $F$，由动量定理得
+
+	$F\Delta t=\Delta p$\ccnum{⑥}，
+
+	由于玩具在空中悬停，由力的平衡条件得
+
+	$F=Mg$\ccnum{⑦}，玩具的受力分析如图所示。
+
+	\onepicture[w=2.4cm]{figs/13_an.png}
+
+	联立\ccnum{③}\ccnum{④}\ccnum{⑤}\ccnum{⑥}\ccnum{⑦}式得
+
+	$h=\frac{v_{0}^{2}}{2g}-\frac{M^{2}g}{2\rho^{2}v_{0}^{2}S^{2}}$。
+}
+
 \end{enumerate}
 
 \section{动量守恒定律：守恒条件、反冲与爆炸}
@@ -302,7 +624,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 \end{itemize}
 \end{yaodian}
 \begin{enumerate}[resume=tiku]
-% ---- 第 8 题：2021 全国乙卷第 14 题（LaTeX源码/2021/全国乙卷/全国乙卷.tex）
+% ---- 第 14 题：2021 全国乙卷第 14 题（LaTeX源码/2021/全国乙卷/全国乙卷.tex）
 \item
 %% number: 1
 %% paperName: 2021年全国高考乙卷第 1 题 6 分
@@ -318,7 +640,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 \begin{tibody}
 \tiinfo{2021·全国乙卷}{1}如图，光滑水平地面上有一小车，一轻弹簧的一端与车厢的挡板相连，另一端与滑块相连，滑块与车厢的水平底板间有摩擦。用力向右推动车厢使弹簧压缩，撤去推力时滑块在车厢底板上有相对滑动。在地面参考系（可视为惯性系）中，从撤去推力开始，小车、弹簧和滑块组成的系统 \xzanswer{B}
 
-\onepicture[w=7cm]{figs/08.png}
+\onepicture[w=7cm]{figs/14.png}
 
 \fourchoices[answer=B]
 {动量守恒，机械能守恒}
@@ -335,7 +657,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 	故选 B。
 }
 
-% ---- 第 9 题：2017 全国Ⅰ卷第 14 题（上游 gaokao-physics-archive 试卷/2017/全国理综Ⅰ/全国理综Ⅰ.tex）
+% ---- 第 15 题：2017 全国Ⅰ卷第 14 题（上游 gaokao-physics-archive 试卷/2017/全国理综Ⅰ/全国理综Ⅰ.tex）
 \item
 %% number: 14
 %% paperName: 2017年全国理综Ⅰ第 14 题 6 分
@@ -364,7 +686,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 	设火箭的总质量为 $M$，燃气的质量为 $m$，取火箭的运动方向为正方向，由动量守恒定律得 $0=(M-m)v-mv_{0}$，其中 $v_{0}=600\Ums$，则火箭的动量大小为 $p=(M-m)v=mv_{0}=50\times10^{-3}\times600\Ukgms=30\Ukgms$，故 A 正确，BCD 错误。
 }
 
-% ---- 第 10 题：2012 福建卷第 29(2) 题（上游 gaokao-physics-archive 试卷/2012/福建理综/福建理综.tex）
+% ---- 第 16 题：2012 福建卷第 29(2) 题（上游 gaokao-physics-archive 试卷/2012/福建理综/福建理综.tex）
 \item
 %% number: 29
 %% paperName: 2012年福建理综第 29 题第（2）问
@@ -380,7 +702,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 \begin{tibody}
 \tiinfo{2012·福建卷}{2}如图，质量为 $M$ 的小船在静止水面上以速率 $v_{0}$ 向右匀速行驶，一质量为 $m$ 的救生员站在船尾，相对小船静止。若救生员以相对水面速率 $v$ 水平向左跃入水中，则救生员跃出后小船的速率为\xzanswer{C}
 
-\onepicture[w=3.6cm]{figs/10.png}
+\onepicture[w=3.6cm]{figs/16.png}
 
 \fourchoices[answer=C]
 {$v_{0}+\frac{m}{M}v$}
@@ -398,7 +720,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 题中的 $v$ 是救生员相对水面的速度，可以直接代入动量守恒式。若题目给的是相对小船的速度，要先换算成相对水面（地面）的速度再列式。
 }
 
-% ---- 第 11 题：2025 北京卷第 17 题（LaTeX源码/2025/北京/北京.tex）
+% ---- 第 17 题：2025 北京卷第 17 题（LaTeX源码/2025/北京/北京.tex）
 \item
 %% number: 17
 %% paperName: 2025年北京高考第 17 题 9 分
@@ -451,7 +773,7 @@ D．因为安全气囊充气后面积增大，司机的受力面积也增大，�
 （3）根据竖直上抛运动的对称性可知下落时间与上升时间相等为 $t$，则 A 的水平位移 $x_{A} = vt$，B 的水平位移 $x_{B} = v_{B}t = 2vt$。所以落地点 A、B 之间的距离 $d = |x_{A}| + |x_{B}| = vt + 2vt = 3vt$
 }
 
-% ---- 第 12 题：2018 全国Ⅰ卷第 24 题（上游 gaokao-physics-archive 试卷/2018/全国理综Ⅰ/全国理综Ⅰ.tex）
+% ---- 第 18 题：2018 全国Ⅰ卷第 24 题（上游 gaokao-physics-archive 试卷/2018/全国理综Ⅰ/全国理综Ⅰ.tex）
 \item
 %% number: 24
 %% paperName: 2018年全国理综Ⅰ第 24 题 12 分
@@ -516,7 +838,7 @@ $\frac{1}{4}mv_1^2=\frac{1}{2}mgh_2$\ccnum{⑦}，
 $h=h_1+h_2=\frac{2E}{mg}$\ccnum{⑧}。
 }
 
-% ---- 第 13 题：2024 辽宁卷第 14 题（LaTeX源码/2024/辽宁/辽宁.tex）
+% ---- 第 19 题：2024 辽宁卷第 14 题（LaTeX源码/2024/辽宁/辽宁.tex）
 \item
 %% number: 14
 %% paperName: 2024年辽宁高考第 14 题 12 分
@@ -539,7 +861,7 @@ $h=h_1+h_2=\frac{2E}{mg}$\ccnum{⑧}。
 	\item
 	整个过程中，弹簧释放的弹性势能 $\Delta E_{p}$。
 \end{enumerate}
-\onepicture[w=5.00cm, align=right]{figs/13.png}
+\onepicture[w=5.00cm, align=right]{figs/19.png}
 \end{tibody}
 
 %% answer:
@@ -604,10 +926,11 @@ $\Delta E_{p} = 0.12 \UJ$
 \item 弹性碰撞：动量守恒，动能也守恒。“动碰静”时（$m_{1}$ 以速度 $v_{0}$ 碰静止的 $m_{2}$），碰后 $v_{1}'=\frac{m_{1}-m_{2}}{m_{1}+m_{2}}v_{0}$，$v_{2}'=\frac{2m_{1}}{m_{1}+m_{2}}v_{0}$。两者质量相等时交换速度；$m_{1}<m_{2}$ 时 $m_{1}$ 被弹回。
 \item 非弹性碰撞有动能损失；完全非弹性碰撞后两者共速，动能损失最多。
 \item 判断碰撞结果是否可能，三条都要满足：动量守恒；总动能不增加；速度合理（例如同向运动时，碰后后面物体的速度不能大于前面物体的速度）。
+\item 绳子突然绷紧（或被拉断）也是极短时间内的相互作用：绳的拉力远大于其他力，可按动量守恒（或对两物体分别用动量定理）列式；绷紧后两物体一起运动，和完全非弹性碰撞一样会损失动能。
 \end{itemize}
 \end{yaodian}
 \begin{enumerate}[resume=tiku]
-% ---- 第 14 题：2026 海南卷第 4 题（LaTeX源码/2026/海南/海南.tex）
+% ---- 第 20 题：2026 海南卷第 4 题（LaTeX源码/2026/海南/海南.tex）
 \item
 %% number: 4
 %% paperName: 2026年海南高考第 4 题 3 分
@@ -622,7 +945,7 @@ $\Delta E_{p} = 0.12 \UJ$
 %% body:
 \begin{tibody}
 \tiinfo{2026·海南卷}{1}如图，在光滑水平面上，a 球以初速度 $v$ 水平向右运动，与前方静止的 b 球发生弹性正碰。若 a 球的质量 $M$ 远大于 b 球的质量 $m$，则碰撞后\xzanswer{B}
-\onepicture[w=6.5cm]{\includesvg{figs/14}}
+\onepicture[w=6.5cm]{\includesvg{figs/20}}
 \fourchoices[answer=B]
 {a 球的速度为 0}
 {a 球的速度略小于 $v$}
@@ -644,7 +967,7 @@ $\Delta E_{p} = 0.12 \UJ$
 故选 B。
 }
 
-% ---- 第 15 题：2022 湖南卷第 4 题（LaTeX源码/2022/湖南/湖南.tex）
+% ---- 第 21 题：2022 湖南卷第 4 题（LaTeX源码/2022/湖南/湖南.tex）
 \item
 %% number: 4
 %% paperName: 2022年湖南高考第 4 题 4 分
@@ -660,7 +983,7 @@ $\Delta E_{p} = 0.12 \UJ$
 \begin{tibody}
 \tiinfo{2022·湖南卷}{2}1932 年，查德威克用未知射线轰击氢核，发现这种射线是由质量与质子大致相等的中性粒子（即中子）组成。如图，中子以速度 $v_{0}$ 分别碰撞静止的氢核和氮核，碰撞后氢核和氮核的速度分别为 $v_{1}$ 和 $v_{2}$。设碰撞为弹性正碰，不考虑相对论效应，下列说法正确的是\xzanswer{B}
 
-\onepicture[w=5.0cm]{figs/15.png}
+\onepicture[w=5.0cm]{figs/21.png}
 
 \fourchoices[answer=B]
 {碰撞后氮核的动量比氢核的小}
@@ -723,7 +1046,7 @@ $E_{kN} = \frac{1}{2}\cdot 14mv_{2}^{2} = \frac{28mv_{0}^{2}}{225}$
 故选 B。
 }
 
-% ---- 第 16 题：2011 福建卷第 29(2) 题（上游 gaokao-physics-archive 试卷/2011/福建理综/福建理综.tex）
+% ---- 第 22 题：2011 福建卷第 29(2) 题（上游 gaokao-physics-archive 试卷/2011/福建理综/福建理综.tex）
 \item
 %% number: 29
 %% paperName: 2011年福建理综第 29 题第（2）问
@@ -755,7 +1078,7 @@ $E_{kN} = \frac{1}{2}\cdot 14mv_{2}^{2} = \frac{28mv_{0}^{2}}{225}$
 只用动量守恒和“A 反弹”只能得到下限 $v_{B}>0.5v$。还要用“碰撞后总动能不增加”求上限：$\frac{1}{2}mv^{2}\geqslant\frac{1}{2}mv_{A}^{2}+\frac{1}{2}(2m)v_{B}^{2}$，与 $v_{A}=v-2v_{B}$ 联立得 $v_{B}\leqslant\frac{2}{3}v$（弹性碰撞时取等号）。所以 $0.5v<v_{B}\leqslant\frac{2}{3}v$，四个选项中只有 $0.6v$ 符合。
 }
 
-% ---- 第 17 题：2022 北京卷第 10 题（LaTeX源码/2022/北京/北京.tex）
+% ---- 第 23 题：2022 北京卷第 10 题（LaTeX源码/2022/北京/北京.tex）
 \item
 %% number: 10
 %% paperName: 2022年北京高考第 10 题 3 分
@@ -771,7 +1094,7 @@ $E_{kN} = \frac{1}{2}\cdot 14mv_{2}^{2} = \frac{28mv_{0}^{2}}{225}$
 \begin{tibody}
 \tiinfo{2022·北京卷}{2}质量为 $m_{1}$ 和 $m_{2}$ 的两个物体在光滑水平面上正碰，其位置坐标 $x$ 随时间 $t$ 变化的图像如图所示。下列说法正确的是\xzanswer{C}
 
-\onepicture[w=5.60cm, h=4.05cm]{figs/17.png}
+\onepicture[w=5.60cm, h=4.05cm]{figs/23.png}
 
 \fourchoices[answer=C]
 {碰撞前 $m_{2}$ 的速率大于 $m_{1}$ 的速率}
@@ -814,7 +1137,7 @@ D．根据动能的表达式 $E_{k} = \frac{1}{2}mv^{2}$ 可知碰后 $m_{2}$ �
 故选 C。
 }
 
-% ---- 第 18 题：2020 全国Ⅲ卷第 15 题（LaTeX源码/2020/全国理综Ⅲ/全国理综Ⅲ.tex）
+% ---- 第 24 题：2020 全国Ⅲ卷第 15 题（LaTeX源码/2020/全国理综Ⅲ/全国理综Ⅲ.tex）
 \item
 %% number: 2
 %% paperName: 2020年全国理综Ⅲ第 2 题 6 分
@@ -829,7 +1152,7 @@ D．根据动能的表达式 $E_{k} = \frac{1}{2}mv^{2}$ 可知碰后 $m_{2}$ �
 %% body:
 \begin{tibody}
 \tiinfo{2020·全国Ⅲ卷}{2}甲、乙两个物块在光滑水平桌面上沿同一直线运动，甲追上乙，并与乙发生碰撞，碰撞前后甲、乙的速度随时间的变化如图中实线所示。已知甲的质量为 $1\Ukg$，则碰撞过程两物块损失的机械能为\xzanswer{A}
-\onepicture[w=7cm]{\includesvg{figs/18}}
+\onepicture[w=7cm]{\includesvg{figs/24}}
 \fourchoices[answer=A]
 {$3\UJ$}
 {$4\UJ$}
@@ -850,7 +1173,7 @@ $\Delta E=\frac{1}{2}m_{\text{甲}}v_{\text{甲}}^{2}+\frac{1}{2}m_{\text{乙}}v
 故选 A。
 }
 
-% ---- 第 19 题：2018 全国Ⅱ卷第 24 题（上游 gaokao-physics-archive 试卷/2018/全国理综Ⅱ/全国理综Ⅱ.tex）
+% ---- 第 25 题：2018 全国Ⅱ卷第 24 题（上游 gaokao-physics-archive 试卷/2018/全国理综Ⅱ/全国理综Ⅱ.tex）
 \item
 %% number: 24
 %% paperName: 2018年全国理综Ⅱ第 24 题 12 分
@@ -872,7 +1195,7 @@ $\Delta E=\frac{1}{2}m_{\text{甲}}v_{\text{甲}}^{2}+\frac{1}{2}m_{\text{乙}}v
 	碰撞前的瞬间 A 车速度的大小。
 \end{enumerate}
 
-\onepicture[w=6.0cm, align=right]{figs/19.png}
+\onepicture[w=6.0cm, align=right]{figs/25.png}
 \end{tibody}
 
 %% answer:
@@ -893,7 +1216,7 @@ $\Delta E=\frac{1}{2}m_{\text{甲}}v_{\text{甲}}^{2}+\frac{1}{2}m_{\text{乙}}v
 （2）设 A 车的质量为 $m_{A}$，碰后加速度大小为 $a_{A}$，由牛顿第二定律得 $\mu m_{A}g=m_{A}a_{A}$④，设碰撞后瞬间 A 车速度的大小为 $v_{A}'$，碰撞后滑行的距离为 $s_{A}$，由运动学公式得 $v_{A}'^{2}=2a_{A}s_{A}$⑤，设碰撞前的瞬间 A 车速度的大小为 $v_{A}$。两车在碰撞过程中动量守恒，有 $m_{A}v_{A}=m_{A}v_{A}'+m_{B}v_{B}'$⑥，联立③④⑤⑥式并利用题给数据得 $v_{A}=4.3\Ums$⑦。
 }
 
-% ---- 第 20 题：2021 广东卷第 13 题（LaTeX源码/2021/广东/广东.tex）
+% ---- 第 26 题：2021 广东卷第 13 题（LaTeX源码/2021/广东/广东.tex）
 \item
 %% number: 13
 %% paperName: 2021年广东高考第 13 题 11 分
@@ -917,7 +1240,7 @@ $\Delta E=\frac{1}{2}m_{\text{甲}}v_{\text{甲}}^{2}+\frac{1}{2}m_{\text{乙}}v
 	求甲算珠从拨出到停下所需的时间。
 \end{enumerate}
 
-\onepicture[w=7.5cm, align=right]{figs/20.png}
+\onepicture[w=7.5cm, align=right]{figs/26.png}
 \end{tibody}
 
 %% answer:
@@ -969,7 +1292,73 @@ $\Delta E=\frac{1}{2}m_{\text{甲}}v_{\text{甲}}^{2}+\frac{1}{2}m_{\text{乙}}v
 	$t=t_{1}+t_{2}=0.2\Us$
 }
 
-% ---- 第 21 题：2013 新课标Ⅰ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2013/全国新课标Ⅰ/全国新课标Ⅰ.tex）
+% ---- 第 27 题：2017 天津卷第 10 题（上游 gaokao-physics-archive 试卷/2017/天津理综/天津理综.tex）
+\item
+%% number: 10
+%% paperName: 2017年天津理综第 10 题 16 分
+%% typeId: 6
+%% type: 计算题
+%% chapter: 运动和力
+%% point: 动量守恒定律
+%% method: 无
+%% score: 16
+%% degree: 650
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2017·天津卷}{2}如图所示，物块 A 和 B 通过一根轻质不可伸长的细绳连接，跨放在质量不计的光滑定滑轮两侧，质量分别为 $m_{A}=2 \Ukg$、$m_{B}=1 \Ukg$。初始时 A 静止与水平地面上，B 悬于空中。先将 B 竖直向上再举高 $h=1.8 \Um$（未触及滑轮）然后由静止释放。一段时间后细绳绷直，A、B 以大小相等的速度一起运动，之后 B 恰好可以和地面接触。取 $g=10 \Umsq$。
+
+\begin{enumerate}
+	\item
+	B 从释放到细绳绷直时的运动时间 $t$；
+	\item
+	A 的最大速度 $v$ 的大小；
+	\item
+	初始时 B 离地面的高度 $H$。
+\end{enumerate}
+\onepicture[h=4.4cm, align=right]{\includesvg{figs/27}}
+\end{tibody}
+
+%% answer: 
+\jdanswer{
+\begin{enumerate}
+	\item
+	$t=0.6 \Us$
+
+	\item
+	$v=2 \Ums$
+
+	\item
+	$H=0.6 \Um$
+
+\end{enumerate}
+}
+%% memo:
+\memoanswer{
+（1）B 从释放到细绳刚绷直前做自由落体运动，有
+
+$h=\frac{1}{2}gt^{2}$ ①，代入数据解得 $t=0.6 \Us$ ②。
+
+（2）设细绳绷直前瞬间 B 速度大小为 $v_{B}$，有
+
+$v_{B}=gt$ ③，
+
+细绳绷直瞬间，细绳张力远大于 A、B 的重力，A、B 相互作用，由动量守恒得
+
+$m_{B}v_{B}=(m_{A}+m_{B})v$ ④，
+
+之后 A 做匀减速运动，所以细绳绷直后瞬间的速度 $v$ 即为最大速度，联立 ②③④ 式，代入数据解得
+
+$v=2 \Ums$ ⑤。
+
+（3）细绳绷直后，A、B 一起运动，B 恰好可以和地面接触，说明此时 A、B 的速度为零，这一过程中 A、B 组成的系统机械能守恒得
+
+$\frac{1}{2}(m_{A}+m_{B})v^{2}+m_{B}gH=m_{A}gH$ ⑥，
+
+代入数据解得 $H=0.6 \Um$ ⑦。
+}
+
+% ---- 第 28 题：2013 新课标Ⅰ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2013/全国新课标Ⅰ/全国新课标Ⅰ.tex）
 \item
 %% number: 35
 %% paperName: 2013年全国新课标Ⅰ第 35 题第（2）问
@@ -1006,61 +1395,103 @@ $mv=mv_1+2mv_2$\ccnum{②}，
 
 \end{enumerate}
 
-\section{动量守恒的常见模型}
+\section{常见模型（一）：子弹打木块与板块}
 \begin{yaodian}
 \begin{itemize}
+\item 子弹打木块：子弹射入（或穿出）木块的极短时间内，系统动量守恒；系统损失的动能变成内能，$Q=f\cdot d$（$d$ 为子弹相对木块移动的距离）。子弹留在木块中（两者共速）时，损失的动能最多。
 \item 板块模型（地面光滑）：系统动量守恒；两者共速后不再相对滑动；摩擦产生的热量 $Q=f\cdot s_{\text{相对}}$，等于系统动能的减少量。
-\item 弹簧连接体：两物体速度相等时，弹簧形变量最大，弹性势能最大；弹簧从原长被压缩又恢复原长的整个过程，相当于一次弹性碰撞。
-\item 斜面体、圆弧槽（水平面光滑）：只有水平方向动量守恒；物块升到最高点时与斜面体在水平方向共速，这时系统动能最小、重力势能最大。
 \end{itemize}
 \end{yaodian}
 \begin{enumerate}[resume=tiku]
-% ---- 第 22 题：2024 江苏卷第 9 题（LaTeX源码/2024/江苏/江苏.tex）
+% ---- 第 29 题：2018 海南卷第 5 题（上游 gaokao-physics-archive 试卷/2018/海南理综/海南理综.tex）
 \item
-%% number: 9
-%% paperName: 2024年江苏高考第 9 题 4 分
+%% number: 5
+%% paperName: 2018年海南理综第 5 题 4 分
 %% typeId: 1
 %% type: 单选题
 %% chapter: 运动和力
 %% point: 动量和能量
 %% method: 无
 %% score: 4
-%% degree: 550
+%% degree: 650
 %% duplicateId: 0
 %% body:
 \begin{tibody}
-\tiinfo{2024·江苏卷}{2}在水平面上有一个 U 形滑板 A，A 的上表面有一个静止的物体 B，左侧用轻弹簧连接在物体 B 的左侧，右侧用一根细绳连接在物体 B 的右侧，开始时弹簧处于拉伸状态，各表面均光滑，剪断细绳后，则\xzanswer{A}
+\tiinfo{2018·海南卷}{2}如图，用长为 $l$ 的轻绳悬挂一质量为 $M$ 的沙箱，沙箱静止。一质量为 $m$ 的弹丸以速度 $v$ 水平射入沙箱并留在其中，随后与沙箱共同摆动一小角度。不计空气阻力。对子弹射向沙箱到与其共同摆过一小角度的过程\xzanswer{C}
 
-\onepicture[w=4.40cm]{figs/22.png}
+\onepicture[h=3.6cm]{\includesvg{figs/29}}
 
-\fourchoices[answer=A]
-{弹簧原长时 B 动量最大}
-{压缩最短时 A 动能最大}
-{系统动量变大}
-{系统机械能变大}
+\fourchoices[answer=C]
+{若保持 $m$、$v$、$l$ 不变，$M$ 变大，则系统损失的机械能变小}
+{若保持 $M$、$v$、$l$ 不变，$m$ 变大，则系统损失的机械能变小}
+{若保持 $M$、$m$、$l$ 不变，$v$ 变大，则系统损失的机械能变大}
+{若保持 $M$、$m$、$v$ 不变，$l$ 变大，则系统损失的机械能变大}
 \end{tibody}
 
-%% answer: A
+%% answer: C
 %% memo:
 \memoanswer{
-对整个系统分析可知合外力为 0，A 和 B 组成的系统动量守恒，得
+	本题考查机械能守恒定律及动量守恒定律的相关知识点。
 
-$m_{A}v_{A}=m_{B}v_{B}$
+	分析易得只有子弹射入沙箱并停留在沙箱中这个过程中系统的机械能才会损失，由动量守恒得，$mv = (m + M)v_{\text{共}}$，则系统损失的机械能
 
-设弹簧的初始弹性势能为 $E_{p}$，整个系统只有弹簧弹力做功，机械能守恒，当弹簧原长时得
+	$\Delta E = \frac{1}{2}mv^{2} - \frac{1}{2}(m + M)v_{\text{共}}^{2} = \frac{1}{2}mv^{2} - \frac{1}{2}(m + M)\left(\frac{mv}{m + M}\right)^{2} = \frac{mMv^{2}}{2(m + M)}$
 
-$E_{\mathrm{p}}=\frac{1}{2}m_{\mathrm{A}}v_{\mathrm{A}}^{2}+\frac{1}{2}m_{\mathrm{B}}v_{\mathrm{B}}^{2}$
+	对于 A 选项，由 $\Delta E = \frac{mMv^{2}}{2(m + M)} = \frac{mv^{2}}{2\left(\frac{m}{M} + 1\right)}$ 可知若保持 $m$、$v$、$l$ 不变，$M$ 越大则系统损失的机械能越大，故 A 错误；
 
-联立得
+	对于 B 选项，由 $\Delta E = \frac{mMv^{2}}{2(m + M)} = \frac{Mv^{2}}{2\left(\frac{M}{m} + 1\right)}$ 可知若保持 $M$、$v$、$l$ 不变，$m$ 变大则系统损失的机械能变大，故 B 错误；
 
-$E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\mathrm{B}}\right)v_{\mathrm{B}}^{2}$
+	对于 C 选项，由 $\Delta E = \frac{mMv^{2}}{2(m + M)}$ 可知若保持 $M$、$m$、$l$ 不变，$v$ 变大则系统损失的机械能变大，故 C 正确；
 
-故可知弹簧原长时物体速度最大，此时动量最大，动能最大。对于系统来说动量一直为零，系统机械能不变。
-
-故选 A。
+	对于 D 选项，子弹与沙箱共同向上摆动一小角度的过程系统机械能守恒，故 D 错误。
 }
 
-% ---- 第 23 题：2021 海南卷第 17 题（LaTeX源码/2021/海南/海南.tex）
+% ---- 第 30 题：2008 全国Ⅱ卷第 23 题（上游 gaokao-physics-archive 试卷/2008/全国理综Ⅱ/全国理综Ⅱ.tex）
+\item
+%% number: 23
+%% paperName: 2008年全国理综Ⅱ第 23 题 15 分
+%% typeId: 6
+%% type: 计算题
+%% chapter: 运动和力
+%% point: 动量守恒定律
+%% method: 无
+%% score: 15
+%% degree: 450
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2008·全国Ⅱ卷}{2}如图，一质量为 $M$ 的物块静止在桌面边缘，桌面离水平地面的高度为 $h$。一质量为 $m$ 的子弹以水平速度 $v_{0}$ 射入物块后，以水平速度 $\frac{1}{2}v_{0}$ 射出。重力加速度为 $g$。求：
+
+\begin{enumerate}
+	\item
+	此过程中系统损失的机械能；
+	\item
+	此后物块落地点离桌面边缘的水平距离。
+\end{enumerate}
+
+\onepicture[w=4.5cm, align=right]{figs/30.png}
+\end{tibody}
+
+%% answer:
+\jdanswer{
+\begin{enumerate}
+	\item
+	$\Delta E=\frac{1}{8}\left(3-\frac{m}{M}\right)mv_{0}^{2}$
+	\item
+	$s=\frac{mv_{0}}{M}\sqrt{\frac{h}{2g}}$
+\end{enumerate}
+}
+
+%% memo:
+\memoanswer{
+（1）设子弹穿过物块后物块的速度为 $V$，由动量守恒得 $mv_{0}=m\cdot\frac{v_{0}}{2}+MV$，解得 $V=\frac{mv_{0}}{2M}$。
+
+系统的机械能损失为 $\Delta E=\frac{1}{2}mv_{0}^{2}-\frac{1}{2}m\left(\frac{v_{0}}{2}\right)^{2}-\frac{1}{2}MV^{2}$，代入得 $\Delta E=\frac{1}{8}\left(3-\frac{m}{M}\right)mv_{0}^{2}$。
+
+（2）设物块下落到地面所需时间为 $t$，落地点距桌边缘的水平距离为 $s$，则 $h=\frac{1}{2}gt^{2}$，$s=Vt$，解得 $s=\frac{mv_{0}}{M}\sqrt{\frac{h}{2g}}$。
+}
+
+% ---- 第 31 题：2021 海南卷第 17 题（LaTeX源码/2021/海南/海南.tex）
 \item
 %% number: 17
 %% paperName: 2021年海南高考第 17 题 12 分
@@ -1085,7 +1516,7 @@ $E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\m
 	若滑块轻放在木板最右端的同时，给木板施加一水平向右的外力，使得木板保持匀速直线运动，直到滑块相对木板静止，求此过程中滑块的运动时间以及外力所做的功。
 \end{enumerate}
 
-\onepicture[w=6cm, align=right]{figs/23.png}
+\onepicture[w=6cm, align=right]{figs/31.png}
 \end{tibody}
 
 %% answer:
@@ -1156,7 +1587,7 @@ $E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\m
 	$W = Fx' = mv_{0}^{2}$
 }
 
-% ---- 第 24 题：2025 浙江1月选考第 8 题（LaTeX源码/2025/1月浙江/1月浙江.tex）
+% ---- 第 32 题：2025 浙江1月选考第 8 题（LaTeX源码/2025/1月浙江/1月浙江.tex）
 \item
 %% number: 8
 %% paperName: 2025年1月浙江高考第 8 题 3 分
@@ -1172,7 +1603,7 @@ $E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\m
 \begin{tibody}
 \tiinfo{2025·浙江1月选考}{3}如图所示，光滑水平地面上放置完全相同的两长板 A 和 B，滑块 C（可视为质点）置于 B 的右端，三者质量均为 $1 \Ukg$。A 以 $4 \Ums$ 的速度向右运动，B 和 C 一起以 $2 \Ums$ 的速度向左运动，A 和 B 发生碰撞后粘在一起不再分开。已知 A 和 B 的长度均为 $0.75 \Um$，C 与 A、B 间动摩擦因数均为 0.5，则\xzanswer{D}
 
-\onepicture[w=8.00cm]{\includesvg{figs/24}}
+\onepicture[w=8.00cm]{\includesvg{figs/32}}
 
 \fourchoices[answer=D]
 {碰撞瞬间 C 相对地面静止}
@@ -1203,7 +1634,228 @@ D．碰撞到三者相对静止由能量关系可知 $Q = \mu mgx_{\text{相对}
 故选 D。
 }
 
-% ---- 第 25 题：2013 新课标Ⅱ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2013/全国新课标Ⅱ/全国新课标Ⅱ.tex）
+\end{enumerate}
+
+\section{常见模型（二）：弹簧与斜面体}
+\begin{yaodian}
+\begin{itemize}
+\item 弹簧连接体：两物体速度相等时，弹簧形变量最大，弹性势能最大；弹簧从原长被压缩又恢复原长的整个过程，相当于一次弹性碰撞。
+\item 弹簧一端靠墙（或固定在墙上）：墙通过弹簧对系统有冲量，物体离开墙以前系统动量不守恒，离开墙以后才守恒。
+\item 斜面体、圆弧槽（水平面光滑）：只有水平方向动量守恒；物块升到最高点时与斜面体在水平方向共速，这时系统动能最小、重力势能最大。
+\end{itemize}
+\end{yaodian}
+\begin{enumerate}[resume=tiku]
+% ---- 第 33 题：2024 江苏卷第 9 题（LaTeX源码/2024/江苏/江苏.tex）
+\item
+%% number: 9
+%% paperName: 2024年江苏高考第 9 题 4 分
+%% typeId: 1
+%% type: 单选题
+%% chapter: 运动和力
+%% point: 动量和能量
+%% method: 无
+%% score: 4
+%% degree: 550
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2024·江苏卷}{2}在水平面上有一个 U 形滑板 A，A 的上表面有一个静止的物体 B，左侧用轻弹簧连接在物体 B 的左侧，右侧用一根细绳连接在物体 B 的右侧，开始时弹簧处于拉伸状态，各表面均光滑，剪断细绳后，则\xzanswer{A}
+
+\onepicture[w=4.40cm]{figs/33.png}
+
+\fourchoices[answer=A]
+{弹簧原长时 B 动量最大}
+{压缩最短时 A 动能最大}
+{系统动量变大}
+{系统机械能变大}
+\end{tibody}
+
+%% answer: A
+%% memo:
+\memoanswer{
+对整个系统分析可知合外力为 0，A 和 B 组成的系统动量守恒，得
+
+$m_{A}v_{A}=m_{B}v_{B}$
+
+设弹簧的初始弹性势能为 $E_{p}$，整个系统只有弹簧弹力做功，机械能守恒，当弹簧原长时得
+
+$E_{\mathrm{p}}=\frac{1}{2}m_{\mathrm{A}}v_{\mathrm{A}}^{2}+\frac{1}{2}m_{\mathrm{B}}v_{\mathrm{B}}^{2}$
+
+联立得
+
+$E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\mathrm{B}}\right)v_{\mathrm{B}}^{2}$
+
+故可知弹簧原长时物体速度最大，此时动量最大，动能最大。对于系统来说动量一直为零，系统机械能不变。
+
+故选 A。
+}
+
+% ---- 第 34 题：2007 四川卷第 18 题（上游 gaokao-physics-archive 试卷/2007/四川理综/四川理综.tex）
+\item
+%% number: 18
+%% paperName: 2007年四川理综第 18 题 6 分
+%% typeId: 1
+%% type: 单选题
+%% chapter: 运动和力
+%% point: 动量守恒定律
+%% method: 无
+%% score: 6
+%% degree: 450
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2007·四川卷}{2}如图所示，弹簧的一端固定在竖直墙上，质量为 $m$ 的光滑弧形槽静止在光滑水平面上，底部与水平面平滑连接，一个质量也为 $m$ 的小球从槽高 $h$ 处开始下滑\xzanswer{C}
+
+\onepicture[w=7.0cm]{figs/34.png}
+
+\fourchoices[answer=C]
+{在以后的运动过程中，小球和槽的动量始终守恒}
+{在下滑过程中小球和槽之间的相互作用力始终不做功}
+{在弹簧反弹后，小球和槽都做速率不变的直线运动}
+{被弹簧反弹后，小球和槽的机械能守恒，小球能回到槽高 $h$ 处}
+\end{tibody}
+
+%% answer: C
+%% memo:
+\memoanswer{
+（原卷未附解析，以下为编者补写。）
+
+A．小球离开槽后压缩弹簧，弹簧（墙）对小球有向左的弹力，小球和槽组成的系统所受合外力不为零，动量不守恒，A 错误；
+
+B．小球下滑时槽向左运动，槽对小球的支持力与小球的位移方向不垂直，这对相互作用力对小球做负功、对槽做正功，B 错误；
+
+C．小球下滑过程中，小球和槽组成的系统在水平方向动量守恒，两者质量相等，所以小球滑到底端时与槽的速度大小相等、方向相反，设为 $v$。小球压缩弹簧后以原速率 $v$ 被弹回，向左运动，速度与槽相同，此后两者都做速率不变的匀速直线运动，C 正确；
+
+D．小球被弹回后与槽的速度相同，追不上槽，不能再滑上槽，更不能回到高 $h$ 处，D 错误。
+
+故选 C。
+}
+
+% ---- 第 35 题：2008 天津卷第 24 题（上游 gaokao-physics-archive 试卷/2008/天津理综/天津理综.tex）
+\item
+%% number: 24
+%% paperName: 2008年天津理综第 24 题 18 分
+%% typeId: 6
+%% type: 计算题
+%% chapter: 运动和力
+%% point: 动量守恒定律
+%% method: 无
+%% score: 18
+%% degree: 650
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2008·天津卷}{2}光滑水平面上放着质量 $m_{A}=1\Ukg$ 的物块 A 和质量 $m_{B}=2\Ukg$ 的物块 B，A 与 B 均可视为质点，A 靠在竖直墙上，A、B 间夹着一个被压缩的轻弹簧（弹簧与 A、B 均不拴接），用手挡住 B 不动，此时弹簧弹性势能 $E_{\text{p}}=49\UJ$，在 A、B 间系一轻质细绳，细绳的长度大于弹簧的自然长度，如图所示。放手后 B 向右运动，绳在短暂时间内被拉断，此后 B 冲上与水平面相切的竖直半圆光滑轨道，其半径 $R=0.5\Um$，B 恰能到达最高点 C。取 $g=10\Umsq$，求：
+
+\begin{enumerate}
+	\item
+	绳拉断后瞬间 B 的速度 $v_{B}$ 的大小；
+	\item
+	绳拉断过程绳对 B 的冲量 $I$ 的大小；
+	\item
+	绳拉断过程绳对 A 所做的功 $W$。
+\end{enumerate}
+
+\onepicture[w=6.0cm, align=right]{figs/35.png}
+\end{tibody}
+
+%% answer:
+\jdanswer{
+\begin{enumerate}
+	\item
+	$v_{B}=5\Ums$
+
+	\item
+	$I=4\UNs$
+
+	\item
+	$W=8\UJ$
+\end{enumerate}
+}
+
+%% memo:
+\memoanswer{
+（1）设 B 在绳被拉断后瞬间的速度为 $v_{B}$，到达 C 点时的速度为 $v_{C}$，有 $m_{B}g=m_{B}\frac{v_{C}^{2}}{R}$，$\frac{1}{2}m_{B}v_{B}^{2}=\frac{1}{2}m_{B}v_{C}^{2}+2m_{B}gR$，代入数据得 $v_{B}=5\Ums$。
+
+（2）设弹簧恢复到自然长度时 B 的速度为 $v_{1}$，取水平向右为正方向，有 $E_{\text{P}}=\frac{1}{2}m_{B}v_{1}^{2}$，$I=m_{B}v_{B}-m_{B}v_{1}$，代入数据得 $I=-4\UNs$，冲量的大小为 $4\UNs$。
+
+（3）设绳断后 A 的速度为 $v_{A}$，取水平向右为正方向，有 $m_{B}v_{1}=m_{B}v_{B}+m_{A}v_{A}$，$W=\frac{1}{2}m_{A}v_{A}^{2}$，代入数据得 $W=8\UJ$。
+}
+
+% ---- 第 36 题：2021 湖南卷第 8 题（LaTeX源码/2021/湖南/湖南.tex）
+\item
+%% number: 8
+%% paperName: 2021年湖南高考第 8 题 5 分
+%% typeId: 2
+%% type: 多选题
+%% chapter: 运动和力
+%% point: 动量守恒定律
+%% method: 无
+%% score: 5
+%% degree: 450
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2021·湖南卷}{3}如图 \ref{2021湖南08a}，质量分别为$m_{A}$、$m_{B}$的$A$、$B$两物体用轻弹簧连接构成一个系统，外力$F$作用在$A$上，系统静止在光滑水平面上（$B$靠墙面），此时弹簧形变量为$x$。撤去外力并开始计时，$A$、$B$两物体运动的$a-t$图像如图 \ref{2021湖南08b} 所示，$S_{1}$表示0到$t_{1}$时间内$A$的$a-t$图线与坐标轴所围面积大小，$S_{2}$、$S_{3}$分别表示$t_{1}$到$t_{2}$时间内$A$、$B$的$a-t$图线与坐标轴所围面积大小。$A$在$t_{1}$时刻的速度为$v_{0}$。下列说法正确的是 \xzanswer{ABD}
+
+\twopicture[labelA=2021湖南08a, labelB=2021湖南08b, hA=2.0cm, hB=4.4cm]
+{figs/36a.png}
+{figs/36b.png}
+
+\fourchoices[answer=ABD]
+{0到$t_{1}$时间内，墙对$B$的冲量等于$m_{A}v_{0}$}
+{$m_{A}>m_{B}$}
+{$B$运动后，弹簧的最大形变量等于$x$}
+{$S_{1}-S_{2}=S_{3}$}
+\end{tibody}
+
+%% answer: ABD
+%% memo:
+\memoanswer{
+	A．由于在$0 \sim t_{1}$时间内，物体$B$静止，则对$B$受力分析有
+
+	$F_{\text{墙}}=F_{\text{弹}}$
+
+	则墙对$B$的冲量大小等于弹簧对$B$的冲量大小，而弹簧既作用于$B$也作用于$A$，则可将研究对象转为$A$，撤去$F$后$A$只受弹力作用，则根据动量定理有
+
+	$I = m_{A} v_{0}$（方向向右）
+
+	则墙对$B$的冲量与弹簧对$A$的冲量大小相等、方向相同，A 正确；
+
+	B．由$a-t$图可知$t_{1}$后弹簧被拉伸，在$t_{2}$时刻弹簧的拉伸量达到最大，根据牛顿第二定律有
+
+	$F_{\text{弹}}=m_{A}a_{A}=m_{B}a_{B}$
+
+	由图可知
+
+	$a_{B}>a_{A}$
+
+	则
+
+	$m_{B}<m_{A}$
+
+	B 正确；
+
+	C．由图可得，$t_{1}$时刻$B$开始运动，此时$A$速度为$v_{0}$，之后$AB$动量守恒，$AB$和弹簧整个系统能量守恒，则
+
+	$m_{A}v_{0}=m_{A}v_{A}+m_{B}v_{B}$
+
+	可得$AB$整体的动能不等于 0，即弹簧的弹性势能会转化为$AB$系统的动能，弹簧的形变量小于$x$，C 错误；
+
+	D．由$a-t$图可知$t_{1}$后$B$脱离墙壁，且弹簧被拉伸，在$t_{1}\sim t_{2}$时间内$AB$组成的系统动量守恒，且在$t_{2}$时刻弹簧的拉伸量达到最大，$A$、$B$共速，由$a-t$图像的面积为$\Delta v$，在$t_{2}$时刻$AB$的速度分别为
+
+	$v_{A}=S_{1}-S_{2}$，$v_{B}=S_{3}$
+
+	$A$、$B$共速，则
+
+	$S_{1}-S_{2}=S_{3}$
+
+	D 正确。
+
+	故选 ABD。
+}
+
+% ---- 第 37 题：2013 新课标Ⅱ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2013/全国新课标Ⅱ/全国新课标Ⅱ.tex）
 \item
 %% number: 35
 %% paperName: 2013年全国新课标Ⅱ第 35 题第（2）问
@@ -1225,7 +1877,7 @@ D．碰撞到三者相对静止由能量关系可知 $Q = \mu mgx_{\text{相对}
 	弹簧被压缩到最短时的弹性势能。
 \end{enumerate}
 
-\onepicture[w=6cm, align=right]{figs/25.png}
+\onepicture[w=6cm, align=right]{figs/37.png}
 \end{tibody}
 
 %% answer:
@@ -1266,7 +1918,7 @@ $\frac{1}{2}mv_{0}^{2}-\Delta E=\frac{1}{2}(3m)v_{3}^{2}+E_{p}$\ccnum{⑥}
 $E_{p}=\frac{13}{48}mv_{0}^{2}$\ccnum{⑦}
 }
 
-% ---- 第 26 题：2016 全国Ⅱ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2016/全国理综Ⅱ/全国理综Ⅱ.tex）
+% ---- 第 38 题：2016 全国Ⅱ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2016/全国理综Ⅱ/全国理综Ⅱ.tex）
 \item
 %% number: 35
 %% paperName: 2016年全国理综Ⅱ第 35 题第（2）问
@@ -1287,7 +1939,7 @@ $E_{p}=\frac{13}{48}mv_{0}^{2}$\ccnum{⑦}
 	\item
 	通过计算判断，冰块与斜面体分离后能否追上小孩？
 \end{enumerate}
-\onepicture[w=7cm, align=right]{figs/26.png}
+\onepicture[w=7cm, align=right]{figs/38.png}
 \end{tibody}
 
 %% answer:
@@ -1339,7 +1991,7 @@ $E_{p}=\frac{13}{48}mv_{0}^{2}$\ccnum{⑦}
 \end{itemize}
 \end{yaodian}
 \begin{enumerate}[resume=tiku]
-% ---- 第 27 题：2024 新课标卷第 22 题（LaTeX源码/2024/全国新课标/全国新课标.tex）
+% ---- 第 39 题：2024 新课标卷第 22 题（LaTeX源码/2024/全国新课标/全国新课标.tex）
 \item
 %% number: 9
 %% paperName: 2024年全国高考新课标第 9 题 6 分
@@ -1362,7 +2014,7 @@ $E_{p}=\frac{13}{48}mv_{0}^{2}$\ccnum{⑦}
 	\item
 	如果测得的 $x_{P}$、$x_{M}$、$x_{N}$、$m_{a}$ 和 $m_{b}$ 在实验误差范围内满足关系式\newline\tkanswer[4cm]{$m_{a}x_{P} = m_{a}x_{M} + m_{b}x_{N}$}，则验证了两小球在碰撞中满足动量守恒定律。实验中，用小球落点与 $O$ 点的距离来代替小球水平飞出时的速度，依据是\tkanswer{小球离开斜槽末端后做平抛运动，竖直方向高度相同故下落时间相同，水平方向做匀速直线运动，小球水平飞出时的速度与平抛运动的水平位移成正比}。
 \end{enumerate}
-\onepicture[w=6.00cm, align=right]{figs/27.png}
+\onepicture[w=6.00cm, align=right]{figs/39.png}
 \end{tibody}
 
 %% answer:
@@ -1395,7 +2047,7 @@ $m_{a}v_{0} = m_{a}v_{a} + m_{b}v_{b}$
 小球离开斜槽末端后做平抛运动，竖直方向高度相同故下落时间相同，水平方向做匀速直线运动，小球水平飞出时的速度与平抛运动的水平位移成正比。
 }
 
-% ---- 第 28 题：2022 全国甲卷第 23 题（LaTeX源码/2022/全国甲卷/全国甲卷.tex）
+% ---- 第 40 题：2022 全国甲卷第 23 题（LaTeX源码/2022/全国甲卷/全国甲卷.tex）
 \item
 %% number: 10
 %% paperName: 2022年全国高考甲卷第 10 题 10 分
@@ -1411,7 +2063,7 @@ $m_{a}v_{0} = m_{a}v_{a} + m_{b}v_{b}$
 \begin{tibody}
 \tiinfo{2022·全国甲卷}{3}利用图示的实验装置对碰撞过程进行研究。让质量为 $m_{1}$ 的滑块 A 与质量为 $m_{2}$ 的静止滑块 B 在水平气垫导轨上发生碰撞，碰撞时间极短，比较碰撞后 A 和 B 的速度大小 $v_{1}$ 和 $v_{2}$，进而分析碰撞过程是否为弹性碰撞。完成下列填空：
 
-\onepicture[align=right, w=11cm]{figs/28.png}
+\onepicture[align=right, w=11cm]{figs/40.png}
 
 \begin{enumerate}
 	\item
@@ -1486,7 +2138,7 @@ $\frac{v_{1}}{v_{2}}=0.34$
 \end{itemize}
 \end{yaodian}
 \begin{enumerate}[resume=tiku]
-% ---- 第 29 题：2014 北京卷第 22 题（上游 gaokao-physics-archive 试卷/2014/北京理综/北京理综.tex）
+% ---- 第 41 题：2014 北京卷第 22 题（上游 gaokao-physics-archive 试卷/2014/北京理综/北京理综.tex）
 \item
 %% number: 22
 %% paperName: 2014年北京理综第 22 题 16 分
@@ -1509,7 +2161,7 @@ $\frac{v_{1}}{v_{2}}=0.34$
 	\item
 	A 和 B 整体在桌面上滑动的距离 $l$。
 \end{enumerate}
-\onepicture[align=right, w=6.5cm]{figs/29.png}
+\onepicture[align=right, w=6.5cm]{figs/41.png}
 \end{tibody}
 
 %% answer:
@@ -1532,7 +2184,7 @@ $\frac{v_{1}}{v_{2}}=0.34$
 （3）滑块 A 和 B 粘在一起在桌面上滑行，摩擦力做负功，由动能定理可得：$f\cdot l=\frac{1}{2}(m_{A}+m_{B})v'^{2}=\frac{1}{4}m_{A}v_{A}^{2}=\frac{1}{2}m_{A}gR$；摩擦力 $f=\mu(m_{A}+m_{B})g=\mu 2m_{A}g$；于是可以得到 $2\mu m_{A}g\cdot l=\frac{1}{2}m_{A}gR$，则 $l=\frac{R}{4\mu}=0.25\Um$。
 }
 
-% ---- 第 30 题：2023 北京卷第 17 题（LaTeX源码/2023/北京/北京.tex）
+% ---- 第 42 题：2023 北京卷第 17 题（LaTeX源码/2023/北京/北京.tex）
 \item
 %% number: 17
 %% paperName: 2023年北京高考第 17 题 9 分
@@ -1555,7 +2207,7 @@ $\frac{v_{1}}{v_{2}}=0.34$
 	\item
 	碰撞过程中系统损失的机械能 $\Delta E$。
 \end{enumerate}
-\onepicture[w=3.6cm, align=right]{figs/30.png}
+\onepicture[w=3.6cm, align=right]{figs/42.png}
 \end{tibody}
 
 %% answer: 
@@ -1595,7 +2247,7 @@ $F - mg = \frac{{m{v^2}}}{L}$
 $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}$
 }
 
-% ---- 第 31 题：2022 广东卷第 13 题（LaTeX源码/2022/广东/广东.tex）
+% ---- 第 43 题：2022 广东卷第 13 题（LaTeX源码/2022/广东/广东.tex）
 \item
 %% number: 13
 %% paperName: 2022年广东高考第 13 题 11 分
@@ -1620,7 +2272,7 @@ $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}
 	滑杆向上运动的最大高度 $h$。
 \end{enumerate}
 
-\onepicture[w=2.6cm, align=right]{figs/31.png}
+\onepicture[w=2.6cm, align=right]{figs/43.png}
 \end{tibody}
 
 %% answer:
@@ -1643,7 +2295,7 @@ $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}
 （3）由于滑块和滑杆发生完全非弹性碰撞，即碰后两者共速，碰撞过程根据动量守恒有 $mv_{1} = (m + M)v$，碰后滑块和滑杆以速度 $v$ 整体向上做竖直上抛运动，根据动能定理有 $-\left(m + M\right)gh = 0 - \frac{1}{2}\left(m + M\right)v^{2}$，代入数据联立解得 $h = 0.2\Um$。
 }
 
-% ---- 第 32 题：2022 海南卷第 18 题（LaTeX源码/2022/海南/海南.tex）
+% ---- 第 44 题：2022 海南卷第 18 题（LaTeX源码/2022/海南/海南.tex）
 \item
 %% number: 18
 %% paperName: 2022年海南高考第 18 题 12 分
@@ -1668,7 +2320,7 @@ $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}
 	轻绳的长度。
 \end{enumerate}
 
-\onepicture[w=7.00cm, align=right]{figs/32.png}
+\onepicture[w=7.00cm, align=right]{figs/44.png}
 \end{tibody}
 
 %% answer:
@@ -1711,7 +2363,7 @@ $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}
 	解得 $v_{2} = \sqrt{3gh}$，$L = 0.6h$。
 }
 
-% ---- 第 33 题：2024 安徽卷第 14 题（LaTeX源码/2024/安徽/安徽.tex）
+% ---- 第 45 题：2024 安徽卷第 14 题（LaTeX源码/2024/安徽/安徽.tex）
 \item
 %% number: 14
 %% paperName: 2024年安徽高考第 14 题 14 分
@@ -1734,7 +2386,7 @@ $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}
 	\item
 	为使物块能进入圆弧轨道，且在上升阶段不脱离小车，求物块与水平轨道间的动摩擦因数 $\mu$ 的取值范围。
 \end{enumerate}
-\onepicture[w=5.50cm, align=right]{figs/33.png}
+\onepicture[w=5.50cm, align=right]{figs/45.png}
 \end{tibody}
 
 %% answer:
@@ -1801,9 +2453,9 @@ $\frac{1}{2}Mv_{2}^{2} = \frac{1}{2} \times 2Mv_{4}^{2} + \mu_{2}Mgs + MgR$
 \end{enumerate}
 
 \section{挑战题（选做）}
-\noindent 本组两题需要连续多次运用碰撞或反冲的规律，从中找出规律或临界条件，供学有余力时选做。
+\noindent 本组三题需要连续多次运用碰撞、反冲的规律或分析极值，供学有余力时选做。
 \begin{enumerate}[resume=tiku]
-% ---- 第 34 题：2015 新课标Ⅰ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2015/全国课标Ⅰ/全国课标Ⅰ.tex）
+% ---- 第 46 题：2015 新课标Ⅰ卷第 35(2) 题（上游 gaokao-physics-archive 试卷/2015/全国课标Ⅰ/全国课标Ⅰ.tex）
 \item
 %% number: 35
 %% paperName: 2015年全国课标Ⅰ第 35 题第（2）问
@@ -1819,7 +2471,7 @@ $\frac{1}{2}Mv_{2}^{2} = \frac{1}{2} \times 2Mv_{4}^{2} + \mu_{2}Mgs + MgR$
 \begin{tibody}
 \tiinfo{2015·新课标Ⅰ卷}{4}如图，在足够长的光滑水平面上，物体 A、B、C 位于同一直线上，A 位于 B、C 之间。A 的质量为 $m$，B、C 的质量都为 $M$，三者都处于静止状态，现使 A 以某一速度向右运动，求 $m$ 和 $M$ 之间满足什么条件才能使 A 只与 B、C 各发生一次碰撞。设物体间的碰撞都是弹性的。
 
-\onepicture[h=1.2cm]{\includesvg{figs/34}}
+\onepicture[h=1.2cm]{\includesvg{figs/46}}
 \end{tibody}
 
 %% answer:
@@ -1847,7 +2499,7 @@ $\frac{1}{2}Mv_{2}^{2} = \frac{1}{2} \times 2Mv_{4}^{2} + \mu_{2}Mgs + MgR$
 	另一解 $m\leq-(\sqrt{5}+2)M$ 舍去。所以，$m$ 和 $M$ 应满足的条件为 $(\sqrt{5}-2)M\leq m<M$\ccnum{⑨}。
 }
 
-% ---- 第 35 题：2020 全国Ⅱ卷第 21 题（LaTeX源码/2020/全国理综Ⅱ/全国理综Ⅱ.tex）
+% ---- 第 47 题：2020 全国Ⅱ卷第 21 题（LaTeX源码/2020/全国理综Ⅱ/全国理综Ⅱ.tex）
 \item
 %% number: 8
 %% paperName: 2020年全国理综Ⅱ第 8 题 6 分
@@ -1904,6 +2556,80 @@ $mv_{2}+m_{0}v_{0}=mv_{3}-m_{0}v_{0}$
 故选 BC。
 }
 
+% ---- 第 48 题：2024 湖北卷第 10 题（LaTeX源码/2024/湖北/湖北.tex）
+\item
+%% number: 10
+%% paperName: 2024年湖北高考第 10 题 4 分
+%% typeId: 2
+%% type: 多选题
+%% chapter: 功和能
+%% point: 子弹打木块模型
+%% method: 无
+%% score: 4
+%% degree: 350
+%% duplicateId: 0
+%% body:
+\begin{tibody}
+\tiinfo{2024·湖北卷}{4}如图所示，在光滑水平面上静止放置一质量为 $ M $、长为 $ L $ 的木块，质量为 $ m $ 的子弹水平射入木块。设子弹在木块内运动过程中受到的阻力不变，其大小 $ f $ 与射入初速度大小 $ v_{0} $ 成正比，即 $ f = kv_{0} $（$ k $ 为已知常数）。改变子弹的初速度大小 $ v_{0} $，若木块获得的速度最大，则 \xzanswer{AD}
+\onepicture[w=5.27cm, h=2.53cm]{figs/48.png}
+
+\fourchoices[answer=AD]
+{子弹的初速度大小为 $ \frac{{2kL(m + M)}}{{mM}} $}
+{子弹在木块中运动的时间为 $ \frac{{2mM}}{{k(m + M)}} $}
+{木块和子弹损失的总动能为 $ \frac{{{k^2}{L^2}(m + M)}}{{mM}} $}
+{木块在加速过程中运动的距离为 $ \frac{{mL}}{{m + M}} $}
+\end{tibody}
+
+%% answer: AD
+%% memo:
+\memoanswer{
+A．子弹和木块相互作用过程系统动量守恒，令子弹穿出木块后子弹和木块的速度分别为 $v_{1}$、$v_{2}$，则有
+
+$mv_{0} = mv_{1} + Mv_{2}$
+
+子弹和木块相互作用过程中合力都为 $f = kv_{0}$，因此子弹和物块的加速度分别为
+
+$a_{1} = \frac{f}{m}$，$a_{2} = \frac{f}{M}$
+
+由运动学公式可得子弹和木块的位移分别为
+
+$2a_{1}x_{1} = v_{0}^{2} - v_{1}^{2}$，$2a_{2}x_{2} = v_{2}^{2}$
+
+联立上式可得
+
+$v_{2} = \frac{m\left[v_{0} - \sqrt{v_{0}^{2} - 2\left(\frac{kv_{0}}{m} + \frac{kv_{0}}{M}\right)L}\right]}{M + m}$
+
+因此木块的速度最大即 $v_{0} - \sqrt{v_{0}^{2} - 2\left(\frac{kv_{0}}{m} + \frac{kv_{0}}{M}\right)L}$ 取极值即可，该函数在 $2\left(\frac{k}{m} + \frac{k}{M}\right)L$ 到无穷单调递减，因此当 $v_{0} = 2\left(\frac{k}{m} + \frac{k}{M}\right)L = \frac{2kL(m + M)}{mM}$ 木块的速度最大，A 正确；
+
+B．则子弹穿过木块时木块的速度为 $v_{2} = \frac{mv_{0}}{M + m}$
+
+由运动学公式 $v_{2} = a_{2}t$
+
+可得 $t = \frac{mM}{k(m + M)}$
+
+故 B 错误；
+
+C．由能量守恒可得子弹和木块损失的能量转化为系统摩擦生热，即
+
+$\Delta E = Q = fL = \frac{2k^{2}L^{2}(m + M)}{mM}$
+
+故 C 错误；
+
+D．木块加速过程运动的距离为 $x_{2} = \frac{0 + v_{2}}{2}t = \frac{mL}{m + M}$
+
+故 D 正确。
+
+故选 AD。
+}
+\memoanswer[补充]{
+	没穿过木块前$v_0$越大，木块速度越大，贯穿后，$v_0$越大，木块速度越小。
+	
+	贯穿情况下有$2kmLv_0-2Mmv_0v+M(M+m)v^2=0$，可以对$v_0$和$v$都微分，利用极值条件$\odv{v}{v_0}=0$可得$v=kL/M$，这个值代入上式无解。
+	在数学上，函数$v$无极值，这是一组双曲线，那么物理上的极值只能在$\odv{v_0}{v}=0$处取得，解之得到$v=2kL/M$。
+	
+	当$v_0$趋于无穷时，$v=kL/M$。
+}
+
 \end{enumerate}
 
 
@@ -1928,35 +2654,48 @@ $mv_{2}+m_{0}v_{0}=mv_{3}-m_{0}v_{0}$
 4 & 2017 全国Ⅲ卷第 20 题 & 多选 & $F-t$ 图像与冲量 & \nandu{2} & AB \\
 5 & 2026 海南卷第 16 题 & 计算 & 动量定理求平均作用力 & \nandu{1} & 见详解 \\
 6 & 2018 全国Ⅱ卷第 15 题 & 单选 & 动量定理估算冲击力 & \nandu{2} & C \\
-7 & 2019 全国Ⅰ卷第 16 题 & 单选 & 连续气体的动量定理（火箭推力） & \nandu{2} & B \\
-8 & 2021 全国乙卷第 14 题 & 单选 & 动量守恒、机械能守恒的条件 & \nandu{1} & B \\
-9 & 2017 全国Ⅰ卷第 14 题 & 单选 & 反冲（模型火箭） & \nandu{1} & A \\
-10 & 2012 福建卷第 29(2) 题 & 单选 & 反冲：速度要相对地面 & \nandu{2} & C \\
-11 & 2025 北京卷第 17 题 & 计算 & 爆炸与平抛运动 & \nandu{2} & 见详解 \\
-12 & 2018 全国Ⅰ卷第 24 题 & 计算 & 爆炸与竖直上抛运动 & \nandu{2} & 见详解 \\
-13 & 2024 辽宁卷第 14 题 & 计算 & 弹簧弹开两物块 & \nandu{3} & 见详解 \\
-14 & 2026 海南卷第 4 题 & 单选 & 弹性碰撞（大质量碰小质量） & \nandu{1} & B \\
-15 & 2022 湖南卷第 4 题 & 单选 & 弹性碰撞（中子碰氢核、氮核） & \nandu{2} & B \\
-16 & 2011 福建卷第 29(2) 题 & 单选 & 碰撞结果的可能性 & \nandu{2} & A \\
-17 & 2022 北京卷第 10 题 & 单选 & $x-t$ 图像中的碰撞 & \nandu{2} & C \\
-18 & 2020 全国Ⅲ卷第 15 题 & 单选 & $v-t$ 图像与碰撞中的机械能损失 & \nandu{2} & A \\
-19 & 2018 全国Ⅱ卷第 24 题 & 计算 & 碰撞与匀减速运动（汽车追尾） & \nandu{2} & 见详解 \\
-20 & 2021 广东卷第 13 题 & 计算 & 碰撞与匀减速运动（算珠） & \nandu{2} & 见详解 \\
-21 & 2013 新课标Ⅰ卷第 35(2) 题 & 计算 & 弹性碰撞与摩擦 & \nandu{3} & 见详解 \\
-22 & 2024 江苏卷第 9 题 & 单选 & 弹簧连接体 & \nandu{2} & A \\
-23 & 2021 海南卷第 17 题 & 计算 & 板块模型 & \nandu{3} & 见详解 \\
-24 & 2025 浙江1月选考第 8 题 & 单选 & 碰撞与板块模型 & \nandu{3} & D \\
-25 & 2013 新课标Ⅱ卷第 35(2) 题 & 计算 & 弹簧与完全非弹性碰撞 & \nandu{3} & 见详解 \\
-26 & 2016 全国Ⅱ卷第 35(2) 题 & 计算 & 斜面体模型（水平方向动量守恒） & \nandu{3} & 见详解 \\
-27 & 2024 新课标卷第 22 题 & 实验 & 斜槽平抛法验证动量守恒 & \nandu{2} & 见详解 \\
-28 & 2022 全国甲卷第 23 题 & 实验 & 用气垫导轨研究弹性碰撞 & \nandu{3} & 见详解 \\
-29 & 2014 北京卷第 22 题 & 计算 & 圆弧、完全非弹性碰撞与滑行 & \nandu{2} & 见详解 \\
-30 & 2023 北京卷第 17 题 & 计算 & 单摆与完全非弹性碰撞 & \nandu{2} & 见详解 \\
-31 & 2022 广东卷第 13 题 & 计算 & 完全非弹性碰撞与竖直上抛 & \nandu{2} & 见详解 \\
-32 & 2022 海南卷第 18 题 & 计算 & 弹性碰撞与竖直面内圆周运动 & \nandu{2} & 见详解 \\
-33 & 2024 安徽卷第 14 题 & 计算 & 弹性碰撞与小车上的圆弧轨道 & \nandu{3} & 见详解 \\
-34 & 2015 新课标Ⅰ卷第 35(2) 题 & 计算 & 多次弹性碰撞的条件 & \nandu{4} & 见详解 \\
-35 & 2020 全国Ⅱ卷第 21 题 & 多选 & 多次反冲（归纳规律） & \nandu{4} & BC \\
+7 & 2025 天津卷第 3 题 & 单选 & 匀速圆周运动中的动量与冲量 & \nandu{1} & B \\
+8 & 2021 北京卷第 10 题 & 单选 & 方向改变的力的冲量（圆盘上的物块） & \nandu{2} & D \\
+9 & 2022 北京卷第 17 题 & 计算 & 平抛与反弹：冲量的大小和方向 & \nandu{2} & 见详解 \\
+10 & 2026 北京卷第 18 题 & 计算 & 用动量定理求变力的冲量（单摆） & \nandu{2} & 见详解 \\
+11 & 2019 全国Ⅰ卷第 16 题 & 单选 & 连续气体的动量定理（火箭推力） & \nandu{2} & B \\
+12 & 2021 福建卷第 4 题 & 单选 & 流体冲击力 $F=\rho Sv^{2}$（台风） & \nandu{2} & B \\
+13 & 2016 全国Ⅰ卷第 35(2) 题 & 计算 & 流体冲击（喷泉托起玩具） & \nandu{3} & 见详解 \\
+14 & 2021 全国乙卷第 14 题 & 单选 & 动量守恒、机械能守恒的条件 & \nandu{1} & B \\
+15 & 2017 全国Ⅰ卷第 14 题 & 单选 & 反冲（模型火箭） & \nandu{1} & A \\
+16 & 2012 福建卷第 29(2) 题 & 单选 & 反冲：速度要相对地面 & \nandu{2} & C \\
+17 & 2025 北京卷第 17 题 & 计算 & 爆炸与平抛运动 & \nandu{2} & 见详解 \\
+18 & 2018 全国Ⅰ卷第 24 题 & 计算 & 爆炸与竖直上抛运动 & \nandu{2} & 见详解 \\
+19 & 2024 辽宁卷第 14 题 & 计算 & 弹簧弹开两物块 & \nandu{3} & 见详解 \\
+20 & 2026 海南卷第 4 题 & 单选 & 弹性碰撞（大质量碰小质量） & \nandu{1} & B \\
+21 & 2022 湖南卷第 4 题 & 单选 & 弹性碰撞（中子碰氢核、氮核） & \nandu{2} & B \\
+22 & 2011 福建卷第 29(2) 题 & 单选 & 碰撞结果的可能性 & \nandu{2} & A \\
+23 & 2022 北京卷第 10 题 & 单选 & $x-t$ 图像中的碰撞 & \nandu{2} & C \\
+24 & 2020 全国Ⅲ卷第 15 题 & 单选 & $v-t$ 图像与碰撞中的机械能损失 & \nandu{2} & A \\
+25 & 2018 全国Ⅱ卷第 24 题 & 计算 & 碰撞与匀减速运动（汽车追尾） & \nandu{2} & 见详解 \\
+26 & 2021 广东卷第 13 题 & 计算 & 碰撞与匀减速运动（算珠） & \nandu{2} & 见详解 \\
+27 & 2017 天津卷第 10 题 & 计算 & 绳子突然绷紧 & \nandu{2} & 见详解 \\
+28 & 2013 新课标Ⅰ卷第 35(2) 题 & 计算 & 弹性碰撞与摩擦 & \nandu{3} & 见详解 \\
+29 & 2018 海南卷第 5 题 & 单选 & 子弹打木块（射入悬挂的沙箱） & \nandu{2} & C \\
+30 & 2008 全国Ⅱ卷第 23 题 & 计算 & 子弹穿过木块 & \nandu{2} & 见详解 \\
+31 & 2021 海南卷第 17 题 & 计算 & 板块模型 & \nandu{3} & 见详解 \\
+32 & 2025 浙江1月选考第 8 题 & 单选 & 碰撞与板块模型 & \nandu{3} & D \\
+33 & 2024 江苏卷第 9 题 & 单选 & 弹簧连接体 & \nandu{2} & A \\
+34 & 2007 四川卷第 18 题 & 单选 & 弧形槽与墙上的弹簧 & \nandu{2} & C \\
+35 & 2008 天津卷第 24 题 & 计算 & 弹簧靠墙与绳子被拉断 & \nandu{2} & 见详解 \\
+36 & 2021 湖南卷第 8 题 & 多选 & 弹簧一端靠墙（$a-t$ 图像） & \nandu{3} & ABD \\
+37 & 2013 新课标Ⅱ卷第 35(2) 题 & 计算 & 弹簧与完全非弹性碰撞 & \nandu{3} & 见详解 \\
+38 & 2016 全国Ⅱ卷第 35(2) 题 & 计算 & 斜面体模型（水平方向动量守恒） & \nandu{3} & 见详解 \\
+39 & 2024 新课标卷第 22 题 & 实验 & 斜槽平抛法验证动量守恒 & \nandu{2} & 见详解 \\
+40 & 2022 全国甲卷第 23 题 & 实验 & 用气垫导轨研究弹性碰撞 & \nandu{3} & 见详解 \\
+41 & 2014 北京卷第 22 题 & 计算 & 圆弧、完全非弹性碰撞与滑行 & \nandu{2} & 见详解 \\
+42 & 2023 北京卷第 17 题 & 计算 & 单摆与完全非弹性碰撞 & \nandu{2} & 见详解 \\
+43 & 2022 广东卷第 13 题 & 计算 & 完全非弹性碰撞与竖直上抛 & \nandu{2} & 见详解 \\
+44 & 2022 海南卷第 18 题 & 计算 & 弹性碰撞与竖直面内圆周运动 & \nandu{2} & 见详解 \\
+45 & 2024 安徽卷第 14 题 & 计算 & 弹性碰撞与小车上的圆弧轨道 & \nandu{3} & 见详解 \\
+46 & 2015 新课标Ⅰ卷第 35(2) 题 & 计算 & 多次弹性碰撞的条件 & \nandu{4} & 见详解 \\
+47 & 2020 全国Ⅱ卷第 21 题 & 多选 & 多次反冲（归纳规律） & \nandu{4} & BC \\
+48 & 2024 湖北卷第 10 题 & 多选 & 子弹打木块（阻力与初速度有关） & \nandu{4} & AD \\
 \end{longtblr}
 \endgroup
 \fi
