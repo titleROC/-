@@ -21,3 +21,10 @@ svg-inkscape/
 
 # scripts/build_gaokao_pdfs.sh 的编译成功标记（build.log 已由 *.log 覆盖）
 .build-ok
+
+# 专题练习：编译产物与 make links 生成的软链接（PDF 成品放在仓库根目录的 专题练习/）
+/专题练习/*/*.pdf
+/专题练习/*/gaokaozhenti.cls
+/专题练习/*/PhyUnit.sty
+/专题练习/*/ChoiceQuestion.sty
+/专题练习/*/package
