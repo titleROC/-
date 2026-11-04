@@ -47,10 +47,15 @@ sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-lat
 make -C LaTeX源码/2025/广东            # 编译一套卷：生成 广东_学生版.pdf 和 广东_教师版.pdf
 make -C LaTeX源码/2025/广东 teacher    # 只编译教师版（含答案与详解）
 make -C LaTeX源码 YEAR=2025 JOBS=4     # 编译 2025 年全部试卷，4 套并行
-make -C LaTeX源码 JOBS=4               # 编译全部试卷
-make -C LaTeX源码 distclean            # 删除全部编译产物，恢复到刚检出的状态
+make -C LaTeX源码 JOBS=4               # 编译全部试卷和专题练习
+make -C LaTeX源码 distclean            # 删除全部编译产物（含专题练习），恢复到刚检出的状态
 ```
 
+- 这些命令只在源码目录里生成 PDF。要更新仓库里的 `高考真题/` 和 `专题练习/`，请用
+  [`scripts/build_gaokao_pdfs.sh`](../scripts/build_gaokao_pdfs.sh)：它固定了写进 PDF 的时间戳（编译结果可复现），
+  只复制编译成功的 PDF。
+- 改了题目的标注（`%% chapter`、`%% point`、`%% type` 等）或答案后，运行 `python3 scripts/gen_index.py`
+  更新 [`知识点索引/`](../知识点索引/README.md) 和 [`答案速查/`](../答案速查/README.md)。
 - 学生版和教师版来自同一个 `.tex`：Makefile 编译教师版时会预先定义 `\gkver` 为 `teacher`，源文件不需要改。
 - **用 TeXStudio 等编辑器直接编译**：
   1. 先在该卷目录执行一次 `make links tikz`。`links` 建立指向公共文档类和宏包的相对软链接（需要系统支持软链接），
