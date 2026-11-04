@@ -10,6 +10,7 @@
 LaTeX 源码放在 [`LaTeX源码/`](LaTeX源码/) 里，可以改题、重新排版或抽取题目，用法见 [`LaTeX源码/README.md`](LaTeX源码/README.md)。
 
 另有用真题原题拼成的[专题练习](专题练习/)，目前有「自感与涡流」一套（28 题）。
+要按知识点找题，见[知识点索引](知识点索引/README.md)；做完学生版想对选择题答案，见[答案速查](答案速查/README.md)。
 
 ## 目录结构
 
@@ -17,12 +18,15 @@ LaTeX 源码放在 [`LaTeX源码/`](LaTeX源码/) 里，可以改题、重新排
 高考真题/<年份>/<年份>_<地区>_学生版.pdf
 高考真题/<年份>/<年份>_<地区>_教师版.pdf
 专题练习/<专题>_学生版.pdf、<专题>_教师版.pdf   用真题原题拼成的专题练习
+知识点索引/<章节>.md                    按章节、知识点列出全部题目；题目清单.csv 是表格版
+答案速查/<年份>.md                      各卷选择题答案
 LaTeX源码/<年份>/<地区>/<地区>.tex     对应的 LaTeX 源（含 Makefile、figs/ 图片）
 LaTeX源码/专题练习/<专题>/<专题>.tex   专题练习的 LaTeX 源
 LaTeX源码/异常记录/<年份>.md           上游记录的逐卷异常与待核验事项
 联考/README.md                        重要联考（八省联考、九省联考等）索引
 scripts/sync_latex_sources.sh         从上游导出 LaTeX 源到 LaTeX源码/
-scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真题/
+scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真题/ 和 专题练习/
+scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识点索引/ 和 答案速查/
 ```
 
 ## 收录范围
@@ -57,6 +61,16 @@ scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真�
 题目和配图从上游档案库原样抽取，上游收录了 1978 年以来的真题，所以专题练习可以用到 2020 年以前的题。
 每题注明了年份、试卷和原卷题号，选题、出处和相对上游的订正见 [`专题练习/README.md`](专题练习/README.md)。
 
+## 知识点索引与答案速查
+
+- [`知识点索引/`](知识点索引/README.md)：2112 道题按章节、知识点分组，每题列出年份、试卷、题号、题型、分值、难度和题干开头，
+  并链接到学生版和教师版 PDF；[`题目清单.csv`](知识点索引/题目清单.csv) 是全部题目的表格版，可以用 Excel 筛选。
+- [`答案速查/`](答案速查/README.md)：各卷选择题的答案，用学生版做完后对答案用。
+
+两者由 [`scripts/gen_index.py`](scripts/gen_index.py) 根据 `LaTeX源码/` 中每道题的题库平台标注自动生成。
+标注有误的题（如标成单选题、答案却是 AD）按题目结构作了订正或推断。这些题，缺选项、没标答案或缺分值的题，
+以及 PDF 题号与原卷不一致的卷，都列在[存疑清单](知识点索引/存疑清单.md)里。
+
 ## 联考
 
 八省联考、九省联考等大范围官方适应性联考的信息整理在 [`联考/README.md`](联考/README.md)。
@@ -80,7 +94,12 @@ scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真�
 sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
   texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk
 scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源，会覆盖这些年份的试卷和公共宏包，见 LaTeX源码/README.md
-scripts/build_gaokao_pdfs.sh 2020 2026      # 用 LaTeX源码/ 编译，可改年份范围，JOBS=8 可加速
+scripts/build_gaokao_pdfs.sh 2020 2026      # 编译这些年份的试卷和全部专题练习，JOBS=8 可加速
+python3 scripts/gen_index.py                # 改了 LaTeX源码/ 后更新知识点索引和答案速查（同步脚本会自动运行）
 ```
+
+- 只编译专题练习：`scripts/build_gaokao_pdfs.sh 专题练习`；只编译试卷：在命令前加 `TOPICS=0`。
+- 编译结果可复现：构建脚本固定了写进 PDF 的时间戳，用同一版本的 TeX Live 重新编译时，源文件没变的卷，PDF 逐字节不变，
+  git 里只会出现真正改过的 PDF。
 
 高考试题的著作权归命题单位所有，本仓库仅供个人学习和研究使用。

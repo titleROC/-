@@ -15,6 +15,8 @@
 #   2. gaokaozhenti.cls 在使用 Fandol 字体时，若系统装有 Noto Serif CJK SC，则用它回退生僻字
 #   3. 年份索引与异常记录中指向上游其他文件的相对链接，改为指向本目录或上游仓库网址
 #
+# 导出后自动运行 scripts/gen_index.py，更新 知识点索引/ 和 答案速查/。
+#
 # 环境变量：
 #   ARCHIVE_DIR   上游仓库的本地克隆位置（默认 ./.cache/gaokao-physics-archive）
 #   ARCHIVE_REV   上游提交（默认为下方固定的提交，保证可复现）
@@ -121,4 +123,7 @@ if "[LaTeX源码 副本补丁]" not in src:
     open(path, "w", encoding="utf-8").write(src)
 PY
 
-echo "已导出到 $DEST：$(find "$DEST" -mindepth 3 -maxdepth 3 -name Makefile | wc -l) 套试卷"
+echo "已导出到 $DEST：$(find "$DEST"/[0-9][0-9][0-9][0-9] -mindepth 2 -maxdepth 2 -name Makefile | wc -l) 套试卷"
+
+# 标注或答案可能变了，重新生成知识点索引和答案速查
+python3 -I "$REPO_ROOT/scripts/gen_index.py"
