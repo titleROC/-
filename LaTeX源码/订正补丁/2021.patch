@@ -1,0 +1,73 @@
+diff --git a/2021/北京/北京.tex b/2021/北京/北京.tex
+index 5b0fd7e..3bb0fe1 100644
+--- a/2021/北京/北京.tex
++++ b/2021/北京/北京.tex
+@@ -878,14 +878,14 @@ $E_{k} = \frac{1}{2}mv^{2} + qBvd$
+ $G = kv_{\mathrm{m}}$
+ 得 $v_{\mathrm{m}} = \frac{G}{k}$
+ 
+-（2）A．由闭合电路的欧姆定律有
++（2）类比①式，由闭合电路的欧姆定律有
+ $E - RI = L\frac{\Delta I}{\Delta t}$
+ 
+-B．由自感规律可知，线圈产生的自感电动势阻碍电流，使它逐渐变大，电路稳定后自感现象消失，$I-t$ 图线如答图 2
++闭合开关后，线圈产生的自感电动势阻碍电流增大，电流从零开始逐渐增大，且增大得越来越慢，电路稳定后自感现象消失，电流趋于 $\frac{E}{R}$，$I-t$ 图线如下
+ 
+ \onepicture[w=4.5cm]{figs/19_an.png}
+ 
+-（3）各种能量转化的规律如图所示
++（3）两情境中能量转化的对应关系如下表
+ 
+ \begin{center}
+ \begin{tblr}{|c|c|}
+diff --git a/2021/河北/河北.tex b/2021/河北/河北.tex
+index ff2f036..1617c54 100644
+--- a/2021/河北/河北.tex
++++ b/2021/河北/河北.tex
+@@ -589,13 +589,13 @@ $v=7.44\Ums$
+ 
+ \item
+ %% number: 14
+-%% paperName: 2021年河北高考第 14 题 61 分
++%% paperName: 2021年河北高考第 14 题 16 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 磁场
+ %% point: 带电粒子在磁场中的运动
+ %% method: 无
+-%% score: 61
++%% score: 16
+ %% degree: 350
+ %% duplicateId: 0
+ %% body:
+diff --git a/2021/海南/海南.tex b/2021/海南/海南.tex
+index 9e38292..51241e6 100644
+--- a/2021/海南/海南.tex
++++ b/2021/海南/海南.tex
+@@ -598,7 +598,7 @@
+ 	实验时，若已知电流表的内阻为 $1.2\UO$，在此情况下，为使待测电阻的测量值更接近真实值，应将 $S_{2}$ 拨向 \tkanswer{d}（填“c”或“d”）；读得电压表的示数为 $2.37\UV$，电流表的示数为 $0.33\UA$，则 $R_{x} =$ \tkanswer{6.0} $\UO$（结果保留两位有效数字）。
+ \end{enumerate}
+ 
+-\onepicture[align=right]{figs/14.png}
++\onepicture[align=right, w=5.1cm]{figs/14.png}
+ 
+ %% answer:
+ \jdanswer{
+@@ -815,7 +815,7 @@
+ 	若滑块轻放在木板最右端的同时，给木板施加一水平向右的外力，使得木板保持匀速直线运动，直到滑块相对木板静止，求此过程中滑块的运动时间以及外力所做的功。
+ \end{enumerate}
+ 
+-\onepicture[align=right]{figs/17.png}
++\onepicture[align=right, w=8.8cm]{figs/17.png}
+ 
+ %% answer:
+ \jdanswer{
+@@ -912,7 +912,7 @@
+ 	\end{enumerate}
+ \end{enumerate}
+ 
+-\onepicture[align=right]{figs/18.png}
++\onepicture[align=right, w=6.3cm]{figs/18.png}
+ 
+ %% answer:
+ \jdanswer{

@@ -1,0 +1,943 @@
+diff --git a/2023/1月浙江/1月浙江.tex b/2023/1月浙江/1月浙江.tex
+index d9c0e9b..4979055 100644
+--- a/2023/1月浙江/1月浙江.tex
++++ b/2023/1月浙江/1月浙江.tex
+@@ -44,7 +44,7 @@
+ %% duplicateId: 0
+ %% body:
+ 如图所示，轻质网兜兜住重力为 $G$ 的足球，用轻绳挂于光滑竖直墙壁上的 A 点，轻绳的拉力为 $F_{T}$，墙壁对足球的支持力为 $F_{N}$，则\xzanswer{C}
+-\onepicture{figs/02.png}
++\onepicture[w=2.8cm]{figs/02.png}
+ \fourchoices[answer=C]
+ {$F_{T} < F_{N}$}
+ {$F_{T} = F_{N}$}
+@@ -75,7 +75,7 @@
+ %% duplicateId: 0
+ %% body:
+ “神舟十五号”飞船和空间站“天和”核心舱成功对接后，在轨运行如图所示，则\xzanswer{C}
+-\onepicture{figs/03.jpg}
++\onepicture[w=5.2cm]{figs/03.jpg}
+ \fourchoices[answer=C]
+ {选地球为参考系，“天和”是静止的}
+ {选地球为参考系，“神舟十五号”是静止的}
+@@ -138,7 +138,7 @@ D．绳刚绷紧开始一段时间内，弹力小于重力，合力向下做正
+ %% duplicateId: 0
+ %% body:
+ 如图所示，在考虑空气阻力的情况下，一小石子从 O 点抛出沿轨迹 OPQ 运动，其中 P 是最高点。若空气阻力大小与瞬时速度大小成正比，则小石子竖直方向分运动的加速度大小\xzanswer{A}
+-\onepicture{figs/05.png}
++\onepicture[w=5.2cm]{figs/05.png}
+ \fourchoices[answer=A]
+ {O 点最大}
+ {P 点最大}
+@@ -165,7 +165,7 @@ D．绳刚绷紧开始一段时间内，弹力小于重力，合力向下做正
+ %% duplicateId: 0
+ %% body:
+ 主动降噪耳机能收集周围环境中的噪声信号，并产生相应的抵消声波，某一噪声信号传到耳膜的振动图像如图所示，取得最好降噪效果的抵消声波（声音在空气中的传播速度为 340 $\Ums$）\xzanswer{B}
+-\onepicture{figs/06.png}
++\onepicture[w=5.1cm]{figs/06.png}
+ \fourchoices[answer=B]
+ {振幅为 2$A$}
+ {频率为 100 $\UHz$}
+@@ -200,7 +200,7 @@ D．抵消声波在耳膜中产生的振动与图中所示的振动反相，D 
+ %% duplicateId: 0
+ %% body:
+ 如图甲所示，一导体杆用两条等长细导线悬挂于水平轴 OO$'$，接入电阻 $R$ 构成回路．导体杆处于竖直向上的匀强磁场中，将导体杆从竖直位置拉开小角度由静止释放，导体杆开始下摆。当 $R = R_{0}$ 时，导体杆振动图像如图乙所示。若横纵坐标皆采用图乙标度，则当 $R$ = 2$R_{0}$ 时，导体杆振动图像是\xzanswer{B}
+-\twopicture[labelA=20231月浙江07a, labelB=20231月浙江07b]
++\twopicture[labelA=20231月浙江07a, labelB=20231月浙江07b, wA=6.3cm, wB=12cm]
+ {figs/07a.png}
+ {\includesvg{figs/07b}}
+ %% answer: B
+@@ -224,7 +224,7 @@ D．抵消声波在耳膜中产生的振动与图中所示的振动反相，D 
+ %% duplicateId: 0
+ %% body:
+ 某兴趣小组设计的测量大电流的装置如图所示，通有电流 $I$ 的螺绕环在霍尔元件处产生的磁场 $B = k_{1}I$，通有待测电流 $I'$ 的直导线 ab 垂直穿过螺绕环中心，在霍尔元件处产生的磁场 $B' = k_{2}I'$。调节电阻 $R$，当电流表示数为 $I_{0}$ 时，元件输出霍尔电压 $U_{H}$ 为零，则待测电流 $I'$ 的方向和大小分别为\xzanswer{D}
+-\onepicture{figs/08.png}
++\onepicture[w=5.8cm]{figs/08.png}
+ \fourchoices[answer=D]
+ {a$\to$b，$\frac{{{k_2}}}{{{k_1}}} I_{0}$}
+ {a$\to$b，$\frac{{{k_1}}}{{{k_2}}}I_{0}$}
+@@ -353,7 +353,7 @@ $$ T=\sqrt{(\frac{R}{R_{ \text{地} }})^{3}T_{ \text{地} }} $$
+ %% duplicateId: 0
+ %% body:
+ 被誉为“中国天眼”的大口径球面射电望远镜已发现 660 余颗新脉冲星，领先世界。天眼对距地球为 $L$ 的天体进行观测，其接收光子的横截面半径为 $R$。若天体射向天眼的辐射光子中，有 $\eta$（$\eta$ < 1）倍被天眼接收，天眼每秒接收到该天体发出的频率为 $\nu$ 的 $N$ 个光子。普朗克常量为 $h$，则该天体发射频率为 $\nu$ 光子的功率为\xzanswer{A}
+-\onepicture{figs/11.jpg}
++\onepicture[w=5.5cm]{figs/11.jpg}
+ \fourchoices[answer=A]
+ {$\frac{{4N{L^2}h\nu }}{{{R^2}\eta }}$}
+ {$\frac{{2N{L^2}h\nu }}{{{R^2}\eta }}$}
+@@ -384,7 +384,7 @@ $$ T=\sqrt{(\frac{R}{R_{ \text{地} }})^{3}T_{ \text{地} }} $$
+ %% duplicateId: 0
+ %% body:
+ 如图所示，示波管由电子枪竖直方向偏转电极 YY$'$、水平方向偏转电极 XX$'$ 和荧光屏组成。电极 XX$'$ 的长度为 $l$、间距为 $d$、极板间电压为 $U$，YY$'$ 极板间电压为零，电子枪加速电压为 10$U$。电子刚离开金属丝的速度为零，从电子枪射出后沿 OO$'$ 方向进入偏转电极。已知电子电荷量为 $e$，质量为 $m$，则电子（    ）
+-\onepicture[align=right]{figs/12.png}
++\onepicture[align=right, w=6.7cm]{figs/12.png}
+ %% answer: 
+ \jdanswer{
+ D
+@@ -437,7 +437,7 @@ D 正确。
+ %% duplicateId: 0
+ %% body:
+ 如图所示为一斜边镀银的等腰直角棱镜的截面图。一细黄光束从直角边 AB 以角度 $\theta$ 入射，依次经 AC 和 BC 两次反射，从直角边 AC 出射。出射光线相对于入射光线偏转了 $\alpha$ 角，则 $\alpha$\xzanswer{A}
+-\onepicture{figs/13.png}
++\onepicture[w=6.0cm]{figs/13.png}
+ \fourchoices[answer=A]
+ {等于 90${^\circ}$}
+ {大于 90${^\circ}$}
+@@ -538,7 +538,7 @@ D．牛顿运动定律只适用于宏观低速问题，不适用于微观高速
+ %% duplicateId: 0
+ %% body:
+ 氢原子从高能级向低能级跃迁时，会产生四种频率的可见光，其光谱如图 1 所示。氢原子从能级 6 跃迁到能级 2 产生可见光 I，从能级 3 跃迁到能级 2 产生可见光 Ⅱ。用同一双缝干涉装置研究两种光的干涉现象，得到如图 2 和图 3 所示的干涉条纹。用两种光分别照射如图 4 所示的实验装置，都能产生光电效应。下列说法正确的是\xzanswer{CD}
+-\onepicture{figs/15.png}
++\onepicture[w=6.3cm]{figs/15.png}
+ \fourchoices[answer=CD]
+ {图 1 中的 H$_{\alpha}$ 对应的是 Ⅰ}
+ {图 2 中的干涉条纹对应的是 Ⅱ}
+@@ -696,7 +696,7 @@ $$ \frac{\rho}{I_{g}r_{g}S}L^{\prime}=\frac{1}{I^{\prime}-I_{g}} $$
+ 	\item
+ 	经正确操作后打出一条纸带，截取其中一段如图 2 所示。选取连续打出的点 0、1、2、3、4 为计数点，则计数点 1 的读数为\_\_\_\_\_\_\_\_\_\_ $\Ucm$。已知打点计时器所用交流电源的频率为 50 $\UHz$，则打计数点 2 时小车的速度大小为：\_\_\_\_\_\_\_\_\_\_$\Ums$（结果保留 3 位有效数字）。
+ \end{enumerate}
+-\twopicture[labelA=20231月浙江16a, labelB=20231月浙江16b, align=right]
++\twopicture[labelA=20231月浙江16a, labelB=20231月浙江16b, align=right, wA=7.6cm, wB=11.5cm]
+ {figs/16a.png}
+ {figs/16b.png}
+ %% answer: 
+@@ -742,7 +742,7 @@ D．先接通电源再释放小车，选项 D 正确。故选 ACD。
+ 	\item
+ 	在小球质量和转动半径相同的情况下，逐渐加速转动手柄到一定速度后保持匀速转动。此时左右标尺露出的红白相间等分标记的比值等于两小球的\_\_\_\_\_\_\_\_之比（选填“线速度大小”、“角速度平方”或“周期平方”）；在加速转动手柄过程中，左右标尺露出红白相何等分标记的比值\_\_\_\_\_\_\_\_\_\_（选填“不变”、“变大”或“变小”）。
+ \end{enumerate}
+-\onepicture[align=right]{figs/16.png}
++\onepicture[align=right, w=5.6cm]{figs/16.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -782,7 +782,7 @@ D．先接通电源再释放小车，选项 D 正确。故选 ACD。
+ 	\item
+ 	两同学进一步探究用镍铬丝将满偏电流 $I_{g}$ = 300 $\mu$A 的表头 G 改装成电流表。如图 2 所示，表头 G 两端并联长为 $L$ 的镍铬丝，调节滑动变阻器使表头 G 满偏，毫安表示数为 $I$。改变 $L$，重复上述步骤，获得多组 $I$、$L$ 数据，作出 $I - \frac{1}{L}$ 图像如图 3 所示。
+ \end{enumerate}
+-\twopicture[labelA=20231月浙江16d, labelB=20231月浙江16e, align=right]
++\twopicture[labelA=20231月浙江16d, labelB=20231月浙江16e, align=right, wA=4.1cm, wB=5.6cm]
+ {figs/16d.png}
+ {figs/16e.png}
+ %% answer: 
+@@ -829,7 +829,7 @@ D．先接通电源再释放小车，选项 D 正确。故选 ACD。
+ 	\item
+ 	由状态 A 到状态 C 过程中从外界吸收热量 $Q$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/17.png}
++\onepicture[align=right, w=4.3cm]{figs/17.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -890,7 +890,7 @@ D．先接通电源再释放小车，选项 D 正确。故选 ACD。
+ 	\item
+ 	在（2）的条件下，求滑块从 G 到 J 所用的时间 $t$。
+ \end{enumerate}
+-\onepicture[align=right]{\includesvg{figs/18}}
++\onepicture[align=right, w=7.2cm]{\includesvg{figs/18}}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -980,7 +980,7 @@ $$ t_{2}=\frac{L_{0}-x_{1}}{v_{1}}=1.5\Us $$
+ 	\item
+ 	当撤去外力，线框将缓慢减速，经 $\frac{\pi }{\omega }$ 时间角速度减小量为 $\Delta\omega$（$\frac{{\Delta \omega }}{\omega } \ll$ 1），设线框与圆环的能量转换效率为 $k$，求 $\Delta\omega$ 的值（当 0 < $x \ll$ 1，有 (1 $- x$)$^{2} \approx$ 1 - 2$x$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/19.png}
++\onepicture[align=right, w=5.6cm]{figs/19.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -1069,7 +1069,7 @@ $$ t_{2}=\frac{L_{0}-x_{1}}{v_{1}}=1.5\Us $$
+ 	\item
+ 	若将分析器沿着 $x$ 轴平移，调节加载在 N 与 M 板之间的电压，求电流表示数刚为 0 时的电压 $U_{x}$ 与孔 C 位置坐标 $x$ 之间关系式。
+ \end{enumerate}
+-\onepicture[align=right]{figs/20.png}
++\onepicture[align=right, w=5.5cm]{figs/20.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+diff --git a/2023/6月浙江/6月浙江.tex b/2023/6月浙江/6月浙江.tex
+index 1273414..120615d 100644
+--- a/2023/6月浙江/6月浙江.tex
++++ b/2023/6月浙江/6月浙江.tex
+@@ -50,7 +50,7 @@ D．速度和加速度都是既有大小又有方向的物理量，是矢量，
+ %% duplicateId: 0
+ %% body:
+ 在足球运动中，足球入网如图所示，则\xzanswer{B}
+-\onepicture{figs/02.jpg}
++\onepicture[w=4.3cm]{figs/02.jpg}
+ \fourchoices[answer=B]
+ {踢香蕉球时足球可视为质点}
+ {足球在飞行和触网时惯性不变}
+@@ -83,7 +83,7 @@ D．触网时足球对网的力与网对足球的力是相互作用力，大小
+ %% duplicateId: 0
+ %% body:
+ 铅球被水平推出后的运动过程中，不计空气阻力，下列关于铅球在空中运动时的加速度大小 $a$、速度大小 $v$、动能 $E_{k}$ 和机械能 $E $随运动时间 $t$ 的变化关系中，正确的是\xzanswer{D}
+-\onepicture{\includesvg{figs/03}}
++\onepicture[w=9.6cm]{\includesvg{figs/03}}
+ %% answer: D
+ %% memo:
+ \memoanswer{
+@@ -113,7 +113,7 @@ D．铅球水平抛出后由于忽略空气阻力，所以抛出后铅球机械
+ %% duplicateId: 0
+ %% body:
+ 图为“玉兔二号”巡视器在月球上从 O 处行走到 B 处的照片，轨迹 OA 段是直线，AB 段是曲线，巡视器质量为 135 $\Ukg$，则巡视器\xzanswer{B}
+-\onepicture{figs/04.jpg}
++\onepicture[w=5.4cm]{figs/04.jpg}
+ \fourchoices[answer=B]
+ {受到月球的引力为 1 350 $\UN$}
+ {在 AB 段运动时一定有加速度}
+@@ -182,7 +182,7 @@ D．半衰期由原子核本身决定的，与温度等外部因素无关，故
+ %% duplicateId: 0
+ %% body:
+ 如图所示，水平面上固定两排平行的半圆柱体，重为 $G$ 的光滑圆柱体静置其上，a、b 为相切点，$\angle$aOb = 90${^\circ}$，半径 Ob 与重力的夹角为 37${^\circ}$。已知 sin37${^\circ}$ = 0.6，cos37${^\circ}$ = 0.8，则圆柱体受到的支持力 $F_{a}$、$F_{b}$ 大小为\xzanswer{D}
+-\onepicture{figs/06.png}
++\onepicture[w=5.7cm]{figs/06.png}
+ \fourchoices[answer=D]
+ {$F_{a}$ = 0.6$G$，$F_{b}$ = 0.4$G$}
+ {$F_{a}$ = 0.4$G$，$F_{b}$ = 0.6$G$}
+@@ -243,7 +243,7 @@ D．输电的功率是由用户端负载的总功率来决定的，故 D 错误
+ %% duplicateId: 0
+ %% body:
+ 某带电粒子转向器的横截面如图所示，转向器中有辐向电场。粒子从 M 点射入，沿着由半径分别为 $R_{1}$ 和 $R_{2}$ 的圆弧平滑连接成的虚线（等势线）运动，并从虚线上的 N 点射出，虚线处电场强度大小分别为 $E_{1}$ 和 $E_{2}$，则 $R_{1}$、$R_{2}$ 和 $E_{1}$、$E_{2}$ 应满足\xzanswer{A}
+-\onepicture{figs/08.png}
++\onepicture[w=4.3cm]{figs/08.png}
+ \fourchoices[answer=A]
+ {$\frac{{{E_1}}}{{{E_2}}} = \frac{{{R_2}}}{{{R_1}}}$}
+ {$\frac{{{E_1}}}{{{E_2}}} = \frac{{R_1^2}}{{R_2^2}}$}
+@@ -320,7 +320,7 @@ D. 根据万有引力提供向心力，分别有
+ %% duplicateId: 0
+ %% body:
+ 如图所示，质量为 $M$、电阻为 $R$、长为 $L$ 的导体棒，通过两根长均为 $l$、质量不计的导电细杆连在等高的两固定点上，固定点间距也为 $L$。细杆通过开关 S 可与直流电源 $E_{0}$ 或理想二极管串接。在导体棒所在空间存在磁感应强度方向竖直向上、大小为 $B$ 的匀强磁场，不计空气阻力和其它电阻。开关 S 接 1，当导体棒静止时，细杆与竖直方向的夹角固定点 $\theta =  \frac{\pi }{4}$；然后开关 S 接 2，棒从右侧开始运动完成一次振动的过程中\xzanswer{C}
+-\onepicture{figs/10.png}
++\onepicture[w=3.3cm]{figs/10.png}
+ \fourchoices[answer=C]
+ {电源电动势 $E_{0} = \frac{{\sqrt 2 MgR}}{{2BL}}$}
+ {棒消耗的焦耳热 $Q$ = (1 $- \frac{{\sqrt 2 }}{2}$)$Mgl$}
+@@ -365,7 +365,7 @@ D．根据 B 选项分析，导体棒第二次经过最低点时的速度小于
+ %% duplicateId: 0
+ %% body:
+ 如图所示，置于管口 T 前的声源发出一列单一频率声波，分成两列强度不同的声波分别沿 A、B 两管传播到出口 O。先调节 A、B 两管等长，O 处探测到声波强度为 400 个单位，然后将 A 管拉长 $d$ = 15 $\Ucm$，在 O 处第一次探测到声波强度最小，其强度为 100 个单位。已知声波强度与声波振幅平方成正比，不计声波在管道中传播的能量损失，则\xzanswer{C}
+-\onepicture{figs/11.png}
++\onepicture[w=6.3cm]{figs/11.png}
+ \fourchoices[answer=C]
+ {声波的波长 $\lambda$ = 15 $\Ucm$}
+ {声波的波长 $\lambda$ = 30 $\Ucm$}
+@@ -394,7 +394,7 @@ AB．根据振动减弱的条件可得  $\frac{\lambda}{2} = 2d$，解得  $\lam
+ %% duplicateId: 0
+ %% body:
+ AB、CD 两块正对的平行金属板与水平面成 30${^\circ}$ 角固定，竖直截面如图所示。两板间距 10 $\Ucm$，电荷量为 1.0$\times$10$^{-8}$ C、质量为 3.0$\times$10$^{-4}$ $\Ukg$ 的小球用长为 5 $\Ucm$ 的绝缘细线悬挂于 A 点。闭合开关 S，小球静止时，细线与 AB 板夹角为 30${^\circ}$；剪断细线，小球运动到 CD 板上的 M 点（未标出），则\xzanswer{B}
+-\onepicture{figs/12.png}
++\onepicture[w=5.5cm]{figs/12.png}
+ \fourchoices[answer=B]
+ {MC 距离为 5$\sqrt 3 $ $\Ucm$}
+ {电势能增加了 $\frac{3}{4}\sqrt 3 \times$10$^{-4}$ J}
+@@ -453,7 +453,7 @@ D．减小 $R$ 的阻值，极板间的电势差不变，极板间的电场强
+ %% duplicateId: 0
+ %% body:
+ 在水池底部水平放置三条细灯带构成的等腰直角三角形发光体，直角边的长度为 0.9 $\Um$，水的折射率 $n = \frac{4}{3}$，细灯带到水面的距离 $h = \frac{{\sqrt 7 }}{{10}}$ m，则有光射出的水面形状（用阴影表示）为\xzanswer{C}
+-\onepicture{\includesvg{figs/13}}
++\onepicture[w=9.7cm]{\includesvg{figs/13}}
+ %% answer: C
+ %% memo:
+ \memoanswer{
+@@ -561,7 +561,7 @@ D. 光子的动量  $p = mc$，光子的能量  $E = mc^2$，联立可得  $p =
+ 	\item
+ 	C．(3$x - \frac{d}{2}$)$\sqrt {\frac{g}{{2{y_4}}}} $          D．(4$x - \frac{d}{2}$)$\sqrt {\frac{g}{{2{y_4}}}} $
+ \end{enumerate}
+-\onepicture[align=right]{figs/16.png}
++\onepicture[align=right, w=6.5cm]{figs/16.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -644,7 +644,6 @@ $x_{B}/\Ucm$ & 16.45 & 18.52 & 20.60 & $\cdots$ \\
+ \end{center}
+ 
+ 钩码个数为 2 时，弹簧 A 的伸长量 $\Delta x_{A}$ = \tkanswer{0.78} $\Ucm$，弹簧 B 的伸长量 $\Delta x_{B}$ = \tkanswer{1.29} $\Ucm$，两根弹簧弹性势能的增加量 $\Delta E_{p}$ = \tkanswer{$>$} $mg$($\Delta x_{A} + \Delta x_{B}$)（选填“=”、“<”或“>”）。
+-\onepicture[align=right]{figs/16.png}
+ %% answer: 
+ \jdanswer{
+ 0.78，1.29，>
+@@ -683,7 +682,7 @@ $\Delta E_{p} > mg$($\Delta x_{A} + \Delta x_{B}$)
+ 	\item
+ 	测得的 7 组数据已标在如图 3 所示 $U - I$ 坐标系上，用作图法求干电池的电动势 $E$ = \_\_\_\_\_\_\_\_ $\UV$ 和内阻 $r$ = \_\_\_\_\_\_\_\_$\Omega$。（计算结果均保留两位小数）
+ \end{enumerate}
+-\threepicture[labelA=20236月浙江16a, labelB=20236月浙江16b, labelC=20236月浙江16c, align=right]
++\threepicture[labelA=20236月浙江16a, labelB=20236月浙江16b, labelC=20236月浙江16c, align=right, wA=4.8cm, wB=5.9cm, wC=4.4cm]
+ {figs/16a.png}
+ {figs/16b.png}
+ {figs/16c.png}
+@@ -764,7 +763,7 @@ D．“探究变压器原、副线圈电压与匝数的关系”实验中，如
+ 	\item
+ 	求气体从状态 A 到状态 B 过程中外界对系统做的功 $W$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/17.png}
++\onepicture[align=right, w=3.4cm]{figs/17.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -817,7 +816,7 @@ C 态压强 $p_{C}$ = 1.4$\times$10$^{5}$ $\UPa$；温度 $T_{C}$ = ？；体积
+ 	\item
+ 	若滑块 a 碰到滑块 b 立即被粘住，求碰撞后弹簧最大长度与最小长度之差 $\Delta x$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/18.png}
++\onepicture[align=right, w=7.4cm]{figs/18.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -906,7 +905,7 @@ $$ \Delta E=\frac{1}{2}mv_{F}^{2}-\frac{1}{2}mv_{1}^{2}-\frac{1}{2}\cdot3mv_{2}^
+ 	\item
+ 	若 $R$ 的阻值视为 0，装置 A 用于回收能量，给出装置 A 可回收能量的来源和大小。
+ \end{enumerate}
+-\onepicture[align=right]{figs/19.png}
++\onepicture[align=right, w=2.7cm]{figs/19.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -974,7 +973,7 @@ ${{E' = \frac{1}{2}Mv_{0}}^{2} + MgL = \frac{3}{4}Mv_{0}}^{2}$
+ 	\item
+ 	若 $B_{2} = \frac{{{B_1}}}{L}y$，且离子源射出的离子数按速度大小均匀地分布在 $\frac{{{B_1}qL}}{m}$ \textasciitilde{} $\frac{{6{B_1}qL}}{m}$ 范围，求进入第四象限的离子数与总离子数之比 $\eta$。
+ \end{enumerate}
+-\onepicture[align=right]{\includesvg{figs/20}}
++\onepicture[align=right, w=4.8cm]{\includesvg{figs/20}}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+diff --git a/2023/上海/上海.tex b/2023/上海/上海.tex
+index e298748..48a76f6 100644
+--- a/2023/上海/上海.tex
++++ b/2023/上海/上海.tex
+@@ -347,7 +347,7 @@ $F = -ma + F_{\text{安}}$
+ %% degree: 751
+ %% duplicateId: 0
+ %% body:
+-月球在地球引力作用下绕地球做匀速圆周运动，周期为 $T$。月地距离为 $r$，月球质量为 $m$。月球绕地球运动的线速度大小为\tkanswer[2.5cm]{$\frac{2\pi r}{T}$}，地球对月球的万有引力大小为\tkanswer[3cm]{$\frac{4\pi^{2}mr}{T^{2}}$}。
++月球在地球引力作用下绕地球做匀速圆周运动，周期为 $T$。月地距离为 $r$，月球质量为 $m$。月球绕地球运动的线速度大小为\newline\tkanswer[2.5cm]{$\frac{2\pi r}{T}$}，地球对月球的万有引力大小为\tkanswer[3cm]{$\frac{4\pi^{2}mr}{T^{2}}$}。
+ %% answer: $\frac{2\pi r}{T}$，$\frac{4\pi^{2}mr}{T^{2}}$
+ %% memo:
+ \memoanswer{
+@@ -439,7 +439,7 @@ $k = \frac{p_{0}h_{0}S}{g}$，$b = -\frac{p_{0}S}{g}$
+ 	\item
+ 	为了得到 $a-F$ 图像，实验中还需要测量的物理量是：\tkanswer[2.5cm]{挡光片宽度}、\tkanswer[3cm]{光电门到小车的距离}。
+ 	\item
+-	实际上小车所受拉力略小于钩码所受重力，其原因\tkanswer[8cm]{小车运动时钩码向下做加速运动，由牛顿第二定律可知绳的拉力小于钩码的总重力}。
++	实际上小车所受拉力略小于钩码所受重力，其原因\newline\tkanswer[8cm]{小车运动时钩码向下做加速运动，由牛顿第二定律可知绳的拉力小于钩码的总重力}。
+ 	\item
+ 	已知细线与轨道平行时小车的加速度为 $a_{1}$，若滑轮位置偏低导致细线与轨道不平行，其他条件不变，小车的加速度 $a_{2}$，则 $a_{1}$\tkanswer[1.2cm]{B}$a_{2}$。（选择：A．“<”       B．“>”）
+ \end{enumerate}
+diff --git a/2023/全国乙卷/全国乙卷.tex b/2023/全国乙卷/全国乙卷.tex
+index 1acaa71..d7d0b67 100644
+--- a/2023/全国乙卷/全国乙卷.tex
++++ b/2023/全国乙卷/全国乙卷.tex
+@@ -51,7 +51,7 @@ D．下落过程中，排球速度在变，所受空气阻力在变，故排球
+ %% duplicateId: 0
+ %% body:
+ 小车在水平地面上沿轨道从左向右运动，动能一直增加。如果用带箭头的线段表示小车在轨道上相应位置处所受合力，下列四幅图可能正确的是\xzanswer{D}
+-\onepicture{\includesvg{figs/02}}
++\onepicture[w=12.9cm]{\includesvg{figs/02}}
+ %% answer: D
+ %% memo:
+ \memoanswer{
+@@ -105,7 +105,7 @@ $$ \Delta m=\frac{E_{0}}{60c^{2}}=\frac{10^{48}}{60\times\left(3\times10^{8}\rig
+ %% duplicateId: 0
+ %% body:
+ 一学生小组在探究电磁感应现象时，进行了如下比较实验。用图（a）所示的缠绕方式，将漆包线分别绕在几何尺寸相同的有机玻璃管和金属铝管上，漆包线的两端与电流传感器接通。两管皆竖直放置，将一很小的强磁体分别从管的上端由静止释放，在管内下落至管的下端。实验中电流传感器测得的两管上流过漆包线的电流 $I$ 随时间 $t$ 的变化分别如图（b）和图（c）所示，分析可知\xzanswer{A}
+-\twopicture[labelA=2023全国乙卷04a, labelB=2023全国乙卷04b]
++\twopicture[showlabel=false, labelA=2023全国乙卷04a, labelB=2023全国乙卷04b, hA=4.2cm, wB=9.6cm]
+ {figs/04a.png}
+ {figs/04b.png}
+ \fourchoices[answer=A]
+@@ -140,7 +140,7 @@ D．强磁体分别从管的上端由静止释放，在铝管中，磁体在线
+ %% duplicateId: 0
+ %% body:
+ 如图，一磁感应强度大小为 $B$ 的匀强磁场，方向垂直于纸面（$xOy$ 平面）向里，磁场右边界与 $x$ 轴垂直。一带电粒子由 $O$ 点沿 $x$ 正向入射到磁场中，在磁场另一侧的 S 点射出，粒子离开磁场后，沿直线运动打在垂直于 $x$ 轴的接收屏上的 P 点；SP = $l$，S 与屏的距离为 $\frac{l}{2}$，与 $x$ 轴的距离为 $a$。如果保持所有条件不变，在磁场区域再加上电场强度大小为 $E$ 的匀强电场，该粒子入射后则会沿 $x$ 轴到达接收屏。该粒子的比荷为\xzanswer{A}
+-\onepicture{figs/05.png}
++\onepicture[w=4.8cm]{figs/05.png}
+ \fourchoices[answer=A]
+ {$\frac{E}{{2a{B^2}}}$}
+ {$\frac{E}{{a{B^2}}}$}
+@@ -179,7 +179,7 @@ D．强磁体分别从管的上端由静止释放，在铝管中，磁体在线
+ %% duplicateId: 0
+ %% body:
+ 在 O 点处固定一个正点电荷，P 点在 O 点右上方。从 P 点由静止释放一个带负电的小球，小球仅在重力和该点电荷电场力作用下在竖直面内运动，其一段轨迹如图所示。M、N 是轨迹上的两点，OP > OM，OM = ON，则小球\xzanswer{BC}
+-\onepicture{figs/06.png}
++\onepicture[w=3.6cm]{figs/06.png}
+ \fourchoices[answer=BC]
+ {在运动过程中，电势能先增加后减少}
+ {在 P 点的电势能大于在 N 点的电势能}
+@@ -216,7 +216,7 @@ D．从 M 点运动到 N 点的过程中，电场力先做正功后做负功，D
+ %% duplicateId: 0
+ %% body:
+ 黑箱外有编号为 1、2、3、4 的四个接线柱，接线柱 1 和 2、2 和 3、3 和 4 之间各接有一个电阻，在接线柱间还接有另外一个电阻 $R$ 和一个直流电源。测得接线柱之间的电压 $U_{12}$ = 3.0 $\UV$，$U_{23}$ = 2.5 $\UV$，$U_{34} = -$ 1.5 $\UV$。符合上述测量结果的可能接法是\xzanswer{CD}
+-\onepicture{\includesvg{figs/07}}
++\onepicture[w=6.6cm]{\includesvg{figs/07}}
+ \fourchoices[answer=CD]
+ {电源接在 1、4 之间，$R$ 接在 1、3 之间}
+ {电源接在 1、4 之间，$R$ 接在 2、4 之间}
+@@ -265,7 +265,7 @@ D．根据题意画出电路图，如下
+ %% duplicateId: 0
+ %% body:
+ 如图，一质量为 $M$、长为 $l$ 的木板静止在光滑水平桌面上，另一质量为 $m$ 的小物块（可视为质点）从木板上的左端以速度 $v_{0}$ 开始运动。已知物块与木板间的滑动摩擦力大小为 $f$，当物块从木板右端离开时\xzanswer{BD}
+-\onepicture{figs/08.png}
++\onepicture[w=6.3cm]{figs/08.png}
+ \fourchoices[answer=BD]
+ {木板的动能一定等于 $fl$}
+ {木板的动能一定小于 $fl$}
+@@ -379,7 +379,7 @@ CD，相同位置，大小和方向
+ 	\item
+ 	由以上数据可得，待测金属丝所用材料的电阻率 $\rho$ = \_\_\_\_\_\_$\times10^{-7}\UOm$。（保留 2 位有效数字）
+ \end{enumerate}
+-\onepicture[align=right]{figs/10.png}
++\onepicture[align=right, w=7.9cm]{figs/10.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -432,7 +432,7 @@ CD，相同位置，大小和方向
+ 	\item
+ 	C 点处点电荷的电荷量。
+ \end{enumerate}
+-\onepicture[align=right]{figs/11.png}
++\onepicture[align=right, w=4.3cm]{figs/11.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -474,7 +474,7 @@ CD，相同位置，大小和方向
+ 	\item
+ 	圆盘在管内运动过程中，小球与圆盘碰撞的次数。
+ \end{enumerate}
+-\onepicture[align=right]{figs/12.png}
++\onepicture[align=right, w=3.2cm]{figs/12.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -660,7 +660,7 @@ E．根据理想气体状态方程可知：等容增压过程温度升高；等
+ %% duplicateId: 0
+ %% body:
+ 如图，竖直放置的封闭玻璃管由管径不同、长度均为 20 $\Ucm$ 的 A、B 两段细管组成，A 管的内径是 B 管的 2 倍，B 管在上方。管内空气被一段水银柱隔开。水银柱在两管中的长度均为 10 $\Ucm$。现将玻璃管倒置使 A 管在上方，平衡后，A 管内的空气柱长度改变 1 $\Ucm$。求 B 管在上方时，玻璃管内两部分气体的压强。（气体温度保持不变，以 cmHg 为压强单位）
+-\onepicture[align=right]{figs/13.png}
++\onepicture[align=right, w=3.3cm]{figs/13.png}
+ %% answer: 
+ \jdanswer{
+ $p_{A}$ = 135 cmHg，$p_{B}$ = 115 cmHg
+@@ -709,7 +709,7 @@ E．根据理想气体状态方程可知：等容增压过程温度升高；等
+ %% duplicateId: 0
+ %% body:
+ 一列简谐横波沿 $x$ 轴传播，图（a）是 $t$ = 0 时刻的波形图；P 是介质中位于 $x$ = 2 $\Um$ 处的质点，其振动图像如图（b）所示。下列说法正确的是\xzanswer{ABE}
+-\onepicture{\includesvg{figs/14}}
++\onepicture[w=7.4cm]{\includesvg{figs/14}}
+ \fivechoices[answer=ABE]
+ {波速为 2 $\Ums$}
+ {波向左传播}
+@@ -787,7 +787,7 @@ DE．根据图（a）可知 t=0 时  $x=3\ m$ 处的质点位于波谷处，由
+ %% duplicateId: 0
+ %% body:
+ 如图，一折射率为 $\sqrt 2 $ 的棱镜的横截面为等腰直角三角形 $\triangle$ABC，AB = AC = $l$，BC 边所在底面上镀有一层反射膜。一细光束沿垂直于 BC 方向经 AB 边上的 M 点射入棱镜，若这束光被 BC 边反射后恰好射向顶点 A，求 M 点到 A 点的距离。
+-\onepicture[align=right]{figs/14.png}
++\onepicture[align=right, w=6.0cm]{figs/14.png}
+ %% answer: 
+ \jdanswer{
+ $\frac{{3 - \sqrt 3 }}{3}l$
+diff --git a/2023/全国甲卷/全国甲卷.tex b/2023/全国甲卷/全国甲卷.tex
+index be37c29..4f719ce 100644
+--- a/2023/全国甲卷/全国甲卷.tex
++++ b/2023/全国甲卷/全国甲卷.tex
+@@ -83,7 +83,7 @@ $n$ + 7 = 2$A$，$m$ + 3 = 2$Z$
+ %% duplicateId: 0
+ %% body:
+ 一小车沿直线运动，从 $t$ =  0 开始由静止匀加速至 $t = t_{1}$ 时刻，此后做匀减速运动，到 $t = t_{2}$ 时刻速度降为零。在下列小车位移 $x$ 与时间 $t$ 的关系曲线中，可能正确的是\xzanswer{D}
+-\onepicture{\includesvg{figs/03}}
++\onepicture[w=9.6cm]{\includesvg{figs/03}}
+ %% answer: D
+ %% memo:
+ \memoanswer{
+@@ -143,7 +143,7 @@ $x - t $图像的斜率表示速度，小车先做匀加速运动，因此速度
+ %% duplicateId: 0
+ %% body:
+ 在一些电子显示设备中，让阴极发射的电子束通过适当的非匀强电场，可以使发散的电子束聚集。下列 4 幅图中带箭头的实线表示电场线，如果用虚线表示电子可能的运动轨迹，其中正确的是\xzanswer{A}
+-\onepicture{\includesvg{figs/05}}
++\onepicture[w=7.1cm]{\includesvg{figs/05}}
+ %% answer: A
+ %% memo:
+ \memoanswer{
+@@ -183,7 +183,7 @@ D．电子做曲线运动满足合力指向轨迹凹侧，对电子受力分析
+ %% duplicateId: 0
+ %% body:
+ 用水平拉力使质量分别为 $m_{\text{甲}}$、$m_{\text{乙} }$的甲、乙两物体在水平桌面上由静止开始沿直线运动，两物体与桌面间的动摩擦因数分别为 $\mu_{\text{甲}}$ 和 $\mu_{\text{乙}}$。甲、乙两物体运动后，所受拉力 $F$ 与其加速度 $a$ 的关系图线如图所示。由图可知\xzanswer{BC}
+-\onepicture{figs/06.png}
++\onepicture[w=4.8cm]{figs/06.png}
+ \fourchoices[answer=BC]
+ {$m_{\text{甲}} < m_{\text{乙}}$}
+ {$m_{\text{甲}} > m_{\text{乙}}$}
+@@ -218,7 +218,7 @@ $m_{\text{甲}} > m_{\text{乙}}$，$\mu_{\text{甲}}m_{\text{甲}}g = \mu_{\tex
+ %% duplicateId: 0
+ %% body:
+ 光滑刚性绝缘圆筒内存在着平行于轴的匀强磁场，筒上 P 点开有一个小孔，过 P 的横截面是以 O 为圆心的圆，如图所示。一带电粒子从 P 点沿 PO 射入，然后与筒壁发生碰撞。假设粒子在每次碰撞前、后瞬间，速度沿圆上碰撞点的切线方向的分量大小不变，沿法线方向的分量大小不变、方向相反；电荷量不变。不计重力。下列说法正确的是\xzanswer{BD}
+-\onepicture{figs/07.png}
++\onepicture[w=4.9cm]{figs/07.png}
+ \fourchoices[answer=BD]
+ {粒子的运动轨迹可能通过圆心 O}
+ {最少经 2 次碰撞，粒子就可能从小孔射出}
+@@ -257,7 +257,7 @@ C．速度越大粒子做圆周运动的半径越大，碰撞次数会可能增
+ %% duplicateId: 0
+ %% body:
+ 一有机玻璃管竖直放在水平地面上，管上有漆包线绕成的线圈，线圈的两端与电流传感器相连，线圈在玻璃管上部的 5 匝均匀分布，下部的 3 匝也均匀分布，下部相邻两匝间的距离大于上部相邻两匝间的距离。如图（a）所示。现让一个很小的强磁体在玻璃管内沿轴线从上端口由静止下落，电流传感器测得线圈中电流 $I$ 随时间 $t$ 的变化如图（b）所示。则\xzanswer{AD}
+-\onepicture{figs/08.png}
++\onepicture[w=7.2cm]{figs/08.png}
+ \fourchoices[answer=AD]
+ {小磁体在玻璃管内下降速度越来越快}
+ {下落过程中，小磁体的 N 极、S 极上下顺倒了 8 次}
+@@ -294,7 +294,7 @@ C．线圈可等效为条形磁铁，线圈的电流越大则磁性越强，因
+ 	\item
+ 	若选择另一个电路图进行实验，在答题卡所给图上用实线画出实验中应得到的关系曲线的示意图\_\_\_\_\_\_。
+ \end{enumerate}
+-\onepicture[align=right]{figs/09.png}
++\onepicture[align=right, w=7.5cm]{figs/09.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -350,7 +350,7 @@ $\overline v$（$\Ucms$） & 66.0 & 73.0 & $\overline v_{AD}$ & 87.3 & 94.6 \\
+ 	\item
+ 	根据（3）中的直线方程可以判定小车做匀加速直线运动，得到打出 A 点时小车速度大小 $v_{A}$ = \tkanswer{$b$}，小车的加速度大小 $a$ = \tkanswer{$2k$}。（结果用字母 $k$、$b$ 表示）
+ \end{enumerate}
+-\threepicture[labelA=2023全国甲卷10a, labelB=2023全国甲卷10b, labelC=2023全国甲卷10c, align=right]
++\threepicture[labelA=2023全国甲卷10a, labelB=2023全国甲卷10b, labelC=2023全国甲卷10c, align=right, wA=5.8cm, wB=9.3cm, wC=4.6cm]
+ {figs/10a.png}
+ {figs/10b.png}
+ {figs/10c.png}
+@@ -419,7 +419,7 @@ $k = \frac{{101.0 - 59.0}}{{0.6}}$ $\Ucms$$^{2}$ = 70.0 $\Ucms$$^{2}$，$b$ = 59
+ 	\item
+ 	小球第一次落地点距桌面上其飞出点的水平距离。
+ \end{enumerate}
+-\onepicture[align=right]{figs/11.png}
++\onepicture[align=right, w=6.2cm]{figs/11.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -475,7 +475,7 @@ $k = \frac{{101.0 - 59.0}}{{0.6}}$ $\Ucms$$^{2}$ = 70.0 $\Ucms$$^{2}$，$b$ = 59
+ 	\item
+ 	与 P 碰撞后，绝缘棒 Q 在导轨上运动的时间。
+ \end{enumerate}
+-\onepicture[align=right]{figs/12.png}
++\onepicture[align=right, w=6.6cm]{figs/12.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -647,7 +647,7 @@ E．气体的体积增大温度降低则气体的内能降低，体积增大气
+ %% duplicateId: 0
+ %% body:
+ 等腰三角形 $\triangle$abc 为一棱镜的横截面，ab = ac；一平行于 bc 边的细光束从 ab 边射入棱镜，在 bc 边反射后从 ac 边射出，出射光分成了不同颜色的两束，甲光的出射点在乙光的下方，如图所示。不考虑多次反射。下列说法正确的是\xzanswer{ACE}
+-\onepicture{figs/14.png}
++\onepicture[w=7.3cm]{figs/14.png}
+ \fivechoices[answer=ACE]
+ {甲光的波长比乙光的长}
+ {甲光的频率比乙光的高}
+@@ -689,7 +689,6 @@ E．根据几何关系可知光在棱镜内 bc 边反射时的入射角，甲光
+ 	\item
+ 	求出图示范围内的介质中，因两列波干涉而振动振幅最大和振幅最小的平衡位置。
+ \end{enumerate}
+-\onepicture[align=right]{figs/14.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+diff --git a/2023/北京/北京.tex b/2023/北京/北京.tex
+index 5d69f9d..ee30b4e 100644
+--- a/2023/北京/北京.tex
++++ b/2023/北京/北京.tex
+@@ -104,7 +104,7 @@ D．根据电荷数和质量数守恒知，核反应方程为 \ce{^{14}_{6}C} $\
+ %% duplicateId: 0
+ %% body:
+ 位于坐标原点处的波源发出一列沿 $x$ 轴正方向传播的简谐横波。$t$ = 0 时波源开始振动，其位移 $y$ 随时间 $t$ 变化的关系式为 $y = A$sin（$\frac{{2\pi }}{T} t$），则 $t = T$ 时的波形图为\xzanswer{D}
+-\onepicture{\includesvg{figs/04}}
++\onepicture[w=10.4cm]{\includesvg{figs/04}}
+ %% answer: D
+ %% memo:
+ \memoanswer{
+@@ -126,7 +126,7 @@ D．根据电荷数和质量数守恒知，核反应方程为 \ce{^{14}_{6}C} $\
+ %% duplicateId: 0
+ %% body:
+ 如图所示，$L$ 是自感系数很大、电阻很小的线圈，P、Q 是两个相同的小灯泡，开始时，开关 S 处于闭合状态，P 灯微亮，Q 灯正常发光，断开开关\xzanswer{D}
+-\onepicture{figs/05.png}
++\onepicture[w=4.5cm]{figs/05.png}
+ \fourchoices[answer=D]
+ {P 与 Q 同时熄灭}
+ {P 比 Q 先熄灭}
+@@ -153,7 +153,7 @@ D．根据电荷数和质量数守恒知，核反应方程为 \ce{^{14}_{6}C} $\
+ %% duplicateId: 0
+ %% body:
+ 如图所示，在光滑水平地面上，两相同物块用细线相连，两物块质量均为 1 $\Ukg$，细线能承受的最大拉力为 2 $\UN$。若在水平拉力 $F$ 作用下，两物块一起向右做匀加速直线运动。则 $F$ 的最大值为\xzanswer{C}
+-\onepicture{\includesvg{figs/06}}
++\onepicture[w=7.8cm]{\includesvg{figs/06}}
+ \fourchoices[answer=C]
+ {$1 \UN$}
+ {$2 \UN$}
+@@ -216,7 +216,7 @@ D．将两个 3.8 $\UV$ 小灯泡并联，但由于原线圈的电压不变，
+ %% duplicateId: 0
+ %% body:
+ 如图所示，两个带等量正电的点电荷位于 M、N 两点上，E、F 是 MN 连线中垂线上的两点，O 为 EF、MN 的交点，EO = OF。一带负电的点电荷在 E 点由静止释放后\xzanswer{C}
+-\onepicture{figs/08.png}
++\onepicture[w=4.2cm]{figs/08.png}
+ \fourchoices[answer=C]
+ {做匀加速直线运动}
+ {在 O 点所受静电力最大}
+@@ -247,7 +247,7 @@ D．点电荷由 E 到 F 的过程中电场力先做正功后做负功，则电
+ %% duplicateId: 0
+ %% body:
+ 如图所示，光滑水平面上的正方形导线框，以某一初速度进入竖直向下的匀强磁场并最终完全穿出。线框的边长小于磁场宽度。下列说法正确的是\xzanswer{D}
+-\onepicture{figs/09.png}
++\onepicture[w=5.8cm]{figs/09.png}
+ \fourchoices[answer=D]
+ {线框进磁场的过程中电流方向为顺时针方向}
+ {线框出磁场的过程中做匀减速直线运动}
+@@ -282,7 +282,7 @@ D．线框在进和出的两过程中通过导线横截面的电荷量 $q = \fra
+ %% duplicateId: 0
+ %% body:
+ 在太空实验室中可以利用匀速圆周运动测量小球质量。如图所示，不可伸长的轻绳一端固定于 O 点，另一端系一待测小球，使其绕 O 做匀速圆周运动，用力传感器测得绳上的拉力为 $F$，用停表测得小球转过 $n$ 圈所用的时间为 $t$，用刻度尺测得 O 点到球心的距离为圆周运动的半径 $R$。下列说法正确的是\xzanswer{A}
+-\onepicture{figs/10.png}
++\onepicture[w=6.4cm]{figs/10.png}
+ \fourchoices[answer=A]
+ {圆周运动轨道可处于任意平面内}
+ {小球的质量为 $\frac{{FR{t^2}}}{{4{\pi ^2}{n^2}}}$}
+@@ -315,7 +315,7 @@ D．若测 $R$ 时未计入小球的半径，则 $R$ 偏小，所测质量偏大
+ %% duplicateId: 0
+ %% body:
+ 如图所示，一物体在力 $F$ 作用下沿水平桌面做匀加速直线运动。已知物体质量为 $m$，加速度大小为 $a$，物体和桌面之间的动摩擦因数为 $\mu$，重力加速度为 $g$，在物体移动距离为 $x$ 的过程中\xzanswer{D}
+-\onepicture{\includesvg{figs/11}}
++\onepicture[w=5.9cm]{\includesvg{figs/11}}
+ \fourchoices[answer=D]
+ {摩擦力做功大小与 $F$ 方向无关}
+ {合力做功大小与 $F$ 方向有关}
+@@ -358,7 +358,7 @@ D．因合外力功为 $max$ 大小一定，而合外力的功等于力 $F$ 与
+ %% duplicateId: 0
+ %% body:
+ 2022 年 10 月 9 日，我国综合性太阳探测卫星“夸父一号”成功发射，实现了对太阳探测的跨越式突破。“夸父一号”卫星绕地球做匀速圆周运动，距地面高度约为 720 $\Ukm$，运行一圈所用时间约为 100 分钟。如图所示，为了随时跟踪和观测太阳的活动，“夸父一号”在随地球绕太阳公转的过程中，需要其轨道平面始终与太阳保持固定的取向，使太阳光能照射到“夸父一号”，下列说法正确的是\xzanswer{A}
+-\onepicture{figs/12.png}
++\onepicture[w=4.8cm]{figs/12.png}
+ \fourchoices[answer=A]
+ {“夸父一号”的运行轨道平面平均每天转动的角度约为 1${^\circ}$}
+ {“夸父一号”绕地球做圆周运动的速度大于 $7.9 \Ukms$}
+@@ -391,7 +391,7 @@ D．“夸父一号”绕地球转动，地球绕太阳转动，中心天体不
+ %% duplicateId: 0
+ %% body:
+ 如图所示，在磁感应强度大小为 $B$、方向垂直纸面向外的匀强磁场中，固定一内部真空且内壁光滑的圆柱形薄壁绝缘管道，其轴线与磁场垂直。管道横截面半径为 $a$，长度为 $l$（$l \gg a$）。带电粒子束持续以某一速度 $v$ 沿轴线进入管道，粒子在磁场力作用下经过一段圆弧垂直打到管壁上，与管壁发生弹性碰撞，多次碰撞后从另一端射出，单位时间进入管道的粒子数为 $n$，粒子电荷量为 + $q$，不计粒子的重力、粒子间的相互作用，下列说法不正确的是\xzanswer{C}
+-\onepicture{figs/13.png}
++\onepicture[w=6.0cm]{figs/13.png}
+ \fourchoices[answer=C]
+ {粒子在磁场中运动的圆弧半径为 $a$}
+ {粒子质量为 $\frac{{Bqa}}{v}$}
+@@ -492,7 +492,7 @@ $\frac{V}{S}$
+ 	\item
+ 	按照图 1 连接实物图，如图 2 所示。闭合开关前检查电路时，发现有一根导线接错，该导线为\_\_\_\_\_\_\_\_\_\_\_（填“a”“b”或“c”）。若闭合开关，该错误连接会带来的问题有\_\_\_\_\_\_\_\_\_\_\_。
+ \end{enumerate}
+-\twopicture[labelA=2023北京15a, labelB=2023北京15b, align=right]
++\twopicture[labelA=2023北京15a, labelB=2023北京15b, align=right, wA=4.0cm, wB=5.5cm]
+ {figs/15a.png}
+ {figs/15b.png}
+ %% answer: 
+@@ -544,7 +544,7 @@ $\frac{V}{S}$
+ 	\item
+ 	某同学实验时忘了标记重垂线方向，为解决此问题，他在频闪照片中，以某位置为坐标原点，沿任意两个相互垂直的方向作为 $x$ 轴和 $y$ 轴正方向，建立直角坐标系 $xOy$，并测量出另外两个位置的坐标值（$x_{1}$，$y_{1}$）、（$x_{2}$，$y_{2}$），如图 3 所示。根据平抛运动规律，利用运动的合成与分解的方法，可得重垂线方向与$y$轴间夹角的正切值为\_\_\_\_\_\_\_\_\_\_\_。
+ \end{enumerate}
+-\threepicture[labelA=2023北京16a, labelB=2023北京16b, labelC=2023北京16c, align=right]
++\threepicture[labelA=2023北京16a, labelB=2023北京16b, labelC=2023北京16c, align=right, wA=3.5cm, wB=4.6cm, wC=3.7cm]
+ {figs/16a.png}
+ {\includesvg{figs/16b}}
+ {figs/16c.png}
+@@ -609,7 +609,7 @@ $y$ 轴方向在 $y_{2} -$ 2$y_{1} = g$cos$\theta$(2$T$)$^{2}$
+ 	\item
+ 	碰撞过程中系统损失的机械能 $\Delta E$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/17.png}
++\onepicture[align=right, w=4.1cm]{figs/17.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -668,7 +668,7 @@ $\Delta E = \frac{1}{2}mv^{2} -$ 2$m$ ($\frac{1}{2}v$)$^{2} = \frac{1}{4} mv^{2}
+ 	\item
+ 	金属棒从静止开始经过两级区域推进后的速度大小 $v$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/18.png}
++\onepicture[align=right, w=4.5cm]{figs/18.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -711,7 +711,7 @@ b．已知颗粒的电荷量与其半径的平方成正比，进入收集器的
+ 	\item
+ 	若计空气阻力，颗粒所受阻力与其相对于空气的速度 $v$ 方向相反，大小为 $f = krv$，其中 $r$ 为颗粒的半径，$k$ 为常量。假设颗粒在金属板间经极短时间加速达到最大速度。
+ \end{enumerate}
+-\onepicture[align=right]{figs/19.png}
++\onepicture[align=right, w=4.5cm]{figs/19.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -749,7 +749,7 @@ b．已知颗粒的电荷量与其半径的平方成正比，进入收集器的
+ 	\item
+ 	科学家根据实测数据，得到此螺旋星系中不同位置的恒星做匀速圆周运动的速度大小 $v$ 随 $r$ 的变化关系图像，如图所示，根据在 $r > R$ 范围内的恒星速度大小几乎不变，科学家预言螺旋星系周围（$r > R$）存在一种特殊物质，称之为暗物质。暗物质与通常的物质有引力相互作用，并遵循万有引力定律，求 $r = nR$ 内暗物质的质量 $M'$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/20.png}
++\onepicture[align=right, w=4.6cm]{figs/20.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+diff --git a/2023/湖南/湖南.tex b/2023/湖南/湖南.tex
+index 5f3095d..4c328ff 100644
+--- a/2023/湖南/湖南.tex
++++ b/2023/湖南/湖南.tex
+@@ -54,7 +54,7 @@ D．核聚变反应过程中放出大量能量，有质量亏损，D 错误。
+ %% duplicateId: 0
+ %% body:
+ 如图（a），我国某些农村地区人们用手抛撒谷粒进行水稻播种。某次抛出的谷粒中有两颗的运动轨迹如图（b）所示，其轨迹在同一竖直平面内，抛出点均为 O，且轨迹交于 P 点，抛出时谷粒 1 和谷粒 2 的初速度分别为 $v_{1}$ 和 $v_{2}$，其中 $v_{1}$ 方向水平，$v_{2}$ 方向斜向上。忽略空气阻力，关于两谷粒在空中的运动，下列说法正确的是\xzanswer{B}
+-\onepicture{figs/02.png}
++\onepicture[w=6.1cm]{figs/02.png}
+ \fourchoices[answer=B]
+ {谷粒 1 的加速度小于谷粒 2 的加速度}
+ {谷粒 2 在最高点的速度小于 $v_{1}$}
+@@ -87,7 +87,7 @@ D．两谷粒从 O 点运动到 P 点的位移相同，运动时间不同，故
+ %% duplicateId: 0
+ %% body:
+ 如图（a），在均匀介质中有 A、B、C 和 D 四点，其中 A、B、C 三点位于同一直线上，AC = BC = 4 $\Um$，DC = 3 $\Um$，DC 垂直 AB。$t$ = 0 时，位于 A、B、C 处的三个完全相同的横波波源同时开始振动，振动图像均如图（b）所示，振动方向与平面 ABD 垂直，已知波长为 4 $\Um$。下列说法正确的是\xzanswer{C}
+-\onepicture{figs/03.png}
++\onepicture[w=7.0cm]{figs/03.png}
+ \fourchoices[answer=C]
+ {这三列波的波速均为 2 $\Ums$}
+ {$t$ = 2 $\Us$ 时，D 处的质点开始振动}
+@@ -188,7 +188,7 @@ $$ \nu^{\prime2}=2\nu^{2}=\frac{2GM}{R}=4G\sqrt[3]{\frac{\pi\rho M^{2}}{3}} $$
+ %% duplicateId: 0
+ %% body:
+ 如图，真空中有三个点电荷固定在同一直线上，电荷量分别为 $Q_{1}$、$Q_{2}$ 和 $Q_{3}$，P 点和三个点电荷的连线与点电荷所在直线的夹角分别为 90${^\circ}$、60${^\circ}$ 和 30${^\circ}$。若 P 点处的电场强度为零，$q$ > 0，则三个点电荷的电荷量可能为\xzanswer{D}
+-\onepicture{figs/05.png}
++\onepicture[w=5.3cm]{figs/05.png}
+ \fourchoices[answer=D]
+ {$Q_{1} = q$，$Q_{2} = \sqrt 2 q$，$Q_{3} = q$}
+ {$Q_{1} = - q$，$Q_{2} = - \frac{{4\sqrt 3 }}{3}q$，$Q_{3} = -$ 4$q$}
+@@ -237,7 +237,7 @@ D. 设 P、 $Q_{1}$ 间的距离为 r，则  $Q_{1}$、 $Q_{3}$ 在 P 点产生
+ %% duplicateId: 0
+ %% body:
+ 如图，真空中有区域 Ⅰ 和 Ⅱ，区域 Ⅰ 中存在匀强电场和匀强磁场，电场方向竖直向下（与纸面平行），磁场方向垂直纸面向里，等腰直角三角形 CGF 区域（区域 Ⅱ）内存在匀强磁场，磁场方向垂直纸面向外。图中 A、C、O 三点在同一直线上，AO 与 GF 垂直，且与电场和磁场方向均垂直。A 点处的粒子源持续将比荷一定但速率不同的粒子射入区域Ⅰ中，只有沿直线 AC 运动的粒子才能进入区域 Ⅱ。若区域 Ⅰ 中电场强度大小为 $E$、磁感应强度大小为 $B_{1}$，区域Ⅱ中磁感应强度大小为 $B_{2}$，则粒子从 CF 的中点射出，它们在区域 Ⅱ 中运动的时间为 $t_{0}$。若改变电场或磁场强弱，能进入区域 Ⅱ 中的粒子在区域 Ⅱ 中运动的时间为 $t$，不计粒子的重力及粒子之间的相互作用，下列说法正确的是\xzanswer{D}
+-\onepicture{figs/06.png}
++\onepicture[w=4.7cm]{figs/06.png}
+ \fourchoices[answer=D]
+ {若仅将区域 Ⅰ 中磁感应强度大小变为 2$B_{1}$，则 $t > t_{0}$}
+ {若仅将区域 Ⅰ 中电场强度大小变为 2$E$，则 $t > t_{0}$}
+@@ -309,7 +309,7 @@ D 正确。
+ %% duplicateId: 0
+ %% body:
+ 一位潜水爱好者在水下活动时，利用激光器向岸上救援人员发射激光信号，设激光光束与水面的夹角为 $\alpha$，如图所示。他发现只有当 $\alpha$ 大于 41${^\circ}$ 时，岸上救援人员才能收到他发出的激光光束，下列说法正确的是\xzanswer{BC}
+-\onepicture{figs/07.png}
++\onepicture[w=5.3cm]{figs/07.png}
+ \fourchoices[answer=BC]
+ {水的折射率为 $\frac{1}{{\sin 41^\circ }}$}
+ {水的折射率为 $\frac{1}{{\sin 49^\circ }}$}
+@@ -342,7 +342,6 @@ $n$sin$i_{1}$ = sin$i_{2}$
+ %% duplicateId: 0
+ %% body:
+ 如图，固定在竖直面内的光滑轨道 ABC 由直线段 AB 和圆弧段 BC 组成，两段相切于 B 点，AB 段与水平面夹角为 $\theta$，BC 段圆心为 O，最高点为 C、A 与 C 的高度差等于圆弧轨道的直径 2$R$。小球从 A 点以初速度 $v_{0}$ 冲上轨道，能沿轨道运动恰好到达 C 点，下列说法正确的是\xzanswer{AD}
+-\onepicture{figs/07.png}
+ \fourchoices[answer=AD]
+ {小球从 B 到 C 的过程中，对轨道的压力逐渐增大}
+ {小球从 A 到 C 的过程中，重力的功率始终保持不变}
+@@ -383,7 +382,7 @@ D．小球在 B 点恰好脱离轨道有 $mg\cos\theta=m\frac{v_{B}^{2}}{R}$，
+ %% duplicateId: 0
+ %% body:
+ 某同学自制了一个手摇交流发电机，如图所示。大轮与小轮通过皮带传动（皮带不打滑），半径之比为 4$:$1，小轮与线圈固定在同一转轴上。线圈是由漆包线绕制而成的边长为 $L$ 的正方形，共 $n$ 匝，总阻值为 $R$。磁体间磁场可视为磁感应强度大小为 $B $的匀强磁场。大轮以角速度 $\omega$ 匀速转动，带动小轮及线圈绕转轴转动，转轴与磁场方向垂直。线圈通过导线、滑环和电刷连接一个阻值恒为 $R$ 的灯泡。假设发电时灯泡能发光且工作在额定电压以内，下列说法正确的是\xzanswer{AC}
+-\onepicture{figs/08.png}
++\onepicture[w=5.0cm]{figs/08.png}
+ \fourchoices[answer=AC]
+ {线圈转动的角速度为 4$\omega$}
+ {灯泡两端电压有效值为 3$\sqrt 2 nBL^{2}\omega$}
+@@ -416,7 +415,7 @@ D．若仅将小轮半径变为原来的两倍，根据 $v = \omega r$ 可知小
+ %% duplicateId: 0
+ %% body:
+ 如图，光滑水平地面上有一质量为 2$m$ 的小车在水平推力 $F$ 的作用下加速运动。车厢内有质量均为 $m$ 的 A、B 两小球，两球用轻杆相连，A 球靠在光滑左壁上，B 球处在车厢水平底面上，且与底面的动摩擦因数为 $\mu$，杆与竖直方向的夹角为 $\theta$，杆与车厢始终保持相对静止假设最大静摩擦力等于滑动摩擦力。下列说法正确的是\xzanswer{CD}
+-\onepicture{figs/10.png}
++\onepicture[w=5.1cm]{figs/10.png}
+ \fourchoices[answer=CD]
+ {若 B 球受到的摩擦力为零，则 $F$ = 2$mg$tan$\theta$}
+ {若推力 $F$ 向左，且 tan$\theta \leq \mu$，则 $F$ 的最大值为 2$mg$tan$\theta$}
+@@ -551,7 +550,7 @@ D 正确。
+ 	\item
+ 	除偶然误差外，写出一条本实验中可能产生误差的原因： \tkanswer{钩码振动过程中受空气阻力的影响} 。
+ \end{enumerate}
+-\twopicture[labelA=2023湖南11a, labelB=2023湖南11b, align=right]
++\twopicture[labelA=2023湖南11a, labelB=2023湖南11b, align=right, wA=3.8cm, wB=6.9cm]
+ {figs/11a.png}
+ {figs/11b.png}
+ %% answer: 
+@@ -626,7 +625,7 @@ $$ \sqrt {\frac {\mathrm{kg}}{\mathrm{\UNm}}} = \sqrt {\frac {\mathrm{kg} \cdot
+ 	\item
+ 	若在步骤（4）中换用非理想毫伏表测量 C、D 间电压，在半导体薄膜压力传感器上施加微小压力 $F_{1}$，此时非理想毫伏表读数为 200 $\UmV$，则 $F_{1}$ \tkanswer{$>$} $F_{0}$（填“>”“=”或“<”）。
+ \end{enumerate}
+-\twopicture[labelA=2023湖南12a, labelB=2023湖南12b, align=right]
++\twopicture[labelA=2023湖南12a, labelB=2023湖南12b, align=right, wA=6.9cm, wB=4.4cm]
+ {figs/12a.png}
+ {figs/12b.png}
+ %% answer: 
+@@ -826,7 +825,7 @@ $m(a-x)=M\cdot\Delta x$
+ 	\item
+ 	第 $n$ 次抽气后，求该刹车助力装置为驾驶员省力的大小 $\Delta F$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/13.png}
++\onepicture[align=right, w=7.4cm]{figs/13.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -864,7 +863,7 @@ $m(a-x)=M\cdot\Delta x$
+ 	\item
+ 	在（2）问中，从棒 b 释放瞬间开始计时，经过时间 $t_{0}$，两棒恰好达到相同的速度 $v$，求速度 $v$ 的大小，以及时间 $t_{0}$ 内棒 a 相对于棒 b 运动的距离 $\Delta x$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/14.png}
++\onepicture[align=right, w=5.4cm]{figs/14.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -905,7 +904,7 @@ $m(a-x)=M\cdot\Delta x$
+ 	\item
+ 	若 $\frac{M}{m} = \frac{b}{{a - b}}$，求小球下降 $h = \frac{b}{2}$ 高度时，小球相对于地面的速度大小（结果用 $a$、$b$ 及 $g$ 表示）。
+ \end{enumerate}
+-\onepicture[align=right]{figs/15.png}
++\onepicture[align=right, w=5.3cm]{figs/15.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+diff --git a/2023/福建/福建.tex b/2023/福建/福建.tex
+index 45c8285..6481fdf 100644
+--- a/2023/福建/福建.tex
++++ b/2023/福建/福建.tex
+@@ -18,7 +18,7 @@
+ %% duplicateId: 0
+ %% body:
+ “祝融号”火星车沿如图所示路线行驶，在此过程中揭秘了火星乌托邦平原浅表分层结构，该研究成果被列为“2022 年度中国科学十大进展”之首。“祝融号”从着陆点 O 处出发，经过 61 天到达 M 处，行驶路程为 585 米；又经过 23 天，到达 N 处，行驶路程为 304 米。已知 O、M 间和 M、N 间的直线距离分别约为 463 米和 234 米，则火星车\xzanswer{D}
+-\onepicture{figs/01.jpg}
++\onepicture[w=3.1cm]{figs/01.jpg}
+ \fourchoices[answer=D]
+ {从 O 处行驶到 N 处的路程为 697 米}
+ {从 O 处行驶到 N 处的位移大小为 889 米}
+@@ -67,7 +67,7 @@ D. 平均速度大小为位移与时间的比值，则从 M 行驶到 N 处的
+ %% duplicateId: 0
+ %% body:
+ 如图，一教师用侧面开孔的透明塑料瓶和绿光激光器演示“液流导光”实验。瓶内装有适量清水．水从小孔中流出后形成了弯曲的液流。让激光水平射向小孔，使光束与液流保持在同一竖直平面内，观察到光束沿着弯曲的液流传播。下列操作中，有助于光束更好地沿液流传播的是\xzanswer{B}
+-\onepicture{figs/02.png}
++\onepicture[w=5.1cm]{figs/02.png}
+ \fourchoices[answer=B]
+ {减弱激光强度}
+ {提升瓶内液面高度}
+@@ -102,7 +102,7 @@ D．增大激光器与小孔之间的水平距离不能改变液体的折射率
+ %% duplicateId: 0
+ %% body:
+ 如图，M、N 是两根固定在水平面内的光滑平行金属导轨，导轨足够长且电阻可忽略不计；导轨间有一垂直于水平面向下的匀强磁场，其左边界 OO$'$ 垂直于导轨；阻值恒定的两均匀金属棒 a、b 均垂直于导轨放置，b 始终固定。a 以一定初速度进入磁场，此后运动过程中始终与导轨垂直且接触良好，并与 b 不相碰。以 O 为坐标原点，水平向右为正方向建立轴坐标；在运动过程中，a 的速度记为 $v$，a 克服安培力做功的功率记为 $P$。下列 $v$ 或 $P$ 随 $x$ 变化的图像中，可能正确的是\xzanswer{A}
+-\twopicture[labelA=2023福建03a, labelB=2023福建03b]
++\twopicture[labelA=2023福建03a, labelB=2023福建03b, wA=5.8cm, wB=10.7cm]
+ {figs/03a.png}
+ {\includesvg{figs/03b}}
+ %% answer: A
+@@ -157,7 +157,7 @@ $$ P=Fv=\frac{B^{2}L^{2}}{R}\cdot v^{2}=\frac{B^{2}L^{2}}{R}\cdot\left(v_{0}-\fr
+ %% duplicateId: 0
+ %% body:
+ 地球本身是一个大磁体，其磁场分布示意图如图所示。学术界对于地磁场的形成机制尚无共识。一种理论认为地磁场主要源于地表电荷随地球自转产生的环形电流。基于此理论，下列判断正确的是\xzanswer{AC}
+-\onepicture{figs/05.png}
++\onepicture[w=5.6cm]{figs/05.png}
+ \fourchoices[answer=AC]
+ {地表电荷为负电荷}
+ {环形电流方向与地球自转方向相同}
+@@ -190,7 +190,7 @@ D．若地球自转角速度减小，则等效电流越小，地磁场强度减
+ %% duplicateId: 0
+ %% body:
+ 甲、乙两辆完全相同的小车均由静止沿同一方向出发做直线运动。以出发时刻为计时零点，甲车的速度$-$时间图像如图（a）所示，乙车所受合外力$-$时间图像如图（b）所示。则\xzanswer{BC}
+-\onepicture{figs/06.png}
++\onepicture[w=7.4cm]{figs/06.png}
+ \fourchoices[answer=BC]
+ {0 \textasciitilde{} 2 $\Us$ 内，甲车的加速度大小逐渐增大}
+ {乙车在 $t$ = 2 $\Us$ 和 $t$ = 6 $\Us$ 时的速度相同}
+@@ -235,7 +235,7 @@ $I_{8} = mv_{8}$，$I_{8} = S_{0 ~ 8}$ = 0
+ %% duplicateId: 0
+ %% body:
+ 人类为探索宇宙起源发射的韦伯太空望远镜运行在日地延长线上的拉格朗日 L$_{2}$ 点附近，L$_{2}$ 点的位置如图所示。在 L$_{2}$ 点的航天器受太阳和地球引力共同作用，始终与太阳、地球保持相对静止。考虑到太阳系内其他天体的影响很小，太阳和地球可视为以相同角速度围绕日心和地心连线中的一点 O（图中未标出）转动的双星系统。若太阳和地球的质量分别为 $M$ 和 $m$，航天器的质量远小于太阳、地球的质量，日心与地心的距离为 $R$，万有引力常数为 $G$，L$_{2}$ 点到地心的距离记为 $r$（$r \ll R$），在 L$_{2}$ 点的航天器绕 O 点转动的角速度大小记为 $\omega$。下列关系式正确的是（   ）[可能用到的近似 $\frac{1}{{{{(R + r)}^2}}} \approx \frac{1}{{{R^2}}}\left( {1 - 2\frac{r}{R}} \right)$]
+-\onepicture{figs/07.png}
++\onepicture[w=10.4cm]{figs/07.png}
+ \fourchoices[answer=BD]
+ {$\omega = \sqrt {\frac{{G(M + m)}}{{2{R^3}}}} $}
+ {$\omega = \sqrt {\frac{{G(M + m)}}{{{R^3}}}} $}
+@@ -323,7 +323,7 @@ $E = \Delta mc^{2}$ = 1$\times$10$^{-3}\times$9.0$\times$10$^{16}$ $\UJ$ = 9$\ti
+ %% duplicateId: 0
+ %% body:
+ “场离子显微镜”的金属钨针尖处于球形真空玻璃泡的球心 $O$，玻璃泡内壁有一层均匀导电膜：在钨针和导电膜间加上高电压后，玻璃泡上半部分的电场可视为位于 O 点处点电荷形成的电场，如图所示。a、b、c、d、O 为同一平面上的 5 个点，abc 是一段以 O 为圆心的圆弧，d 为 Ob 的中点。a、d 两点场强大小分别为 $E_{a}$、$E_{d}$，O、a、c、d 四点电势分别为 $\varphi_{o}$、$\varphi_{a}$、$\varphi_{c}$、$\varphi_{d}$，则 $\varphi_{a}$\_\_\_\_\_\_\_\_\_$\varphi_{d}$；$\varphi_{a}$\_\_\_\_\_\_\_\_\_$\varphi_{c}$，($\varphi_{o} - \varphi_{a}$)\_\_\_\_\_\_\_\_\_2($\varphi_{o} - \varphi_{d}$)。（填“大于”“等于”或“小于”）
+-\onepicture[align=right]{figs/10.png}
++\onepicture[align=right, w=3.7cm]{figs/10.png}
+ %% answer: 
+ \jdanswer{
+ 小于，等于，小于
+@@ -356,7 +356,7 @@ $\varphi_{a} = \varphi_{c}$
+ %% duplicateId: 0
+ %% body:
+ 一定质量的理想气体经历了 A$\to$B$\to$C$\to$D$\to$A 的循环过程后回到状态 A，其 $p - V$ 图如图所示。完成一次循环，气体内能\_\_\_\_\_\_\_\_\_（填“增加”“减少”或“不变”），气体对外界\_\_\_\_\_\_\_\_\_（填“做正功”“做负功”或“不做功”），气体\_\_\_\_\_\_（填“吸热”“放热”“不吸热”或“不放热”）。
+-\onepicture[align=right]{figs/11.png}
++\onepicture[align=right, w=4.7cm]{figs/11.png}
+ %% answer: 
+ \jdanswer{
+ 不变，做正功，吸热
+@@ -401,7 +401,7 @@ $\Delta U = W + Q$
+ 	\item
+ 	根据上述实验，在误差允许范围内，可以得到的结论为\_\_\_\_\_\_\_\_\_。
+ \end{enumerate}
+-\twopicture[labelA=2023福建12a, labelB=2023福建12b, align=right]
++\twopicture[labelA=2023福建12a, labelB=2023福建12b, align=right, wA=7.2cm, wB=6.1cm]
+ {figs/12a.png}
+ {figs/12b.png}
+ %% answer: 
+@@ -465,7 +465,7 @@ $\Delta U = W + Q$
+ 	\item
+ 	根据实验结果可知，电容器在充放电过程中，其所带的最大电荷量在频率较低时基本不变，而后随着频率的增大逐渐减小。
+ \end{enumerate}
+-\threepicture[labelA=2023福建13a, labelB=2023福建13b, labelC=2023福建13c, align=right]
++\threepicture[labelA=2023福建13a, labelB=2023福建13b, labelC=2023福建13c, align=right, wA=8.7cm, wB=10.9cm, wC=5.0cm]
+ {figs/13a.png}
+ {figs/13b.png}
+ {figs/13c.png}
+@@ -525,7 +525,7 @@ $\Delta U = W + Q$
+ 	\item
+ 	若 ON 的长度是 OM 的 1.1 倍，求落在 N 处氖离子的比荷。
+ \end{enumerate}
+-\onepicture[align=right]{figs/14.png}
++\onepicture[align=right, w=6.2cm]{figs/14.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -563,7 +563,7 @@ $\Delta U = W + Q$
+ 	\item
+ 	求圆环处于细杆末端 P 时，细杆匀速转动的角速度大小。
+ \end{enumerate}
+-\onepicture[align=right]{figs/15.png}
++\onepicture[align=right, w=5.6cm]{figs/15.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -642,7 +642,7 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
+ 	\item
+ 	若增大 A 的初速度，使其到达位置 S 时的速度为 2$v_{1}$，求细杆与 B 碰撞前瞬间 A 的速度。
+ \end{enumerate}
+-\onepicture[align=right]{figs/16.png}
++\onepicture[align=right, w=6.8cm]{figs/16.png}
+ %% answer: 
+ \jdanswer{
+ \begin{enumerate}
+@@ -692,7 +692,7 @@ A 以  $v_{1}$ 过 S 时，到 B 与杆碰撞时，A 增加的速度为  $v_{1}$
+ 
+ 根据动能定理有
+ 
+-$$ q\left(\varphi_{Br2}-\varphi_{Br0}\right)+\left(qE-2qE\right)\left(r_{0}-x-r_{2}\right)-\frac{1}{2}k\left(l_{0}-r_{2}\right)\left(l_{0}-r_{2}-x^{\prime}\right)=\frac{1}{2}m\left(2v_{1}\right)^{2}-\frac{1}{2}mv_{1}^{2} $$
++$$ \begin{array}{l} \displaystyle q\left(\varphi_{Br2}-\varphi_{Br0}\right)+\left(qE-2qE\right)\left(r_{0}-x-r_{2}\right)-\frac{1}{2}k\left(l_{0}-r_{2}\right)\left(l_{0}-r_{2}-x^{\prime}\right) \\ \displaystyle \qquad =\frac{1}{2}m\left(2v_{1}\right)^{2}-\frac{1}{2}mv_{1}^{2} \end{array} $$
+ 
+ 对 B 有
+ 
+@@ -702,11 +702,11 @@ $$ q\left(\varphi_{Ar2}-\varphi_{Ar0}\right)+\left(qE-2qE\right)x-\frac{1}{2}k\l
+ 
+ 对 A 根据动能定理有
+ 
+-$$ q\left(\varphi_{Br2}-\varphi_{Br0}\right)+\left(qE-2qE\right)\left(r_{0}-x_{1}-r_{2}\right)-\frac{1}{2}k\left(l_{0}-r_{2}\right)\left(l_{0}-r_{2}-x_{1}^{\prime}\right)=\frac{1}{2}mv^{\prime2}-\frac{1}{2}m\left(2v_{1}\right)^{2} $$
++$$ \begin{array}{l} \displaystyle q\left(\varphi_{Br2}-\varphi_{Br0}\right)+\left(qE-2qE\right)\left(r_{0}-x_{1}-r_{2}\right)-\frac{1}{2}k\left(l_{0}-r_{2}\right)\left(l_{0}-r_{2}-x_{1}^{\prime}\right) \\ \displaystyle \qquad =\frac{1}{2}mv^{\prime2}-\frac{1}{2}m\left(2v_{1}\right)^{2} \end{array} $$
+ 
+ 对 B
+ 
+-$$ q\left(\varphi_{Ar2}-\varphi_{Ar0}\right)+\left(qE-2qE\right)x_{1}-\frac{1}{2}k\left(l_{0}-r_{2}\right)x_{1}^{\prime}=\frac{1}{2}m\left(v^{\prime}-2v_{1}\right)^{2} $$
++$$ \begin{array}{l} \displaystyle q\left(\varphi_{Ar2}-\varphi_{Ar0}\right)+\left(qE-2qE\right)x_{1}-\frac{1}{2}k\left(l_{0}-r_{2}\right)x_{1}^{\prime} \\ \displaystyle \qquad =\frac{1}{2}m\left(v^{\prime}-2v_{1}\right)^{2} \end{array} $$
+ 
+ 联立解得  $v' = (1 + \sqrt{3})v_{1}$
+ }

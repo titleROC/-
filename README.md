@@ -68,8 +68,8 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 - [`答案速查/`](答案速查/README.md)：各卷选择题的答案，用学生版做完后对答案用。
 
 两者由 [`scripts/gen_index.py`](scripts/gen_index.py) 根据 `LaTeX源码/` 中每道题的题库平台标注自动生成。
-标注有误的题（如标成单选题、答案却是 AD）按题目结构作了订正或推断。这些题，缺选项、没标答案或缺分值的题，
-以及 PDF 题号与原卷不一致的卷，都列在[存疑清单](知识点索引/存疑清单.md)里。
+标注有误的题（如标成单选题、答案却是 AD）按题目结构作了订正或推断。这些题，以及缺选项、缺图、没标答案、
+缺分值或分值可疑、缺详解的题，还有 PDF 题号与原卷不一致的卷，都列在[存疑清单](知识点索引/存疑清单.md)里。
 
 ## 联考
 
@@ -82,24 +82,29 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 试卷内容来自开源项目 [YLXDXX/gaokao-physics-archive](https://github.com/YLXDXX/gaokao-physics-archive)
 （Gitee 镜像：[ylxdxx/gaokao-physics-archive](https://gitee.com/ylxdxx/gaokao-physics-archive)）。
 该项目把历年高考物理真题逐题校对后做成 LaTeX 源，并附上答案和详解。
-`LaTeX源码/` 是该项目提交 `5a60bb3`（2026-10-11）中 2020—2026 年的源文件，`高考真题/` 中的 PDF 由它用 XeLaTeX 编译生成；
-中文字体使用 TeX Live 自带的 Fandol 字体；Fandol 缺少的生僻字和个别卷中 ⑪ 以上的圈码用 Noto CJK 字体。
+`LaTeX源码/` 是该项目提交 `5a60bb3`（2026-10-11）中 2020—2026 年的源文件，外加本仓库的少量订正：
+补上图片尺寸、去掉误用的图、补上漏标的答案、改正分值笔误等，见 [`LaTeX源码/订正补丁/`](LaTeX源码/订正补丁/README.md)。
+`高考真题/` 中的 PDF 由它用 XeLaTeX 编译生成。中文字体使用 TeX Live 自带的 Fandol 字体；Fandol 缺少的生僻字，
+以及个别卷中 ⑪ 以上的圈码，用 Noto CJK 字体。SVG 图中的文字按 [`scripts/fonts.conf`](scripts/fonts.conf) 固定替换：
+西文用 Liberation Serif，汉字用文鼎 PL 简报宋（AR PL SungtiL GB）。
 
-试题是重新排版的，不是原卷扫描件，个别题目的图片和版式可能与原卷不同；部分卷的解析暂不完整。
+试题是重新排版的，不是原卷扫描件，个别题目的图片和版式可能与原卷不同；部分卷的解析暂不完整（缺详解的题见存疑清单）。
 上游记录的异常和待核验事项见 [`LaTeX源码/异常记录/`](LaTeX源码/异常记录/)。正式使用前，请对照各省教育考试院公布的原卷核对。
 
 重新编译（Ubuntu/Debian）：
 
 ```bash
 sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
-  texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk
-scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源，会覆盖这些年份的试卷和公共宏包，见 LaTeX源码/README.md
+  texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源（自动重新应用订正补丁），会覆盖这些年份的试卷和公共宏包，见 LaTeX源码/README.md
 scripts/build_gaokao_pdfs.sh 2020 2026      # 编译这些年份的试卷和全部专题练习，JOBS=8 可加速
 python3 scripts/gen_index.py                # 改了 LaTeX源码/ 后更新知识点索引和答案速查（同步脚本会自动运行）
 ```
 
 - 只编译专题练习：`scripts/build_gaokao_pdfs.sh 专题练习`；只编译试卷：在命令前加 `TOPICS=0`。
-- 编译结果可复现：构建脚本固定了写进 PDF 的时间戳，用同一版本的 TeX Live 重新编译时，源文件没变的卷，PDF 逐字节不变，
-  git 里只会出现真正改过的 PDF。
+- 编译结果可复现：构建脚本固定了写进 PDF 的时间戳和 SVG 图的字体替换，并消除了 xdvipdfmx 处理个别 PNG 图时的随机字节。
+  用同一版本的 TeX Live、Inkscape 和字体包
+  重新编译时，源文件没变的卷，PDF 逐字节不变，git 里只会出现真正改过的 PDF。
+  现在的 PDF 是在 Ubuntu 24.04 上用 TeX Live 2023（xdvipdfmx 20220710）和 Inkscape 1.2.2 编译的。
 
 高考试题的著作权归命题单位所有，本仓库仅供个人学习和研究使用。
