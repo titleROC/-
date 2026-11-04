@@ -46,6 +46,13 @@ CHOICE_TYPES = ("单选题", "多选题")
 CHOICE_MACRO_RE = re.compile(r"\\(?:two|three|four|five|six|seven|eight|nine)choices\b")
 CHOICES_RE = re.compile(r"\\(?:two|three|four|five|six|seven|eight|nine)choices\s*\[([^\]]*)\]")
 XZ_RE = re.compile(r"\\xzanswer\{([^{}]*)\}")
+# 小问要求填选项字母的提示语，以及题干里的选项标记（A．、（A）、a．或选项命令）
+SUBCHOICE_CUE_RE = re.compile(r"[（(]\s*(?:多选|单选)|填正确答案(?:前的)?(?:标号|字母|序号)|选项前的?(?:字母|序号|代号)")
+OPTION_MARK_RE = re.compile(r"(?:^|[\s（(])(?:[A-Da-d]\s*[．.、]|（[A-D]）|\([A-D]\))|\\\w+choices\b", re.M)
+MEMO_TODO = "待补充"  # 上游缺详解时 \memoanswer 里的占位文字
+# 题干提到了图（“如图”“图（a）所示”“坐标图”等），以及题干中的插图命令
+FIG_CUE_RE = re.compile(r"如图|图\s*[（(]?[a-d1-9甲乙丙丁][）)]?\s*所示|题图|图示范围|坐标图")
+FIG_CMD_RE = re.compile(r"\\(?:\w*picture|includegraphics|includesvg)\b|ispicture\s*=\s*true")
 
 
 @dataclass
@@ -67,6 +74,9 @@ class Question:
     pure_choice: bool = False
     answer_missing: bool = False  # 有选项、但源文件没有标出答案
     options_missing: bool = False  # 答案是选项字母、但题干里没有选项
+    subopt: str = ""          # 小问要求填选项字母、整题却没有选项时，该小问的节选
+    memo_todo: str = ""       # 详解只有“待补充”占位：“全部”或“部分”
+    fig_missing: bool = False  # 题干提到了图，但没有插图
     snippet: str = ""
 
     @property
@@ -200,6 +210,41 @@ def guess_nonchoice(stem: str, before_memo: str) -> str:
     return "实验题" if tk else "计算题"
 
 
+def missing_suboptions(stem: str) -> str:
+    """小问要求填选项字母（如“（多选）”“填正确答案标号”），整题却没有选项时，返回该小问的节选"""
+    s = re.sub(r"(?<!\\)%.*", "", stem)
+    cue = SUBCHOICE_CUE_RE.search(s)
+    if not cue or OPTION_MARK_RE.search(s):
+        return ""
+    start = max(s.rfind("\\item", 0, cue.start()) + len("\\item"), cue.end() - 60, 0)
+    end = cue.end()
+    close = re.match(r"[^（）()\n]{0,12}[）)]", s[end:])
+    if close:
+        end += close.end()  # 带上提示语的右括号
+    return snippet(s[start:end], limit=72) or "—"
+
+
+def memo_status(memo: str) -> str:
+    """详解只有“待补充”占位时返回“全部”，只缺个别小问的详解时返回“部分”，否则返回空串"""
+    s = re.sub(r"(?<!\\)%.*", "", memo)
+    m = re.search(r"\\memoanswer\s*\{", s)
+    if not m:
+        return ""
+    depth, i = 1, m.end()
+    while i < len(s) and depth:
+        if s[i] == "\\":
+            i += 2
+            continue
+        depth += {"{": 1, "}": -1}.get(s[i], 0)
+        i += 1
+    inner = re.sub(r"\s+", "", s[m.end():i - 1])
+    if not inner:
+        return "全部"
+    if MEMO_TODO not in inner:
+        return ""
+    return "全部" if len(inner) <= 40 else "部分"
+
+
 def classify(q: Question, stem: str, before_memo: str) -> None:
     has_sub = bool(re.search(r"\\begin\{enumerate\}|（2）|\(2\)", stem))
     has_options = bool(q.answers) or bool(CHOICE_MACRO_RE.search(stem))
@@ -236,6 +281,7 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
         meta = dict(re.findall(r"^%% (\w+):[ \t]*(.*?)[ \t]*$", head, flags=re.M))
         before_memo = body.split("%% memo:", 1)[0]
         stem = before_memo.split("%% answer:", 1)[0]
+        stem_nc = re.sub(r"(?<!\\)%.*", "", stem)
         answers = [m.group(1) for o in CHOICES_RE.findall(stem) if (m := re.search(r"answer\s*=\s*([A-Z]+)", o))]
         tag_answer = re.search(r"^%% answer:[ \t]*(.*?)[ \t]*$", before_memo, flags=re.M)
         # 题干没有选项、作答却只有选项字母：是丢了选项的选择题
@@ -252,6 +298,9 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
             degree=meta.get("degree", "") if meta.get("degree", "").isdigit() and meta.get("degree") != "0" else "",
             answers=answers or [a.strip() for a in XZ_RE.findall(stem) if a.strip()],
             options_missing=options_missing,
+            subopt="" if options_missing else missing_suboptions(stem),
+            memo_todo=memo_status(body.split("%% memo:", 1)[1] if "%% memo:" in body else ""),
+            fig_missing=bool(FIG_CUE_RE.search(stem_nc)) and not FIG_CMD_RE.search(stem_nc),
             snippet=snippet(stem),
         )
         classify(q, stem, before_memo)
@@ -390,19 +439,40 @@ def ranges(pairs: list[tuple[int, int]]) -> str:
     return "；".join(f"{g[0][0]} → {g[0][1]}" if len(g) == 1 else f"{g[0][0]}—{g[-1][0]} → {g[0][1]}—{g[-1][1]}" for g in groups)
 
 
+def md_table(header: list[str], rows: list[list[str]]) -> list[str]:
+    """Markdown 表格的各行；没有数据行时只写“无。”"""
+    if not rows:
+        return ["无。"]
+    return ["| " + " | ".join(header) + " |", "| " + " | ".join(":--" for _ in header) + " |"] + \
+        ["| " + " | ".join(r) + " |" for r in rows]
+
+
+def suspicious_score(q: Question) -> bool:
+    """选择题超过 8 分、其他题超过 25 分（上海卷综合题除外）的分值，多半是平台录入错误"""
+    if not q.score:
+        return False
+    if q.type in CHOICE_TYPES and q.pure_choice:
+        return int(q.score) > 8
+    return int(q.score) > 25 and q.paper != "上海"
+
+
 def render_issues(qs: list[Question]) -> str:
     papers: dict[tuple, list[Question]] = defaultdict(list)
     for q in qs:
         papers[(q.year, q.paper)].append(q)
     keys = sorted(papers, key=lambda k: (k[0], order_key(PAPER_ORDER, k[1])))
 
+    def in_order(items: list[Question]) -> list[Question]:
+        return sorted(items, key=lambda q: (paper_key(q), q.pos))
+
     typed = [q for q in qs if q.type_note and not q.options_missing]
     lines = [
         "# 存疑清单",
         "",
         "生成[知识点索引](README.md)和[答案速查](../答案速查/README.md)时发现的、源文件中需要核对的地方："
-        "题库平台的标注和题目本身对不上、选择题缺选项或没标答案、缺少分值，以及 PDF 题号和原卷题号不一致。"
-        "索引已按下表处理，源文件没有改动。这些问题大多来自上游的平台数据，可以反馈给上游。",
+        "题库平台的标注和题目本身对不上、选择题或小问缺选项、选择题没标答案、分值缺失或可能有误、缺少详解，"
+        "以及 PDF 题号和原卷题号不一致。索引已按下表处理，源文件没有改动。这些问题大多来自上游的平台数据，可以反馈给上游；"
+        "本仓库已经订正的上游错误见 [`LaTeX源码/订正补丁/`](../LaTeX源码/订正补丁/README.md)。",
         "",
         GENERATED_NOTE,
         "",
@@ -410,12 +480,11 @@ def render_issues(qs: list[Question]) -> str:
         "",
         "“按题目结构推断”的规则：只有填空的算填空题，有填空又有小问或作答的算实验题，其余算计算题。推断可能出错，以原卷为准。",
         "",
-        "| 年份 | 试卷 | 题号 | 标注题型 | 实际情况 | 索引中按 |",
-        "| :-- | :-- | :-- | :-- | :-- | :-- |",
     ]
-    for q in sorted(typed, key=lambda q: (paper_key(q), q.pos)):
-        lines.append(f"| {q.year} | {q.paper} | {q.num_label} | {q.tag_type or '—'} | {q.type_note} "
-                     f"| {q.type}{'（按题目结构推断）' if q.inferred else ''} |")
+    lines += md_table(
+        ["年份", "试卷", "题号", "标注题型", "实际情况", "索引中按"],
+        [[q.year, q.paper, q.num_label, q.tag_type or "—", q.type_note,
+          f"{q.type}{'（按题目结构推断）' if q.inferred else ''}"] for q in in_order(typed)])
 
     no_options = [q for q in qs if q.options_missing]
     lines += [
@@ -424,11 +493,35 @@ def render_issues(qs: list[Question]) -> str:
         "",
         "题干以“（ ）”结尾、作答只有选项字母，但源文件里没有选项，学生版和教师版 PDF 中都看不到选项，需要对照原卷补上。",
         "",
-        "| 年份 | 试卷 | 题号 | 标注题型 | 答案 | 索引中按 |",
-        "| :-- | :-- | :-- | :-- | :-- | :-- |",
     ]
-    lines += [f"| {q.year} | {q.paper} | {q.num_label} | {q.tag_type or '—'} | {'、'.join(q.answers)} | {q.type} |"
-              for q in sorted(no_options, key=lambda q: (paper_key(q), q.pos))]
+    lines += md_table(["年份", "试卷", "题号", "标注题型", "答案", "索引中按"],
+                      [[q.year, q.paper, q.num_label, q.tag_type or "—", "、".join(q.answers), q.type]
+                       for q in in_order(no_options)])
+
+    no_subopt = [q for q in qs if q.subopt]
+    lines += [
+        "",
+        f"## 小问缺少选项（{len(no_subopt)} 题）",
+        "",
+        "小问要求填选项字母（如“（多选）”“填正确答案标号”），但源文件里没有给出选项，"
+        "学生版和教师版 PDF 中都看不到，需要对照原卷补上。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号", "小问（节选）"],
+                      [[q.year, q.paper, q.num_label, cell(q.subopt)] for q in in_order(no_subopt)])
+
+    no_figure = [q for q in qs if q.fig_missing]
+    lines += [
+        "",
+        f"## 题图缺失（{len(no_figure)} 题）",
+        "",
+        "题干提到了图（“如图”“图（a）所示”“坐标图”等），但源文件中这道题没有图，学生版和教师版 PDF 中都看不到，"
+        "需要对照原卷补上。上游误用了别的题的图的，本仓库已经去掉，见 "
+        "[`LaTeX源码/订正补丁/`](../LaTeX源码/订正补丁/README.md)。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号", "题目"],
+                      [[q.year, q.paper, q.num_label, cell(q.snippet) or "—"] for q in in_order(no_figure)])
 
     no_answer = [q for q in qs if q.answer_missing]
     lines += [
@@ -437,11 +530,21 @@ def render_issues(qs: list[Question]) -> str:
         "",
         "题目有选项，但选项命令里没有 `answer=`，正文里也没有 `\\xzanswer`，所以教师版不会标出答案，答案速查中显示为“？”。",
         "",
-        "| 年份 | 试卷 | 题号 | 题型 | 源文件中的 `%% answer` 注释 |",
-        "| :-- | :-- | :-- | :-- | :-- |",
     ]
-    lines += [f"| {q.year} | {q.paper} | {q.num_label} | {q.type} | {cell(q.tag_answer) or '（空）'} |"
-              for q in sorted(no_answer, key=lambda q: (paper_key(q), q.pos))]
+    lines += md_table(["年份", "试卷", "题号", "题型", "源文件中的 `%% answer` 注释"],
+                      [[q.year, q.paper, q.num_label, q.type, cell(q.tag_answer) or "（空）"]
+                       for q in in_order(no_answer)])
+
+    odd_scores = [q for q in qs if suspicious_score(q)]
+    lines += [
+        "",
+        f"## 分值可能有误（{len(odd_scores)} 题）",
+        "",
+        "选择题超过 8 分、其他题超过 25 分（上海卷综合题除外）的平台标注分值，多半是录入错误，索引中照原样显示。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号", "题型", "标注分值"],
+                      [[q.year, q.paper, q.num_label, q.type, q.score] for q in in_order(odd_scores)])
 
     missing = [(k, [q for q in papers[k] if not q.score]) for k in keys]
     missing = [(k, ms) for k, ms in missing if ms]
@@ -451,12 +554,25 @@ def render_issues(qs: list[Question]) -> str:
         "",
         "平台标注的分值为 0 或为空，索引中显示为“—”。",
         "",
-        "| 年份 | 试卷 | 题号 |",
-        "| :-- | :-- | :-- |",
     ]
-    for (y, p), ms in missing:
-        nums = f"全部 {len(ms)} 题" if len(ms) == len(papers[(y, p)]) else "、".join(q.num_label for q in ms)
-        lines.append(f"| {y} | {p} | {nums} |")
+    lines += md_table(["年份", "试卷", "题号"], [
+        [y, p, f"全部 {len(ms)} 题" if len(ms) == len(papers[(y, p)]) else "、".join(q.num_label for q in ms)]
+        for (y, p), ms in missing])
+
+    todo = [(k, [q for q in papers[k] if q.memo_todo]) for k in keys]
+    todo = [(k, ms) for k, ms in todo if ms]
+    lines += [
+        "",
+        f"## 缺少详解（{len(todo)} 套卷、{sum(len(ms) for _, ms in todo)} 题）",
+        "",
+        "详解只有“待补充”占位，教师版中这些题没有解析；“部分”表示只缺个别小问的详解。"
+        "上游的记录见 [`LaTeX源码/异常记录/`](../LaTeX源码/异常记录/)。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号"], [
+        [y, p, f"全部 {len(ms)} 题" if len(ms) == len(papers[(y, p)]) else
+         "、".join(q.num_label + ("（部分）" if q.memo_todo == "部分" else "") for q in ms)]
+        for (y, p), ms in todo])
 
     renumbered = []
     for k in keys:
@@ -479,10 +595,9 @@ def render_issues(qs: list[Question]) -> str:
         "上游合并、拆分了同号题，或原始材料缺题时，两者就会错开。索引和答案速查一律用 PDF 题号，"
         "原因见 [`LaTeX源码/异常记录/`](../LaTeX源码/异常记录/) 中对应年份的记录。",
         "",
-        "| 年份 | 试卷 | 源文件中的原题号 | PDF 题号 → 原题号 |",
-        "| :-- | :-- | :-- | :-- |",
     ]
-    lines += [f"| {y} | {p} | {note} | {mapping} |" for (y, p), note, mapping in renumbered]
+    lines += md_table(["年份", "试卷", "源文件中的原题号", "PDF 题号 → 原题号"],
+                      [[y, p, note, mapping] for (y, p), note, mapping in renumbered])
     return "\n".join(lines) + "\n"
 
 
