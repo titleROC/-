@@ -42,6 +42,21 @@ index 6968272..73d67c3 100644
  
  	\onepicture[h=2.8cm, align=right]{\includesvg{figs/03g}}
  \end{enumerate}
+diff --git a/2025/云南/云南.tex b/2025/云南/云南.tex
+index a50399d..1e3c103 100644
+--- a/2025/云南/云南.tex
++++ b/2025/云南/云南.tex
+@@ -353,8 +353,8 @@ CD．由 AB 选项分析可知，b 管中刻度从上到下温度逐渐升高，
+ \item
+ %% number: 10
+ %% paperName: 2025年云南高考第 10 题 6 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 功和能
+ %% point: 动能定理
+ %% method: 无
 diff --git a/2025/北京/北京.tex b/2025/北京/北京.tex
 index 0367613..4fba946 100644
 --- a/2025/北京/北京.tex
@@ -55,3 +70,48 @@ index 0367613..4fba946 100644
  
  B．闭合开关后，电容器充电，充电完成后相当于断路，所以 A$_{2}$ 亮一下后熄灭，B 错误；
  
+diff --git a/2025/山东/山东.tex b/2025/山东/山东.tex
+index 3213d55..91e0577 100644
+--- a/2025/山东/山东.tex
++++ b/2025/山东/山东.tex
+@@ -838,8 +838,8 @@ $E_{pm} = \frac{1}{2}(m + m_{a})v_{4}^{2} + \frac{1}{2}kx_{1}^{2} - \frac{1}{2}(
+ \item
+ %% number: 18
+ %% paperName: 2025年山东高考第 18 题 16 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 6
++%% type: 计算题
+ %% chapter: 力物体的平衡
+ %% point: 力
+ %% method: 无
+diff --git a/2025/河北/河北.tex b/2025/河北/河北.tex
+index dae0989..dad8772 100644
+--- a/2025/河北/河北.tex
++++ b/2025/河北/河北.tex
+@@ -446,8 +446,8 @@ D．因金属板厚度不计，当粒子在磁场中运动轨迹的弦长仍为
+ \item
+ %% number: 12
+ %% paperName: 2025年河北高考第 12 题 8 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 4
++%% type: 实验题
+ %% chapter: 力物体的平衡
+ %% point: 力
+ %% method: 无
+diff --git a/2025/重庆/重庆.tex b/2025/重庆/重庆.tex
+index 276bba5..a30e3d2 100644
+--- a/2025/重庆/重庆.tex
++++ b/2025/重庆/重庆.tex
+@@ -434,8 +434,8 @@ A．由于 gh 在磁场中运动时做匀变速直线运动，则有 $v_{\max} =
+ \item
+ %% number: 12
+ %% paperName: 2025年重庆高考第 12 题 10 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 4
++%% type: 实验题
+ %% chapter: 电路
+ %% point: 传感器
+ %% method: 无

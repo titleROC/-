@@ -1,3 +1,18 @@
+diff --git a/2026/1月浙江/1月浙江.tex b/2026/1月浙江/1月浙江.tex
+index a461238..e09c1fc 100644
+--- a/2026/1月浙江/1月浙江.tex
++++ b/2026/1月浙江/1月浙江.tex
+@@ -462,8 +462,8 @@ CD．在空气膜 $Q$ 处注入一滴油后，光线能通过油膜界面，不
+ \item
+ %% number: 13
+ %% paperName: 2026年1月浙江选考第 13 题 4 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 磁场
+ %% point: 带电粒子在磁场中的运动
+ %% method: 无
 diff --git a/2026/上海/上海.tex b/2026/上海/上海.tex
 index 5cb073b..a77aff1 100644
 --- a/2026/上海/上海.tex
@@ -43,3 +58,63 @@ index 94a02df..05ae1aa 100644
  \end{enumerate}
  \threepicture[labelA=2026江苏12a, labelB=2026江苏12b, labelC=2026江苏12c, h=3.2cm, align=right]
  {figs/12a.png}
+diff --git a/2026/河南/河南.tex b/2026/河南/河南.tex
+index 173bda9..cdda75d 100644
+--- a/2026/河南/河南.tex
++++ b/2026/河南/河南.tex
+@@ -651,8 +651,8 @@ $i_{2}=\frac{u_{C}}{R_{2}}$
+ \item
+ %% number: 15
+ %% paperName: 2026年河南高考第 15 题 17 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 6
++%% type: 计算题
+ %% chapter: 运动和力
+ %% point: 动量和能量
+ %% method: 无
+diff --git a/2026/甘肃/甘肃.tex b/2026/甘肃/甘肃.tex
+index ae2df14..45c2f44 100644
+--- a/2026/甘肃/甘肃.tex
++++ b/2026/甘肃/甘肃.tex
+@@ -565,8 +565,8 @@ D．若向上平移挡板，由于 $L$、$d$ 不变，根据 $\Delta x = \frac{L
+ \item
+ %% number: 14
+ %% paperName: 2026年甘肃高考第 14 题 16 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 6
++%% type: 计算题
+ %% chapter: 功和能
+ %% point: 动能定理求路程
+ %% method: 无
+diff --git a/2026/贵州/贵州.tex b/2026/贵州/贵州.tex
+index 3d07fc6..41604e2 100644
+--- a/2026/贵州/贵州.tex
++++ b/2026/贵州/贵州.tex
+@@ -608,8 +608,8 @@ $\frac{U_{2}-U_{1}}{R_{0}}=\frac{U_{1}}{R_{x}}+\frac{U_{1}}{R_{V1}}$
+ \item
+ %% number: 14
+ %% paperName: 2026年贵州高考第 14 题 15 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 6
++%% type: 计算题
+ %% chapter: 电场
+ %% point: 带电粒子的直线运动
+ %% method: 无
+diff --git a/2026/黑吉辽/黑吉辽.tex b/2026/黑吉辽/黑吉辽.tex
+index a101fd9..8729f69 100644
+--- a/2026/黑吉辽/黑吉辽.tex
++++ b/2026/黑吉辽/黑吉辽.tex
+@@ -619,8 +619,8 @@ $C$ 与 $A$ 碰撞，由动量守恒定律和能量守恒定律有
+ \item
+ %% number: 15
+ %% paperName: 2026年黑吉辽高考第 15 题 16 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 6
++%% type: 计算题
+ %% chapter: 磁场
+ %% point: 带电粒子在组合场中的运动
+ %% method: 无
