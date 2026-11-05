@@ -1,0 +1,52 @@
+# 每个 PR 和默认分支上的提交都检查：
+#   - 知识点索引、答案速查是否由当前的 LaTeX源码/ 生成（scripts/gen_index.py --check）
+#   - Markdown 里的相对链接和锚点是否有效（scripts/check_links.py）
+#   - 从上游固定的提交重新同步并应用订正补丁后，LaTeX源码/ 和索引是否一字不变
+#     （改了 LaTeX源码/<年份>/ 下的 .tex 却没有用 SAVE_PATCHES=1 更新补丁时会失败）
+name: 检查
+
+on:
+  pull_request:
+  push:
+    branches: [claude/friendly-pascal-aei38d]   # 默认分支；改名后这里也要改
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  index-and-links:
+    name: 索引与链接
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: 知识点索引和答案速查是最新的
+        run: python3 scripts/gen_index.py --check
+      - name: 相对链接都有效
+        run: python3 scripts/check_links.py
+
+  sync-roundtrip:
+    name: 同步往返
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: 取 LaTeX源码/ 所依据的上游提交
+        run: |
+          rev="$(sed -n 's/^ARCHIVE_REV="\${ARCHIVE_REV:-\([0-9a-f]\{40\}\)}"$/\1/p' scripts/sync_latex_sources.sh)"
+          test -n "$rev"
+          git init -q .cache/gaokao-physics-archive
+          git -C .cache/gaokao-physics-archive remote add origin https://github.com/YLXDXX/gaokao-physics-archive.git
+          git -C .cache/gaokao-physics-archive fetch -q --depth 1 origin "$rev"
+      - name: 从上游重新同步
+        run: scripts/sync_latex_sources.sh 2020 2026
+      - name: 同步后仓库没有变化
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git -c core.quotepath=off status --short
+            echo "::error::从上游重新同步、应用订正补丁并重新生成索引后，仓库有变化（见上面的文件列表）。改了 LaTeX源码/<年份>/ 下的 .tex 后，请运行 SAVE_PATCHES=1 scripts/sync_latex_sources.sh 更新订正补丁，再运行 python3 scripts/gen_index.py"
+            exit 1
+          fi
