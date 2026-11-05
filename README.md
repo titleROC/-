@@ -34,6 +34,7 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 scripts/pdf_names.py                  PDF 在 Release 中的拼音文件名和下载地址
 scripts/check_links.py                检查 Markdown 文件中的相对链接
 scripts/changed_papers.py             列出一次改动后要重新编译的卷（CI 用）
+scripts/release_helpers.sh            发布 PDF 时用的重试等辅助函数（CI 用）
 .github/workflows/                    GitHub Actions：PR 检查、PDF 编译和发布、每周的上游检查
 ```
 
@@ -158,7 +159,9 @@ GitHub Actions（[`.github/workflows/`](.github/workflows/)）会自动做这些
   合并前可以在 PR 的 Checks 页面下载预览。安装 TeX Live 约 7 分钟，之后每套卷约 20 秒；
   改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，约需半小时（这时不保留附件）。
 - **发布 PDF**（默认分支更新后）：编译有改动的卷和 Release 中缺 PDF 的卷，上传到 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf)，
-  更新 Release 说明中的下载链接表。也可以在 Actions 页面手动运行，选“全部重新编译”时重新上传全部 PDF。
+  更新 Release 说明中的下载链接表。GitHub 接口临时出错（如 HTTP 500）时，每一步都会自动重试几次；
+  仍然失败时运行会标红，GitHub 会发邮件通知，这时在 Actions 页面重新运行即可（会重新编译，约半小时）。
+  也可以在 Actions 页面手动运行，选“全部重新编译”时重新上传全部 PDF。
 - **上游检查**：每周一检查一次上游（见上文「2026 年缺卷」）。
 
 仓库私有时，这些都用 GitHub Actions 每月的免费额度。

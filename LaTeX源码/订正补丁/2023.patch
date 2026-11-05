@@ -422,7 +422,7 @@ index d9c0e9b..7add93e 100644
  \jdanswer{
  \begin{enumerate}
 diff --git a/2023/6月浙江/6月浙江.tex b/2023/6月浙江/6月浙江.tex
-index 1273414..9c2642a 100644
+index 1273414..a87d3ad 100644
 --- a/2023/6月浙江/6月浙江.tex
 +++ b/2023/6月浙江/6月浙江.tex
 @@ -50,7 +50,7 @@ D．速度和加速度都是既有大小又有方向的物理量，是矢量，
@@ -530,9 +530,9 @@ index 1273414..9c2642a 100644
  \onepicture[w=6cm]{figs/13_an.png}
  
 +有光射出的区域是以三条灯带上各点为圆心、半径为 $0.3\Um$ 的所有圆合在一起，所以它比三角形向外扩大 $0.3\Um$，三个角处是半径为 $0.3\Um$ 的圆弧，故 A、B 错误。
-+
-+等腰直角三角形的内切圆半径为
  
++等腰直角三角形的内切圆半径为
++
 +$r' = \frac{a + a - \sqrt 2 a}{2} = \frac{(2 - \sqrt 2) \times 0.9}{2}\Um \approx 0.26\Um < r$
  
  \onepicture[w=6cm]{figs/13_an2.png}
@@ -629,6 +629,17 @@ index 1273414..9c2642a 100644
  {figs/16a.png}
  {figs/16b.png}
  {figs/16c.png}
+@@ -716,8 +742,8 @@ $\Delta E_{p} > mg$($\Delta x_{A} + \Delta x_{B}$)
+ \item
+ %% number: 16
+ %% paperName: 2023年6月浙江高考第 16 题 2 分
+-%% typeId: 4
+-%% type: 实验题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 交流电
+ %% point: 变压器
+ %% method: 无
 @@ -725,14 +751,16 @@ $\Delta E_{p} > mg$($\Delta x_{A} + \Delta x_{B}$)
  %% degree: 750
  %% duplicateId: 0
@@ -2723,6 +2734,21 @@ index 5d69f9d..0db7305 100644
  }
  
  \end{enumerate}
+diff --git a/2023/天津/天津.tex b/2023/天津/天津.tex
+index f71adee..09d5264 100644
+--- a/2023/天津/天津.tex
++++ b/2023/天津/天津.tex
+@@ -265,8 +265,8 @@ D．质点只是上下振动，不随波左右移动，故 D 错误。
+ \item
+ %% number: 8
+ %% paperName: 2023年天津高考第 8 题 5 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 电场
+ %% point: 带电粒子的轨迹类问题
+ %% method: 无
 diff --git a/2023/广东/广东.tex b/2023/广东/广东.tex
 index 615a2d0..018035e 100644
 --- a/2023/广东/广东.tex
@@ -3219,7 +3245,7 @@ literal 0
 HcmV?d00001
 
 diff --git a/2023/湖南/湖南.tex b/2023/湖南/湖南.tex
-index 5f3095d..29a7dfe 100644
+index 5f3095d..87b3899 100644
 --- a/2023/湖南/湖南.tex
 +++ b/2023/湖南/湖南.tex
 @@ -54,7 +54,7 @@ D．核聚变反应过程中放出大量能量，有质量亏损，D 错误。
@@ -3301,6 +3327,17 @@ index 5f3095d..29a7dfe 100644
  \fourchoices[answer=AC]
  {线圈转动的角速度为 4$\omega$}
  {灯泡两端电压有效值为 3$\sqrt 2 nBL^{2}\omega$}
+@@ -406,8 +406,8 @@ D．若仅将小轮半径变为原来的两倍，根据 $v = \omega r$ 可知小
+ \item
+ %% number: 10
+ %% paperName: 2023年湖南高考第 10 题 5 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 运动和力
+ %% point: 牛顿第二定律
+ %% method: 临界
 @@ -416,7 +416,7 @@ D．若仅将小轮半径变为原来的两倍，根据 $v = \omega r$ 可知小
  %% duplicateId: 0
  %% body:
@@ -3835,3 +3872,18 @@ index 45c8285..3ef3e7d 100644
  
  联立解得  $v' = (1 + \sqrt{3})v_{1}$
  }
+diff --git a/2023/辽宁/辽宁.tex b/2023/辽宁/辽宁.tex
+index 2512162..acd740d 100644
+--- a/2023/辽宁/辽宁.tex
++++ b/2023/辽宁/辽宁.tex
+@@ -242,8 +242,8 @@
+ \item
+ %% number: 9
+ %% paperName: 2023年辽宁高考第 9 题 6 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 电场
+ %% point: 等势面
+ %% method: 无

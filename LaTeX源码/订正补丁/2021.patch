@@ -120,10 +120,36 @@ index 5b0fd7e..3a0d680 100644
  
  \begin{center}
  \begin{tblr}{|c|c|}
+diff --git a/2021/广东/广东.tex b/2021/广东/广东.tex
+index f6d5797..42b8b09 100644
+--- a/2021/广东/广东.tex
++++ b/2021/广东/广东.tex
+@@ -754,8 +754,8 @@ $1.3\times10^{5}\UPa$
+ \item
+ %% number: 17
+ %% paperName: 2021年广东高考第 17 题 6 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 3
++%% type: 填空题
+ %% chapter: 机械振动
+ %% point: 振动图象
+ %% method: 无
 diff --git a/2021/河北/河北.tex b/2021/河北/河北.tex
-index ff2f036..1617c54 100644
+index ff2f036..6ee2c74 100644
 --- a/2021/河北/河北.tex
 +++ b/2021/河北/河北.tex
+@@ -303,8 +303,8 @@ $P_{0}=\frac{\sqrt{2}NBL^{2}\omega I}{n_{0}}\left(\frac{n_{1}^{2}R_{2}+n_{2}^{2}
+ \item
+ %% number: 9
+ %% paperName: 2021年河北高考第 9 题 6 分
+-%% typeId: 1
+-%% type: 单选题
++%% typeId: 2
++%% type: 多选题
+ %% chapter: 曲线运动
+ %% point: 竖直平面圆周运动
+ %% method: 无
 @@ -589,13 +589,13 @@ $v=7.44\Ums$
  
  \item

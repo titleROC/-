@@ -2,6 +2,7 @@
 #   要编译的卷：标签 pdf（上次编译依据的提交）以来 LaTeX源码/ 中有改动的卷，加上 Release 中缺了 PDF 的卷；
 #   还没有 Release、公共文件变了，或手动运行时选了“全部重新编译”，就全部编译（约半小时）。
 #   上传后删掉已经没有对应卷的 PDF，把标签 pdf 移到这次的提交，并更新 Release 说明中的下载链接表。
+#   GitHub 接口偶尔会临时出错（如 HTTP 500），所以每个网络操作失败时都重试几次（见 scripts/release_helpers.sh）。
 name: 发布 PDF
 
 on:
@@ -36,15 +37,20 @@ jobs:
         env:
           FULL: ${{ inputs.full }}
         run: |
+          source scripts/release_helpers.sh
           assets="$RUNNER_TEMP/assets"
-          if gh release view "$TAG" --json assets --jq '.assets[].name' > "$assets" 2>/dev/null; then
+          state="$(release_state)"
+          if [ "$state" = yes ]; then
+            retry list_assets "$assets"
             echo "Release $TAG 现有 $(grep -c . "$assets" || true) 个 PDF"
           else
             : > "$assets"
             echo "还没有 Release $TAG"
           fi
           base=""
-          if git fetch -q --depth 1 origin "refs/tags/$TAG:refs/tags/$TAG" 2>/dev/null; then
+          remote_tag="$(retry git ls-remote origin "refs/tags/$TAG")"
+          if [ -n "$remote_tag" ]; then
+            retry git fetch -q --depth 1 origin "refs/tags/$TAG:refs/tags/$TAG"
             base="$(git rev-parse "$TAG^{commit}")"
             echo "上次编译依据的提交：$base"
           fi
@@ -83,6 +89,7 @@ jobs:
           fi
       - name: 上传到 Release
         run: |
+          source scripts/release_helpers.sh
           up="$RUNNER_TEMP/upload"
           mkdir -p "$up"
           python3 scripts/pdf_names.py assets | while IFS=$'\t' read -r local asset; do
@@ -90,22 +97,23 @@ jobs:
           done
           n="$(find "$up" -name '*.pdf' | wc -l)"
           python3 scripts/pdf_names.py notes "$GITHUB_SHA" > "$RUNNER_TEMP/notes.md"
-          if gh release view "$TAG" > /dev/null 2>&1; then
-            if [ "$n" -gt 0 ]; then gh release upload "$TAG" "$up"/*.pdf --clobber; fi
-          else
+          state="$(release_state)"
+          if [ "$state" = no ]; then
             test "$n" -gt 0
-            gh release create "$TAG" "$up"/*.pdf --title "高考物理真题 PDF" \
-              --notes-file "$RUNNER_TEMP/notes.md" --target "$GITHUB_SHA"
+            retry create_release "$RUNNER_TEMP/notes.md" "$GITHUB_SHA"
           fi
+          # --clobber 覆盖同名文件，所以上传中途出错时整批重传也没有问题
+          if [ "$n" -gt 0 ]; then retry gh release upload "$TAG" "$up"/*.pdf --clobber; fi
           echo "上传了 $n 个 PDF"
-          gh release view "$TAG" --json assets --jq '.assets[].name' > "$RUNNER_TEMP/assets"
+          retry list_assets "$RUNNER_TEMP/assets"
           python3 scripts/pdf_names.py stale "$RUNNER_TEMP/assets" | while read -r name; do
             echo "删除已经没有对应卷的 $name"
-            gh release delete-asset "$TAG" "$name" --yes
+            retry gh release delete-asset "$TAG" "$name" --yes \
+              || echo "::warning::没能删除 $name，下次发布时会再删"
           done
           git tag -f "$TAG" "$GITHUB_SHA"
-          git push -f origin "refs/tags/$TAG"
-          gh release edit "$TAG" --notes-file "$RUNNER_TEMP/notes.md"
+          retry git push -f origin "refs/tags/$TAG"
+          retry gh release edit "$TAG" --notes-file "$RUNNER_TEMP/notes.md"
           {
             echo "Release「$TAG」已更新到 \`$GITHUB_SHA\`，上传了 $n 个 PDF："
             echo "https://github.com/$GITHUB_REPOSITORY/releases/tag/$TAG"
