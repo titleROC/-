@@ -17,6 +17,21 @@ index 2db8703..3c84085 100644
  	\item
  	$\frac{v_{1}}{v_{2}}$ 的平均值为\tkanswer[1.8cm]{0.32}；（保留 2 位有效数字）
  	\item
+diff --git a/2022/北京/北京.tex b/2022/北京/北京.tex
+index 07d8ab0..65a9292 100644
+--- a/2022/北京/北京.tex
++++ b/2022/北京/北京.tex
+@@ -840,8 +840,8 @@ $T = \sqrt{\frac{4\pi^{2}r^{3}}{GM}}$
+ }
+ 
+ \item
+-%% number: 22
+-%% paperName: 2022年北京高考第 22 题 12 分
++%% number: 20
++%% paperName: 2022年北京高考第 20 题 12 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 磁场
 diff --git a/2022/天津/天津.tex b/2022/天津/天津.tex
 index 9825258..80c605a 100644
 --- a/2022/天津/天津.tex
@@ -57,3 +72,18 @@ index 60f2554..9f9a73f 100644
  %% degree: 350
  %% duplicateId: 0
  %% body:
+diff --git a/2022/江苏/江苏.tex b/2022/江苏/江苏.tex
+index 8224369..4fe680a 100644
+--- a/2022/江苏/江苏.tex
++++ b/2022/江苏/江苏.tex
+@@ -426,8 +426,8 @@
+ }
+ 
+ \item
+-%% number: 13
+-%% paperName: 2022年江苏高考第 13 题 8 分
++%% number: 12
++%% paperName: 2022年江苏高考第 12 题 8 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 光学
