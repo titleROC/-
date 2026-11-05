@@ -86,7 +86,7 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 
 ## 知识点索引与答案速查
 
-- [`知识点索引/`](知识点索引/README.md)：2112 道题按章节、知识点分组，每题列出年份、试卷、题号、题型、分值、难度和题干开头，
+- [`知识点索引/`](知识点索引/README.md)：2115 道题按章节、知识点分组，每题列出年份、试卷、题号、题型、分值、难度和题干开头，
   并链接到学生版和教师版 PDF；[`题目清单.csv`](知识点索引/题目清单.csv) 是全部题目的表格版，可以用 Excel 筛选。
 - [`答案速查/`](答案速查/README.md)：各卷选择题的答案，用学生版做完后对答案用。
 
@@ -106,7 +106,8 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 （Gitee 镜像：[ylxdxx/gaokao-physics-archive](https://gitee.com/ylxdxx/gaokao-physics-archive)）。
 该项目把历年高考物理真题逐题校对后做成 LaTeX 源，并附上答案和详解。
 `LaTeX源码/` 是该项目提交 `5a60bb3`（2026-10-11）中 2020—2026 年的源文件，外加本仓库的少量订正：
-补上图片尺寸、去掉误用的图、补上漏标的答案、改正分值笔误等，见 [`LaTeX源码/订正补丁/`](LaTeX源码/订正补丁/README.md)。
+补上图片尺寸、去掉误用的图、改正标错或漏标的答案、把放错位置的详解挪回原题、拆开被合并的两道题、改正分值和题号笔误等，
+见 [`LaTeX源码/订正补丁/`](LaTeX源码/订正补丁/README.md)。
 `高考真题/` 中的 PDF 由它用 XeLaTeX 编译生成。中文字体使用 TeX Live 自带的 Fandol 字体；Fandol 缺少的生僻字，
 以及个别卷中 ⑪ 以上的圈码，用 Noto CJK 字体。SVG 图中的文字按 [`scripts/fonts.conf`](scripts/fonts.conf) 固定替换：
 西文用 Liberation Serif，汉字用文鼎 PL 简报宋（AR PL SungtiL GB）。
