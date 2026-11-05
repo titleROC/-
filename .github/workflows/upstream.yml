@@ -1,0 +1,28 @@
+# 每周检查一次上游档案库：有新卷（如 2026 年天津、安徽、江西、福建卷）或已有试卷有改动时，这次运行失败，
+# GitHub 会通知仓库管理者；运行摘要里有新卷、改动的清单和同步命令。同步之前每周都会失败一次。
+name: 上游检查
+
+on:
+  schedule:
+    - cron: "37 1 * * 1"   # 每周一 01:37 UTC（北京时间 9:37）
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: 上游有没有新卷或改动
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: 运行 scripts/check_upstream.sh
+        run: |
+          status=0
+          scripts/check_upstream.sh > "$RUNNER_TEMP/upstream.txt" || status=$?
+          cat "$RUNNER_TEMP/upstream.txt"
+          { echo '```'; cat "$RUNNER_TEMP/upstream.txt"; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$status" = 2 ]; then
+            echo "::error::上游有新卷或改动，按摘要中的命令同步"
+          fi
+          exit "$status"

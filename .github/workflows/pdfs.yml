@@ -1,0 +1,68 @@
+# PR 改动了某套卷的源文件或 PDF 时，用与仓库 PDF 相同的工具链（Ubuntu 24.04 的 TeX Live 2023、Inkscape 1.2.2）
+# 重新编译这几套卷，要求编出的 PDF 与 PR 中的逐字节相同：PDF 没有随源文件更新，或编译不可复现，都会失败。
+# 改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，耗时较长。也可以在 Actions 页面手动运行，全部重新编译。
+name: PDF 可复现
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    name: 重新编译改动的卷
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 2   # PR 的合并提交及其第一个父提交（基准分支）
+      - name: 找出要重新编译的卷
+        id: targets
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT" = pull_request ]; then
+            python3 scripts/changed_papers.py HEAD^1 > "$RUNNER_TEMP/targets"
+          else
+            echo all > "$RUNNER_TEMP/targets"
+          fi
+          if [ -s "$RUNNER_TEMP/targets" ]; then
+            echo "any=true" >> "$GITHUB_OUTPUT"
+            echo "要重新编译："; cat "$RUNNER_TEMP/targets"
+          else
+            echo "any=false" >> "$GITHUB_OUTPUT"
+            echo "这次改动不涉及 PDF，跳过"
+          fi
+      - name: 安装 TeX Live、Inkscape 和字体
+        if: steps.targets.outputs.any == 'true'
+        run: |
+          sudo apt-get update -q
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
+            make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-science \
+            texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+          xelatex --version | head -n1; inkscape --version
+      - name: 重新编译
+        if: steps.targets.outputs.any == 'true'
+        run: |
+          mapfile -t targets < "$RUNNER_TEMP/targets"
+          if [ "${targets[0]}" = all ]; then
+            JOBS="$(nproc)" scripts/build_gaokao_pdfs.sh 2020 2026
+          else
+            JOBS="$(nproc)" scripts/build_gaokao_pdfs.sh "${targets[@]}"
+          fi
+      - name: 编出的 PDF 与仓库中的相同
+        if: steps.targets.outputs.any == 'true'
+        run: |
+          if [ -n "$(git status --porcelain -- 高考真题 专题练习)" ]; then
+            git -c core.quotepath=off status --short -- 高考真题 专题练习
+            echo "::error::重新编译出的 PDF 与仓库中的不同（见上面的文件列表）。改了源文件后，请用 scripts/build_gaokao_pdfs.sh 重新编译并提交 PDF"
+            exit 1
+          fi
+          echo "全部逐字节相同"

@@ -6,8 +6,9 @@
   python3 scripts/gen_index.py --check    只检查这两个目录是否是最新的（不是时以状态 1 退出）
 
 每道题的源文件里都有题库平台的标注（%% chapter、%% point、%% type、%% score、%% degree 等）。
-本脚本据此按章节、知识点汇总题目，并从选项命令的 answer= 和 \\xzanswer 读出选择题答案。
-标注和题目本身对不上的（例如标成单选题、答案却是 AD），按题目结构推断题型，列入 知识点索引/存疑清单.md。
+本脚本据此按章节、知识点汇总题目，并从选项命令的 answer=、\\xzanswer 和选择小问的 \\tkanswer 读出选择题答案。
+标注和题目本身对不上的（例如标成单选题、答案却是 AD），按题目结构推断题型，列入 知识点索引/存疑清单.md；
+答案与详解结论不一致、详解只有图或夹带了别的题、几道选择题被合并成一题等源文件问题，也列在那里。
 只用 Python 标准库；源文件不会被修改。
 """
 from __future__ import annotations
@@ -53,6 +54,17 @@ MEMO_TODO = "待补充"  # 上游缺详解时 \memoanswer 里的占位文字
 # 题干提到了图（“如图”“图（a）所示”“坐标图”等），以及题干中的插图命令
 FIG_CUE_RE = re.compile(r"如图|图\s*[（(]?[a-d1-9甲乙丙丁][）)]?\s*所示|题图|图示范围|坐标图")
 FIG_CMD_RE = re.compile(r"\\(?:\w*picture|includegraphics|includesvg)\b|ispicture\s*=\s*true")
+FIG_MACRO = r"\\(?:\w*picture|includegraphics|includesvg)\*?"
+# 用字母作答的填空（\tkanswer{B}）。同一小问列出了这些字母的选项，或答案后面注明“（多选）”“填正确答案标号”
+# “填器材前的字母代号”等，才算选择小问的答案；“滑片置于 A 端”“接线柱 D”这类字母不算
+TK_LETTER_RE = re.compile(r"\\tkanswer\s*(?:\[[^\]]*\])?\s*\{\s*([A-H]{1,5})\s*\}")
+CHOICE_HINT_RE = re.compile(r"[（(][^（）()]{0,8}(?:多选|单选|正确答案(?:前的)?(?:标号|字母|序号)|字母代号|对应的标号"
+                            r"|选项前的?(?:字母|序号|代号))")
+# 详解末尾的结论，如“故选 C。”“正确答案为 BD”（只认行末或 \memoanswer 结尾处的）
+CONCLUSION_RE = re.compile(r"(?:正确(?:答案|选项)?(?:为|是)|应选|故选|选)\s*[：:]?\s*\$?\\?(?:mathrm\{)?"
+                           r"([A-H](?:\s*[、,，]?\s*[A-H])*)\}?\$?\s*[。．.]?\s*(?:\}|$|\n)")
+# 详解里夹带的原始材料：题库的“【详解】”等标记，或行首另一题的题号（如“14\. 下列说法”）
+PASTED_RE = re.compile(r"【(?:详解|答案|解析|分析|点睛)】|^\s*\d{1,2}\\\.\s", re.M)
 
 
 @dataclass
@@ -71,11 +83,16 @@ class Question:
     score: str = ""          # 空表示缺失
     degree: str = ""         # 空表示缺失
     answers: list[str] = field(default_factory=list)
+    key_answers: list[str] = field(default_factory=list)  # 答案速查列出的：选择题的答案，或各选择小问的答案（按出现顺序）
     pure_choice: bool = False
     answer_missing: bool = False  # 有选项、但源文件没有标出答案
     options_missing: bool = False  # 答案是选项字母、但题干里没有选项
     subopt: str = ""          # 小问要求填选项字母、整题却没有选项时，该小问的节选
     memo_todo: str = ""       # 详解只有“待补充”占位：“全部”或“部分”
+    memo_figure_only: bool = False  # 详解只有图、没有文字
+    memo_pasted: bool = False  # 详解里夹带了原始材料
+    conclusion: str = ""      # 选择题详解末尾的结论与答案不一致时，结论中的选项
+    merged: int = 0           # 标成选择题、却由几道各带选项的题拼成时，小题数
     fig_missing: bool = False  # 题干提到了图，但没有插图
     snippet: str = ""
 
@@ -184,7 +201,8 @@ SNIPPET_CUT = re.compile(r"\\xzanswer|\\\w+choices|\\begin\{|\\jdanswer|^%% answ
 
 def snippet(stem: str, limit: int = 32) -> str:
     s = re.sub(r"(?<!\\)%.*", "", stem)
-    s = drop_macros_with_args(s, r"\\(?:\w*picture|includegraphics|includesvg)\*?")
+    s = drop_macros_with_args(s, FIG_MACRO)
+    s = re.sub(r"^\s*\\begin\{enumerate\}\s*\\item\b", "", s)  # 没有公共题干、直接从小问开始的题，用第一问的开头
     s = SNIPPET_CUT.split(s, 1)[0]
     s = re.sub(r"\\tkanswer\s*(?:\[[^\]]*\])?\s*\{(?:[^{}]|\{[^{}]*\})*\}", "____", s)
     s = re.sub(r"\\(?:ref|eqref|label|cite)\s*\{[^{}]*\}", "", s)
@@ -224,12 +242,32 @@ def missing_suboptions(stem: str) -> str:
     return snippet(s[start:end], limit=72) or "—"
 
 
-def memo_status(memo: str) -> str:
-    """详解只有“待补充”占位时返回“全部”，只缺个别小问的详解时返回“部分”，否则返回空串"""
+def option_listed(seg: str, letter: str) -> bool:
+    """小问里列出了这个字母的选项：A．、A.、（A）、“A．"""
+    return bool(re.search(r"(?:^|[\s（(“：:；;，,。])" + letter + r"\s*[．.]|（" + letter + r"）|\(" + letter + r"\)", seg))
+
+
+def tk_choice_answers(stem: str) -> list[tuple[int, str]]:
+    """用 \\tkanswer 作答的选择小问的答案 [(在题干中的位置, 答案)]"""
+    found = []
+    for m in TK_LETTER_RE.finditer(stem):
+        a = stem.rfind("\\item", 0, m.start())
+        z = stem.find("\\item", m.end())
+        z = len(stem) if z < 0 else z
+        seg = stem[max(a, 0):z]
+        if CHOICE_MACRO_RE.search(seg):
+            continue  # 这一问的选项命令里已经标了答案
+        if all(option_listed(seg, c) for c in m.group(1)) or CHOICE_HINT_RE.search(stem[m.end():min(m.end() + 60, z)]):
+            found.append((m.start(), m.group(1)))
+    return found
+
+
+def memo_text(memo: str) -> str | None:
+    """\\memoanswer 里的内容（去掉注释）；没有 \\memoanswer 时返回 None"""
     s = re.sub(r"(?<!\\)%.*", "", memo)
     m = re.search(r"\\memoanswer\s*\{", s)
     if not m:
-        return ""
+        return None
     depth, i = 1, m.end()
     while i < len(s) and depth:
         if s[i] == "\\":
@@ -237,12 +275,24 @@ def memo_status(memo: str) -> str:
             continue
         depth += {"{": 1, "}": -1}.get(s[i], 0)
         i += 1
-    inner = re.sub(r"\s+", "", s[m.end():i - 1])
+    return s[m.end():i - 1]
+
+
+def memo_status(memo: str) -> str:
+    """详解只有“待补充”占位时返回“全部”，只缺个别小问的详解时返回“部分”，否则返回空串"""
+    text = memo_text(memo)
+    if text is None:
+        return ""
+    inner = re.sub(r"\s+", "", text)
     if not inner:
         return "全部"
     if MEMO_TODO not in inner:
         return ""
     return "全部" if len(inner) <= 40 else "部分"
+
+
+def letters(answer: str) -> str:
+    return "".join(sorted(set(re.sub(r"[^A-H]", "", answer))))
 
 
 def classify(q: Question, stem: str, before_memo: str) -> None:
@@ -282,7 +332,12 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
         before_memo = body.split("%% memo:", 1)[0]
         stem = before_memo.split("%% answer:", 1)[0]
         stem_nc = re.sub(r"(?<!\\)%.*", "", stem)
-        answers = [m.group(1) for o in CHOICES_RE.findall(stem) if (m := re.search(r"answer\s*=\s*([A-Z]+)", o))]
+        memo = body.split("%% memo:", 1)[1] if "%% memo:" in body else ""
+        # 选项命令和 \xzanswer 标出的答案，连同它们在题干中的位置（答案速查按出现顺序排列小问）
+        choice_marks = [(m.start(), mm.group(1)) for m in CHOICES_RE.finditer(stem)
+                        if (mm := re.search(r"answer\s*=\s*([A-Z]+)", m.group(1)))]
+        xz_marks = [(m.start(), m.group(1).strip()) for m in XZ_RE.finditer(stem) if m.group(1).strip()]
+        answers = [a for _, a in choice_marks]
         tag_answer = re.search(r"^%% answer:[ \t]*(.*?)[ \t]*$", before_memo, flags=re.M)
         # 题干没有选项、作答却只有选项字母：是丢了选项的选择题
         options_missing = False
@@ -296,14 +351,33 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
             chapter=meta.get("chapter", "") or "未分类", point=meta.get("point", "") or "未分类",
             score=meta.get("score", "") if meta.get("score", "") not in ("", "0") else "",
             degree=meta.get("degree", "") if meta.get("degree", "").isdigit() and meta.get("degree") != "0" else "",
-            answers=answers or [a.strip() for a in XZ_RE.findall(stem) if a.strip()],
+            answers=answers or [a for _, a in xz_marks],
             options_missing=options_missing,
             subopt="" if options_missing else missing_suboptions(stem),
-            memo_todo=memo_status(body.split("%% memo:", 1)[1] if "%% memo:" in body else ""),
+            memo_todo=memo_status(memo),
             fig_missing=bool(FIG_CUE_RE.search(stem_nc)) and not FIG_CMD_RE.search(stem_nc),
             snippet=snippet(stem),
         )
         classify(q, stem, before_memo)
+        # 答案速查：选择题列出答案；其他题按出现顺序列出各选择小问的答案（选项命令标出的、用字母填空作答的）
+        if q.pure_choice or options_missing:
+            q.key_answers = list(q.answers)
+        else:
+            q.key_answers = [a for _, a in sorted((choice_marks or xz_marks) + tk_choice_answers(stem))]
+        text = memo_text(memo)
+        if text is not None:
+            q.memo_figure_only = bool(re.search(FIG_MACRO, text)) and not re.sub(
+                r"[\s{}]", "", drop_macros_with_args(text, FIG_MACRO))
+            q.memo_pasted = bool(PASTED_RE.search(text))
+            if q.pure_choice and len(q.answers) == 1:
+                ends = CONCLUSION_RE.findall(text + "\n")
+                if ends and letters(ends[-1]) != letters(q.answers[0]):
+                    q.conclusion = ends[-1]
+        if q.tag_type in CHOICE_TYPES:
+            enum = re.search(r"\\begin\{enumerate\}(.*?)\\end\{enumerate\}", stem_nc, re.S)
+            subs = re.split(r"(?m)^\s*\\item\b", enum.group(1))[1:] if enum else []
+            if len(subs) >= 2 and all(CHOICE_MACRO_RE.search(x) or re.search(r"(?m)^\s*A\s*[．.]", x) for x in subs):
+                q.merged = len(subs)
         questions.append(q)
     return questions
 
@@ -424,7 +498,7 @@ def render_csv(qs: list[Question]) -> str:
     w.writerow(["年份", "试卷", "题号", "原题号", "题型", "标注题型", "分值", "难度", "章节", "知识点", "选择题答案", "题目"])
     for q in sorted(qs, key=lambda q: (paper_key(q), q.pos)):
         w.writerow([q.year, q.paper, q.pos, q.number, q.type, q.tag_type, q.score, q.difficulty, q.chapter, q.point,
-                    "、".join(q.answers), q.snippet])
+                    "、".join(q.key_answers), q.snippet])
     return "\ufeff" + buf.getvalue()  # 带 BOM，Excel 才能正确识别 UTF-8
 
 
@@ -470,8 +544,9 @@ def render_issues(qs: list[Question]) -> str:
         "# 存疑清单",
         "",
         "生成[知识点索引](README.md)和[答案速查](../答案速查/README.md)时发现的、源文件中需要核对的地方："
-        "题库平台的标注和题目本身对不上、选择题或小问缺选项、选择题没标答案、分值缺失或可能有误、缺少详解，"
-        "以及 PDF 题号和原卷题号不一致。索引已按下表处理，源文件没有改动。这些问题大多来自上游的平台数据，可以反馈给上游；"
+        "题库平台的标注和题目本身对不上、选择题或小问缺选项、选择题没标答案、答案与详解的结论不一致、几道选择题被合并成一题、"
+        "分值缺失或可能有误、缺少详解或详解有问题，以及 PDF 题号和原卷题号不一致。索引已按下表处理，源文件没有改动。"
+        "这些问题大多来自上游的平台数据，可以反馈给上游；"
         "本仓库已经订正的上游错误见 [`LaTeX源码/订正补丁/`](../LaTeX源码/订正补丁/README.md)。",
         "",
         GENERATED_NOTE,
@@ -535,6 +610,30 @@ def render_issues(qs: list[Question]) -> str:
                       [[q.year, q.paper, q.num_label, q.type, cell(q.tag_answer) or "（空）"]
                        for q in in_order(no_answer)])
 
+    conflicts = [q for q in qs if q.conclusion]
+    lines += [
+        "",
+        f"## 选择题答案与详解结论不一致（{len(conflicts)} 题）",
+        "",
+        "选项命令标出的答案和详解末尾“故选……”的结论不同，教师版前后矛盾。答案速查按标出的答案列出，需要对照原卷确定哪个对。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号", "标出的答案", "详解的结论"],
+                      [[q.year, q.paper, q.num_label, "、".join(q.answers), cell(q.conclusion)]
+                       for q in in_order(conflicts)])
+
+    merged = [q for q in qs if q.merged]
+    lines += [
+        "",
+        f"## 几道选择题被合并成一题（{len(merged)} 题）",
+        "",
+        "标成选择题的一题里有几个各带选项的小题，多半是上游把题库中同号的几道题合并成了一题，"
+        "这道题之后的 PDF 题号会和原卷错开，需要拆回独立的题。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号", "小题数"],
+                      [[q.year, q.paper, q.num_label, str(q.merged)] for q in in_order(merged)])
+
     odd_scores = [q for q in qs if suspicious_score(q)]
     lines += [
         "",
@@ -574,6 +673,27 @@ def render_issues(qs: list[Question]) -> str:
          "、".join(q.num_label + ("（部分）" if q.memo_todo == "部分" else "") for q in ms)]
         for (y, p), ms in todo])
 
+    fig_only = [q for q in qs if q.memo_figure_only]
+    lines += [
+        "",
+        f"## 详解只有图（{len(fig_only)} 题）",
+        "",
+        "详解里只有解析图、没有文字，教师版中看不到解题过程。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号"], [[q.year, q.paper, q.num_label] for q in in_order(fig_only)])
+
+    pasted = [q for q in qs if q.memo_pasted]
+    lines += [
+        "",
+        f"## 详解中夹带了其他内容（{len(pasted)} 题）",
+        "",
+        "详解里出现了题库原始材料的“【详解】”等标记，或者行首有另一题的题号，多半是别的题的题干和详解被接了进来，"
+        "教师版里会看到多出的题干。",
+        "",
+    ]
+    lines += md_table(["年份", "试卷", "题号"], [[q.year, q.paper, q.num_label] for q in in_order(pasted)])
+
     renumbered = []
     for k in keys:
         pqs = papers[k]
@@ -605,9 +725,11 @@ def answer_text(q: Question) -> str:
     label = q.num_label
     if not (q.pure_choice and q.type in CHOICE_TYPES) and not q.answer_missing:
         label += "（选择小问）"
-    answer = "？" if q.answer_missing else "、".join(q.answers)
+    answer = "？" if q.answer_missing else "、".join(q.key_answers)
     if q.options_missing:
         answer += "（题干缺选项）"
+    elif q.subopt:
+        answer += "（缺选项）"
     return label + ("" if label.endswith("）") else " ") + answer
 
 
@@ -615,7 +737,8 @@ def render_answers_year(year: str, qs: list[Question]) -> str:
     papers: dict[str, list[Question]] = defaultdict(list)
     for q in qs:
         papers[q.paper].append(q)
-    note = "题号是 PDF 上印的题号，括号里是原卷题号（两者不同时才写）。“选择小问”是非选择题中的选择小问，按出现顺序列出。"
+    note = ("题号是 PDF 上印的题号，括号里是原卷题号（两者不同时才写）。“选择小问”是非选择题中的选择小问，按出现顺序列出，"
+            "说明见[答案速查](README.md)。")
     if any(q.answer_missing for q in qs):
         note += "“？”表示源文件没有标出答案，见[存疑清单](../知识点索引/存疑清单.md)。"
     lines = [
@@ -629,7 +752,7 @@ def render_answers_year(year: str, qs: list[Question]) -> str:
         "| :-- | :-- |",
     ]
     for paper in sorted(papers, key=lambda p: order_key(PAPER_ORDER, p)):
-        items = [answer_text(q) for q in papers[paper] if q.answers or q.answer_missing]
+        items = [answer_text(q) for q in papers[paper] if q.key_answers or q.answer_missing]
         teacher = papers[paper][0].pdf("教师版")
         lines.append(f"| [{paper}](../{teacher}) | {'　'.join(items) if items else '—（本卷没有带选项的小题，见教师版）'} |")
     return "\n".join(lines) + "\n"
@@ -642,14 +765,17 @@ def render_answers_readme(qs: list[Question], years: list[str]) -> str:
         f"{year_range(qs)} 年各卷选择题的答案，用学生版做完后对答案用；详解见各卷教师版。{GENERATED_NOTE}",
         "",
         "- 题号是 PDF 上印的题号；少数卷和原卷题号不一致，括号里注明原题号，见[存疑清单](../知识点索引/存疑清单.md)。",
-        "- “选择小问”是非选择题中的选择小问，如全国卷选考题的第（1）问、上海卷综合题中的选择，按出现顺序列出。",
+        "- “选择小问”是非选择题中的选择小问，如全国卷选考题的第（1）问、上海卷综合题中的选择，按出现顺序列出。"
+        "实验题等用字母填空作答的小问，同一小问里列出了选项，或注明了“多选”“填正确答案标号”“填器材前的字母代号”等，"
+        "也算选择小问；“滑片置于 A 端”这类填的是图中标号的不算。",
+        "- 标“（缺选项）”的，小问的选项在源文件里缺失，见[存疑清单](../知识点索引/存疑清单.md)。",
         "",
         "| 年份 | 套数 | 含选择答案的题 |",
         "| :-- | --: | --: |",
     ]
     for y in sorted(years, reverse=True):
         yqs = [q for q in qs if q.year == y]
-        lines.append(f"| [{y}]({y}.md) | {len({q.paper for q in yqs})} | {sum(1 for q in yqs if q.answers or q.answer_missing)} |")
+        lines.append(f"| [{y}]({y}.md) | {len({q.paper for q in yqs})} | {sum(1 for q in yqs if q.key_answers or q.answer_missing)} |")
     return "\n".join(lines) + "\n"
 
 

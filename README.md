@@ -24,10 +24,13 @@ LaTeX源码/<年份>/<地区>/<地区>.tex     对应的 LaTeX 源（含 Makefil
 LaTeX源码/专题练习/<专题>/<专题>.tex   专题练习的 LaTeX 源
 LaTeX源码/异常记录/<年份>.md           上游记录的逐卷异常与待核验事项
 联考/README.md                        重要联考（八省联考、九省联考等）索引
-scripts/check_upstream.sh             检查上游是否有 LaTeX源码/ 里还没有的新卷
+scripts/check_upstream.sh             检查上游有没有新卷，已有的试卷有没有改动
 scripts/sync_latex_sources.sh         从上游导出 LaTeX 源到 LaTeX源码/
 scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真题/ 和 专题练习/
 scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识点索引/ 和 答案速查/
+scripts/check_links.py                检查 Markdown 文件中的相对链接
+scripts/changed_papers.py             列出一次改动后要重新编译的卷（CI 用）
+.github/workflows/                    GitHub Actions：PR 检查、PDF 重新编译、每周的上游检查
 ```
 
 ## 收录范围
@@ -50,6 +53,8 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 - 上海卷是按综合题（大题）组织的，所以题数比其他卷少。
 - 2026 年的「黑吉辽」卷内蒙古也在用（学科网记作「黑吉辽蒙卷」）。
 - **2026 年暂缺**天津、安徽、江西、福建卷，原因见下面的[「2026 年缺卷」](#2026-年缺卷)。
+- **2023 年福建卷缺第 4、8 题**：上游的原始材料就缺这两题，这里只有 14 题，PDF 从第 4 题起的题号和原卷错开
+  （PDF 第 4—6 题是原卷第 5—7 题，第 7—14 题是原卷第 9—16 题，见[存疑清单](知识点索引/存疑清单.md)）。
 - 2020 年时广东、湖南等省还没有实行新高考，物理考的是全国卷，所以当年没有单独的省卷。
 
 ## 2026 年缺卷
@@ -66,8 +71,10 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 
 回忆版的碎片拼不出可信的整套卷，所以没有收录。补齐的办法：
 
-- **等上游补上**：运行 `scripts/check_upstream.sh`，它会列出上游新增、`LaTeX源码/` 里还没有的试卷，并给出同步和编译命令；
-  发现新卷时脚本以状态 2 退出，可以放进定时任务。
+- **等上游补上**：运行 `scripts/check_upstream.sh`。它会列出上游新增、`LaTeX源码/` 里还没有的试卷，以及上游改动过的已有试卷
+  （如补了详解、补了缺题），并给出同步和编译命令；有新内容时以状态 2 退出。
+  仓库的 GitHub Actions 每周一自动运行它（[`.github/workflows/upstream.yml`](.github/workflows/upstream.yml)），
+  有新内容时这次运行失败，GitHub 会发通知。
 - **自己制作**：有学科网账号的话，可以下载福建、江西的「网络收集版」，按上游的
   [制作流程](https://github.com/YLXDXX/gaokao-physics-archive/blob/main/CONTRIBUTING.md)做成 LaTeX 源。
   这两套不是原卷，收录时要在标题里注明「网络收集版」，江西卷还要注明缺第 9 题。
@@ -88,11 +95,12 @@ scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识
 
 - [`知识点索引/`](知识点索引/README.md)：2115 道题按章节、知识点分组，每题列出年份、试卷、题号、题型、分值、难度和题干开头，
   并链接到学生版和教师版 PDF；[`题目清单.csv`](知识点索引/题目清单.csv) 是全部题目的表格版，可以用 Excel 筛选。
-- [`答案速查/`](答案速查/README.md)：各卷选择题的答案，用学生版做完后对答案用。
+- [`答案速查/`](答案速查/README.md)：各卷选择题的答案，以及非选择题中选择小问的答案，用学生版做完后对答案用。
 
 两者由 [`scripts/gen_index.py`](scripts/gen_index.py) 根据 `LaTeX源码/` 中每道题的题库平台标注自动生成。
 标注有误的题（如标成单选题、答案却是 AD）按题目结构作了订正或推断。这些题，以及缺选项、缺图、没标答案、
-缺分值或分值可疑、缺详解的题，还有 PDF 题号与原卷不一致的卷，都列在[存疑清单](知识点索引/存疑清单.md)里。
+缺分值或分值可疑、缺详解的题，答案和详解结论矛盾、详解只有图或夹带了别的题、几道选择题被合并成一题的情况，
+还有 PDF 题号与原卷不一致的卷，都列在[存疑清单](知识点索引/存疑清单.md)里。
 
 ## 联考
 
@@ -125,10 +133,23 @@ scripts/build_gaokao_pdfs.sh 2020 2026      # 编译这些年份的试卷和全�
 python3 scripts/gen_index.py                # 改了 LaTeX源码/ 后更新知识点索引和答案速查（同步脚本会自动运行）
 ```
 
-- 只编译专题练习：`scripts/build_gaokao_pdfs.sh 专题练习`；只编译试卷：在命令前加 `TOPICS=0`。
+- 只编译专题练习：`scripts/build_gaokao_pdfs.sh 专题练习`；只编译试卷：在命令前加 `TOPICS=0`；
+  只编译某几套卷：`scripts/build_gaokao_pdfs.sh 2023/湖南 2024/北京`（专题练习写成 `专题练习/动量与碰撞`）。
 - 编译结果可复现：构建脚本固定了写进 PDF 的时间戳和 SVG 图的字体替换，并消除了 xdvipdfmx 处理个别 PNG 图时的随机字节。
   用同一版本的 TeX Live、Inkscape 和字体包
   重新编译时，源文件没变的卷，PDF 逐字节不变，git 里只会出现真正改过的 PDF。
   现在的 PDF 是在 Ubuntu 24.04 上用 TeX Live 2023（xdvipdfmx 20220710）和 Inkscape 1.2.2 编译的。
+
+## 自动检查
+
+每个 PR 都会在 GitHub Actions 上运行这些检查（[`.github/workflows/`](.github/workflows/)）：
+
+- **检查**（约 3 分钟）：知识点索引和答案速查是最新的（`gen_index.py --check`），Markdown 里的相对链接都有效，
+  从上游固定的提交重新同步并应用订正补丁后，`LaTeX源码/` 和索引一字不变。
+  改了 `LaTeX源码/<年份>/` 下的 `.tex` 却没有用 `SAVE_PATCHES=1` 更新订正补丁、或没有重新生成索引时，这一项会失败。
+- **PDF 可复现**：PR 改动了某套卷的源文件或 PDF 时，用同样的工具链重新编译这几套卷，编出的 PDF 必须与 PR 中的逐字节相同，
+  PDF 没有随源文件更新就会失败。每套卷约 1—2 分钟，另加约 5 分钟安装 TeX Live；
+  改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，约需 1.5 小时。
+- 另外每周一检查一次上游（见上文「2026 年缺卷」）。
 
 高考试题的著作权归命题单位所有，本仓库仅供个人学习和研究使用。

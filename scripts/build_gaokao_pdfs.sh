@@ -7,6 +7,7 @@
 # 用法：
 #   scripts/build_gaokao_pdfs.sh [起始年份] [结束年份]     # 默认 2020 2026，同时编译全部专题练习
 #   scripts/build_gaokao_pdfs.sh 专题练习                  # 只编译专题练习
+#   scripts/build_gaokao_pdfs.sh 2023/湖南 2024/北京 …     # 只编译这几套卷（专题练习写成 专题练习/<专题>）
 #
 # 依赖（Ubuntu/Debian）：
 #   apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
@@ -72,6 +73,15 @@ fi
 dirs=()
 if [ "${1:-}" = 专题练习 ]; then
   TOPICS=1
+elif [[ "${1:-}" == */* ]]; then
+  # 只编译指定的试卷或专题练习
+  TOPICS=0
+  for p in "$@"; do
+    p="${p%/}"
+    p="${p#LaTeX源码/}"
+    [ -f "$SRC/$p/Makefile" ] || { echo "LaTeX源码/$p 不是试卷或专题练习的目录" >&2; exit 1; }
+    dirs+=("$SRC/$p")
+  done
 else
   FROM="${1:-2020}"
   TO="${2:-2026}"
@@ -82,14 +92,17 @@ else
   done
   [ "${#dirs[@]}" -gt 0 ] || { echo "LaTeX源码/ 中没有 $FROM—$TO 年的试卷，请先运行 scripts/sync_latex_sources.sh"; exit 1; }
 fi
-npapers="${#dirs[@]}"
 if [ "$TOPICS" != 0 ]; then
   for d in "$SRC/专题练习"/*/; do
     [ -f "$d/Makefile" ] && dirs+=("${d%/}")
   done
 fi
 [ "${#dirs[@]}" -gt 0 ] || { echo "LaTeX源码/专题练习/ 中没有专题练习"; exit 1; }
-ntopics=$(( ${#dirs[@]} - npapers ))
+ntopics=0
+for d in "${dirs[@]}"; do
+  if [ "$(basename "$(dirname "$d")")" = 专题练习 ]; then ntopics=$((ntopics + 1)); fi
+done
+npapers=$(( ${#dirs[@]} - ntopics ))
 summary="$npapers 套试卷、$ntopics 个专题练习"
 [ "$ntopics" -eq 0 ] && summary="$npapers 套试卷"
 [ "$npapers" -eq 0 ] && summary="$ntopics 个专题练习"
