@@ -73,7 +73,7 @@ PASTED_RE = re.compile(r"【(?:详解|答案|解析|分析|点睛)】|^\s*\d{1,2
 class Question:
     year: str
     paper: str
-    pos: int                 # PDF 上印的题号（题目在源文件中的顺序）
+    pos: int                 # 题目在源文件中的顺序（排序用）
     number: str              # 源文件 %% number 标注的原题号
     tag_type: str            # 平台标注的题型
     tag_answer: str = ""     # 平台标注的答案（%% answer 注释，非选择题常是无意义的字母）
@@ -97,11 +97,14 @@ class Question:
     merged: int = 0           # 标成选择题、却由几道各带选项的题拼成时，小题数
     fig_missing: bool = False  # 题干提到了图，但没有插图
     snippet: str = ""
+    printed: int = 0          # PDF 上印的题号（按 LaTeX 的计数模拟，见 printed_numbers）
+    part: str = ""            # 原卷一题分成几题录入时，这一部分的标记（%% part 注释，如“（1）”“-Ⅱ”）
 
     @property
     def num_label(self) -> str:
-        """PDF 题号；与原题号不同时括注原题号"""
-        return str(self.pos) if self.number == str(self.pos) else f"{self.pos}（原 {self.number}）"
+        """PDF 题号，原卷一题的各部分带部分标记（如“13（1）”“16-Ⅱ”）；与原题号不同时括注原题号"""
+        label = f"{self.printed}{self.part}"
+        return label if self.number == str(self.printed) else f"{label}（原 {self.number}）"
 
     @property
     def difficulty(self) -> str:
@@ -325,9 +328,39 @@ def classify(q: Question, stem: str, before_memo: str) -> None:
             q.type_note = "没有题型标注"
 
 
+ITEM_LINE_RE = re.compile(r"^\\item(\[[^\]\n]*\])?[ \t]*$")
+COUNTER_RE = re.compile(r"^\\(setcounter|addtocounter)\{enumi\}\{(-?\d+)\}[ \t]*$")
+
+
+def printed_numbers(text: str, where: str) -> list[int]:
+    """各题 PDF 上印的题号，按 LaTeX 的计数规则模拟：每题前的 \\item 让题号加 1，\\item[] 不加
+    （原卷同一题的后续部分，不另印题号）；\\item 前紧挨着的 \\setcounter / \\addtocounter{enumi} 调整计数"""
+    lines = text.split("\n")
+    numbers, counter = [], 0
+    for i, line in enumerate(lines):
+        if not line.startswith("%% number:"):
+            continue
+        item = ITEM_LINE_RE.match(lines[i - 1]) if i else None
+        if not item:
+            raise SystemExit(f"{where} 第 {i + 1} 行：%% number 前一行不是 \\item")
+        j, cmds = i - 2, []
+        while j >= 0 and (COUNTER_RE.match(lines[j]) or not lines[j].strip()):
+            if m := COUNTER_RE.match(lines[j]):
+                cmds.append(m)
+            j -= 1
+        for m in reversed(cmds):
+            counter = int(m.group(2)) if m.group(1) == "setcounter" else counter + int(m.group(2))
+        if item.group(1) is None:
+            counter += 1
+        numbers.append(counter)
+    return numbers
+
+
 def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
     questions = []
-    blocks = re.split(r"^%% number:", tex.read_text("utf-8"), flags=re.M)[1:]
+    text = tex.read_text("utf-8")
+    printed = printed_numbers(text, str(tex))
+    blocks = re.split(r"^%% number:", text, flags=re.M)[1:]
     for pos, block in enumerate(blocks, 1):
         number, _, rest = block.partition("\n")
         head, _, body = rest.partition("%% body:\n")
@@ -360,6 +393,8 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
             memo_todo=memo_status(memo),
             fig_missing=bool(FIG_CUE_RE.search(stem_nc)) and not FIG_CMD_RE.search(stem_nc),
             snippet=snippet(stem),
+            printed=printed[pos - 1],
+            part=meta.get("part", ""),
         )
         classify(q, stem, before_memo)
         # 答案速查：选择题列出答案；其他题按出现顺序列出各选择小问的答案（选项命令标出的、用字母填空作答的）
@@ -474,8 +509,9 @@ def render_index_readme(qs: list[Question], chapters: list[str], by_chapter: dic
         f"按知识点查 {year_range(qs)} 年 {len(papers)} 套卷中的 {len(qs)} 道题。{GENERATED_NOTE}",
         "",
         "- 每个章节一页，章节内按知识点分组；章节和知识点用的是题库平台的分类（例如动量归在“运动和力”下）。",
-        "- **题号**是 PDF 上印的题号。少数卷 PDF 题号和原卷题号不一致（上游合并、拆分了同号题，或原始材料缺题），"
-        "这时括注原题号，如“17（原 16）”。",
+        "- **题号**是 PDF 上印的题号，和原卷一致。原卷中一道题的几个部分分开收录时，题号后标出部分，"
+        "如全国卷选考题的“13（1）”“13（2）”、浙江卷实验题的“16-Ⅰ（1）”“16-Ⅱ”；"
+        "个别 PDF 题号和原卷不一致的，括注原题号，如“17（原 16）”。",
         "- **题型、分值、难度**来自平台标注。难度是平台给的难度值，0—1，越小越难，仅供参考。",
         "- 题型带 * 的，平台标注和题目对不上，索引按题目结构作了订正或推断，见[存疑清单](存疑清单.md)。",
         "- **题目**是题干开头，公式只做了粗略转写，复杂的公式用“…”代替。",
@@ -501,7 +537,7 @@ def render_csv(qs: list[Question]) -> str:
     w = csv.writer(buf, lineterminator="\n")
     w.writerow(["年份", "试卷", "题号", "原题号", "题型", "标注题型", "分值", "难度", "章节", "知识点", "选择题答案", "题目"])
     for q in sorted(qs, key=lambda q: (paper_key(q), q.pos)):
-        w.writerow([q.year, q.paper, q.pos, q.number, q.type, q.tag_type, q.score, q.difficulty, q.chapter, q.point,
+        w.writerow([q.year, q.paper, f"{q.printed}{q.part}", q.number, q.type, q.tag_type, q.score, q.difficulty, q.chapter, q.point,
                     "、".join(q.key_answers), q.snippet])
     return "\ufeff" + buf.getvalue()  # 带 BOM，Excel 才能正确识别 UTF-8
 
@@ -701,7 +737,7 @@ def render_issues(qs: list[Question]) -> str:
     renumbered = []
     for k in keys:
         pqs = papers[k]
-        diff = [(q.pos, int(q.number)) for q in pqs if q.number != str(q.pos) and q.number.isdigit()]
+        diff = [(q.printed, int(q.number)) for q in pqs if q.number != str(q.printed) and q.number.isdigit()]
         if not diff:
             continue
         nums = [int(q.number) for q in pqs if q.number.isdigit()]
@@ -715,9 +751,9 @@ def render_issues(qs: list[Question]) -> str:
         "",
         f"## PDF 题号与原卷题号不一致（{len(renumbered)} 套）",
         "",
-        "源文件按原卷题号标注（理综卷是上游按物理部分重编的题号），PDF 则按题目顺序连续编号。"
-        "上游合并、拆分了同号题，或原始材料缺题时，两者就会错开。索引和答案速查一律用 PDF 题号，"
-        "原因见 [`LaTeX源码/异常记录/`](../LaTeX源码/异常记录/) 中对应年份的记录。",
+        "源文件按原卷题号标注（理综卷是上游按物理部分重编的题号），PDF 上印的题号也应与之相同："
+        "原卷一道题分成几题收录时，后面的部分不另印题号（源文件中写作 `\\item[]`，并用 `%% part` 注明是哪一部分）；"
+        "原卷缺题时用 `\\setcounter` 跳过缺的题号。下表列出仍不一致的卷，索引和答案速查按 PDF 题号列出并括注原题号。",
         "",
     ]
     lines += md_table(["年份", "试卷", "源文件中的原题号", "PDF 题号 → 原题号"],
