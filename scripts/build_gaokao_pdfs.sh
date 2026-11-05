@@ -10,14 +10,22 @@
 #
 # 依赖（Ubuntu/Debian）：
 #   apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
-#     texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk
+#     texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
 #   fonts-noto-cjk 是必需的：2020 全国理综Ⅱ/Ⅲ、2021 全国甲卷、2021 福建的教师版直接用 Noto CJK
 #   字体排 ⑪ 以上的圈码，缺这个字体会编译失败；它也用于回退 Fandol 缺少的生僻字（如 2022 福建卷「躄躠」）。
+#   SVG 图里的文字由 Inkscape 用系统字体渲染。图中指定的 Times New Roman、宋体等 Windows 字体，
+#   按 scripts/fonts.conf 固定换成 Liberation（fonts-liberation）和文鼎 PL 简报宋（fonts-arphic-gbsn00lp，
+#   texlive-lang-chinese 已依赖），不受本机其他字体和字体配置影响。
 #
 # 只有本次编译成功的卷才会复制到输出目录；有卷失败时脚本以非零状态退出。
 #
-# 编译结果可复现：脚本固定了 SOURCE_DATE_EPOCH，PDF 里的创建时间、字体子集名和文件 ID 不再随编译时间变化。
-# 用同一版本的 TeX Live 和 Inkscape 编译时，源文件没变的卷重新编译后与原来的 PDF 逐字节相同，
+# 编译结果可复现：
+#   - 脚本固定了 SOURCE_DATE_EPOCH，PDF 里的创建时间、字体子集名和文件 ID 不再随编译时间变化；
+#   - 编译前删掉源码目录里已有的 PDF（如用 make 预览时生成的、带实际时间的 PDF）。latexmk 不检查
+#     SOURCE_DATE_EPOCH，不删的话会把它当成最新结果原样复制；删掉后只需用现有的 .xdv 重新生成 PDF，很快；
+#   - SVG 图的字体替换由 scripts/fonts.conf 固定；
+#   - 设置 MALLOC_PERTURB_，消除 xdvipdfmx 处理 1/2/4 位 PNG 时行尾填充位的随机字节（见下文）。
+# 用同一版本的 TeX Live、Inkscape 和字体包编译时，源文件没变的卷重新编译后与原来的 PDF 逐字节相同，
 # 所以全量重新编译只会让内容真正变了的 PDF 出现在 git 改动里。
 #
 # 环境变量：
@@ -39,6 +47,27 @@ TOPICS="${TOPICS:-1}"
 # FORCE_SOURCE_DATE=1 让 XeTeX 的 \today、\time 等也用这个时间
 export SOURCE_DATE_EPOCH="${SOURCE_DATE_EPOCH:-1791717565}"
 export FORCE_SOURCE_DATE=1
+# 1/2/4 位的调色板 PNG 每行末尾有不满一字节的填充位，xdvipdfmx 读图时（libpng 保留目标缓冲区里原有的这几位）
+# 不初始化它们，编出的 PDF 会随机差几个字节（显示效果相同）。让 glibc 用固定字节填充新分配的内存，结果就固定了
+export MALLOC_PERTURB_="${MALLOC_PERTURB_:-165}"
+
+missing=()
+for cmd in make python3 xelatex latexmk inkscape; do
+  command -v "$cmd" >/dev/null 2>&1 || missing+=("$cmd")
+done
+if [ "${#missing[@]}" -gt 0 ]; then
+  echo "缺少编译工具：${missing[*]}。Ubuntu/Debian 上可以这样安装：" >&2
+  echo "  sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \\" >&2
+  echo "    texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation" >&2
+  exit 1
+fi
+
+# SVG 图的字体替换固定为 scripts/fonts.conf（先固定图中几种 Windows 字体的替换，再载入系统配置）
+if [ -f /etc/fonts/fonts.conf ]; then
+  export FONTCONFIG_FILE="$REPO_ROOT/scripts/fonts.conf"
+else
+  echo "警告：没有 /etc/fonts/fonts.conf，未启用 scripts/fonts.conf，SVG 图中的字体将按本机配置替换" >&2
+fi
 
 dirs=()
 if [ "${1:-}" = 专题练习 ]; then
@@ -68,7 +97,11 @@ echo "共 $summary，开始编译（JOBS=$JOBS）..."
 
 # 每份 make all = TikZ 图 + 学生版 + 教师版；Inkscape 调用已由 tools/bin/inkscape 串行化。
 # 成功的留下 .build-ok 标记，复制时只认这个标记，避免把旧 PDF 当成新结果。
-for d in "${dirs[@]}"; do rm -f "$d/.build-ok"; done
+# 已有的 PDF 先删掉，让 latexmk 按固定的 SOURCE_DATE_EPOCH 重新生成（见文件开头的说明）。
+for d in "${dirs[@]}"; do
+  name="$(basename "$d")"
+  rm -f "$d/.build-ok" "$d/${name}_学生版.pdf" "$d/${name}_教师版.pdf"
+done
 printf '%s\0' "${dirs[@]}" | xargs -0 -r -n1 -P "$JOBS" sh -c '
   if make -C "$1" all > "$1/build.log" 2>&1; then
     touch "$1/.build-ok"; echo "OK   $1"

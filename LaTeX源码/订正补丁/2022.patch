@@ -1,0 +1,40 @@
+diff --git a/2022/天津/天津.tex b/2022/天津/天津.tex
+index 9825258..80c605a 100644
+--- a/2022/天津/天津.tex
++++ b/2022/天津/天津.tex
+@@ -64,13 +64,13 @@ $M$、$N$ 是以 $O$ 为圆心的等势圆上的两点，所以 $M$、$N$ 两点
+ 
+ \item
+ %% number: 3
+-%% paperName: 2022年天津高考第 3 题 45 分
++%% paperName: 2022年天津高考第 3 题 5 分
+ %% typeId: 1
+ %% type: 单选题
+ %% chapter: 曲线运动
+ %% point: 人造地球卫星
+ %% method: 无
+-%% score: 45
++%% score: 5
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+diff --git a/2022/山东/山东.tex b/2022/山东/山东.tex
+index 60f2554..9f9a73f 100644
+--- a/2022/山东/山东.tex
++++ b/2022/山东/山东.tex
+@@ -904,13 +904,13 @@ $L = \frac{67}{185} \Um$
+ 
+ \item
+ %% number: 17
+-%% paperName: 2022年山东高考第 17 题 41 分
++%% paperName: 2022年山东高考第 17 题 14 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 磁场
+ %% point: 带电粒子在磁场中的运动
+ %% method: 无
+-%% score: 41
++%% score: 14
+ %% degree: 350
+ %% duplicateId: 0
+ %% body:

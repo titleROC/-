@@ -1,0 +1,168 @@
+diff --git a/2024/1月浙江/1月浙江.tex b/2024/1月浙江/1月浙江.tex
+index c8f8b5a..9960226 100644
+--- a/2024/1月浙江/1月浙江.tex
++++ b/2024/1月浙江/1月浙江.tex
+@@ -598,7 +598,7 @@ D．根据 $n = \frac{\lambda'}{\lambda} = \sqrt{2}$，则 $n = \frac{\sin\alpha
+ 
+ \begin{enumerate}
+ 	\item
+-	该实验中同时研究三个物理量间关系是很困难的，因此我们采用的研究方法是\tkanswer[1.2cm]{B}；
++	该实验中同时研究三个物理量间关系是很困难的，因此我们采用的研究方法是\tkanswer[0.7cm]{B}；
+ 
+ 	A．放大法
+ 
+diff --git a/2024/6月浙江/6月浙江.tex b/2024/6月浙江/6月浙江.tex
+index 208fd2e..1322436 100644
+--- a/2024/6月浙江/6月浙江.tex
++++ b/2024/6月浙江/6月浙江.tex
+@@ -614,7 +614,7 @@ $F_{\mathrm{N}} = Bqv - mg\cos\theta = Bq(v_{0} - at) - mg\cos\theta = mg\cos\th
+ 	\item
+ 	确定出射光线的位置\tkanswer[1.6cm]{不需要}（选填“需要”或“不需要”）第四枚大头针；
+ 	\item
+-	撤去玻璃砖和大头针，测得出射光线与直线 ef 的夹角为 $\alpha$，则玻璃砖折射率 $n = $\tkanswer[3.0cm]{$\frac{\cos\alpha}{\sin\theta}$}。
++	撤去玻璃砖和大头针，测得出射光线与直线 ef 的夹角为 $\alpha$，则玻璃砖折射率\newline $n = $\tkanswer[3.0cm]{$\frac{\cos\alpha}{\sin\theta}$}。
+ \end{steps}
+ \onepicture[w=3.60cm, align=right]{figs/16.png}
+ %% answer:
+diff --git a/2024/全国新课标/全国新课标.tex b/2024/全国新课标/全国新课标.tex
+index d0056fe..9477a62 100644
+--- a/2024/全国新课标/全国新课标.tex
++++ b/2024/全国新课标/全国新课标.tex
+@@ -297,7 +297,7 @@ D．$4\to1$ 为等容过程，根据查理定律可知压强减小时温度减
+ 	\item
+ 	记 $a$、$b$ 两球的质量分别为 $m_{a}$、$m_{b}$，实验中须满足条件 $m_{a}$\tkanswer{>}$m_{b}$（填“$>$”或“$<$”）；
+ 	\item
+-	如果测得的 $x_{P}$、$x_{M}$、$x_{N}$、$m_{a}$ 和 $m_{b}$ 在实验误差范围内满足关系式\tkanswer{$m_{a}x_{P} = m_{a}x_{M} + m_{b}x_{N}$}，则验证了两小球在碰撞中满足动量守恒定律。实验中，用小球落点与 $O$ 点的距离来代替小球水平飞出时的速度，依据是\tkanswer{小球离开斜槽末端后做平抛运动，竖直方向高度相同故下落时间相同，水平方向做匀速直线运动，小球水平飞出时的速度与平抛运动的水平位移成正比。}。
++	如果测得的 $x_{P}$、$x_{M}$、$x_{N}$、$m_{a}$ 和 $m_{b}$ 在实验误差范围内满足关系式\newline\tkanswer{$m_{a}x_{P} = m_{a}x_{M} + m_{b}x_{N}$}，则验证了两小球在碰撞中满足动量守恒定律。实验中，用小球落点与 $O$ 点的距离来代替小球水平飞出时的速度，依据是\tkanswer{小球离开斜槽末端后做平抛运动，竖直方向高度相同故下落时间相同，水平方向做匀速直线运动，小球水平飞出时的速度与平抛运动的水平位移成正比。}。
+ \end{enumerate}
+ \onepicture[w=6.00cm, align=right]{figs/09.png}
+ %% answer:
+diff --git a/2024/江西/江西.tex b/2024/江西/江西.tex
+index 183c530..b2e0574 100644
+--- a/2024/江西/江西.tex
++++ b/2024/江西/江西.tex
+@@ -18,7 +18,7 @@
+ %% duplicateId: 0
+ %% body:
+ 极板间一蜡烛火焰带有正离子、电子以及其他的带电粒子，两极板电压保持不变，当电极板距离减小时，电场强度如何变？电子受力方向？\xzanswer{B}
+-\onepicture[align=right]{figs/01.png}
++\onepicture[align=right, w=4.4cm]{figs/01.png}
+ \fourchoices[answer=B]
+ {电场强度增大，方向向左}
+ {电场强度增大，方向向右}
+@@ -45,7 +45,7 @@
+ %% duplicateId: 0
+ %% body:
+ 近年来，江西省科学家发明硅衬底氮化镓基系列发光二极管，开创了国际上第三条 LED 技术路线。某氮化镓基 LED 材料的简化能级如图所示，若能级差为 $2.20 \UeV$（约 $3.52\times10^{-19} \UJ$），普朗克常量 $h = 6.63\times10^{-34} \UJcdots$，则发光频率约为\xzanswer{C}
+-\onepicture[align=right]{figs/02.png}
++\onepicture[align=right, w=4.9cm]{figs/02.png}
+ \fourchoices[answer=C]
+ {$6.38\times10^{14} \UHz$}
+ {$5.67\times10^{14} \UHz$}
+@@ -244,7 +244,7 @@ $evB = e\frac{U}{b}$
+ %% duplicateId: 0
+ %% body:
+ 一条河流某处存在高度差，小鱼从低处向上跃出水面，冲到高处。如图所示，以小鱼跃出水面处为坐标原点，$x$ 轴沿水平方向，建立坐标系，小鱼的初速度为 $v_{0}$，末速度 $v$ 沿 $x$ 轴正方向。在此过程中，小鱼可视为质点且只受重力作用。关于小鱼的水平位置 $x$、竖直位置 $y$、水平方向分速度 $v_{x}$ 和竖直方向分速度 $v_{y}$ 与时间 $t$ 的关系，下列图像可能正确的是\xzanswer{AD}
+-\onepicture[align=right]{figs/08.png}
++\onepicture[align=right, w=5.1cm]{figs/08.png}
+ \fourchoices[answer=AD, ispicture=true, h=2.7cm]
+ {figs/08a.png}
+ {figs/08b.png}
+@@ -310,7 +310,7 @@ D．根据条纹间距公式 $\Delta x = \frac{L}{d}\lambda$ 可知双缝间距
+ %% duplicateId: 0
+ %% body:
+ 如图所示，垂直于水平桌面固定一根轻质绝缘细直杆，质量均为 $m$、带同种电荷的绝缘小球甲和乙穿过直杆，两小球均可视为点电荷，带电荷量分别为 $q$ 和 $Q$。在图示的坐标系中，小球乙静止在坐标原点，初始时刻小球甲从 $x = x_{0}$ 处由静止释放，开始向下运动。甲和乙两点电荷的电势能 $E_{p} = k\frac{Qq}{r}$（$r$ 为两点电荷之间的距离，$k$ 为静电力常量）。最大静摩擦力等于滑动摩擦力 $f$，重力加速度为 $g$。关于小球甲，下列说法正确的是\xzanswer{BD}
+-\onepicture[align=right]{figs/10.png}
++\onepicture[align=right, w=2.4cm]{figs/10.png}
+ \fourchoices[answer=BD]
+ {最低点的位置 $x = \frac{kQq}{(mg + f)x_{0}}$}
+ {速率达到最大值时的位置 $x = \sqrt{\frac{kQq}{mg - f}}$}
+@@ -519,7 +519,7 @@ $\frac{U}{R} = I_{0}$，$R = \rho\frac{l_{m}}{\pi\left(\frac{d_{0}}{2}\right)^{2
+ 	\item
+ 	气体在状态 B 的体积 $V_{2}$。
+ \end{enumerate}
+-\onepicture[align=right]{figs/13.png}
++\onepicture[align=right, w=6.1cm]{figs/13.png}
+ %% answer:
+ \jdanswer{
+ \begin{enumerate}
+diff --git a/2024/河北/河北.tex b/2024/河北/河北.tex
+index 11e8a3c..6d69918 100644
+--- a/2024/河北/河北.tex
++++ b/2024/河北/河北.tex
+@@ -327,17 +327,17 @@ D．初始时气体在左侧，最终气体充满整个汽缸，则初始左侧
+ %% degree: 450
+ %% duplicateId: 0
+ %% body:
+-如图，真空区域有同心正方形 $ABCD$ 和 $abcd$，其各对应边平行，$ABCD$ 的边长一定，$abcd$ 的边长可调，两正方形之间充满恒定匀强磁场，方向垂直于正方形所在平面。$A$ 处有一个粒子源，可逐个发射速度不等、比荷相等的粒子，粒子沿 $AD$ 方向进入磁场。调整 $abcd$ 的边长，可使速度大小合适的粒子经 $ad$ 边穿过无磁场区后由 $BC$ 边射出。对满足前述条件的粒子，下列说法正确的是
++如图，真空区域有同心正方形 $ABCD$ 和 $abcd$，其各对应边平行，$ABCD$ 的边长一定，$abcd$ 的边长可调，两正方形之间充满恒定匀强磁场，方向垂直于正方形所在平面。$A$ 处有一个粒子源，可逐个发射速度不等、比荷相等的粒子，粒子沿 $AD$ 方向进入磁场。调整 $abcd$ 的边长，可使速度大小合适的粒子经 $ad$ 边穿过无磁场区后由 $BC$ 边射出。对满足前述条件的粒子，下列说法正确的是\xzanswer{ACD}
+ 
+ \onepicture[w=5.00cm]{figs/10.png}
+ 
+-\fourchoices
++\fourchoices[answer=ACD]
+ {若粒子穿过 $ad$ 边时速度方向与 $ad$ 边夹角为 $45^\circ$，则粒子必垂直 $BC$ 射出}
+ {若粒子穿过 $ad$ 边时速度方向与 $ad$ 边夹角为 $60^\circ$，则粒子必垂直 $BC$ 射出}
+ {若粒子经 $cd$ 边垂直 $BC$ 射出，则粒子穿过 $ad$ 边的速度方向与 $ad$ 边夹角必为 $45^\circ$}
+ {若粒子经 $bc$ 边垂直 $BC$ 射出，则粒子穿过 $ad$ 边时速度方向与 $ad$ 边夹角必为 $60^\circ$}
+ 
+-%% answer: ACDABDAD
++%% answer: ACD
+ %% memo:
+ \memoanswer{
+ AC．根据几何关系可知，若粒子穿过 $ad$ 边时速度方向与 $ad$ 边夹角为 $45^{\circ}$，则粒子必经过 $cd$ 边，作出粒子运动轨迹图，如图甲所示
+diff --git a/2024/海南/海南.tex b/2024/海南/海南.tex
+index e06bf95..e268c3f 100644
+--- a/2024/海南/海南.tex
++++ b/2024/海南/海南.tex
+@@ -554,7 +554,7 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ 为了研究小圆柱体做匀速圆周运动时所需要的向心力情况，某同学设计了如下实验步骤：
+ \begin{enumerate}
+ 	\item
+-	用秒表测圆盘转动 10 周所用的时间 $t = 62.8 \Us$，则圆盘转动的角速度 $\omega = $\tkanswer[1.5cm]{1}$\Urads$（$\pi$ 取 3.14）
++	用秒表测圆盘转动 10 周所用的时间 $t = 62.8 \Us$，则圆盘转动的角速度 $\omega = $\tkanswer[0.8cm]{1}$\Urads$（$\pi$ 取 3.14）
+ 	\item
+ 	用游标卡尺测量小圆柱体不同位置的直径，某次测量的示数如图~\ref{2024海南14c}所示，该读数 $d = $\tkanswer[1.5cm]{16.2}$\Umm$，多次测量后，得到平均值恰好与 $d$ 相等。
+ 	\item
+diff --git a/2024/福建/福建.tex b/2024/福建/福建.tex
+index 1f7c84c..0e18b36 100644
+--- a/2024/福建/福建.tex
++++ b/2024/福建/福建.tex
+@@ -410,7 +410,7 @@ $T_{2} = (27 + 273) \UK = 300 \UK$
+ %% duplicateId: 0
+ %% body:
+ 镀有反射膜的三棱镜常用在激光器中进行波长的选择。如图，一束复色光以一定入射角 $i$（$i \neq 0$）进入棱镜后，不同颜色的光以不同角度折射，只有折射后垂直入射到反射膜的光才能原路返回形成激光输出。若复色光含蓝、绿光，已知棱镜对蓝光的折射率大于绿光，则蓝光在棱镜中的折射角\tkanswer[1.4cm]{小于}（填“大于”“等于”或“小于”）绿光的折射角；若激光器输出的是蓝光，当要调为绿光输出时，需将棱镜以过入射点 O 且垂直纸面的轴\tkanswer[1.8cm]{逆时针}（填“顺时针”或“逆时针”）转动一小角度。
+-\onepicture[align=right]{figs/10.png}
++\onepicture[align=right, w=5.2cm]{figs/10.png}
+ %% answer:
+ \jdanswer{
+ 小于，逆时针
+@@ -435,7 +435,7 @@ $T_{2} = (27 + 273) \UK = 300 \UK$
+ %% duplicateId: 0
+ %% body:
+ 如图，圆心为 O 点、半径为 $R$ 的圆周上有 A、B、C、D、E、F、G、H 八个等分点，G 点固定有一带电量为 $-Q$（$Q > 0$）的点电荷，其余各点均固定有带电量为 $+Q$ 的点电荷。已知静电力常量为 $k$，则 O 点的电场强度大小为\tkanswer[2.0cm]{$\frac{2kQ}{R^{2}}$}。M、N 分别为 OC、OG 的中点，则 M 点的电势\tkanswer[1.4cm]{大于}（填“大于”“等于”或“小于”）N 点的电势；将一带电量为 $+q$（$q > 0$）的点电荷从 M 点沿图中 MN 弧线移动到 N 点，电场力对该点电荷所做的总功\tkanswer[1.8cm]{大于零}（填“大于零”“等于零”或“小于零”）。
+-\onepicture[align=right]{figs/11.png}
++\onepicture[align=right, w=4.3cm]{figs/11.png}
+ %% answer:
+ \jdanswer{
+ $\frac{2kQ}{R^{2}}$，大于，大于零
+diff --git a/2024/重庆/重庆.tex b/2024/重庆/重庆.tex
+index 84e96f3..571b4a1 100644
+--- a/2024/重庆/重庆.tex
++++ b/2024/重庆/重庆.tex
+@@ -37,13 +37,13 @@
+ 
+ \item
+ %% number: 2
+-%% paperName: 2024年重庆高考第 2 题 34 分
++%% paperName: 2024年重庆高考第 2 题 4 分
+ %% typeId: 1
+ %% type: 单选题
+ %% chapter: 直线运动
+ %% point: 自由落体运动
+ %% method: 无
+-%% score: 34
++%% score: 4
+ %% degree: 750
+ %% duplicateId: 0
+ %% body:
