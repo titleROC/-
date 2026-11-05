@@ -1,6 +1,7 @@
 # 高考物理真题 LaTeX 源码（2020—2026）
 
-这里是 [`高考真题/`](../高考真题/) 中 131 套 PDF 的 LaTeX 源文件，可以直接修改并重新编译。
+这里是 131 套高考真题 PDF 的 LaTeX 源文件，可以直接修改并重新编译。PDF 由 GitHub Actions 用这些源文件编译，
+发布在 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf) 中（见仓库根目录 README 的[「自动检查」](../README.md#自动检查)）。
 内容来自开源项目 [YLXDXX/gaokao-physics-archive](https://github.com/YLXDXX/gaokao-physics-archive)
 提交 `5a60bb3`（2026-10-11），按上游 Git 跟踪的文件导出，不含编译产物；本仓库订正了其中少量错误，见下文「相对上游的改动」。
 
@@ -55,9 +56,10 @@ make -C LaTeX源码 JOBS=4               # 编译全部试卷和专题练习
 make -C LaTeX源码 distclean            # 删除全部编译产物（含专题练习），恢复到刚检出的状态
 ```
 
-- 这些命令只在源码目录里生成 PDF。要更新仓库里的 `高考真题/` 和 `专题练习/`，请用
+- 这些命令只在源码目录里生成 PDF。要得到和 Release 中一样的 PDF，请用
   [`scripts/build_gaokao_pdfs.sh`](../scripts/build_gaokao_pdfs.sh)：它固定了写进 PDF 的时间戳和 SVG 图的字体替换
-  （编译结果可复现），只复制编译成功的 PDF。只改了几套卷时，可以只编译这几套，如 `scripts/build_gaokao_pdfs.sh 2025/广东`。
+  （编译结果可复现），把编译成功的 PDF 复制到仓库根目录的 `高考真题/` 和 `专题练习/`（这两处的 PDF 不入库）。
+  只改了几套卷时，可以只编译这几套，如 `scripts/build_gaokao_pdfs.sh 2025/广东`。
 - 改了题目的标注（`%% chapter`、`%% point`、`%% type` 等）或答案后，运行 `python3 scripts/gen_index.py`
   更新 [`知识点索引/`](../知识点索引/README.md) 和 [`答案速查/`](../答案速查/README.md)。
 - 改了 `<年份>/` 下的 `.tex` 后，运行 `SAVE_PATCHES=1 scripts/sync_latex_sources.sh <起始年份> <结束年份>`

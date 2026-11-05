@@ -1,7 +1,8 @@
-# PR 改动了某套卷的源文件或 PDF 时，用与仓库 PDF 相同的工具链（Ubuntu 24.04 的 TeX Live 2023、Inkscape 1.2.2）
-# 重新编译这几套卷，要求编出的 PDF 与 PR 中的逐字节相同：PDF 没有随源文件更新，或编译不可复现，都会失败。
-# 改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，耗时较长。也可以在 Actions 页面手动运行，全部重新编译。
-name: PDF 可复现
+# PR 改动了某套卷的源文件时，用与发布相同的工具链（Ubuntu 24.04 的 TeX Live 2023、Inkscape 1.2.2）编译这几套卷：
+# 编译失败（LaTeX 报错、缺字体等）时检查失败；编出的 PDF 作为本次运行的附件（artifact）保留 7 天，合并前可以下载预览。
+# 改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，约半小时，这时不保留附件（太大）。
+# 合并后由 release.yml 编译并上传到 Release「pdf」。
+name: PDF 编译
 
 on:
   pull_request:
@@ -16,14 +17,14 @@ concurrency:
 
 jobs:
   rebuild:
-    name: 重新编译改动的卷
+    name: 编译改动的卷
     runs-on: ubuntu-24.04
     timeout-minutes: 300
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 2   # PR 的合并提交及其第一个父提交（基准分支）
-      - name: 找出要重新编译的卷
+      - name: 找出要编译的卷
         id: targets
         env:
           EVENT: ${{ github.event_name }}
@@ -35,7 +36,8 @@ jobs:
           fi
           if [ -s "$RUNNER_TEMP/targets" ]; then
             echo "any=true" >> "$GITHUB_OUTPUT"
-            echo "要重新编译："; cat "$RUNNER_TEMP/targets"
+            if grep -qx all "$RUNNER_TEMP/targets"; then echo "all=true" >> "$GITHUB_OUTPUT"; fi
+            echo "要编译："; cat "$RUNNER_TEMP/targets"
           else
             echo "any=false" >> "$GITHUB_OUTPUT"
             echo "这次改动不涉及 PDF，跳过"
@@ -48,7 +50,7 @@ jobs:
             make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-science \
             texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
           xelatex --version | head -n1; inkscape --version
-      - name: 重新编译
+      - name: 编译
         if: steps.targets.outputs.any == 'true'
         run: |
           mapfile -t targets < "$RUNNER_TEMP/targets"
@@ -57,12 +59,13 @@ jobs:
           else
             JOBS="$(nproc)" scripts/build_gaokao_pdfs.sh "${targets[@]}"
           fi
-      - name: 编出的 PDF 与仓库中的相同
-        if: steps.targets.outputs.any == 'true'
-        run: |
-          if [ -n "$(git status --porcelain -- 高考真题 专题练习)" ]; then
-            git -c core.quotepath=off status --short -- 高考真题 专题练习
-            echo "::error::重新编译出的 PDF 与仓库中的不同（见上面的文件列表）。改了源文件后，请用 scripts/build_gaokao_pdfs.sh 重新编译并提交 PDF"
-            exit 1
-          fi
-          echo "全部逐字节相同"
+      - name: 保留编出的 PDF 供预览
+        if: steps.targets.outputs.any == 'true' && steps.targets.outputs.all != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pdf
+          path: |
+            高考真题/
+            专题练习/*.pdf
+          retention-days: 7
+          if-no-files-found: error

@@ -24,6 +24,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 SRC = REPO / "LaTeX源码"
+sys.path.insert(0, str(REPO / "scripts"))  # python3 -I 不会把脚本所在目录加进 sys.path
+import pdf_names  # noqa: E402  PDF 在 GitHub Release 中的下载地址
 INDEX_DIR = "知识点索引"
 ANSWER_DIR = "答案速查"
 CSV_NAME = "题目清单.csv"
@@ -106,7 +108,8 @@ class Question:
         return f"{int(self.degree) / 1000:.2f}" if self.degree else ""
 
     def pdf(self, version: str) -> str:
-        return f"高考真题/{self.year}/{self.year}_{self.paper}_{version}.pdf"
+        """这套卷的 PDF 在 GitHub Release 中的下载地址"""
+        return pdf_names.paper_url(self.year, self.paper, version)
 
 
 # ---------------------------------------------------------------------------
@@ -427,8 +430,8 @@ def type_cell(q: Question) -> str:
     return f"{q.type}\\*" if q.type_note else q.type
 
 
-def pdf_links(q: Question, prefix: str = "../") -> str:
-    return f"[学生版]({prefix}{q.pdf('学生版')}) · [教师版]({prefix}{q.pdf('教师版')})"
+def pdf_links(q: Question) -> str:
+    return f"[学生版]({q.pdf('学生版')}) · [教师版]({q.pdf('教师版')})"
 
 
 def year_range(qs: list[Question]) -> str:
@@ -477,6 +480,7 @@ def render_index_readme(qs: list[Question], chapters: list[str], by_chapter: dic
         "- 题型带 * 的，平台标注和题目对不上，索引按题目结构作了订正或推断，见[存疑清单](存疑清单.md)。",
         "- **题目**是题干开头，公式只做了粗略转写，复杂的公式用“…”代替。",
         f"- 全部题目的表格版：[`{CSV_NAME}`]({CSV_NAME})，可以用 Excel 或 WPS 打开筛选。",
+        f"- PDF 链接指向仓库 Release 中的文件，全部 PDF 见 [Release「{pdf_names.RELEASE_TAG}」]({pdf_names.RELEASE_PAGE})。",
         f"- 选择题答案见[答案速查](../{ANSWER_DIR}/README.md)。",
         "",
         "| 章节 | 题数 | 知识点数 | 题量最多的知识点 |",
@@ -754,7 +758,7 @@ def render_answers_year(year: str, qs: list[Question]) -> str:
     for paper in sorted(papers, key=lambda p: order_key(PAPER_ORDER, p)):
         items = [answer_text(q) for q in papers[paper] if q.key_answers or q.answer_missing]
         teacher = papers[paper][0].pdf("教师版")
-        lines.append(f"| [{paper}](../{teacher}) | {'　'.join(items) if items else '—（本卷没有带选项的小题，见教师版）'} |")
+        lines.append(f"| [{paper}]({teacher}) | {'　'.join(items) if items else '—（本卷没有带选项的小题，见教师版）'} |")
     return "\n".join(lines) + "\n"
 
 
@@ -803,9 +807,10 @@ def main() -> int:
     if not qs:
         print("LaTeX源码/ 中没有找到试卷", file=sys.stderr)
         return 1
-    missing_pdfs = sorted({p for q in qs for p in (q.pdf("学生版"), q.pdf("教师版")) if not (REPO / p).exists()})
-    for p in missing_pdfs:
-        print(f"警告：找不到 {p}，索引中的链接会失效", file=sys.stderr)
+    unnamed = sorted({q.paper for q in qs if q.paper not in pdf_names.REGIONS})
+    if unnamed:
+        print(f"scripts/pdf_names.py 中没有这些卷的拼音名：{'、'.join(unnamed)}，请在 REGIONS 中加上", file=sys.stderr)
+        return 1
 
     files = generate(qs)
     stale = [

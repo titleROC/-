@@ -7,8 +7,8 @@
 #   make clean            清理辅助文件
 #   make distclean        恢复到刚检出的状态：再删除 PDF 成品、.xdv、svg-inkscape/ 和 make links 建立的软链接
 #
-# 这里只在各自目录里生成 PDF。要更新仓库里的 高考真题/ 和 专题练习/，请用 scripts/build_gaokao_pdfs.sh，
-# 它会固定 PDF 里的时间戳（编译结果可复现），并只复制编译成功的 PDF。
+# 这里只在各自目录里生成 PDF。要得到和 Release 中一样的 PDF，请用 scripts/build_gaokao_pdfs.sh，
+# 它会固定 PDF 里的时间戳（编译结果可复现），并只复制编译成功的 PDF 到仓库根目录的 高考真题/ 和 专题练习/。
 ifeq ($(origin YEAR),undefined)
 TOPIC_DIRS := $(patsubst %/Makefile,%,$(wildcard 专题练习/*/Makefile))
 endif

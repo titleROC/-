@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# 用本仓库「LaTeX源码/」中的 LaTeX 源编译 PDF，放入本仓库：
+# 用本仓库「LaTeX源码/」中的 LaTeX 源编译 PDF，放到仓库根目录下（这两处的 PDF 不入库，.gitignore 已忽略）：
 #   试卷      LaTeX源码/<年份>/<地区>/  →  高考真题/<年份>/<年份>_<地区>_{学生版,教师版}.pdf
 #   专题练习  LaTeX源码/专题练习/<专题>/  →  专题练习/<专题>_{学生版,教师版}.pdf
+# 仓库的 PDF 由 .github/workflows/release.yml 用本脚本编译后发布到 Release「pdf」。
 # （更新 LaTeX 源请先运行 scripts/sync_latex_sources.sh）
 #
 # 用法：
@@ -27,7 +28,7 @@
 #   - SVG 图的字体替换由 scripts/fonts.conf 固定；
 #   - 设置 MALLOC_PERTURB_，消除 xdvipdfmx 处理 1/2/4 位 PNG 时行尾填充位的随机字节（见下文）。
 # 用同一版本的 TeX Live、Inkscape 和字体包编译时，源文件没变的卷重新编译后与原来的 PDF 逐字节相同，
-# 所以全量重新编译只会让内容真正变了的 PDF 出现在 git 改动里。
+# 所以任何人都能编出与 Release 中逐字节相同的 PDF。
 #
 # 环境变量：
 #   JOBS               并行编译的份数（默认 4）
