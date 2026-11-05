@@ -15,13 +15,14 @@
 #   1. 目录少一层（试卷/<年>/<地区> → <年>/<地区>），各卷 Makefile 的 ROOT 由 ../../.. 改为 ../..
 #   2. gaokaozhenti.cls 在使用 Fandol 字体时，若系统装有 Noto Serif CJK SC，则用它回退生僻字
 #   3. 年份索引与异常记录中指向上游其他文件的相对链接，改为指向本目录或上游仓库网址
-#   4. 本地订正：应用 LaTeX源码/订正补丁/<年份>.patch（本仓库对上游 .tex 的订正，说明见该目录的 README.md）
+#   4. 本地订正：应用 LaTeX源码/订正补丁/<年份>.patch（本仓库对上游 .tex 的订正和补上的图，说明见该目录的 README.md）
 # 所有改动先在临时目录里完成，全部成功后才复制进 LaTeX源码/；订正补丁和上游冲突时报错退出，不改动任何文件。
 #
 # 导出后自动运行 scripts/gen_index.py，更新 知识点索引/ 和 答案速查/。
 #
-# 修改订正：直接改 LaTeX源码/<年份>/ 下的 .tex，然后用 SAVE_PATCHES=1 运行本脚本。它对比上游原样的 .tex
-# 和本地的 .tex，重新生成这些年份的 订正补丁/<年份>.patch（没有差异时删除补丁），不改动 LaTeX源码/ 的其他文件。
+# 修改订正：直接改 LaTeX源码/<年份>/ 下的 .tex（要补的图放进该卷的 figs/），然后用 SAVE_PATCHES=1 运行本脚本。
+# 它对比上游原样的文件和本地的 .tex 及 figs/ 中的图，重新生成这些年份的 订正补丁/<年份>.patch
+# （没有差异时删除补丁），不改动 LaTeX源码/ 的其他文件。
 #
 # 环境变量：
 #   ARCHIVE_DIR   上游仓库的本地克隆位置（默认 ./.cache/gaokao-physics-archive）
@@ -82,27 +83,41 @@ git -C "$ARCHIVE_DIR" archive --format=tar "$ARCHIVE_REV" -- "${paths[@]}" | tar
 export GIT_CEILING_DIRECTORIES="$tmp"
 
 # ---------------------------------------------------------------------------
-# SAVE_PATCHES=1：对比上游原样的 .tex 和 LaTeX源码/ 中的 .tex，重新生成 订正补丁/<年份>.patch
+# SAVE_PATCHES=1：对比上游原样的文件和 LaTeX源码/ 中的文件，重新生成 订正补丁/<年份>.patch。
+# 记录两类改动：上游已有的 .tex 的修改；各卷 figs/ 中新增或替换的图（二进制补丁）。
 # ---------------------------------------------------------------------------
 if [ -n "${SAVE_PATCHES:-}" ]; then
   up="$tmp/试卷"
   git -C "$up" init -q
-  git -C "$up" add -- '*.tex'
+  git -C "$up" add -A .
   git -C "$up" -c user.name=sync -c user.email=sync@localhost -c commit.gpgsign=false commit -q -m upstream
   mkdir -p "$PATCH_DIR"
   for year in "${years[@]}"; do
     [ -d "$DEST/$year" ] || continue
-    while IFS= read -r -d '' f; do
-      rel="${f#"$DEST"/}"
-      if [ -f "$up/$rel" ]; then
-        cp "$f" "$up/$rel"
-      else
-        echo "跳过 $rel：上游没有这个文件（订正补丁只记录对上游文件的修改）" >&2
-      fi
-    done < <(find "$DEST/$year" -name '*.tex' -print0)
+    # 本地的 .tex 和 figs/ 中的图：git 跟踪的和未跟踪但没有被忽略的文件
+    while IFS= read -r -d '' p; do
+      f="$REPO_ROOT/$p"
+      rel="${p#LaTeX源码/}"
+      [ -f "$f" ] || continue
+      case "$rel" in
+        *.tex)
+          if [ -f "$up/$rel" ]; then
+            cp "$f" "$up/$rel"
+          else
+            echo "跳过 $rel：上游没有这个文件（订正补丁只记录对上游 .tex 的修改和 figs/ 中的图）" >&2
+          fi ;;
+        */figs/*)
+          if ! cmp -s "$f" "$up/$rel" 2>/dev/null; then
+            mkdir -p "$(dirname -- "$up/$rel")"
+            cp "$f" "$up/$rel"
+          fi ;;
+      esac
+    done < <(git -C "$REPO_ROOT" ls-files -z -co --exclude-standard -- "LaTeX源码/$year" \
+               | grep -z -E '(\.tex|/figs/[^/]+)$')
+    git -C "$up" add -A -- "$year"
     patch="$PATCH_DIR/$year.patch"
-    git -C "$up" -c core.quotepath=false diff --no-color --no-ext-diff --src-prefix=a/ --dst-prefix=b/ \
-      -- "$year" > "$patch.new"
+    git -C "$up" -c core.quotepath=false diff --cached --binary --no-color --no-ext-diff \
+      --src-prefix=a/ --dst-prefix=b/ -- "$year" > "$patch.new"
     if [ -s "$patch.new" ]; then
       mv "$patch.new" "$patch"
       echo "已写入 LaTeX源码/订正补丁/$year.patch（$(grep -c '^diff --git' "$patch") 个文件）"

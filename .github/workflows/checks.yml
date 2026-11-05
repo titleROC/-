@@ -2,13 +2,14 @@
 #   - 知识点索引、答案速查是否由当前的 LaTeX源码/ 生成（scripts/gen_index.py --check）
 #   - Markdown 里的相对链接和锚点是否有效（scripts/check_links.py）
 #   - 从上游固定的提交重新同步并应用订正补丁后，LaTeX源码/ 和索引是否一字不变
-#     （改了 LaTeX源码/<年份>/ 下的 .tex 却没有用 SAVE_PATCHES=1 更新补丁时会失败）
+#     （改了 LaTeX源码/<年份>/ 下的 .tex 或 figs/ 中的图，却没有用 SAVE_PATCHES=1 更新补丁时会失败）
+#   - 没有提交编译出的 PDF（PDF 发布在 Release「pdf」中，见 release.yml）
 name: 检查
 
 on:
   pull_request:
   push:
-    branches: [claude/friendly-pascal-aei38d]   # 默认分支；改名后这里也要改
+    branches: [main, claude/friendly-pascal-aei38d]   # 默认分支：改名为 main 前后都能触发
   workflow_dispatch:
 
 permissions:
@@ -28,6 +29,14 @@ jobs:
         run: python3 scripts/gen_index.py --check
       - name: 相对链接都有效
         run: python3 scripts/check_links.py
+      - name: 没有提交编译出的 PDF
+        run: |
+          bad="$(git -c core.quotepath=off ls-files '*.pdf' | grep -v -E '^LaTeX源码/.+/figs/[^/]+\.pdf$' || true)"
+          if [ -n "$bad" ]; then
+            echo "$bad"
+            echo "::error::编译出的 PDF 不提交到仓库，合并后由 release.yml 发布到 Release「pdf」。请删掉上面这些文件（LaTeX源码/ 中 figs/ 下的源图除外）"
+            exit 1
+          fi
 
   sync-roundtrip:
     name: 同步往返
@@ -47,6 +56,6 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git -c core.quotepath=off status --short
-            echo "::error::从上游重新同步、应用订正补丁并重新生成索引后，仓库有变化（见上面的文件列表）。改了 LaTeX源码/<年份>/ 下的 .tex 后，请运行 SAVE_PATCHES=1 scripts/sync_latex_sources.sh 更新订正补丁，再运行 python3 scripts/gen_index.py"
+            echo "::error::从上游重新同步、应用订正补丁并重新生成索引后，仓库有变化（见上面的文件列表）。改了 LaTeX源码/<年份>/ 下的 .tex 或 figs/ 中的图后，请运行 SAVE_PATCHES=1 scripts/sync_latex_sources.sh 更新订正补丁，再运行 python3 scripts/gen_index.py"
             exit 1
           fi

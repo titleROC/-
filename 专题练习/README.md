@@ -1,14 +1,15 @@
 # 专题练习
 
-用高考真题原题拼成的专题练习。和 [`高考真题/`](../高考真题/) 一样，每个专题有两个 PDF：
+用高考真题原题拼成的专题练习。和高考真题试卷一样，每个专题有两个 PDF，都在
+[Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf) 中：
 
 - `学生版`：只有试题，答案留空，适合打印练习
 - `教师版`：含答案和详解
 
 | 专题 | 题数 | 学生版 | 教师版 | LaTeX 源 |
 | :--- | :-- | :--- | :--- | :--- |
-| 自感与涡流 | 28 | [自感与涡流_学生版.pdf](自感与涡流_学生版.pdf) | [自感与涡流_教师版.pdf](自感与涡流_教师版.pdf) | [`LaTeX源码/专题练习/自感与涡流/`](../LaTeX源码/专题练习/自感与涡流/) |
-| 动量与碰撞 | 48 | [动量与碰撞_学生版.pdf](动量与碰撞_学生版.pdf) | [动量与碰撞_教师版.pdf](动量与碰撞_教师版.pdf) | [`LaTeX源码/专题练习/动量与碰撞/`](../LaTeX源码/专题练习/动量与碰撞/) |
+| 自感与涡流 | 28 | [下载](https://github.com/titleROC/-/releases/download/pdf/zhuanti-zigan-yu-woliu-student.pdf) | [下载](https://github.com/titleROC/-/releases/download/pdf/zhuanti-zigan-yu-woliu-teacher.pdf) | [`LaTeX源码/专题练习/自感与涡流/`](../LaTeX源码/专题练习/自感与涡流/) |
+| 动量与碰撞 | 48 | [下载](https://github.com/titleROC/-/releases/download/pdf/zhuanti-dongliang-yu-pengzhuang-student.pdf) | [下载](https://github.com/titleROC/-/releases/download/pdf/zhuanti-dongliang-yu-pengzhuang-teacher.pdf) | [`LaTeX源码/专题练习/动量与碰撞/`](../LaTeX源码/专题练习/动量与碰撞/) |
 
 ## 自感与涡流
 
@@ -97,12 +98,12 @@
 需要的软件见仓库根目录 [README](../README.md#来源与重新编译)。
 
 ```bash
-scripts/build_gaokao_pdfs.sh 专题练习     # 编译全部专题练习，生成学生版和教师版并复制到 专题练习/
+scripts/build_gaokao_pdfs.sh 专题练习     # 编译全部专题练习，生成学生版和教师版并复制到 专题练习/（不入库）
 ```
 
 编译试卷的 `scripts/build_gaokao_pdfs.sh 2020 2026` 也会顺带编译全部专题练习。
-修改单个专题时，也可以用 `make -C LaTeX源码/专题练习/自感与涡流` 在源码目录里编译预览，
-但要更新这里的 PDF，请用上面的脚本：它固定了 PDF 里的时间戳，内容没变时 PDF 逐字节不变。
+修改单个专题时，也可以用 `make -C LaTeX源码/专题练习/自感与涡流` 在源码目录里编译预览。
+编出的 PDF 不提交；改动合并到默认分支后，GitHub Actions 会重新编译并更新 Release 中的 PDF。
 
 ## 动量与碰撞
 
@@ -200,7 +201,7 @@ scripts/build_gaokao_pdfs.sh 专题练习     # 编译全部专题练习，生�
 ### 重新编译
 
 和「自感与涡流」一样（见上文的[重新编译](#重新编译)）：`scripts/build_gaokao_pdfs.sh 专题练习` 编译全部专题练习，
-并把学生版和教师版复制到这里；修改时也可以用 `make -C LaTeX源码/专题练习/动量与碰撞` 在源码目录里编译预览。
+并把学生版和教师版复制到本地的 `专题练习/`；修改时也可以用 `make -C LaTeX源码/专题练习/动量与碰撞` 在源码目录里编译预览。
 源文件 [`动量与碰撞.tex`](../LaTeX源码/专题练习/动量与碰撞/动量与碰撞.tex) 中每题前的注释写明了出处文件，
 配图按本练习的题号重新命名，放在同一目录的 `figs/` 下。
 

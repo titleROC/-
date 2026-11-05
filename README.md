@@ -6,6 +6,11 @@
 - `学生版`：只有试题，答案留空，适合刷题和打印
 - `教师版`：含答案和详细解析
 
+**PDF 在 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf) 中下载**，那里有全部试卷和专题练习的下载链接表。
+PDF 不放在仓库里：默认分支更新后，GitHub Actions 根据 LaTeX 源自动编译并上传。
+GitHub 会改写附件名中的汉字，所以文件名用拼音，如 `2024-beijing-student.pdf` 是 2024 年北京卷学生版，
+`-teacher.pdf` 是教师版。
+
 所有 PDF 都由 LaTeX 源重新排版生成，文字和公式是矢量的，放大不失真，也可以复制和搜索。
 LaTeX 源码放在 [`LaTeX源码/`](LaTeX源码/) 里，可以改题、重新排版或抽取题目，用法见 [`LaTeX源码/README.md`](LaTeX源码/README.md)。
 
@@ -15,9 +20,7 @@ LaTeX 源码放在 [`LaTeX源码/`](LaTeX源码/) 里，可以改题、重新排
 ## 目录结构
 
 ```
-高考真题/<年份>/<年份>_<地区>_学生版.pdf
-高考真题/<年份>/<年份>_<地区>_教师版.pdf
-专题练习/<专题>_学生版.pdf、<专题>_教师版.pdf   用真题原题拼成的专题练习
+专题练习/README.md                    用真题原题拼成的专题练习（PDF 在 Release 中）
 知识点索引/<章节>.md                    按章节、知识点列出全部题目；题目清单.csv 是表格版
 答案速查/<年份>.md                      各卷选择题答案
 LaTeX源码/<年份>/<地区>/<地区>.tex     对应的 LaTeX 源（含 Makefile、figs/ 图片）
@@ -26,24 +29,27 @@ LaTeX源码/异常记录/<年份>.md           上游记录的逐卷异常与待
 联考/README.md                        重要联考（八省联考、九省联考等）索引
 scripts/check_upstream.sh             检查上游有没有新卷，已有的试卷有没有改动
 scripts/sync_latex_sources.sh         从上游导出 LaTeX 源到 LaTeX源码/
-scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到 高考真题/ 和 专题练习/
+scripts/build_gaokao_pdfs.sh          用 LaTeX源码/ 编译 PDF 到本地的 高考真题/ 和 专题练习/（不入库）
 scripts/gen_index.py                  根据 LaTeX源码/ 的标注生成 知识点索引/ 和 答案速查/
+scripts/pdf_names.py                  PDF 在 Release 中的拼音文件名和下载地址
 scripts/check_links.py                检查 Markdown 文件中的相对链接
 scripts/changed_papers.py             列出一次改动后要重新编译的卷（CI 用）
-.github/workflows/                    GitHub Actions：PR 检查、PDF 重新编译、每周的上游检查
+.github/workflows/                    GitHub Actions：PR 检查、PDF 编译和发布、每周的上游检查
 ```
 
 ## 收录范围
 
+各卷 PDF 都在 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf) 中，按年份列出了下载链接。
+
 | 年份 | 套数 | 地区 |
 | :--- | :-- | :--- |
-| [2026](高考真题/2026/) | 21 | 全国理综、北京、上海、1月浙江、6月浙江、山东、江苏、广东、河北、河南、湖北、湖南、海南、重庆、四川、云南、贵州、广西、甘肃、陕晋青宁、黑吉辽 |
-| [2025](高考真题/2025/) | 25 | 全国理综、北京、天津、上海、1月浙江、6月浙江、山东、江苏、安徽、江西、福建、广东、河北、河南、湖北、湖南、海南、重庆、四川、云南、贵州、广西、甘肃、陕晋宁青、黑吉辽内 |
-| [2024](高考真题/2024/) | 22 | 全国新课标、全国甲卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、安徽、江西、福建、广东、河北、湖北、湖南、海南、辽宁、重庆、贵州、广西、甘肃 |
-| [2023](高考真题/2023/) | 18 | 全国新课标、全国甲卷、全国乙卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、福建、广东、河北、湖北、湖南、海南、辽宁、重庆 |
-| [2022](高考真题/2022/) | 17 | 全国甲卷、全国乙卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、福建、广东、河北、湖北、湖南、海南、辽宁、重庆 |
-| [2021](高考真题/2021/) | 17 | 全国甲卷、全国乙卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、福建、广东、河北、湖北、湖南、海南、辽宁、重庆 |
-| [2020](高考真题/2020/) | 11 | 全国理综Ⅰ、全国理综Ⅱ、全国理综Ⅲ、北京、天津、上海、1月浙江、7月浙江、山东、江苏、海南 |
+| 2026 | 21 | 全国理综、北京、上海、1月浙江、6月浙江、山东、江苏、广东、河北、河南、湖北、湖南、海南、重庆、四川、云南、贵州、广西、甘肃、陕晋青宁、黑吉辽 |
+| 2025 | 25 | 全国理综、北京、天津、上海、1月浙江、6月浙江、山东、江苏、安徽、江西、福建、广东、河北、河南、湖北、湖南、海南、重庆、四川、云南、贵州、广西、甘肃、陕晋宁青、黑吉辽内 |
+| 2024 | 22 | 全国新课标、全国甲卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、安徽、江西、福建、广东、河北、湖北、湖南、海南、辽宁、重庆、贵州、广西、甘肃 |
+| 2023 | 18 | 全国新课标、全国甲卷、全国乙卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、福建、广东、河北、湖北、湖南、海南、辽宁、重庆 |
+| 2022 | 17 | 全国甲卷、全国乙卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、福建、广东、河北、湖北、湖南、海南、辽宁、重庆 |
+| 2021 | 17 | 全国甲卷、全国乙卷、北京、天津、上海、1月浙江、6月浙江、山东、江苏、福建、广东、河北、湖北、湖南、海南、辽宁、重庆 |
+| 2020 | 11 | 全国理综Ⅰ、全国理综Ⅱ、全国理综Ⅲ、北京、天津、上海、1月浙江、7月浙江、山东、江苏、海南 |
 
 说明：
 
@@ -114,13 +120,13 @@ scripts/changed_papers.py             列出一次改动后要重新编译的卷
 （Gitee 镜像：[ylxdxx/gaokao-physics-archive](https://gitee.com/ylxdxx/gaokao-physics-archive)）。
 该项目把历年高考物理真题逐题校对后做成 LaTeX 源，并附上答案和详解。
 `LaTeX源码/` 是该项目提交 `5a60bb3`（2026-10-11）中 2020—2026 年的源文件，外加本仓库的少量订正：
-补上图片尺寸、去掉误用的图、改正标错或漏标的答案、把放错位置的详解挪回原题、拆开被合并的两道题、改正分值和题号笔误等，
-见 [`LaTeX源码/订正补丁/`](LaTeX源码/订正补丁/README.md)。
-`高考真题/` 中的 PDF 由它用 XeLaTeX 编译生成。中文字体使用 TeX Live 自带的 Fandol 字体；Fandol 缺少的生僻字，
+补上图片尺寸、去掉误用的图、改正标错或漏标的答案、把放错位置的详解挪回原题、拆开被合并的两道题、改正分值和题号笔误、
+按原卷补上缺的选项和题图、为缺详解的题补写详解（注明“编者补写”）等，见 [`LaTeX源码/订正补丁/`](LaTeX源码/订正补丁/README.md)。
+Release 中的 PDF 由它用 XeLaTeX 编译生成。中文字体使用 TeX Live 自带的 Fandol 字体；Fandol 缺少的生僻字，
 以及个别卷中 ⑪ 以上的圈码，用 Noto CJK 字体。SVG 图中的文字按 [`scripts/fonts.conf`](scripts/fonts.conf) 固定替换：
 西文用 Liberation Serif，汉字用文鼎 PL 简报宋（AR PL SungtiL GB）。
 
-试题是重新排版的，不是原卷扫描件，个别题目的图片和版式可能与原卷不同；部分卷的解析暂不完整（缺详解的题见存疑清单）。
+试题是重新排版的，不是原卷扫描件，个别题目的图片和版式可能与原卷不同；注明“编者补写”的详解不是原卷材料，仅供参考。
 上游记录的异常和待核验事项见 [`LaTeX源码/异常记录/`](LaTeX源码/异常记录/)。正式使用前，请对照各省教育考试院公布的原卷核对。
 
 重新编译（Ubuntu/Debian）：
@@ -129,27 +135,32 @@ scripts/changed_papers.py             列出一次改动后要重新编译的卷
 sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
   texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
 scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源（自动重新应用订正补丁），会覆盖这些年份的试卷和公共宏包，见 LaTeX源码/README.md
-scripts/build_gaokao_pdfs.sh 2020 2026      # 编译这些年份的试卷和全部专题练习，JOBS=8 可加速
+scripts/build_gaokao_pdfs.sh 2020 2026      # 编译这些年份的试卷和全部专题练习到 高考真题/ 和 专题练习/，JOBS=8 可加速
 python3 scripts/gen_index.py                # 改了 LaTeX源码/ 后更新知识点索引和答案速查（同步脚本会自动运行）
 ```
 
+- 编出的 PDF 只在本地，不提交（`.gitignore` 已忽略）；仓库的 PDF 由 GitHub Actions 编译后发布到 Release，见下文「自动检查」。
 - 只编译专题练习：`scripts/build_gaokao_pdfs.sh 专题练习`；只编译试卷：在命令前加 `TOPICS=0`；
   只编译某几套卷：`scripts/build_gaokao_pdfs.sh 2023/湖南 2024/北京`（专题练习写成 `专题练习/动量与碰撞`）。
 - 编译结果可复现：构建脚本固定了写进 PDF 的时间戳和 SVG 图的字体替换，并消除了 xdvipdfmx 处理个别 PNG 图时的随机字节。
-  用同一版本的 TeX Live、Inkscape 和字体包
-  重新编译时，源文件没变的卷，PDF 逐字节不变，git 里只会出现真正改过的 PDF。
-  现在的 PDF 是在 Ubuntu 24.04 上用 TeX Live 2023（xdvipdfmx 20220710）和 Inkscape 1.2.2 编译的。
+  用同一版本的 TeX Live、Inkscape 和字体包重新编译，源文件没变的卷 PDF 逐字节不变；
+  在 GitHub 的机器上全部重新编译过两次，266 个 PDF 都与本地编出的逐字节相同。
+  Release 中的 PDF 是在 Ubuntu 24.04 上用 TeX Live 2023（xdvipdfmx 20220710）和 Inkscape 1.2.2 编译的。
 
 ## 自动检查
 
-每个 PR 都会在 GitHub Actions 上运行这些检查（[`.github/workflows/`](.github/workflows/)）：
+GitHub Actions（[`.github/workflows/`](.github/workflows/)）会自动做这些事：
 
-- **检查**（约 1 分钟）：知识点索引和答案速查是最新的（`gen_index.py --check`），Markdown 里的相对链接都有效，
-  从上游固定的提交重新同步并应用订正补丁后，`LaTeX源码/` 和索引一字不变。
-  改了 `LaTeX源码/<年份>/` 下的 `.tex` 却没有用 `SAVE_PATCHES=1` 更新订正补丁、或没有重新生成索引时，这一项会失败。
-- **PDF 可复现**：PR 改动了某套卷的源文件或 PDF 时，用同样的工具链重新编译这几套卷，编出的 PDF 必须与 PR 中的逐字节相同，
-  PDF 没有随源文件更新就会失败。安装 TeX Live 约 7 分钟，之后每套卷约 20 秒；
-  改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，约需半小时（GitHub 的 2 核机器上实测 31 分钟，266 个 PDF 全部逐字节相同）。
-- 另外每周一检查一次上游（见上文「2026 年缺卷」）。
+- **检查**（每个 PR，约 1 分钟）：知识点索引和答案速查是最新的（`gen_index.py --check`），Markdown 里的相对链接都有效，
+  没有提交编出的 PDF，从上游固定的提交重新同步并应用订正补丁后 `LaTeX源码/` 和索引一字不变。
+  改了 `LaTeX源码/<年份>/` 下的 `.tex` 或 `figs/` 中的图，却没有用 `SAVE_PATCHES=1` 更新订正补丁、或没有重新生成索引时，这一项会失败。
+- **PDF 编译**（PR 改动了某套卷的源文件时）：编译这几套卷，编译出错就失败；编出的 PDF 作为这次运行的附件保留 7 天，
+  合并前可以在 PR 的 Checks 页面下载预览。安装 TeX Live 约 7 分钟，之后每套卷约 20 秒；
+  改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，约需半小时（这时不保留附件）。
+- **发布 PDF**（默认分支更新后）：编译有改动的卷和 Release 中缺 PDF 的卷，上传到 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf)，
+  更新 Release 说明中的下载链接表。也可以在 Actions 页面手动运行，选“全部重新编译”时重新上传全部 PDF。
+- **上游检查**：每周一检查一次上游（见上文「2026 年缺卷」）。
+
+仓库私有时，这些都用 GitHub Actions 每月的免费额度。
 
 高考试题的著作权归命题单位所有，本仓库仅供个人学习和研究使用。

@@ -1,0 +1,112 @@
+# 默认分支更新后编译 PDF，上传到 Release「pdf」（文件名见 scripts/pdf_names.py）。PDF 不提交到仓库。
+#   要编译的卷：标签 pdf（上次编译依据的提交）以来 LaTeX源码/ 中有改动的卷，加上 Release 中缺了 PDF 的卷；
+#   还没有 Release、公共文件变了，或手动运行时选了“全部重新编译”，就全部编译（约半小时）。
+#   上传后删掉已经没有对应卷的 PDF，把标签 pdf 移到这次的提交，并更新 Release 说明中的下载链接表。
+name: 发布 PDF
+
+on:
+  push:
+    branches: [main, claude/friendly-pascal-aei38d]   # 默认分支：改名为 main 前后都能触发
+  workflow_dispatch:
+    inputs:
+      full:
+        description: 全部重新编译并上传
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-pdf
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: 编译并上传 PDF
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TAG: pdf
+    steps:
+      - uses: actions/checkout@v5
+      - name: 找出要编译的卷
+        id: plan
+        env:
+          FULL: ${{ inputs.full }}
+        run: |
+          assets="$RUNNER_TEMP/assets"
+          if gh release view "$TAG" --json assets --jq '.assets[].name' > "$assets" 2>/dev/null; then
+            echo "Release $TAG 现有 $(grep -c . "$assets" || true) 个 PDF"
+          else
+            : > "$assets"
+            echo "还没有 Release $TAG"
+          fi
+          base=""
+          if git fetch -q --depth 1 origin "refs/tags/$TAG:refs/tags/$TAG" 2>/dev/null; then
+            base="$(git rev-parse "$TAG^{commit}")"
+            echo "上次编译依据的提交：$base"
+          fi
+          {
+            if [ "$FULL" = true ] || [ -z "$base" ] || [ ! -s "$assets" ]; then
+              echo all
+            else
+              python3 scripts/changed_papers.py "$base"
+              python3 scripts/pdf_names.py missing "$assets"
+            fi
+          } | sort -u > "$RUNNER_TEMP/targets"
+          if grep -qx all "$RUNNER_TEMP/targets"; then echo all > "$RUNNER_TEMP/targets"; fi
+          if [ -s "$RUNNER_TEMP/targets" ]; then
+            echo "build=true" >> "$GITHUB_OUTPUT"
+            echo "要编译："; cat "$RUNNER_TEMP/targets"
+          else
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            echo "没有要重新编译的卷"
+          fi
+      - name: 安装 TeX Live、Inkscape 和字体
+        if: steps.plan.outputs.build == 'true'
+        run: |
+          sudo apt-get update -q
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
+            make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-science \
+            texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+          xelatex --version | head -n1; inkscape --version
+      - name: 编译
+        if: steps.plan.outputs.build == 'true'
+        run: |
+          mapfile -t targets < "$RUNNER_TEMP/targets"
+          if [ "${targets[0]}" = all ]; then
+            JOBS="$(nproc)" scripts/build_gaokao_pdfs.sh 2020 2026
+          else
+            JOBS="$(nproc)" scripts/build_gaokao_pdfs.sh "${targets[@]}"
+          fi
+      - name: 上传到 Release
+        run: |
+          up="$RUNNER_TEMP/upload"
+          mkdir -p "$up"
+          python3 scripts/pdf_names.py assets | while IFS=$'\t' read -r local asset; do
+            if [ -f "$local" ]; then cp "$local" "$up/$asset"; fi
+          done
+          n="$(find "$up" -name '*.pdf' | wc -l)"
+          python3 scripts/pdf_names.py notes "$GITHUB_SHA" > "$RUNNER_TEMP/notes.md"
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            if [ "$n" -gt 0 ]; then gh release upload "$TAG" "$up"/*.pdf --clobber; fi
+          else
+            test "$n" -gt 0
+            gh release create "$TAG" "$up"/*.pdf --title "高考物理真题 PDF" \
+              --notes-file "$RUNNER_TEMP/notes.md" --target "$GITHUB_SHA"
+          fi
+          echo "上传了 $n 个 PDF"
+          gh release view "$TAG" --json assets --jq '.assets[].name' > "$RUNNER_TEMP/assets"
+          python3 scripts/pdf_names.py stale "$RUNNER_TEMP/assets" | while read -r name; do
+            echo "删除已经没有对应卷的 $name"
+            gh release delete-asset "$TAG" "$name" --yes
+          done
+          git tag -f "$TAG" "$GITHUB_SHA"
+          git push -f origin "refs/tags/$TAG"
+          gh release edit "$TAG" --notes-file "$RUNNER_TEMP/notes.md"
+          {
+            echo "Release「$TAG」已更新到 \`$GITHUB_SHA\`，上传了 $n 个 PDF："
+            echo "https://github.com/$GITHUB_REPOSITORY/releases/tag/$TAG"
+          } >> "$GITHUB_STEP_SUMMARY"
