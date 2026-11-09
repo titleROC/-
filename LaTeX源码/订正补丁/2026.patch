@@ -73,6 +73,42 @@ index 173bda9..cdda75d 100644
  %% chapter: 运动和力
  %% point: 动量和能量
  %% method: 无
+diff --git a/2026/海南/海南.tex b/2026/海南/海南.tex
+index 7140a5e..7721866 100644
+--- a/2026/海南/海南.tex
++++ b/2026/海南/海南.tex
+@@ -277,13 +277,13 @@ C、D．设 $PA$ 段绳长为 $L$、竖直高度为 $h$，弹性绳劲度系数
+ 
+ \item
+ %% number: 9
+-%% paperName: 2026年海南高考第 9 题 0 分
++%% paperName: 2026年海南高考第 9 题 4 分
+ %% typeId: 2
+ %% type: 多选题
+ %% chapter: 机械振动
+ %% point: 振动图象
+ %% method: 无
+-%% score: 0
++%% score: 4
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+@@ -526,13 +526,13 @@ B．由于 $xv = k$ 为定值，由数学知识 $(xv)' = x'v + v'x = 0 \Rightarr
+ 
+ \item
+ %% number: 15
+-%% paperName: 2026年海南高考第 15 题 19 分
++%% paperName: 2026年海南高考第 15 题 10 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 电路
+ %% point: 测量电阻率
+ %% method: 极值
+-%% score: 19
++%% score: 10
+ %% degree: 450
+ %% duplicateId: 0
+ %% body:
 diff --git a/2026/甘肃/甘肃.tex b/2026/甘肃/甘肃.tex
 index ae2df14..45c2f44 100644
 --- a/2026/甘肃/甘肃.tex
@@ -104,9 +140,25 @@ index 3d07fc6..41604e2 100644
  %% point: 带电粒子的直线运动
  %% method: 无
 diff --git a/2026/黑吉辽/黑吉辽.tex b/2026/黑吉辽/黑吉辽.tex
-index a101fd9..8729f69 100644
+index a101fd9..6dd9dd1 100644
 --- a/2026/黑吉辽/黑吉辽.tex
 +++ b/2026/黑吉辽/黑吉辽.tex
+@@ -333,13 +333,13 @@ D．根据题意可知太阳和卫星的距离等于地球和卫星的距离，
+ }
+ \item
+ %% number: 10
+-%% paperName: 2026年黑吉辽高考第 10 题 0 分
++%% paperName: 2026年黑吉辽高考第 10 题 6 分
+ %% typeId: 2
+ %% type: 多选题
+ %% chapter: 电磁感应
+ %% point: 线圈过有界磁场
+ %% method: 无
+-%% score: 0
++%% score: 6
+ %% degree: 350
+ %% duplicateId: 0
+ %% body:
 @@ -619,8 +619,8 @@ $C$ 与 $A$ 碰撞，由动量守恒定律和能量守恒定律有
  \item
  %% number: 15

@@ -24,6 +24,26 @@ index 208fd2e..1322436 100644
  \end{steps}
  \onepicture[w=3.60cm, align=right]{figs/16.png}
  %% answer:
+diff --git a/2024/上海/上海.tex b/2024/上海/上海.tex
+index 19db388..60cd5b8 100644
+--- a/2024/上海/上海.tex
++++ b/2024/上海/上海.tex
+@@ -299,13 +299,13 @@ $\frac{1}{2}mv_{1}^{2} - \frac{GMm}{r_{1}} = \frac{1}{2}mv_{2}^{2} - \frac{GMm}{
+ 
+ \item
+ %% number: 5
+-%% paperName: 2024年上海高考第 5 题 0 分
++%% paperName: 2024年上海高考第 5 题 22 分
+ %% typeId: 9
+ %% type: 综合题
+ %% chapter: 磁场
+ %% point: 带电粒子在磁场中的运动
+ %% method: 无
+-%% score: 0
++%% score: 22
+ %% degree: 633
+ %% duplicateId: 0
+ %% body:
 diff --git a/2024/全国新课标/全国新课标.tex b/2024/全国新课标/全国新课标.tex
 index d0056fe..cb1905d 100644
 --- a/2024/全国新课标/全国新课标.tex
@@ -223,10 +243,102 @@ index 135b3ae..b6e3309 100644
  
  B．闭合开关，达到稳定后，通过线圈 P 的磁通量保持不变，感应电流为零，电流表的示数为零，故 B 正确；
  
+diff --git a/2024/天津/天津.tex b/2024/天津/天津.tex
+index 8c6fa1b..5dcffcf 100644
+--- a/2024/天津/天津.tex
++++ b/2024/天津/天津.tex
+@@ -287,6 +287,7 @@ CD．根据沿电场线方向电势逐渐降低，结合题图可知，c 点左
+ 
+ \item
+ %% number: 9
++%% part: （1）
+ %% paperName: 2024年天津高考第 9 题 6 分
+ %% typeId: 4
+ %% type: 实验题
+@@ -297,8 +298,8 @@ CD．根据沿电场线方向电势逐渐降低，结合题图可知，c 点左
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+-某同学研究闭合电路的规律。
+-\begin{enumerate}
++（1）某同学研究闭合电路的规律。
++\begin{enumerate}[label=\protect\Circled{\arabic*}]
+ 	\item
+ 	根据闭合电路的欧姆定律得出了电源输出功率 $P$ 与外电路电阻关系图像，如图所示，则 $P$ 的峰值对应的外电路电阻值 $R$ 应\tkanswer{等于}电源内阻 $r$（填“大于”、“小于”或“等于”）；
+ 	\item
+@@ -326,10 +327,10 @@ CD．根据沿电场线方向电势逐渐降低，结合题图可知，c 点左
+ %% answer:
+ \jdanswer{
+ \begin{enumerate}
+-	\item
++	\item[{\color{blue!40!green}①}]
+ 	等于
+ 
+-	\item
++	\item[{\color{blue!40!green}②}]
+ 	C，2
+ 
+ \end{enumerate}
+@@ -347,8 +348,9 @@ $P = \frac{E^{2}R}{(R + r)^{2}} = \frac{E^{2}}{\frac{(R - r)^{2}}{R} - 4r}$
+ （ii）电压表内阻远大于电源内阻，应采用相对电源的电流表外接法，使电源内阻的测量结果更接近真实值，S$_{2}$ 应与 2 端闭合。
+ }
+ 
+-\item
++\item[]
+ %% number: 9
++%% part: （2）
+ %% paperName: 2024年天津高考第 9 题 6 分
+ %% typeId: 4
+ %% type: 实验题
+@@ -359,9 +361,9 @@ $P = \frac{E^{2}R}{(R + r)^{2}} = \frac{E^{2}}{\frac{(R - r)^{2}}{R} - 4r}$
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+-某同学用图示装置探究加速度与力的关系。
++（2）某同学用图示装置探究加速度与力的关系。
+ \onepicture[w=6.50cm, align=right]{figs/09c.png}
+-\begin{enumerate}
++\begin{enumerate}[label=\protect\Circled{\arabic*}]
+ 	\item
+ 	为补偿打点计时器对小车的阻力及其他阻力，调节木板倾角，使小车在不挂槽码时运动，并打出纸带进行检验，下图中能表明补偿阻力恰当的是\tkanswer{B}；
+ 
+@@ -379,13 +381,13 @@ $P = \frac{E^{2}R}{(R + r)^{2}} = \frac{E^{2}}{\frac{(R - r)^{2}}{R} - 4r}$
+ %% answer:
+ \jdanswer{
+ \begin{enumerate}
+-	\item
++	\item[{\color{blue!40!green}①}]
+ 	B
+ 
+-	\item
++	\item[{\color{blue!40!green}②}]
+ 	0.51
+ 
+-	\item
++	\item[{\color{blue!40!green}③}]
+ 	40
+ 
+ \end{enumerate}
 diff --git a/2024/安徽/安徽.tex b/2024/安徽/安徽.tex
-index 1f32242..6496277 100644
+index 1f32242..01fe01f 100644
 --- a/2024/安徽/安徽.tex
 +++ b/2024/安徽/安徽.tex
+@@ -437,13 +437,13 @@ $mv = \frac{m}{2}v_{1} + \frac{m}{2}v_{2}$
+ 
+ \item
+ %% number: 11
+-%% paperName: 2024年安徽高考第 11 题 0 分
++%% paperName: 2024年安徽高考第 11 题 6 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 光学
+ %% point: 测定玻璃折射率
+ %% method: 无
+-%% score: 0
++%% score: 6
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
 @@ -512,8 +512,8 @@ $n_{\text{介质}} = \frac{\sin\alpha_{1}}{\sin\alpha_{3}}$
  \item
  %% number: 12
@@ -238,10 +350,62 @@ index 1f32242..6496277 100644
  %% chapter: 电路
  %% point: 电路实验
  %% method: 无
+@@ -593,13 +593,13 @@ $U_{2} = I_{g}(R_{g} + R_{1} + R_{2})$
+ 
+ \item
+ %% number: 13
+-%% paperName: 2024年安徽高考第 13 题 0 分
++%% paperName: 2024年安徽高考第 13 题 10 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 气体性质
+ %% point: 玻意耳定律
+ %% method: 无
+-%% score: 0
++%% score: 10
+ %% degree: 750
+ %% duplicateId: 0
+ %% body:
+diff --git a/2024/广西/广西.tex b/2024/广西/广西.tex
+index 15ebf93..f437b16 100644
+--- a/2024/广西/广西.tex
++++ b/2024/广西/广西.tex
+@@ -403,13 +403,13 @@ $\frac{1}{2}(f\sin\theta + F_{N}\cos\theta) = \frac{1}{4}\overline{f}$
+ 
+ \item
+ %% number: 11
+-%% paperName: 2024年广西高考第 11 题 0 分
++%% paperName: 2024年广西高考第 11 题 6 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 机械振动
+ %% point: 单摆测重力加速度
+ %% method: 无
+-%% score: 0
++%% score: 6
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
 diff --git a/2024/江苏/江苏.tex b/2024/江苏/江苏.tex
-index d09bd93..df62aaf 100644
+index d09bd93..0f8d05a 100644
 --- a/2024/江苏/江苏.tex
 +++ b/2024/江苏/江苏.tex
+@@ -301,13 +301,13 @@ $E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\m
+ 
+ \item
+ %% number: 10
+-%% paperName: 2024年江苏高考第 10 题 0 分
++%% paperName: 2024年江苏高考第 10 题 4 分
+ %% typeId: 1
+ %% type: 单选题
+ %% chapter: 电磁感应
+ %% point: 楞次定律
+ %% method: 无
+-%% score: 0
++%% score: 4
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
 @@ -330,8 +330,8 @@ $E_{\mathrm{p}}=\frac{1}{2}\left(\frac{m_{\mathrm{B}}^{2}}{m_{\mathrm{A}}}+m_{\m
  \item
  %% number: 11
@@ -328,18 +492,91 @@ index 11e8a3c..6d69918 100644
  \memoanswer{
  AC．根据几何关系可知，若粒子穿过 $ad$ 边时速度方向与 $ad$ 边夹角为 $45^{\circ}$，则粒子必经过 $cd$ 边，作出粒子运动轨迹图，如图甲所示
 diff --git a/2024/海南/海南.tex b/2024/海南/海南.tex
-index e06bf95..e268c3f 100644
+index e06bf95..dd66c95 100644
 --- a/2024/海南/海南.tex
 +++ b/2024/海南/海南.tex
-@@ -554,7 +554,7 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+@@ -539,6 +539,7 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ 
+ \item
+ %% number: 14
++%% part: （1）
+ %% paperName: 2024年海南高考第 14 题 6 分
+ %% typeId: 4
+ %% type: 实验题
+@@ -549,12 +550,12 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ %% degree: 750
+ %% duplicateId: 0
+ %% body:
+-水平圆盘上紧贴边缘放置一密度均匀的小圆柱体，如图~\ref{2024海南14a}所示，图~\ref{2024海南14b}为俯视图，测得圆盘直径 $D = 42.02 \Ucm$，圆柱体质量 $m = 30.0 \Ug$，圆盘绕过盘心 $O_{1}$ 的竖直轴匀速转动，转动时小圆柱体相对圆盘静止。
++（1）水平圆盘上紧贴边缘放置一密度均匀的小圆柱体，如图~\ref{2024海南14a}所示，图~\ref{2024海南14b}为俯视图，测得圆盘直径 $D = 42.02 \Ucm$，圆柱体质量 $m = 30.0 \Ug$，圆盘绕过盘心 $O_{1}$ 的竖直轴匀速转动，转动时小圆柱体相对圆盘静止。
+ 
  为了研究小圆柱体做匀速圆周运动时所需要的向心力情况，某同学设计了如下实验步骤：
- \begin{enumerate}
+-\begin{enumerate}
++\begin{enumerate}[label=\protect\Circled{\arabic*}]
  	\item
 -	用秒表测圆盘转动 10 周所用的时间 $t = 62.8 \Us$，则圆盘转动的角速度 $\omega = $\tkanswer[1.5cm]{1}$\Urads$（$\pi$ 取 3.14）
 +	用秒表测圆盘转动 10 周所用的时间 $t = 62.8 \Us$，则圆盘转动的角速度 $\omega = $\tkanswer[0.8cm]{1}$\Urads$（$\pi$ 取 3.14）
  	\item
  	用游标卡尺测量小圆柱体不同位置的直径，某次测量的示数如图~\ref{2024海南14c}所示，该读数 $d = $\tkanswer[1.5cm]{16.2}$\Umm$，多次测量后，得到平均值恰好与 $d$ 相等。
  	\item
+@@ -565,13 +566,13 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ %% answer:
+ \jdanswer{
+ \begin{enumerate}
+-	\item
++	\item[{\color{blue!40!green}①}]
+ 	1
+ 
+-	\item
++	\item[{\color{blue!40!green}②}]
+ 	16.2
+ 
+-	\item
++	\item[{\color{blue!40!green}③}]
+ 	$\frac{1}{2}m\omega^{2}(D - d)$，$6.1\times10^{-3}$
+ 
+ \end{enumerate}
+@@ -591,8 +592,9 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ 带入数据有 $F = 6.1\times10^{-3} \UN$
+ }
+ 
+-\item
++\item[]
+ %% number: 14
++%% part: （2）
+ %% paperName: 2024年海南高考第 14 题 6 分
+ %% typeId: 4
+ %% type: 实验题
+@@ -603,12 +605,12 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+-为验证两个互成角度的力的合成规律，某组同学用两个弹簧测力计、橡皮条、轻质小圆环、木板、刻度尺、白纸、铅笔、细线和图钉等器材，按照如下实验步骤完成实验：
++（2）为验证两个互成角度的力的合成规律，某组同学用两个弹簧测力计、橡皮条、轻质小圆环、木板、刻度尺、白纸、铅笔、细线和图钉等器材，按照如下实验步骤完成实验：
+ 
+ （Ⅰ）用图钉将白纸固定在水平木板上；
+ 
+ （Ⅱ）如图~\ref{2024海南14d}、\ref{2024海南14e}所示，橡皮条的一端固定在木板上的 G 点，另一端连接轻质小圆环，将两细线系在小圆环上，细线另一端系在弹簧测力计上，用两个弹簧测力计共同拉动小圆环到某位置，并标记圆环的圆心位置为 O 点，拉力 $F_{1}$ 和 $F_{2}$ 的方向分别过 P$_{1}$ 和 P$_{2}$ 点，大小分别为 $F_{1} = 3.60 \UN$、$F_{2} = 2.90 \UN$；拉力 $F_{1}$ 和 $F_{2}$，改用一个弹簧测力计拉动小圆环，使其圆心到 O 点，在拉力 $F$ 的方向上标记 P$_{3}$ 点，拉力的大小为 $F = 5.60 \UN$。请完成下列问题：
+-\begin{enumerate}
++\begin{enumerate}[label=\protect\Circled{\arabic*}]
+ 	\item
+ 	在图~\ref{2024海南14f}中按照给定的标度画出 $F_{1}$、$F_{2}$ 和 $F$ 的图示，然后按平行四边形定则画出 $F_{1}$、$F_{2}$ 的合力 $F'$。
+ 	\item
+@@ -619,12 +621,12 @@ $\frac{1}{2}m_{1}v_{1}^{2} + \frac{1}{2}m_{2}v_{2}^{2} = \frac{1}{2}m_{1}v_{1}'^
+ %% answer:
+ \jdanswer{
+ \begin{enumerate}
+-	\item
++	\item[{\color{blue!40!green}①}]
+ 	如答案图所示。
+ 
+ 	\onepicture[w=3.00cm]{figs/14_an.jpg}
+ 
+-	\item
++	\item[{\color{blue!40!green}②}]
+ 	①没有做到弹簧秤、细绳、橡皮条都与木板平行；②读数时没有正视弹簧测力计
+ 
+ \end{enumerate}
 diff --git a/2024/湖北/湖北.tex b/2024/湖北/湖北.tex
 index c572eba..cfdd88b 100644
 --- a/2024/湖北/湖北.tex
@@ -365,8 +602,28 @@ index c572eba..cfdd88b 100644
  }
  
  \end{enumerate}
+diff --git a/2024/湖南/湖南.tex b/2024/湖南/湖南.tex
+index 51a527e..6ac2854 100644
+--- a/2024/湖南/湖南.tex
++++ b/2024/湖南/湖南.tex
+@@ -617,13 +617,13 @@ $mg + \rho_{0}gV = m_{\text{气}}g + m_{0}g$
+ 
+ \item
+ %% number: 14
+-%% paperName: 2024年湖南高考第 14 题 0 分
++%% paperName: 2024年湖南高考第 14 题 14 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 磁场
+ %% point: 带电粒子在组合场中的运动
+ %% method: 无
+-%% score: 0
++%% score: 14
+ %% degree: 450
+ %% duplicateId: 0
+ %% body:
 diff --git a/2024/福建/福建.tex b/2024/福建/福建.tex
-index 1f7c84c..66bf28c 100644
+index 1f7c84c..dfbe47a 100644
 --- a/2024/福建/福建.tex
 +++ b/2024/福建/福建.tex
 @@ -410,7 +410,7 @@ $T_{2} = (27 + 273) \UK = 300 \UK$
@@ -387,6 +644,22 @@ index 1f7c84c..66bf28c 100644
  %% answer:
  \jdanswer{
  $\frac{2kQ}{R^{2}}$，大于，大于零
+@@ -467,13 +467,13 @@ $\varphi_{CM}>\varphi_{CN}>0$，$0>\varphi_{GM}>\varphi_{GN}$
+ 
+ \item
+ %% number: 12
+-%% paperName: 2024年福建高考第 12 题 0 分
++%% paperName: 2024年福建高考第 12 题 5 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 运动和力
+ %% point: 动量守恒定律
+ %% method: 无
+-%% score: 0
++%% score: 5
+ %% degree: 688
+ %% duplicateId: 0
+ %% body:
 @@ -674,8 +674,8 @@ $d = 0.9 \Ucm + 9 \times 0.1 \Umm = 0.99 \Ucm$
  \item
  %% number: 15
@@ -398,6 +671,22 @@ index 1f7c84c..66bf28c 100644
  %% chapter: 磁场
  %% point: 带电粒子在磁场中的运动
  %% method: 无
+@@ -733,13 +733,13 @@ $d = 0.9 \Ucm + 9 \times 0.1 \Umm = 0.99 \Ucm$
+ 
+ \item
+ %% number: 16
+-%% paperName: 2024年福建高考第 16 题 0 分
++%% paperName: 2024年福建高考第 16 题 16 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 运动和力
+ %% point: 牛顿定律的应用
+ %% method: 无
+-%% score: 0
++%% score: 16
+ %% degree: 231
+ %% duplicateId: 0
+ %% body:
 diff --git a/2024/重庆/重庆.tex b/2024/重庆/重庆.tex
 index 84e96f3..571b4a1 100644
 --- a/2024/重庆/重庆.tex
