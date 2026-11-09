@@ -163,7 +163,8 @@ GitHub Actions（[`.github/workflows/`](.github/workflows/)）会自动做这些
 - **发布 PDF**（默认分支更新后）：编译有改动的卷和 Release 中缺 PDF 的卷，上传到 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf)，
   更新 Release 说明中的下载链接表。GitHub 接口临时出错（如 HTTP 500）时，每一步都会自动重试几次；
   仍然失败时运行会标红，GitHub 会发邮件通知，这时在 Actions 页面重新运行即可（会重新编译，约半小时）。
-  也可以在 Actions 页面手动运行，选“全部重新编译”时重新上传全部 PDF。
+  只有默认分支的最新提交才会发布：重新运行时如果已经有了更新的提交，这次运行什么也不做，由最新提交的运行发布，
+  Release 不会退回旧的内容。也可以在 Actions 页面手动运行，选“全部重新编译”时重新上传全部 PDF。
 - **上游检查**：每周一检查一次上游（见上文「2026 年缺卷」）。
 
 仓库私有时，这些都用 GitHub Actions 每月的免费额度。
