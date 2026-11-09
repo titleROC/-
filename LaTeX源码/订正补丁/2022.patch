@@ -1,5 +1,5 @@
 diff --git a/2022/上海/上海.tex b/2022/上海/上海.tex
-index 1497245..8242cf2 100644
+index 1497245..3fb7047 100644
 --- a/2022/上海/上海.tex
 +++ b/2022/上海/上海.tex
 @@ -26,7 +26,11 @@
@@ -106,6 +106,22 @@ index 1497245..8242cf2 100644
  }
  
  \item
+@@ -233,13 +265,13 @@ $p_{1}=p_{0}-\rho gh=50 \UcmHg$，$V_{1}=30S$；$p_{2}=p_{0}=75 \UcmHg$。
+ 
+ \item
+ %% number: 10
+-%% paperName: 2022年上海高考第 10 题 0 分
++%% paperName: 2022年上海高考第 10 题 4 分
+ %% typeId: 1
+ %% type: 单选题
+ %% chapter: 曲线运动
+ %% point: 人造地球卫星
+ %% method: 无
+-%% score: 0
++%% score: 4
+ %% degree: 835
+ %% duplicateId: 0
+ %% body:
 @@ -252,7 +284,15 @@ $p_{1}=p_{0}-\rho gh=50 \UcmHg$，$V_{1}=30S$；$p_{2}=p_{0}=75 \UcmHg$。
  %% answer: B
  %% memo:
@@ -147,7 +163,7 @@ index 1497245..8242cf2 100644
  }
  
  \item
-@@ -369,7 +415,13 @@ $p_{1}=p_{0}-\rho gh=50 \UcmHg$，$V_{1}=30S$；$p_{2}=p_{0}=75 \UcmHg$。
+@@ -369,18 +415,24 @@ $p_{1}=p_{0}-\rho gh=50 \UcmHg$，$V_{1}=30S$；$p_{2}=p_{0}=75 \UcmHg$。
  %% answer: 
  %% memo:
  \memoanswer{
@@ -162,6 +178,19 @@ index 1497245..8242cf2 100644
  }
  
  \item
+ %% number: 16
+-%% paperName: 2022年上海高考第 16 题 0 分
++%% paperName: 2022年上海高考第 16 题 4 分
+ %% typeId: 3
+ %% type: 填空题
+ %% chapter: 电场
+ %% point: 电场强度
+ %% method: 无
+-%% score: 0
++%% score: 4
+ %% degree: 470
+ %% duplicateId: 0
+ %% body:
 @@ -467,7 +519,21 @@ $p_{1}=p_{0}-\rho gh=50 \UcmHg$，$V_{1}=30S$；$p_{2}=p_{0}=75 \UcmHg$。
  }
  %% memo:
@@ -275,7 +304,7 @@ index 8224369..4fe680a 100644
  %% type: 计算题
  %% chapter: 光学
 diff --git a/2022/河北/河北.tex b/2022/河北/河北.tex
-index bbff385..773088e 100644
+index bbff385..4910716 100644
 --- a/2022/河北/河北.tex
 +++ b/2022/河北/河北.tex
 @@ -384,8 +384,8 @@ $U=E=BLv_{0}=Bv_{0}(l_{0}+v_{0}t\tan\theta)$
@@ -298,6 +327,38 @@ index bbff385..773088e 100644
  \jdanswer{
  BCD
  }
+@@ -897,13 +897,13 @@ $4\cdot\frac{\pi m}{qB_{0}}+\left( \frac{\pi m}{qB_{0}}-\frac{2}{3}\cdot\frac{\p
+ 
+ \item
+ %% number: 15
+-%% paperName: 2022年河北高考第 15 题 0 分
++%% paperName: 2022年河北高考第 15 题 12 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 气体性质
+ %% point: 气体连接体
+ %% method: 无
+-%% score: 0
++%% score: 12
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+@@ -959,13 +959,13 @@ $m=\frac{4p_{0}S}{3g}$
+ 
+ \item
+ %% number: 16
+-%% paperName: 2022年河北高考第 16 题 8 分
++%% paperName: 2022年河北高考第 16 题 12 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 光学
+ %% point: 全反射
+ %% method: 无
+-%% score: 8
++%% score: 12
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
 diff --git a/2022/辽宁/辽宁.tex b/2022/辽宁/辽宁.tex
 index c8a4c76..48786ca 100644
 --- a/2022/辽宁/辽宁.tex

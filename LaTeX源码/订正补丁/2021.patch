@@ -85,6 +85,58 @@ index b7c45db..9188b52 100644
  
  B．运动员在 A、D 位置时重心的速度大小相同，但是方向不同，选项 B 错误；
  
+diff --git a/2021/全国甲卷/全国甲卷.tex b/2021/全国甲卷/全国甲卷.tex
+index fd5741c..641aee4 100644
+--- a/2021/全国甲卷/全国甲卷.tex
++++ b/2021/全国甲卷/全国甲卷.tex
+@@ -528,13 +528,13 @@ $W_{1}=0.46\UV\times0.16\UA\approx0.074\UW$
+ 
+ \item
+ %% number: 11
+-%% paperName: 2021年全国高考甲卷第 11 题 0 分
++%% paperName: 2021年全国高考甲卷第 11 题 12 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 功和能
+ %% point: 功能原理
+ %% method: 无
+-%% score: 0
++%% score: 12
+ %% degree: 280
+ %% duplicateId: 0
+ %% body:
+@@ -714,13 +714,13 @@ $d=\frac{39-10\sqrt{3}}{44}l$ \ccnum{⑬}
+ 
+ \item
+ %% number: 13
+-%% paperName: 2021年全国高考甲卷第 13 题 0 分
++%% paperName: 2021年全国高考甲卷第 13 题 5 分
+ %% typeId: 3
+ %% type: 填空题
+ %% chapter: 气体性质
+ %% point: 气体图象
+ %% method: 无
+-%% score: 0
++%% score: 5
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+@@ -756,13 +756,13 @@ $\frac{p_{b}}{p_{c}}=\frac{p_{1}}{p_{2}}=\frac{V_{2}}{V_{1}}$
+ 
+ \item
+ %% number: 14
+-%% paperName: 2021年全国高考甲卷第 14 题 0 分
++%% paperName: 2021年全国高考甲卷第 14 题 10 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 气体性质
+ %% point: 气体连接体
+ %% method: 无
+-%% score: 0
++%% score: 10
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
 diff --git a/2021/北京/北京.tex b/2021/北京/北京.tex
 index 5b0fd7e..3a0d680 100644
 --- a/2021/北京/北京.tex
@@ -197,6 +249,26 @@ index 9e38292..51241e6 100644
  
  %% answer:
  \jdanswer{
+diff --git a/2021/湖北/湖北.tex b/2021/湖北/湖北.tex
+index 45d8522..6a7e9c3 100644
+--- a/2021/湖北/湖北.tex
++++ b/2021/湖北/湖北.tex
+@@ -900,13 +900,13 @@ $H$ ($\Um[a]$) & 0.9181 & 0.9423 & 0.8530 & 0.8860 & 0.9231 \\
+ 
+ \item
+ %% number: 16
+-%% paperName: 2021年湖北高考第 16 题 0 分
++%% paperName: 2021年湖北高考第 16 题 16 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 电磁感应
+ %% point: 电磁感应中的变加速
+ %% method: 无
+-%% score: 0
++%% score: 16
+ %% degree: 450
+ %% duplicateId: 0
+ %% body:
 diff --git a/2021/福建/福建.tex b/2021/福建/福建.tex
 index f7e8019..b2bc0f3 100644
 --- a/2021/福建/福建.tex
