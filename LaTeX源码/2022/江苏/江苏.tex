@@ -607,13 +607,13 @@
 \jdanswer{
 \begin{enumerate}
 	\item
-	$\frac{8d}{v\cos\theta_{0}}\sqrt{\frac{m}{2E_{k}}}$
+	$\frac{8d}{\cos\theta_{0}}\sqrt{\frac{m}{2E_{k}}}$
 
 	\item
 	$-30\Udu < \theta < 30\Udu$ 或 $-\frac{\pi}{6} < \theta < \frac{\pi}{6}$
 
 	\item
-	$\frac{90}{37}$
+	$1:2$
 \end{enumerate}
 }
 
@@ -625,7 +625,7 @@
 
 	\onepicture[w=6.5cm]{figs/15_an1.png}
 
-	粒子在水平方向的速度为 $v_{x}=v\cos\theta_{0}$。根据 $E_{k} = \frac{1}{2} m v^{2}$ 可知 $v = \sqrt{\frac{2 E_{k}}{m}}$，解得 $t = \frac{8d}{v\cos\theta_{0}} \sqrt{\frac{m}{2E_{k}}}$。
+	粒子在水平方向的速度为 $v_{x}=v\cos\theta_{0}$。根据 $E_{k} = \frac{1}{2} m v^{2}$ 可知 $v = \sqrt{\frac{2 E_{k}}{m}}$，解得 $t = \frac{8d}{v\cos\theta_{0}} = \frac{8d}{\cos\theta_{0}} \sqrt{\frac{m}{2E_{k}}}$。
 
 	\item
 	粒子进入电场时的初动能 $E_{k}=4qEd=\frac{1}{2}mv_{0}^{2}$。
@@ -645,13 +645,15 @@
 	粒子在 $OO'$ 上、下部分运动呈现对称性，所以入射角的范围为 $-30\Udu < \theta < 30\Udu$ 或 $-\frac{\pi}{6} < \theta < \frac{\pi}{6}$。
 
 	\item
-	粒子在水平方向做匀速直线运动，粒子穿过电场所用时间为 $t' = \frac{8d}{v \cos \theta_{2}} \cdot \sqrt{\frac{m}{2E_{k}}} = \frac{1}{\cos \theta_{2}} \cdot \sqrt{\frac{12md}{qE}}$。
+	由 $E_{k}=\frac{8}{3}qEd=\frac{1}{2}mv_{0}^{2}$ 得 $v_{0}^{2}=\frac{16qEd}{3m}$，加速度大小 $a=\frac{qE}{m}$。粒子在水平方向做匀速直线运动，穿过电场所用时间为 $t'=\frac{8d}{v_{0}\cos\theta}$。
 
-	若粒子恰好能到达 $OO'$ 上方 $5d$ 的位置时速度减小至 0，根据动量定理可知 $-qEt_{1} = 0 - mv_{y1} = 0 - mv_{0} \sin \theta_{2} = 0 - \sqrt{2mE_{k}} \cdot \sin \theta_{2}$，解得 $t_{1} = \sqrt{\frac{16md}{qE}} \cdot \sin \theta_{2}$。
+	粒子刚好能穿出第一层电场的条件为 $v_{0}^{2}\sin^{2}\theta=2ad$，即 $\sin\theta=\sqrt{\frac{3}{8}}$。$|\theta|<\arcsin\sqrt{\frac{3}{8}}$ 的粒子在轴线两侧的第一层电场内往返，到不了 AD、BC 边，都从 CD 边射出。
 
-	粒子在竖直方向上再运动 $d$ 的距离恰好从 D 点离开，根据运动学公式可知 $d = \frac{1}{2} at_{0}^{2}$，解得 $t_{0}=\sqrt{\frac{2md}{qE}}$。
+	更大角度的粒子逐层向上运动：竖直速度在每层电场中交替地由 $v_{y0}=v_{0}\sin\theta$ 减为 $v_{y1}=\sqrt{v_{y0}^{2}-2ad}$，再增为 $v_{y0}$，每层用时均为 $\Delta t=\frac{v_{y0}-v_{y1}}{a}$。到达 AD 边需经过 6 层，用时 $t_{6}=\frac{6(v_{y0}-v_{y1})}{a}$。
 
-	当 $t_{1} + t_{0} = t$ 时，粒子恰好从 D 点离开，解得 $\sin \theta_{2} \approx 0.6$，则 $\theta_{2} \approx 37\Udu$，根据对称性可知粒子入射角的范围为 $-37\Udu < \theta < 37\Udu$，则从 CD 边出射的粒子与入射粒子的数量之比 $\frac{N}{N_{0}} \approx \frac{90}{37}$。
+	恰好从 D 点射出时 $t_{6}=t'$，解得 $\theta=45\Udu$，此时 $v_{y0}=\sqrt{\frac{8qEd}{3m}}$，$t_{6}=t'=\sqrt{\frac{24md}{qE}}$。$\theta$ 增大时 $t_{6}$ 减小而 $t'$ 增大，故 $\theta>45\Udu$ 的粒子从 AD 边射出，$\arcsin\sqrt{\frac{3}{8}}<\theta<45\Udu$ 的粒子从 CD 边射出。
+
+	由对称性，$-45\Udu<\theta<45\Udu$ 的粒子从 CD 边射出，所以 $\frac{N}{N_{0}}=\frac{90\Udu}{180\Udu}=\frac{1}{2}$，即 $N:N_{0}=1:2$。
 \end{enumerate}
 }
 
