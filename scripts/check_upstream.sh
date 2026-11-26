@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # 检查上游 YLXDXX/gaokao-physics-archive 的最新提交，相对「LaTeX源码/」所依据的提交（sync_latex_sources.sh 中
 # 固定的 ARCHIVE_REV）有没有要同步的内容：
-#   - 新卷：上游有、LaTeX源码/ 里还没有的试卷（如 2026 年天津、安徽、江西、福建卷）；
+#   - 新卷：上游有、LaTeX源码/ 里还没有的试卷；
 #   - 已有试卷的改动：上游补了详解、补了缺题、订正了错误等；
+#   - 删卷：本地仍有该卷，上游基准提交收录过，最新提交已移除；
 #   - 其他改动：年份索引、异常记录，以及公共文档类、宏包和 tools/。
 # 只读，不改动本仓库。
 #
@@ -69,7 +70,10 @@ for year in $(seq "$FROM" "$TO"); do
   for d in "$SRC/$year"/*/; do
     [ -f "$d/Makefile" ] || continue
     region="$(basename "$d")"
-    up cat-file -e "$rev:试卷/$year/$region" 2>/dev/null || removed+=("$year/$region")
+    if ! up cat-file -e "$rev:试卷/$year/$region" 2>/dev/null &&
+        up cat-file -e "$ARCHIVE_REV:试卷/$year/$region" 2>/dev/null; then
+      removed+=("$year/$region")
+    fi
   done
   changed_in "异常记录/$year.md" && others+=("异常记录/$year.md")
 done
@@ -97,6 +101,8 @@ if [ "$common" = 1 ]; then
   echo "  scripts/build_gaokao_pdfs.sh $FROM $TO        # 公共文件变了，全部重新编译"
 elif [ "${#papers[@]}" -gt 0 ]; then
   echo "  scripts/build_gaokao_pdfs.sh ${papers[*]}"
+elif [ "${#removed[@]}" -gt 0 ]; then
+  echo "  （请核对上游删卷清单，本次没有需要重新编译的试卷）"
 else
   echo "  （只有索引或异常记录变了，不用重新编译）"
 fi

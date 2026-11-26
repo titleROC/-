@@ -94,9 +94,9 @@ scripts/release_helpers.sh            发布 PDF 时用的重试等辅助函数�
 
 ## 知识点索引与答案速查
 
-- [`知识点索引/`](知识点索引/README.md)：2161 个题段按章节、知识点分组，每题列出年份、试卷、题号、题型、分值、难度和题干开头，
-  并链接到学生版和教师版 PDF；[`题目清单.csv`](知识点索引/题目清单.csv) 是全部题目的表格版，可以用 Excel 筛选。
-- [`答案速查/`](答案速查/README.md)：各卷选择题的答案，以及非选择题中选择小问的答案，用学生版做完后对答案用。
+- [知识点索引](知识点索引/README.md) 将 2161 个题段按章节、知识点分组。每题列出题号、题型、分值、难度和题干开头，学生版与教师版分别标出题目所在页。浏览器若先下载 PDF，可按链接上标的页码翻到该题。
+- [题目清单 CSV](知识点索引/题目清单.csv) 可按年份、知识点或分值筛选。“分值状态”单列保存，方便区分已标为推定的分值。
+- [答案速查](答案速查/README.md) 按卷列出选择答案。综合题中的选择小问沿用题面的编号，例如 2026 上海第 1 题的三组答案分别对应第（1）（3）（5）问。
 
 两者由 [`scripts/gen_index.py`](scripts/gen_index.py) 根据 `LaTeX源码/` 中每道题的题库平台标注自动生成。
 标注有误的题（如标成单选题、答案却是 AD）按题目结构作了订正或推断。这些题，以及缺选项、缺图、没标答案、
@@ -127,7 +127,7 @@ Release 中的 PDF 由它用 XeLaTeX 编译生成。中文字体使用 TeX Live 
 
 ```bash
 sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
-  texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+  texlive-science texlive-pictures texlive-plain-generic latexmk inkscape poppler-utils fonts-noto-cjk fonts-liberation
 scripts/sync_latex_sources.sh 2020 2026     # 可选：从上游重新导出 LaTeX 源（自动重新应用订正补丁），会覆盖这些年份的试卷和公共宏包，见 LaTeX源码/README.md
 scripts/build_gaokao_pdfs.sh 2020 2026      # 编译这些年份的试卷和全部专题练习到 高考真题/ 和 专题练习/，JOBS=8 可加速
 python3 scripts/gen_index.py                # 改了 LaTeX源码/ 后更新知识点索引和答案速查（同步脚本会自动运行）
@@ -148,11 +148,11 @@ GitHub Actions（[`.github/workflows/`](.github/workflows/)）会自动做这些
 - **检查**（每个 PR，约 1 分钟）：知识点索引和答案速查是最新的（`gen_index.py --check`），Markdown 里的相对链接都有效，
   没有提交编出的 PDF，从上游固定的提交重新同步并应用订正补丁后 `LaTeX源码/` 和索引一字不变。
   改了 `LaTeX源码/<年份>/` 下的 `.tex` 或 `figs/` 中的图，却没有用 `SAVE_PATCHES=1` 更新订正补丁、或没有重新生成索引时，这一项会失败。
-- **PDF 编译**（PR 改动了某套卷的源文件时）：编译这几套卷，编译出错就失败；编出的 PDF 作为这次运行的附件保留 7 天，
+- **PDF 编译**（PR 改动了某套卷的源文件时）：编译并核对学生版和教师版，检查学生版是否出现教师解析、日志是否有缺字或未解析引用，再用成品核对索引中的题页。编出的 PDF 作为这次运行的附件保留 7 天，
   合并前可以在 PR 的 Checks 页面下载预览。安装 TeX Live 约 7 分钟，之后每套卷约 20 秒；
   改了公共文档类、宏包、编译脚本或字体配置时全部重新编译，约需半小时（这时不保留附件）。
 - **发布 PDF**（默认分支更新后）：编译有改动的卷和 Release 中缺 PDF 的卷，上传到 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf)，
-  更新 Release 说明中的下载链接表。GitHub 接口临时出错（如 HTTP 500）时，每一步都会自动重试几次；
+  核对每套卷的两份附件均已上传后，更新发布标签与下载表。GitHub 接口临时出错（如 HTTP 500）时，每一步都会自动重试几次；
   仍然失败时运行会标红，GitHub 会发邮件通知，这时在 Actions 页面重新运行即可（会重新编译，约半小时）。
   也可以在 Actions 页面手动运行，选“全部重新编译”时重新上传全部 PDF。
 - **上游检查**：每周一检查一次上游（见上文「2026 年补卷与缺题」）。

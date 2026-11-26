@@ -8,7 +8,7 @@
 - 题型带 * 的，源文件标注和题目对不上，索引按题目结构作了订正或推断，见[存疑清单](存疑清单.md)。
 - **题目**是题干开头，公式只做了粗略转写，复杂的公式用“…”代替。
 - 全部题目的表格版：[`题目清单.csv`](题目清单.csv)，可以用 Excel 或 WPS 打开筛选。
-- PDF 链接指向仓库 Release 中的文件，全部 PDF 见 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf)。
+- PDF 链接分别标出题目在学生版、教师版的起始页。下载后按标注的页码翻阅。全部 PDF 见 [Release「pdf」](https://github.com/titleROC/-/releases/tag/pdf)。
 - 选择题答案见[答案速查](../答案速查/README.md)。
 - 尚未收全的试卷及缺题范围见[补卷清单](../LaTeX源码/订正补丁/待订正清单.md#需后续补全的试卷)。
 

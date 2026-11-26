@@ -76,7 +76,7 @@ jobs:
           sudo apt-get update -q
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
             make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra texlive-science \
-            texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+            texlive-pictures texlive-plain-generic latexmk inkscape poppler-utils fonts-noto-cjk fonts-liberation
           xelatex --version | head -n1; inkscape --version
       - name: 编译
         if: steps.plan.outputs.build == 'true'
@@ -87,6 +87,7 @@ jobs:
           else
             JOBS="$(nproc)" scripts/build_gaokao_pdfs.sh "${targets[@]}"
           fi
+          python3 scripts/gen_question_pages.py --check "${targets[@]}"
       - name: 上传到 Release
         run: |
           source scripts/release_helpers.sh
@@ -106,6 +107,12 @@ jobs:
           if [ "$n" -gt 0 ]; then retry gh release upload "$TAG" "$up"/*.pdf --clobber; fi
           echo "上传了 $n 个 PDF"
           retry list_assets "$RUNNER_TEMP/assets"
+          python3 scripts/pdf_names.py missing "$RUNNER_TEMP/assets" > "$RUNNER_TEMP/missing"
+          if [ -s "$RUNNER_TEMP/missing" ]; then
+            cat "$RUNNER_TEMP/missing"
+            echo "::error::以上卷的师生版附件尚未齐全，请重新运行发布。"
+            exit 1
+          fi
           python3 scripts/pdf_names.py stale "$RUNNER_TEMP/assets" | while read -r name; do
             echo "删除已经没有对应卷的 $name"
             retry gh release delete-asset "$TAG" "$name" --yes \

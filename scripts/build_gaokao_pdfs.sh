@@ -12,14 +12,14 @@
 #
 # 依赖（Ubuntu/Debian）：
 #   apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
-#     texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+#     texlive-science texlive-pictures texlive-plain-generic latexmk inkscape poppler-utils fonts-noto-cjk fonts-liberation
 #   fonts-noto-cjk 是必需的：2020 全国理综Ⅱ/Ⅲ、2021 全国甲卷、2021 福建的教师版直接用 Noto CJK
 #   字体排 ⑪ 以上的圈码，缺这个字体会编译失败；它也用于回退 Fandol 缺少的生僻字（如 2022 福建卷「躄躠」）。
 #   SVG 图里的文字由 Inkscape 用系统字体渲染。图中指定的 Times New Roman、宋体等 Windows 字体，
 #   按 scripts/fonts.conf 固定换成 Liberation（fonts-liberation）和文鼎 PL 简报宋（fonts-arphic-gbsn00lp，
 #   texlive-lang-chinese 已依赖），不受本机其他字体和字体配置影响。
 #
-# 只有本次编译成功的卷才会复制到输出目录；有卷失败时脚本以非零状态退出。
+# 验收两版 PDF 和最终日志后才会复制到输出目录；有卷失败时脚本以非零状态退出。
 #
 # 编译结果可复现：
 #   - 脚本固定了 SOURCE_DATE_EPOCH，PDF 里的创建时间、字体子集名和文件 ID 不再随编译时间变化；
@@ -54,13 +54,13 @@ export FORCE_SOURCE_DATE=1
 export MALLOC_PERTURB_="${MALLOC_PERTURB_:-165}"
 
 missing=()
-for cmd in make python3 xelatex latexmk inkscape; do
+for cmd in make python3 xelatex latexmk inkscape pdftotext pdftoppm; do
   command -v "$cmd" >/dev/null 2>&1 || missing+=("$cmd")
 done
 if [ "${#missing[@]}" -gt 0 ]; then
   echo "缺少编译工具：${missing[*]}。Ubuntu/Debian 上可以这样安装：" >&2
   echo "  sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \\" >&2
-  echo "    texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation" >&2
+  echo "    texlive-science texlive-pictures texlive-plain-generic latexmk inkscape poppler-utils fonts-noto-cjk fonts-liberation" >&2
   exit 1
 fi
 
@@ -117,11 +117,13 @@ for d in "${dirs[@]}"; do
   rm -f "$d/.build-ok" "$d/${name}_学生版.pdf" "$d/${name}_教师版.pdf"
 done
 printf '%s\0' "${dirs[@]}" | xargs -0 -r -n1 -P "$JOBS" sh -c '
-  if make -C "$1" all > "$1/build.log" 2>&1; then
-    touch "$1/.build-ok"; echo "OK   $1"
+  dir="$2"
+  if make -C "$dir" all > "$dir/build.log" 2>&1 && python3 -I "$1" "$dir" >> "$dir/build.log" 2>&1; then
+    touch "$dir/.build-ok"; echo "OK   $dir"
   else
-    echo "FAIL $1"
-  fi' sh
+    echo "FAIL $dir"
+    tail -n 5 "$dir/build.log"
+  fi' sh "$REPO_ROOT/scripts/check_pdf_pair.py"
 
 failed=()
 for d in "${dirs[@]}"; do
@@ -135,9 +137,6 @@ for d in "${dirs[@]}"; do
   if [ ! -f "$d/.build-ok" ]; then
     failed+=("$label")
     continue
-  fi
-  if grep -qs "Missing character" "$d/${name}_学生版.log" "$d/${name}_教师版.log"; then
-    echo "警告：$label 有缺字（是否安装了 fonts-noto-cjk？），见 $d/${name}_学生版.log"
   fi
   mkdir -p "$dest"
   for ver in 学生版 教师版; do

@@ -25,6 +25,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 SRC = REPO / "LaTeX源码"
 sys.path.insert(0, str(REPO / "scripts"))  # python3 -I 不会把脚本所在目录加进 sys.path
+import gen_question_pages  # noqa: E402
 import pdf_names  # noqa: E402  PDF 在 GitHub Release 中的下载地址
 INDEX_DIR = "知识点索引"
 ANSWER_DIR = "答案速查"
@@ -125,7 +126,7 @@ def load_units() -> dict[str, str]:
     units = {}
     sty = SRC / "PhyUnit.sty"
     if sty.exists():
-        for m in re.finditer(r"^\\NewDocumentCommand\s*\\(U\w+)\b.*?%\s*([^\s（(]+)", sty.read_text("utf-8"), re.M):
+        for m in re.finditer(r"^\\NewDocumentCommand\s*\\(U\w+)\b.*?%\s*(?:复合(?:单位)?：)?([^\s（(]+)", sty.read_text("utf-8"), re.M):
             units[m.group(1)] = m.group(2)
     return units
 
@@ -550,8 +551,10 @@ def type_cell(q: Question) -> str:
     return f"{q.type}\\*" if q.type_note else q.type
 
 
-def pdf_links(q: Question) -> str:
-    return f"[学生版]({q.pdf('学生版')}) · [教师版]({q.pdf('教师版')})"
+def pdf_links(q: Question, pages: gen_question_pages.PageMap) -> str:
+    student, teacher = pages[q.year, q.paper, q.number, q.part]
+    return (f"[学生版第 {student} 页]({q.pdf('学生版')}#page={student}) · "
+            f"[教师版第 {teacher} 页]({q.pdf('教师版')}#page={teacher})")
 
 
 def year_range(qs: list[Question]) -> str:
@@ -559,7 +562,7 @@ def year_range(qs: list[Question]) -> str:
     return f"{years[0]}—{years[-1]}" if len(years) > 1 else years[0]
 
 
-def render_chapter(chapter: str, qs: list[Question]) -> str:
+def render_chapter(chapter: str, qs: list[Question], pages: gen_question_pages.PageMap) -> str:
     slug = Slugger()
     slug(chapter)  # 一级标题
     by_point: dict[str, list[Question]] = defaultdict(list)
@@ -584,7 +587,7 @@ def render_chapter(chapter: str, qs: list[Question]) -> str:
                 score += f"（{q.score_status}）"
             lines.append(
                 f"| {q.year} | {q.paper} | {q.num_label} | {type_cell(q)} | {score} | {q.difficulty or '—'} "
-                f"| {cell(q.snippet) or '—'} | {pdf_links(q)} |"
+                f"| {cell(q.snippet) or '—'} | {pdf_links(q, pages)} |"
             )
     return "\n".join(lines) + "\n"
 
@@ -604,7 +607,7 @@ def render_index_readme(qs: list[Question], chapters: list[str], by_chapter: dic
         "- 题型带 * 的，源文件标注和题目对不上，索引按题目结构作了订正或推断，见[存疑清单](存疑清单.md)。",
         "- **题目**是题干开头，公式只做了粗略转写，复杂的公式用“…”代替。",
         f"- 全部题目的表格版：[`{CSV_NAME}`]({CSV_NAME})，可以用 Excel 或 WPS 打开筛选。",
-        f"- PDF 链接指向仓库 Release 中的文件，全部 PDF 见 [Release「{pdf_names.RELEASE_TAG}」]({pdf_names.RELEASE_PAGE})。",
+        f"- PDF 链接分别标出题目在学生版、教师版的起始页。下载后按标注的页码翻阅。全部 PDF 见 [Release「{pdf_names.RELEASE_TAG}」]({pdf_names.RELEASE_PAGE})。",
         f"- 选择题答案见[答案速查](../{ANSWER_DIR}/README.md)。",
         "- 尚未收全的试卷及缺题范围见[补卷清单](../LaTeX源码/订正补丁/待订正清单.md#需后续补全的试卷)。",
         "",
@@ -923,13 +926,23 @@ def render_answers_readme(qs: list[Question], years: list[str]) -> str:
 
 
 def generate(qs: list[Question]) -> dict[str, str]:
+    try:
+        pages = gen_question_pages.read_table()
+    except (OSError, ValueError) as error:
+        raise SystemExit(f"读取题目页码失败：{error}") from error
+    expected = {(q.year, q.paper, q.number, q.part) for q in qs}
+    if len(expected) != len(qs):
+        raise SystemExit("源文件中有相同的试卷、原题号和分项标记，无法分别关联题页")
+    if unmatched := expected.symmetric_difference(pages):
+        details = "、".join("/".join(k[:2]) + " 第 " + k[2] + k[3] + " 题" for k in sorted(unmatched)[:8])
+        raise SystemExit(f"题目与页码表不符：{details}。请用对应 PDF 运行 scripts/gen_question_pages.py")
     by_chapter: dict[str, list[Question]] = defaultdict(list)
     for q in qs:
         by_chapter[q.chapter].append(q)
     chapters = sorted(by_chapter, key=lambda c: order_key(CHAPTER_ORDER, c))
     years = sorted({q.year for q in qs})
     files = {f"{INDEX_DIR}/README.md": render_index_readme(qs, chapters, by_chapter)}
-    files.update({f"{INDEX_DIR}/{ch}.md": render_chapter(ch, by_chapter[ch]) for ch in chapters})
+    files.update({f"{INDEX_DIR}/{ch}.md": render_chapter(ch, by_chapter[ch], pages) for ch in chapters})
     files[f"{INDEX_DIR}/{CSV_NAME}"] = render_csv(qs)
     files[f"{INDEX_DIR}/{ISSUES_NAME}"] = render_issues(qs)
     files[f"{ANSWER_DIR}/README.md"] = render_answers_readme(qs, years)

@@ -33,7 +33,7 @@ LaTeX源码/
 
 ## 编译
 
-需要 GNU make、Python 3、XeLaTeX、latexmk、Inkscape、Noto CJK 字体和 Liberation 字体：
+需要 GNU make、Python 3、XeLaTeX、latexmk、Inkscape、Noto CJK 字体和 Liberation 字体。验收两版成品和提取题页还需 Poppler。
 
 - Inkscape：svg 宏包用它把 SVG 图转成 PDF，所以编译时要开 `-shell-escape`（Makefile 已经加上）。
 - Python 3：`make links` 用它建立指向公共文档类和宏包的软链接。
@@ -47,7 +47,7 @@ LaTeX源码/
 
 ```bash
 sudo apt-get install make python3 texlive-xetex texlive-lang-chinese texlive-latex-extra \
-  texlive-science texlive-pictures texlive-plain-generic latexmk inkscape fonts-noto-cjk fonts-liberation
+  texlive-science texlive-pictures texlive-plain-generic latexmk inkscape poppler-utils fonts-noto-cjk fonts-liberation
 ```
 
 ```bash
@@ -65,6 +65,7 @@ make -C LaTeX源码 distclean            # 删除全部编译产物（含专题�
 - 试卷缺题时，在卷首第一题之前单列一行，例如 `\textbf{需后续补全}（缺第 9 题）。`，并在[待补全清单](订正补丁/待订正清单.md#需后续补全的试卷)记下题号。两版 PDF、年度源码目录、答案速查及 Release 下载表均沿用卷首标注。补齐一部分后更新缺题范围，全部核实补齐后移除该行并更新清单。
 - 改了题目的标注（`%% chapter`、`%% point`、`%% type` 等）或答案后，运行 `python3 scripts/gen_index.py`
   更新 [`知识点索引/`](../知识点索引/README.md) 和 [`答案速查/`](../答案速查/README.md)。
+- 调整题文或排版后，用发布环境编译该卷的师生版，再运行 `python3 scripts/gen_question_pages.py 2025/重庆`（替换为对应年份和卷名），然后重新生成索引。加上 `--check` 可直接核对记录与两版 PDF 中的实际页码。
 - 改了 `<年份>/` 下的 `.tex`、配图或新增试卷目录后，运行 `SAVE_PATCHES=1 scripts/sync_latex_sources.sh <起始年份> <结束年份>`
   更新 [`订正补丁/`](订正补丁/README.md)，并在其中的清单里写明订正内容和依据；否则下次同步上游时这些改动会丢失。
   PR 的自动检查会从上游重新同步一遍，补丁没有更新时检查失败（见仓库根目录 README 的[「自动检查」](../README.md#自动检查)）。

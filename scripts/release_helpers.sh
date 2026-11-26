@@ -40,7 +40,7 @@ release_state() {
 
 # list_assets 文件：把 Release 中现有 PDF 的文件名写入文件（每次重试都重写，不会重复）
 list_assets() {
-  gh release view "$TAG" --json assets --jq '.assets[].name' > "$1"
+  gh release view "$TAG" --json assets --jq '.assets[] | select(.state == "uploaded" and .size > 0) | .name' > "$1"
 }
 
 # create_release 说明文件 提交：新建没有附件的 Release（一次小请求，不会像带附件创建那样先留下草稿）。
