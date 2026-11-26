@@ -21,7 +21,7 @@
 # 导出后自动运行 scripts/gen_index.py，更新 知识点索引/ 和 答案速查/。
 #
 # 修改订正：直接改 LaTeX源码/<年份>/ 下的 .tex（要补的图放进该卷的 figs/），然后用 SAVE_PATCHES=1 运行本脚本。
-# 它对比上游原样的文件和本地的 .tex 及 figs/ 中的图，重新生成这些年份的 订正补丁/<年份>.patch
+# 它对比当前固定版和本地的题源、配图，并收录新增卷的 Makefile，重新生成 订正补丁/<年份>.patch
 # （没有差异时删除补丁），不改动 LaTeX源码/ 的其他文件。
 #
 # 环境变量：
@@ -84,7 +84,7 @@ export GIT_CEILING_DIRECTORIES="$tmp"
 
 # ---------------------------------------------------------------------------
 # SAVE_PATCHES=1：对比上游原样的文件和 LaTeX源码/ 中的文件，重新生成 订正补丁/<年份>.patch。
-# 记录两类改动：上游已有的 .tex 的修改；各卷 figs/ 中新增或替换的图（二进制补丁）。
+# 补丁记录 .tex、figs/ 中的图和新增卷的 Makefile。已有卷仍使用上游的 Makefile。
 # ---------------------------------------------------------------------------
 if [ -n "${SAVE_PATCHES:-}" ]; then
   up="$tmp/试卷"
@@ -94,26 +94,22 @@ if [ -n "${SAVE_PATCHES:-}" ]; then
   mkdir -p "$PATCH_DIR"
   for year in "${years[@]}"; do
     [ -d "$DEST/$year" ] || continue
-    # 本地的 .tex 和 figs/ 中的图：git 跟踪的和未跟踪但没有被忽略的文件
+    # 只收 Git 跟踪的文件和未被忽略的新文件，避免混入编译产物。
     while IFS= read -r -d '' p; do
       f="$REPO_ROOT/$p"
       rel="${p#LaTeX源码/}"
       [ -f "$f" ] || continue
       case "$rel" in
-        *.tex)
-          if [ -f "$up/$rel" ]; then
-            cp "$f" "$up/$rel"
-          else
-            echo "跳过 $rel：上游没有这个文件（订正补丁只记录对上游 .tex 的修改和 figs/ 中的图）" >&2
-          fi ;;
-        */figs/*)
-          if ! cmp -s "$f" "$up/$rel" 2>/dev/null; then
-            mkdir -p "$(dirname -- "$up/$rel")"
-            cp "$f" "$up/$rel"
-          fi ;;
+        */Makefile) [ ! -f "$up/$rel" ] || continue ;;
+        *.tex|*/figs/*) ;;
+        *) continue ;;
       esac
+      if ! cmp -s "$f" "$up/$rel"; then
+        mkdir -p "$(dirname -- "$up/$rel")"
+        cp "$f" "$up/$rel"
+      fi
     done < <(git -C "$REPO_ROOT" ls-files -z -co --exclude-standard -- "LaTeX源码/$year" \
-               | grep -z -E '(\.tex|/figs/[^/]+)$')
+               | grep -z -E '(\.tex|/figs/[^/]+|/Makefile)$')
     git -C "$up" add -A -- "$year"
     patch="$PATCH_DIR/$year.patch"
     git -C "$up" -c core.quotepath=false diff --cached --binary --no-color --no-ext-diff \
@@ -132,6 +128,14 @@ fi
 # ---------------------------------------------------------------------------
 # 以下改动全部先在临时目录里完成
 # ---------------------------------------------------------------------------
+# 记录补丁应用前的卷目录，供年份 README 区分上游存档和本地补卷。
+declare -A upstream_papers
+for mk in "$tmp"/试卷/*/*/Makefile; do
+  [ -f "$mk" ] || continue
+  rel="${mk#"$tmp/试卷/"}"
+  upstream_papers["${rel%/Makefile}"]=1
+done
+
 # 4. 本地订正
 applied=0
 for year in "${years[@]}"; do
@@ -167,6 +171,24 @@ for year in "${years[@]}"; do
       -e "s#](\.\./\.\./进度记录\.md)#]($ARCHIVE_WEB/$ARCHIVE_REV/进度记录.md)#g" \
       -e "s#](\.\./\.\./异常记录/#](../异常记录/#g" \
       "$ydir/README.md"
+
+    extra=()
+    while IFS= read -r -d '' mk; do
+      region="$(basename "$(dirname "$mk")")"
+      if [ -z "${upstream_papers["$year/$region"]:-}" ]; then
+        extra+=("[$region]($region/)")
+      fi
+    done < <(find "$ydir" -mindepth 2 -maxdepth 2 -name Makefile -print0 | LC_ALL=C sort -z)
+    if [ "${#extra[@]}" -gt 0 ]; then
+      {
+        head -n 1 "$ydir/README.md"
+        printf '\n本仓库另收录 %s' "${extra[0]}"
+        for link in "${extra[@]:1}"; do printf '、%s' "$link"; done
+        printf '。题号、来源和缺题情况见[补卷记录](../订正补丁/README.md)。下表为固定上游版本的目录。\n'
+        tail -n +2 "$ydir/README.md"
+      } > "$ydir/README.md.new"
+      mv "$ydir/README.md.new" "$ydir/README.md"
+    fi
   fi
   if [ -f "$tmp/异常记录/$year.md" ]; then
     sed -i \

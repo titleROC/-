@@ -1,0 +1,73 @@
+\ifdefined\gkver\else\def\gkver{student}\fi
+\documentclass[\gkver]{gaokaozhenti}
+\begin{document}
+
+\chapter{2026年安徽}
+\noindent 本卷为考生回忆版节选，仅收录第 15 题。第 1--14 题暂缺；第 15 题的正式分值未核实。
+
+% 原始回忆整页（题号、题面、四问及图均同页），2026-06-11 发布：
+% https://p1.gk100.com/article/20260611/7735c6cac527e903.jpg
+% 文字复核及另一份回忆答案研解：
+% https://kaosj.com/papers/2026/07/2026-gaokao-physics-anhui-paper/
+\begin{enumerate}
+\setcounter{enumi}{14}
+\item
+%% number: 15
+%% paperName: 2026年安徽高考第 15 题（考生回忆版）
+%% typeId: 6
+%% type: 计算题
+%% chapter: 磁场
+%% point: 带电粒子在复合场中的运动
+%% method: 动量守恒和机械能守恒
+%% score:
+%% degree:
+%% duplicateId: 0
+%% body:
+如图所示，空间中有一电场竖直向上，电场强度为 $E$，一磁场垂直纸面向外，磁感应强度为 $B$，小球甲质量为 $m$，不带电，从 $P$ 点以初速度 $v_0$ 抛出，速度方向与水平方向夹角为 $60^\circ$，带电小球乙质量为 $3m$，静止在 $O$ 点。甲运动到 $O$ 点时速度水平，与乙球发生弹性碰撞。碰撞时，没有电荷量转移，已知重力加速度为 $g$。求：
+\begin{enumerate}
+  \item 乙小球的电荷量和电性；
+  \item 碰后甲和乙的速度；
+  \item 乙的速度第一次竖直向下时，甲距离 $O$ 的水平距离；
+  \item 现将乙再次静止放置于 $O$ 点，有一个绝缘不带电的小球丙，质量为 $3m$，从某处抛出，到达 $O$ 点时速度水平，与乙发生弹性碰撞，碰撞后再运动至与抛出点等高处再次与乙相遇，求抛出时水平速度 $v_x$ 与竖直速度 $v_y$ 之间满足的关系。
+\end{enumerate}
+\onepicture[w=4.8cm, align=right]{figs/15.png}
+%% answer:
+\jdanswer{
+\begin{enumerate}
+  \item $q=3mg/E$，带正电。
+  \item 甲、乙的速率均为 $v_0/4$，甲水平向左，乙水平向右。
+  \item $\displaystyle \frac{\pi E v_0}{8gB}$。
+  \item 取水平向右、竖直向上为正，有
+  \[
+  v_x=\frac{Bv_y^2}{4E},\qquad v_y=(2n+1)\frac{\pi E}{B},\qquad n=0,1,2,\ldots .
+  \]
+\end{enumerate}
+}
+%% memo:
+\memoanswer{
+以下为编者根据回忆题面所作的解答。按图取水平向右为 $x$ 正方向，竖直向上为 $y$ 正方向，碰撞按水平方向的弹性正碰处理。
+
+（1）碰前乙能静止在 $O$ 点，它不受磁场力，向上的电场力平衡重力。故 $qE=3mg$，得 $q=3mg/E>0$。
+
+（2）甲到达 $O$ 点时竖直分速度为零，水平分速度为 $u=v_0\cos60^\circ=v_0/2$。设碰后甲、乙的水平速度分别为 $v_1,v_2$，由动量守恒与弹性正碰的相对速度关系，有
+\[
+ mu=mv_1+3mv_2,\qquad v_2-v_1=u.
+\]
+解得 $v_1=-v_0/4$、$v_2=v_0/4$。
+
+（3）碰后乙的重力与电场力仍平衡。乙只在洛伦兹力作用下向下偏转，角速度为 $\omega=qB/(3m)=gB/E$。其速度初次变为竖直向下须经过四分之一周，所用时间为 $\pi/(2\omega)$。甲做平抛运动，在这段时间内向左移动的水平距离为
+\[
+ \frac{v_0}{4}\cdot\frac{\pi}{2\omega}=\frac{\pi E v_0}{8gB}.
+\]
+
+（4）丙到达最高点 $O$ 时速度水平。它与等质量的乙弹性正碰后交换速度，丙从 $O$ 点自由下落，乙以水平速度 $v_x$ 做圆周运动。丙抛出时的竖直速度为 $v_y>0$，从抛出点到 $O$ 点的高度差为 $h=v_y^2/(2g)$，故丙从 $O$ 点下落到与抛出点等高处用时 $t=v_y/g$。
+
+两球再次相遇处在 $O$ 点正下方。乙必须向右起动，圆心才在 $O$ 点下方。圆周上仅最低点满足相遇的位置条件，乙经过奇数个半周到达此点，其竖直位移的大小为两倍半径。因此
+\[
+ \omega t=(2n+1)\pi,\qquad h=\frac{2v_x}{\omega},\qquad n=0,1,2,\ldots .
+\]
+代入 $t=v_y/g$、$h=v_y^2/(2g)$ 及 $\omega=gB/E$，得到 $v_y=(2n+1)\pi E/B$ 和 $v_x=Bv_y^2/(4E)$。对每组这样的速度，丙恰在上述时刻到达圆的最低点。
+}
+
+\end{enumerate}
+\end{document}
