@@ -518,6 +518,7 @@ def render_index_readme(qs: list[Question], chapters: list[str], by_chapter: dic
         f"- 全部题目的表格版：[`{CSV_NAME}`]({CSV_NAME})，可以用 Excel 或 WPS 打开筛选。",
         f"- PDF 链接指向仓库 Release 中的文件，全部 PDF 见 [Release「{pdf_names.RELEASE_TAG}」]({pdf_names.RELEASE_PAGE})。",
         f"- 选择题答案见[答案速查](../{ANSWER_DIR}/README.md)。",
+        "- 尚未收全的试卷及缺题范围见[补卷清单](../LaTeX源码/订正补丁/待订正清单.md#需后续补全的试卷)。",
         "",
         "| 章节 | 题数 | 知识点数 | 题量最多的知识点 |",
         "| :-- | --: | --: | :-- |",
@@ -794,7 +795,13 @@ def render_answers_year(year: str, qs: list[Question]) -> str:
     for paper in sorted(papers, key=lambda p: order_key(PAPER_ORDER, p)):
         items = [answer_text(q) for q in papers[paper] if q.key_answers or q.answer_missing]
         teacher = papers[paper][0].pdf("教师版")
-        lines.append(f"| [{paper}]({teacher}) | {'　'.join(items) if items else '—（本卷没有带选项的小题，见教师版）'} |")
+        notice = pdf_names.incomplete_notice(SRC / year / paper / f"{paper}.tex")
+        label = f"[{paper}]({teacher})"
+        if notice:
+            label += f" **{cell(notice)}**"
+        scope = "已收录部分" if notice else "本卷"
+        answers = "　".join(items) or f"—（{scope}没有带选项的小题，见教师版）"
+        lines.append(f"| {label} | {answers} |")
     return "\n".join(lines) + "\n"
 
 

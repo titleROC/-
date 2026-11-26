@@ -179,12 +179,29 @@ for year in "${years[@]}"; do
         extra+=("[$region]($region/)")
       fi
     done < <(find "$ydir" -mindepth 2 -maxdepth 2 -name Makefile -print0 | LC_ALL=C sort -z)
-    if [ "${#extra[@]}" -gt 0 ]; then
+    pending="$(python3 -I - "$REPO_ROOT/scripts" "$ydir" <<'PY'
+import sys
+from pathlib import Path
+
+sys.path.insert(0, sys.argv[1])
+from pdf_names import incomplete_notice
+
+for makefile in sorted(Path(sys.argv[2]).glob("*/Makefile")):
+    region = makefile.parent.name
+    notice = incomplete_notice(makefile.with_name(f"{region}.tex"))
+    if notice:
+        print(f"- [{region}]({region}/) {notice}。")
+PY
+)"
+    if [ "${#extra[@]}" -gt 0 ] || [ -n "$pending" ]; then
       {
         head -n 1 "$ydir/README.md"
-        printf '\n本仓库另收录 %s' "${extra[0]}"
-        for link in "${extra[@]:1}"; do printf '、%s' "$link"; done
-        printf '。题号、来源和缺题情况见[补卷记录](../订正补丁/README.md)。下表为固定上游版本的目录。\n'
+        if [ "${#extra[@]}" -gt 0 ]; then
+          printf '\n本仓库另收录 %s' "${extra[0]}"
+          for link in "${extra[@]:1}"; do printf '、%s' "$link"; done
+          printf '。题号、来源和缺题情况见[补卷记录](../订正补丁/README.md)。下表为固定上游版本的目录。\n'
+        fi
+        if [ -n "$pending" ]; then printf '\n%s\n' "$pending"; fi
         tail -n +2 "$ydir/README.md"
       } > "$ydir/README.md.new"
       mv "$ydir/README.md.new" "$ydir/README.md"

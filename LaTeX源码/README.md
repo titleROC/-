@@ -62,6 +62,7 @@ make -C LaTeX源码 distclean            # 删除全部编译产物（含专题�
   [`scripts/build_gaokao_pdfs.sh`](../scripts/build_gaokao_pdfs.sh)：它固定了写进 PDF 的时间戳和 SVG 图的字体替换
   （编译结果可复现），把编译成功的 PDF 复制到仓库根目录的 `高考真题/` 和 `专题练习/`（这两处的 PDF 不入库）。
   只改了几套卷时，可以只编译这几套，如 `scripts/build_gaokao_pdfs.sh 2025/广东`。
+- 试卷缺题时，在卷首第一题之前单列一行，例如 `\textbf{需后续补全}（缺第 9 题）。`，并在[待补全清单](订正补丁/待订正清单.md#需后续补全的试卷)记下题号。两版 PDF、年度源码目录、答案速查及 Release 下载表均沿用卷首标注。补齐一部分后更新缺题范围，全部核实补齐后移除该行并更新清单。
 - 改了题目的标注（`%% chapter`、`%% point`、`%% type` 等）或答案后，运行 `python3 scripts/gen_index.py`
   更新 [`知识点索引/`](../知识点索引/README.md) 和 [`答案速查/`](../答案速查/README.md)。
 - 改了 `<年份>/` 下的 `.tex`、配图或新增试卷目录后，运行 `SAVE_PATCHES=1 scripts/sync_latex_sources.sh <起始年份> <结束年份>`

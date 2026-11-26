@@ -61,6 +61,19 @@ def topic_url(topic: str, version: str) -> str:
     return f"{DOWNLOAD}/{topic_asset(topic, version)}"
 
 
+def incomplete_notice(tex: Path) -> str:
+    """从卷首读取缺题提示，供各下载表和索引沿用 PDF 上的说明。"""
+    prefix = r"\textbf{需后续补全}"
+    with tex.open(encoding="utf-8") as source:
+        for line in source:
+            line = line.strip()
+            if line.startswith(prefix):
+                return "需后续补全" + line[len(prefix):].removesuffix("。")
+            if line.startswith(r"\begin{enumerate}"):
+                break
+    return ""
+
+
 def papers() -> list[tuple[str, str]]:
     """LaTeX源码/ 中的全部试卷 [(年份, 地区)]，按年份从新到旧、卷按 ORDER 排列"""
     found = [(d.parent.name, d.name) for d in SRC.glob("[0-9][0-9][0-9][0-9]/*") if (d / "Makefile").is_file()]
@@ -97,7 +110,9 @@ def release_notes(commit: str) -> str:
         if y != year:
             year = y
             lines += ["", f"### {y} 年", "", "| 试卷 | 学生版 | 教师版 |", "| :-- | :-- | :-- |"]
-        lines.append(f"| {region} | [下载]({paper_url(y, region, '学生版')}) | [下载]({paper_url(y, region, '教师版')}) |")
+        notice = incomplete_notice(SRC / y / region / f"{region}.tex")
+        label = f"{region} · {notice}" if notice else region
+        lines.append(f"| {label} | [下载]({paper_url(y, region, '学生版')}) | [下载]({paper_url(y, region, '教师版')}) |")
     lines += ["", "### 专题练习", "", "| 专题 | 学生版 | 教师版 |", "| :-- | :-- | :-- |"]
     for t in topics():
         lines.append(f"| {t} | [下载]({topic_url(t, '学生版')}) | [下载]({topic_url(t, '教师版')}) |")

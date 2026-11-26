@@ -2046,16 +2046,17 @@ HcmV?d00001
 
 diff --git a/2026/安徽/安徽.tex b/2026/安徽/安徽.tex
 new file mode 100644
-index 0000000..03afee4
+index 0000000..5b2ff2b
 --- /dev/null
 +++ b/2026/安徽/安徽.tex
-@@ -0,0 +1,73 @@
+@@ -0,0 +1,74 @@
 +\ifdefined\gkver\else\def\gkver{student}\fi
 +\documentclass[\gkver]{gaokaozhenti}
 +\begin{document}
 +
 +\chapter{2026年安徽}
-+\noindent 本卷为考生回忆版节选，仅收录第 15 题。第 1--14 题暂缺；第 15 题的正式分值未核实。
++\textbf{需后续补全}（缺第 1 至 14 题）。
++本卷为考生回忆版节选，仅收录第 15 题，该题正式分值待核。
 +
 +% 原始回忆整页（题号、题面、四问及图均同页），2026-06-11 发布：
 +% https://p1.gk100.com/article/20260611/7735c6cac527e903.jpg
@@ -23188,17 +23189,18 @@ HcmV?d00001
 
 diff --git a/2026/江西/江西.tex b/2026/江西/江西.tex
 new file mode 100644
-index 0000000..8c6ee58
+index 0000000..48a0382
 --- /dev/null
 +++ b/2026/江西/江西.tex
-@@ -0,0 +1,710 @@
+@@ -0,0 +1,711 @@
 +\ifdefined\gkver\else\def\gkver{student}\fi
 +\documentclass[\gkver]{gaokaozhenti}
 +\begin{document}
 +
 +\chapter{2026年江西}
 +
-+现有资料暂缺原卷第 9 题（6 分），其余各题保留原题号。
++\textbf{需后续补全}（缺第 9 题）。
++该题为多选题，占 6 分。其余各题保留原题号。
 +
 +\begin{enumerate}
 +\item
