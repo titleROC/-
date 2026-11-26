@@ -1324,7 +1324,7 @@ index 81cf267..b557324 100644
  %% duplicateId: 0
  %% body:
 diff --git a/2024/福建/福建.tex b/2024/福建/福建.tex
-index 1f7c84c..a546071 100644
+index 1f7c84c..341bb03 100644
 --- a/2024/福建/福建.tex
 +++ b/2024/福建/福建.tex
 @@ -410,7 +410,7 @@ $T_{2} = (27 + 273) \UK = 300 \UK$
@@ -1345,7 +1345,7 @@ index 1f7c84c..a546071 100644
  %% answer:
  \jdanswer{
  $\frac{2kQ}{R^{2}}$，大于，大于零
-@@ -467,13 +467,13 @@ $\varphi_{CM}>\varphi_{CN}>0$，$0>\varphi_{GM}>\varphi_{GN}$
+@@ -467,13 +467,14 @@ $\varphi_{CM}>\varphi_{CN}>0$，$0>\varphi_{GM}>\varphi_{GN}$
  
  \item
  %% number: 12
@@ -1358,10 +1358,11 @@ index 1f7c84c..a546071 100644
  %% method: 无
 -%% score: 0
 +%% score: 5
++%% scoreStatus: 推定
  %% degree: 688
  %% duplicateId: 0
  %% body:
-@@ -674,8 +674,8 @@ $d = 0.9 \Ucm + 9 \times 0.1 \Umm = 0.99 \Ucm$
+@@ -674,8 +675,8 @@ $d = 0.9 \Ucm + 9 \times 0.1 \Umm = 0.99 \Ucm$
  \item
  %% number: 15
  %% paperName: 2024年福建高考第 15 题 12 分
@@ -1372,7 +1373,7 @@ index 1f7c84c..a546071 100644
  %% chapter: 磁场
  %% point: 带电粒子在磁场中的运动
  %% method: 无
-@@ -726,20 +726,20 @@ $d = 0.9 \Ucm + 9 \times 0.1 \Umm = 0.99 \Ucm$
+@@ -726,20 +727,21 @@ $d = 0.9 \Ucm + 9 \times 0.1 \Umm = 0.99 \Ucm$
  
  在磁场中运动时根据牛顿第二定律有 $qv_{P}B=\frac{mv_{P}^{2}}{R}$
  
@@ -1393,6 +1394,7 @@ index 1f7c84c..a546071 100644
  %% method: 无
 -%% score: 0
 +%% score: 16
++%% scoreStatus: 推定
  %% degree: 231
  %% duplicateId: 0
  %% body:

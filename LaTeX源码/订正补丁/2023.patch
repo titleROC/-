@@ -13132,7 +13132,7 @@ literal 0
 HcmV?d00001
 
 diff --git a/2023/福建/福建.tex b/2023/福建/福建.tex
-index 45c8285..30c2930 100644
+index 45c8285..dac6947 100644
 --- a/2023/福建/福建.tex
 +++ b/2023/福建/福建.tex
 @@ -7,18 +7,18 @@
@@ -13425,7 +13425,7 @@ index 45c8285..30c2930 100644
  %% answer: 
  \jdanswer{
  不变，做正功，吸热
-@@ -376,13 +448,13 @@ $\Delta U = W + Q$
+@@ -376,13 +448,14 @@ $\Delta U = W + Q$
  
  \item
  %% number: 12
@@ -13438,10 +13438,11 @@ index 45c8285..30c2930 100644
  %% method: 无
 -%% score: 0
 +%% score: 5
++%% scoreStatus: 推定
  %% degree: 550
  %% duplicateId: 0
  %% body:
-@@ -401,25 +473,12 @@ $\Delta U = W + Q$
+@@ -401,25 +474,12 @@ $\Delta U = W + Q$
  	\item
  	根据上述实验，在误差允许范围内，可以得到的结论为\_\_\_\_\_\_\_\_\_。
  \end{enumerate}
@@ -13469,7 +13470,7 @@ index 45c8285..30c2930 100644
  }
  %% memo:
  \memoanswer{
-@@ -442,13 +501,13 @@ $\Delta U = W + Q$
+@@ -442,13 +502,13 @@ $\Delta U = W + Q$
  
  \item
  %% number: 13
@@ -13485,7 +13486,7 @@ index 45c8285..30c2930 100644
  %% degree: 550
  %% duplicateId: 0
  %% body:
-@@ -465,33 +524,19 @@ $\Delta U = W + Q$
+@@ -465,33 +525,19 @@ $\Delta U = W + Q$
  	\item
  	根据实验结果可知，电容器在充放电过程中，其所带的最大电荷量在频率较低时基本不变，而后随着频率的增大逐渐减小。
  \end{enumerate}
@@ -13524,7 +13525,7 @@ index 45c8285..30c2930 100644
  
  （2）由图（c）可知周期  $T = 25 \times 10^{-3}\Us$，所以该矩形波的频率为
  
-@@ -508,13 +553,13 @@ $\Delta U = W + Q$
+@@ -508,13 +554,13 @@ $\Delta U = W + Q$
  
  \item
  %% number: 14
@@ -13540,7 +13541,7 @@ index 45c8285..30c2930 100644
  %% degree: 650
  %% duplicateId: 0
  %% body:
-@@ -525,7 +570,7 @@ $\Delta U = W + Q$
+@@ -525,7 +571,7 @@ $\Delta U = W + Q$
  	\item
  	若 ON 的长度是 OM 的 1.1 倍，求落在 N 处氖离子的比荷。
  \end{enumerate}
@@ -13549,7 +13550,7 @@ index 45c8285..30c2930 100644
  %% answer: 
  \jdanswer{
  \begin{enumerate}
-@@ -539,18 +584,34 @@ $\Delta U = W + Q$
+@@ -539,18 +585,34 @@ $\Delta U = W + Q$
  }
  %% memo:
  \memoanswer{
@@ -13587,7 +13588,7 @@ index 45c8285..30c2930 100644
  %% degree: 450
  %% duplicateId: 0
  %% body:
-@@ -563,7 +624,7 @@ $\Delta U = W + Q$
+@@ -563,7 +625,7 @@ $\Delta U = W + Q$
  	\item
  	求圆环处于细杆末端 P 时，细杆匀速转动的角速度大小。
  \end{enumerate}
@@ -13596,7 +13597,7 @@ index 45c8285..30c2930 100644
  %% answer: 
  \jdanswer{
  \begin{enumerate}
-@@ -621,13 +682,13 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
+@@ -621,13 +683,14 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
  
  \item
  %% number: 16
@@ -13609,10 +13610,11 @@ index 45c8285..30c2930 100644
  %% method: 无
 -%% score: 0
 +%% score: 16
++%% scoreStatus: 推定
  %% degree: 350
  %% duplicateId: 0
  %% body:
-@@ -642,7 +703,7 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
+@@ -642,7 +705,7 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
  	\item
  	若增大 A 的初速度，使其到达位置 S 时的速度为 2$v_{1}$，求细杆与 B 碰撞前瞬间 A 的速度。
  \end{enumerate}
@@ -13621,7 +13623,7 @@ index 45c8285..30c2930 100644
  %% answer: 
  \jdanswer{
  \begin{enumerate}
-@@ -684,7 +745,7 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
+@@ -684,7 +747,7 @@ $$ \frac{mg}{\tan\alpha}=m\omega_{0}^{2}r $$
  
   $t_{1}\sim t_{2}$ 时间内，匀强电场对 A 和 B 做的总功
  
@@ -13630,7 +13632,7 @@ index 45c8285..30c2930 100644
  
  （4）过 S 后，A、B 的加速度相同，则 A、B 速度的变化相同。设弹簧的初始长度为  $l_{0}$；A 在 S 位置时，此时刻 A、B 的距离为  $r_{0}$，A 速度最大时，AB 距离为  $r_{1}$，细杆与 B 碰撞时，A、B 距离为  $r_{2}$。
  
-@@ -692,7 +753,7 @@ A 以  $v_{1}$ 过 S 时，到 B 与杆碰撞时，A 增加的速度为  $v_{1}$
+@@ -692,7 +755,7 @@ A 以  $v_{1}$ 过 S 时，到 B 与杆碰撞时，A 增加的速度为  $v_{1}$
  
  根据动能定理有
  
@@ -13639,7 +13641,7 @@ index 45c8285..30c2930 100644
  
  对 B 有
  
-@@ -702,11 +763,11 @@ $$ q\left(\varphi_{Ar2}-\varphi_{Ar0}\right)+\left(qE-2qE\right)x-\frac{1}{2}k\l
+@@ -702,11 +765,11 @@ $$ q\left(\varphi_{Ar2}-\varphi_{Ar0}\right)+\left(qE-2qE\right)x-\frac{1}{2}k\l
  
  对 A 根据动能定理有
  

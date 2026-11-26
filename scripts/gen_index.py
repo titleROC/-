@@ -86,6 +86,7 @@ class Question:
     degree: str = ""         # 空表示缺失
     answers: list[str] = field(default_factory=list)
     key_answers: list[str] = field(default_factory=list)  # 答案速查列出的：选择题的答案，或各选择小问的答案（按出现顺序）
+    key_parts: list[str] = field(default_factory=list)    # 与 key_answers 逐项对应的小问号；无印刷编号时为空
     pure_choice: bool = False
     answer_missing: bool = False  # 有选项、但源文件没有标出答案
     options_missing: bool = False  # 答案是选项字母、但题干里没有选项
@@ -99,6 +100,7 @@ class Question:
     snippet: str = ""
     printed: int = 0          # PDF 上印的题号（按 LaTeX 的计数模拟，见 printed_numbers）
     part: str = ""            # 原卷一题分成几题录入时，这一部分的标记（%% part 注释，如“（1）”“-Ⅱ”）
+    score_status: str = ""    # 可选的分值说明，例如“推定”
 
     @property
     def num_label(self) -> str:
@@ -268,6 +270,86 @@ def tk_choice_answers(stem: str) -> list[tuple[int, str]]:
     return found
 
 
+SUBPART_RE = re.compile(
+    r"\\begin\{(?P<begin>enumerate|steps)\}(?:\[(?P<opts>[^\]\n]*)\])?"
+    r"|\\end\{(?P<end>enumerate|steps)\}"
+    r"|\\item\b(?:\[(?P<custom>[^\]\n]*)\])?"
+    r"|^[ \t]*(?:\\textbf\{)?(?P<manual>（[一二三四五六七八九十\dⅠⅡⅢⅣⅤ]+）|\(\d+\)|[①-⑳]"
+    r"|[ⅠⅡⅢⅣⅤ]．(?=[ \t]*（\d+\s*分）))"
+    r"|^[ \t]*\\textbf\{(?P<group>[A-B])．\}(?=（选修)", re.M)
+
+
+@dataclass
+class SubpartList:
+    style: str
+    counter: int = 0
+    item: str = ""
+    manual: str = ""
+
+    def next_item(self, custom: str | None) -> None:
+        self.manual = ""
+        if custom is not None:
+            self.item = re.sub(r"\\color\{[^}]*\}|[{}]", "", custom)
+            return
+        self.counter += 1
+        n = self.counter
+        if self.style == "circled" and 1 <= n <= 20:
+            self.item = chr(ord("①") + n - 1)
+        elif self.style.startswith("roman"):
+            numeral = ""
+            for value, digit in ((1000, "m"), (900, "cm"), (500, "d"), (400, "cd"), (100, "c"),
+                                 (90, "xc"), (50, "l"), (40, "xl"), (10, "x"), (9, "ix"),
+                                 (5, "v"), (4, "iv"), (1, "i")):
+                count, n = divmod(n, value)
+                numeral += digit * count
+            self.item = f"（{numeral}）" if self.style == "roman_parens" else f"{numeral}."
+        else:
+            self.item = f"（{n}）"
+
+
+def choice_part_labels(stem: str, marks: list[tuple[int, str]], part: str) -> list[str]:
+    """按题面中的列表与行首显式编号，定位每个选择答案；题号自带的分项不再重复。"""
+    stack = [SubpartList("")]
+    previous_counts = {}
+    unheaded_lists = Counter()
+    labels = []
+    previous = 0
+    for pos, _ in marks:
+        for m in SUBPART_RE.finditer(stem, previous, pos):
+            if m["begin"]:
+                opts = m["opts"] or ""
+                if m["begin"] == "steps" or "Circled" in opts:
+                    style = "circled"
+                elif "\\roman" in opts or len(stack) == 2:
+                    style = "roman_parens" if "(\\roman" in opts else "roman"
+                else:
+                    style = "arabic"
+                start = re.search(r"\bstart\s*=\s*(\d+)", opts)
+                counter = int(start[1]) - 1 if start else 0
+                if "resume" in opts:
+                    counter = previous_counts.get((len(stack), m["begin"]), 0)
+                elif len(stack) == 1 and not stack[0].manual and m["begin"] == "enumerate" and not start:
+                    # 同题可能含两组各自从（1）开始的无标题实验，如 2021 天津第 9 题。
+                    unheaded_lists[style] += 1
+                    if unheaded_lists[style] > 1:
+                        stack[0].item = f"第{unheaded_lists[style]}组"
+                stack.append(SubpartList(style, counter))
+            elif m["end"]:
+                if len(stack) > 1:
+                    finished = stack.pop()
+                    previous_counts[len(stack), m["end"]] = finished.counter
+                    if len(stack) == 1:
+                        stack[0].item = ""
+            elif m["manual"] or m["group"]:
+                label = (m["manual"] or m["group"]).replace("(", "（").replace(")", "）").rstrip("．")
+                stack[-1].manual = "" if len(stack) == 1 and label == part else label
+            elif len(stack) > 1:
+                stack[-1].next_item(m["custom"])
+        labels.append("".join(scope.item + scope.manual for scope in stack))
+        previous = pos
+    return labels
+
+
 def memo_text(memo: str) -> str | None:
     """\\memoanswer 里的内容（去掉注释）；没有 \\memoanswer 时返回 None"""
     s = re.sub(r"(?<!\\)%.*", "", memo)
@@ -302,7 +384,7 @@ def letters(answer: str) -> str:
 
 
 def classify(q: Question, stem: str, before_memo: str) -> None:
-    has_sub = bool(re.search(r"\\begin\{enumerate\}|（2）|\(2\)", stem))
+    has_sub = bool(re.search(r"\\begin\{(?:enumerate|steps)\}|^[ \t]*(?:\\textbf\{)?(?:（2）|\(2\))", stem, re.M))
     has_options = bool(q.answers) or bool(CHOICE_MACRO_RE.search(stem))
     q.pure_choice = has_options and not has_sub and "\\tkanswer" not in stem
     tag = q.tag_type
@@ -370,9 +452,9 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
         stem_nc = re.sub(r"(?<!\\)%.*", "", stem)
         memo = body.split("%% memo:", 1)[1] if "%% memo:" in body else ""
         # 选项命令和 \xzanswer 标出的答案，连同它们在题干中的位置（答案速查按出现顺序排列小问）
-        choice_marks = [(m.start(), mm.group(1)) for m in CHOICES_RE.finditer(stem)
+        choice_marks = [(m.start(), mm.group(1)) for m in CHOICES_RE.finditer(stem_nc)
                         if (mm := re.search(r"answer\s*=\s*([A-Z]+)", m.group(1)))]
-        xz_marks = [(m.start(), m.group(1).strip()) for m in XZ_RE.finditer(stem) if m.group(1).strip()]
+        xz_marks = [(m.start(), m.group(1).strip()) for m in XZ_RE.finditer(stem_nc) if m.group(1).strip()]
         answers = [a for _, a in choice_marks]
         tag_answer = re.search(r"^%% answer:[ \t]*(.*?)[ \t]*$", before_memo, flags=re.M)
         # 题干没有选项、作答却只有选项字母：是丢了选项的选择题
@@ -386,6 +468,7 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
             tag_answer=tag_answer.group(1) if tag_answer else "",
             chapter=meta.get("chapter", "") or "未分类", point=meta.get("point", "") or "未分类",
             score=meta.get("score", "") if meta.get("score", "") not in ("", "0") else "",
+            score_status=meta.get("scoreStatus", ""),
             degree=meta.get("degree", "") if meta.get("degree", "").isdigit() and meta.get("degree") != "0" else "",
             answers=answers or [a for _, a in xz_marks],
             options_missing=options_missing,
@@ -401,7 +484,9 @@ def parse_paper(year: str, paper: str, tex: Path) -> list[Question]:
         if q.pure_choice or options_missing:
             q.key_answers = list(q.answers)
         else:
-            q.key_answers = [a for _, a in sorted((choice_marks or xz_marks) + tk_choice_answers(stem))]
+            marks = sorted((choice_marks or xz_marks) + tk_choice_answers(stem_nc))
+            q.key_answers = [a for _, a in marks]
+            q.key_parts = choice_part_labels(stem_nc, marks, q.part)
         text = memo_text(memo)
         if text is not None:
             q.memo_figure_only = bool(re.search(FIG_MACRO, text)) and not re.sub(
@@ -494,8 +579,11 @@ def render_chapter(chapter: str, qs: list[Question]) -> str:
     for p in points:
         lines += ["", f"## {p}", "", "| 年份 | 试卷 | 题号 | 题型 | 分值 | 难度 | 题目 | PDF |", "| :-- | :-- | :-- | :-- | :-- | :-- | :-- | :-- |"]
         for q in sorted(by_point[p], key=lambda q: (-int(q.year), order_key(PAPER_ORDER, q.paper), q.pos)):
+            score = q.score or "—"
+            if q.score and q.score_status:
+                score += f"（{q.score_status}）"
             lines.append(
-                f"| {q.year} | {q.paper} | {q.num_label} | {type_cell(q)} | {q.score or '—'} | {q.difficulty or '—'} "
+                f"| {q.year} | {q.paper} | {q.num_label} | {type_cell(q)} | {score} | {q.difficulty or '—'} "
                 f"| {cell(q.snippet) or '—'} | {pdf_links(q)} |"
             )
     return "\n".join(lines) + "\n"
@@ -512,7 +600,7 @@ def render_index_readme(qs: list[Question], chapters: list[str], by_chapter: dic
         "- **题号**是 PDF 上的卷内题号。全国理综卷按物理部分从 1 编号。缺题时保留原题号的空缺。原卷中一道题的几个部分分开收录时，题号后标出部分，"
         "如全国卷选考题的“13（1）”“13（2）”、浙江卷实验题的“16-Ⅰ（1）”“16-Ⅱ”；"
         "个别 PDF 题号和原卷不一致的，括注原题号，如“17（原 16）”。",
-        "- **题型、分值、难度**读取自源文件。公开卷补录的分值按可核实的题面或卷首说明标注，缺少依据时留空。难度沿用题库平台的数值，0—1，越小越难；没有平台数据时显示为“—”。",
+        "- **题型、分值、难度**读取自源文件。标为“推定”的分值仍待原卷核实，CSV 的“分值状态”列保留该标记。分值缺失时显示为“—”。难度沿用题库平台的数值，0—1，越小越难；没有平台数据时显示为“—”。",
         "- 题型带 * 的，源文件标注和题目对不上，索引按题目结构作了订正或推断，见[存疑清单](存疑清单.md)。",
         "- **题目**是题干开头，公式只做了粗略转写，复杂的公式用“…”代替。",
         f"- 全部题目的表格版：[`{CSV_NAME}`]({CSV_NAME})，可以用 Excel 或 WPS 打开筛选。",
@@ -536,10 +624,10 @@ def render_index_readme(qs: list[Question], chapters: list[str], by_chapter: dic
 def render_csv(qs: list[Question]) -> str:
     buf = io.StringIO()
     w = csv.writer(buf, lineterminator="\n")
-    w.writerow(["年份", "试卷", "题号", "原题号", "题型", "标注题型", "分值", "难度", "章节", "知识点", "选择题答案", "题目"])
+    w.writerow(["年份", "试卷", "题号", "原题号", "题型", "标注题型", "分值", "难度", "章节", "知识点", "选择题答案", "题目", "分值状态"])
     for q in sorted(qs, key=lambda q: (paper_key(q), q.pos)):
         w.writerow([q.year, q.paper, f"{q.printed}{q.part}", q.number, q.type, q.tag_type, q.score, q.difficulty, q.chapter, q.point,
-                    "、".join(q.key_answers), q.snippet])
+                    "、".join(q.key_answers), q.snippet, q.score_status])
     return "\ufeff" + buf.getvalue()  # 带 BOM，Excel 才能正确识别 UTF-8
 
 
@@ -767,6 +855,14 @@ def answer_text(q: Question) -> str:
     if not (q.pure_choice and q.type in CHOICE_TYPES) and not q.answer_missing:
         label += "（选择小问）"
     answer = "？" if q.answer_missing else "、".join(q.key_answers)
+    if any(q.key_parts) and not q.answer_missing:
+        groups = []
+        for i, (part, value) in enumerate(zip(q.key_parts, q.key_answers)):
+            if i and part == q.key_parts[i - 1]:
+                groups[-1] += "、" + value
+            else:
+                groups.append(part + (" " if part.endswith(".") else "") + value)
+        answer = "；".join(groups)
     if q.options_missing:
         answer += "（题干缺选项）"
     elif q.subopt:
@@ -778,7 +874,7 @@ def render_answers_year(year: str, qs: list[Question]) -> str:
     papers: dict[str, list[Question]] = defaultdict(list)
     for q in qs:
         papers[q.paper].append(q)
-    note = ("题号是 PDF 上的卷内题号，全国理综卷按物理部分从 1 编号。与源文件所注题号不同时，括注源文件题号。“选择小问”是非选择题中的选择小问，按出现顺序列出，"
+    note = ("题号是 PDF 上的卷内题号，全国理综卷按物理部分从 1 编号。与源文件所注题号不同时，括注源文件题号。“选择小问”按题面的分项和小问号列出，同一问有多空时按空序列答案，"
             "说明见[答案速查](README.md)。")
     if any(q.answer_missing for q in qs):
         note += "“？”表示源文件没有标出答案，见[存疑清单](../知识点索引/存疑清单.md)。"
@@ -812,7 +908,7 @@ def render_answers_readme(qs: list[Question], years: list[str]) -> str:
         f"{year_range(qs)} 年各卷选择题的答案，用学生版做完后对答案用；详解见各卷教师版。{GENERATED_NOTE}",
         "",
         "- 题号是 PDF 上的卷内题号，全国理综卷按物理部分从 1 编号。与源文件所注题号不同时，括注源文件题号，见[存疑清单](../知识点索引/存疑清单.md)。",
-        "- “选择小问”是非选择题中的选择小问，如全国卷选考题的第（1）问、上海卷综合题中的选择，按出现顺序列出。"
+        "- “选择小问”按题面原有的分项和小问号列出，如“（1）B；（3）A；（5）A”。同一问有多空时按空序用顿号隔开，题面未编号的选择空只列答案。"
         "实验题等用字母填空作答的小问，同一小问里列出了选项，或注明了“多选”“填正确答案标号”“填器材前的字母代号”等，"
         "也算选择小问；“滑片置于 A 端”这类填的是图中标号的不算。",
         "- 标“（缺选项）”的，小问的选项在源文件里缺失，见[存疑清单](../知识点索引/存疑清单.md)。",
