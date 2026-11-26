@@ -1,7 +1,16 @@
 diff --git a/2020/1月浙江/1月浙江.tex b/2020/1月浙江/1月浙江.tex
-index 294debe..130fc38 100644
+index 294debe..447218b 100644
 --- a/2020/1月浙江/1月浙江.tex
 +++ b/2020/1月浙江/1月浙江.tex
+@@ -453,7 +453,7 @@ $t=1\Us$ 时 A 点第五次回到平衡位置，则 $\frac{5}{2}T=1\Us$，解得
+ \memoanswer{
+ （1）“探究加速度与力、质量的关系”实验中利用纸带求小车的加速度，“探究做功与物体速度变化的关系”实验中利用纸带求小车的最大速度，故都不需要分析打点计时器打下的第一个点，故 B 正确、A 错误；一条纸带都只能获得一组数据，故 C 正确、D 错误。
+ 
+-（2）“探究做功与物体速度变化的关系”实验中，橡皮筋恢复原长后，小车做匀速直线运动，故题图甲是用橡皮筋“探究做功与物体速度变化的关系”的实验纸带；相邻计数点间还有 4 个点未画出，则相邻计数点间的时间间隔 $t=0.1\Us$，由题图乙知，小车的加速度 $a=\frac{DE+EF+FG-AB-BC-CD}{(3T)^{2}}=\frac{0.0220+0.0260+0.0300-0.0100-0.0140-0.0179}{(3\times0.1)^{2}}\Umsq\approx0.40\Umsq$。
++（2）“探究做功与物体速度变化的关系”实验中，橡皮筋恢复原长后，小车做匀速直线运动，故题图甲是用橡皮筋“探究做功与物体速度变化的关系”的实验纸带；相邻计数点间还有 4 个点未画出，则相邻计数点间的时间间隔 $T=0.1\Us$，由题图乙知，小车的加速度 $a=\frac{DE+EF+FG-AB-BC-CD}{(3T)^{2}}=\frac{0.0220+0.0260+0.0300-0.0100-0.0140-0.0179}{(3\times0.1)^{2}}\Umsq\approx0.40\Umsq$。
+ 
+ （3）平衡阻力后，小车和橡皮筋组成的系统在橡皮筋恢复形变前受阻力作用，且阻力做功，系统机械能不守恒。
+ }
 @@ -503,8 +503,8 @@ $t=1\Us$ 时 A 点第五次回到平衡位置，则 $\frac{5}{2}T=1\Us$，解得
  }
  
@@ -13,10 +22,135 @@ index 294debe..130fc38 100644
  %% typeId: 6
  %% type: 计算题
  %% chapter: 运动和力
+@@ -624,7 +624,7 @@ $t=1\Us$ 时 A 点第五次回到平衡位置，则 $\frac{5}{2}T=1\Us$，解得
+ 	$I_{F}=\frac{BlU_{m}T}{2\pi R}+\frac{mU_{m}}{Bl}$
+ 
+ 	\item
+-	$x_{1}'=\frac{1}{\sqrt 5}\Um$，$v_{1}'=\frac{2}{\sqrt 5}\Ums$ 和 $x_{2}'=-\frac{1}{\sqrt 5}\Um$，$v_{2}'=-\frac{2}{\sqrt 5}\Ums$
++	$x=0$，$v=\pm1\Ums$；或 $x_{1}'=\frac{1}{\sqrt 5}\Um$，$v_{1}'=\frac{2}{\sqrt 5}\Ums$ 和 $x_{2}'=-\frac{1}{\sqrt 5}\Um$，$v_{2}'=-\frac{2}{\sqrt 5}\Ums$
+ 
+ \end{enumerate}
+ }
+@@ -673,7 +673,14 @@ $t=1\Us$ 时 A 点第五次回到平衡位置，则 $\frac{5}{2}T=1\Us$，解得
+ 	$\eta=\frac{2}{3}$
+ 
+ 	\item
+-	$B=\frac{3}{200a}\UT$，$B\geq\frac{\sqrt{15}}{40}\UT$
++	记 $b=L/2$，则 $(a,B)=(bu/s,ps/(eb))$，其中 $u,s$ 可取以下两支：
++ \[
++ \begin{cases}
++ u=1/2, &s\geq\sqrt{15}/2,\\[2pt]
++ 0<u<1/2, &s=\sqrt{(1-u+\sqrt{3(2u-u^2)})^2-u^2}.
++ \end{cases}
++ \]
++ 总范围为 $B>0.050\UT$。
+ \end{enumerate}
+ }
+ %% memo:
+@@ -682,7 +689,42 @@ $t=1\Us$ 时 A 点第五次回到平衡位置，则 $\frac{5}{2}T=1\Us$，解得
+ 
+ （2）质子运动时，由洛伦兹力提供向心力得质子运动的轨迹半径为 $qvB=m\frac{v^{2}}{R}$，解得 $R=\frac{mv}{qB}=\frac{p}{eB}=0.3\Um$，由题意知此时满足 $R=2a$；如图甲所示，质子打到探测板的两种临界情况对应发射角度分别为 $\alpha=\beta=\frac{\pi}{6}$，利用打到探测板与未打到探测板上的粒子的发射角度，可得质子计数率为 $\eta=\frac{\frac{4\pi}{3}}{2\pi}=\frac{2}{3}$。
+ 
+-（3）为确保计数率仍为 $\eta=\frac{2}{3}$，则仍需满足 $R'=2a$，即 $R'=\frac{p}{eB'}=2a$，解得 $B=\frac{3}{200a}\UT$。将图甲中的大圆轨迹绕 P 点逆时针旋转，若探测板足够长，轨迹均可以与探测板相交，即质子可以打到探测板上，当交点与 P 的连线长度等于直径时为临界情况，如图乙所示，恰能打到探测板左端的条件由几何关系得 $4R_{\max}^{2}-a^{2}=\frac{L^{2}}{4}$，又 $R_{\max}=2a$，联立解得 $B\geq\frac{\sqrt{15}}{40}\UT$。
++（3）（编者补充：常见参考解只计入所有能到达板所在直线的质子均能落在板上的一支。下列计算同时考虑越过板端的情形。）
++
++取板中点 O 为原点，水平向右为 $x$ 正向，源点为 $(0,a)$。记半板长 $b=L/2=0.60\Um$，轨道半径 $R=p/(eB)$，令 $u=a/R$，$s=b/R$。正质子在向里的磁场中逆时针偏转。初速度与 $x$ 轴正向的夹角为 $\theta$ 时，圆心为 $(-R\sin\theta,a+R\cos\theta)$。圆轨道能到达 $y=0$ 的条件为 $\cos\theta\leq1-u$。令 $\alpha=\arccos(1-u)$，则能到达这条直线的方向占比为 $1-\alpha/\pi$；要达到 $2/3$，必须 $0<u\leq1/2$。（$u>2$ 时没有质子能到达。）
++
++质子首次向下穿过直线时位于圆的左半部，交点横坐标满足
++\[
++ X/R=-\sin\theta-\sqrt{1-(u+\cos\theta)^2}.
++\]
++命中条件是 $|X|\leq b$。先取 $s\geq1$，此时 $X/R\leq1$，只可能从左端漏出。因 $s-\sin\theta\geq0$，将 $X/R<-s$ 移项平方可得
++\[
++ s\sin\theta-u\cos\theta>\tfrac12(s^2+u^2).
++\]
++这个不等式本身保证根号有意义。令 $d=\sqrt{s^2+u^2}$，左边为振幅 $d$ 的正弦函数。若 $d\geq2$，没有质子越过左端；若 $d<2$，越过左端的方向占据角宽 $\pi-2\arcsin(d/2)$。
++
++若 $d\geq2$，令 $1-\alpha/\pi=2/3$，得 $u=1/2$。于是第一支为
++\[
++ R=2a,\qquad B=\frac{p}{2ea},\qquad s\geq\frac{\sqrt{15}}{2},
++ \quad B\geq\frac{\sqrt{15}}{40}\UT .
++\]
++若 $d<2$，从可到达直线的方向中扣除越过板端的方向，有
++\[
++ \eta=\frac12+\frac{\arcsin(d/2)-\alpha}{\pi}.
++\]
++令 $\eta=2/3$，便有 $d=2\sin(\alpha+\pi/6)=1-u+\sqrt{3(2u-u^2)}$。故第二支为
++\[
++ 0<u<\tfrac12,\qquad s=F(u)=
++ \sqrt{\bigl(1-u+\sqrt{3(2u-u^2)}\bigr)^2-u^2},
++ \qquad a=\frac{bu}{s},\quad B=\frac{ps}{eb}.
++\]
++对于 $0<u\leq1/2$，有
++$F(u)^2-1=u(4-3u)+2\sqrt{3}(1-u)\sqrt{2u-u^2}>0$。
++对固定 $u$，板长增加时命中率不减，在 $s\geq1$ 且 $d<2$ 时随 $s$ 严格增大。因此在 $s=1$ 时命中率已小于 $2/3$，$s<1$ 也不会产生其他解。第二支的 $F(u)$ 连续，$F(0)=1$（极限），$F(1/2)=\sqrt{15}/2$。与第一支合起来，磁感应强度的全部取值为
++\[
++ B>\frac{p}{eb}=0.050\UT .
++\]
++例如 $a=0.050\Um$ 时，两支分别给出约 $0.300\UT$ 和 $0.0874\UT$。下图为第一支的几何构造。
+ 
+ \twopicture[numstyle=chinese, wA=6cm, wB=6cm, align=center]{figs/22a_an.png}{figs/22b_an.png}
+ }
 diff --git a/2020/7月浙江/7月浙江.tex b/2020/7月浙江/7月浙江.tex
-index 768e5d8..89e838c 100644
+index 768e5d8..59e7677 100644
 --- a/2020/7月浙江/7月浙江.tex
 +++ b/2020/7月浙江/7月浙江.tex
+@@ -520,13 +520,13 @@ D．无人机上升及悬停时，螺旋桨会使周围空气产生流动，则
+ 
+ \item
+ %% number: 17
+-%% paperName: 2020年7月浙江选考第 17 题 4 分
++%% paperName: 2020年7月浙江选考第 17 题 7 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 机械振动
+ %% point: 单摆测重力加速度
+ %% method: 无
+-%% score: 4
++%% score: 7
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+@@ -594,13 +594,13 @@ D．无人机上升及悬停时，螺旋桨会使周围空气产生流动，则
+ }
+ %% memo:
+ \memoanswer{
+-（1）①打点计时器打点周期 $T=0.1\Us$，由匀加速直线运动中，平均速度等于中间时刻的瞬时速度可得，在打 d 点时小车的速度 $v_{d}=\frac{bf}{4T}=\frac{(38.10-30.70)\times10^{-2}}{4\times0.1}\Ums\approx0.19\Ums$。
++（1）相邻计数点间的时间间隔 $T=0.1\Us$，由匀加速直线运动中，平均速度等于中间时刻的瞬时速度可得，在打 d 点时小车的速度 $v_{d}=\frac{bf}{4T}=\frac{(38.10-30.70)\times10^{-2}}{4\times0.1}\Ums\approx0.19\Ums$。
+ 
+-②在图甲的实验方案中，由托盘和砝码的重力提供拉力，让小车做匀加速直线运动，由牛顿第二定律可得 $mg=(M+m)a$，则 $a=\frac{m}{m+M}\cdot g$，则绳子对小车的拉力 $F=Ma=\frac{M}{m+M}\cdot mg$，当 $M\gg m$ 时，绳子拉力近似等于托盘和砝码的重力，故甲需要满足 $M\gg m$。
++（2）在图甲的实验方案中，由托盘和砝码的重力提供拉力，让小车做匀加速直线运动，由牛顿第二定律可得 $mg=(M+m)a$，则 $a=\frac{m}{m+M}\cdot g$，则绳子对小车的拉力 $F=Ma=\frac{M}{m+M}\cdot mg$，当 $M\gg m$ 时，绳子拉力近似等于托盘和砝码的重力，故甲需要满足 $M\gg m$。
+ 
+ 在图乙的实验方案中，挂上托盘和砝码，小车匀速下滑，设斜面的倾斜角为 $\theta$，斜面和纸带对小车的摩擦力或阻力总和为 $f$，则有 $Mg\sin\theta=f+mg$。取下托盘和砝码，小车做匀加速直线运动，由牛顿第二定律可得 $Mg\sin\theta-f=Ma$，即 $mg=Ma$，故乙方案中，不需要满足 $M\gg m$。在甲乙方案中，均用托盘和砝码的重力 $mg$ 作为小车匀加速的直线运动的合力及 $F$。
+ 
+-（2）①A．单摆在摆角很小的情况下才做简谐运动，单摆的摆角不能太大，一般不能超过 $5^{\circ}$，否则单摆将不做简谐振动，故 A 做法错误；
++（3）A．单摆在摆角很小的情况下才做简谐运动，单摆的摆角不能太大，一般不能超过 $5^{\circ}$，否则单摆将不做简谐振动，故 A 做法错误；
+ 
+ B．实验尽量选择质量大的、体积小的小球，减小空气阻力，减小实验误差，故 B 做法正确；
+ 
+@@ -608,7 +608,7 @@ C．为了减小实验误差，摆线应选轻且不易伸长的细线，实验
+ 
+ D．物体在平衡位置（最低点）速度最大，计时更准确，故 D 做法错误。
+ 
+-②单摆的周期 $T=2\pi\sqrt{\frac{l}{g}}$，即 $T^{2}=\frac{4\pi^{2}}{g}\cdot l$。但是实验所得 $T^{2}-l$ 没过原点，测得重力加速度与当地结果相符，则斜率仍为 $\frac{4\pi^{2}}{g}$；则 $T^{2}=\frac{4\pi^{2}}{g}\cdot(l+l_{0})$，故实验可能是测量时直接将摆线的长度作为摆长了。
++（4）单摆的周期 $T=2\pi\sqrt{\frac{l}{g}}$，即 $T^{2}=\frac{4\pi^{2}}{g}\cdot l$。但是实验所得 $T^{2}-l$ 没过原点，测得重力加速度与当地结果相符，则斜率仍为 $\frac{4\pi^{2}}{g}$；则 $T^{2}=\frac{4\pi^{2}}{g}\cdot(l+l_{0})$，故实验可能是测量时直接将摆线的长度作为摆长了。
+ }
+ 
+ \item
+@@ -665,11 +665,11 @@ D．物体在平衡位置（最低点）速度最大，计时更准确，故 D 
+ }
+ %% memo:
+ \memoanswer{
+-（1）图乙中，电流表内接和变阻器串联接在电源两端，电压表测路段电压，则图乙对应的电路图为
++（1）图乙中，电流表内接和变阻器串联接在电源两端，电压表测路端电压，则图乙对应的电路图为
+ 
+ \onepicture[w=5.0cm]{figs/18_an.png}
+ 
+-（2）一节干电池的电动势一般约为 $1.5\UV$，故电压表量程选择 $0\sim3\UV$，电流表量程选择 $0\sim0.6\UA$，所以量表的读数分别为 $1.30\UV$（$1.29\sim1.31\UV$ 均可），$0.40\UA$（$0.39\sim0.41\UA$ 均可）。
++（2）一节干电池的电动势一般约为 $1.5\UV$，故电压表量程选择 $0\sim3\UV$，电流表量程选择 $0\sim0.6\UA$，所以两表的读数分别为 $1.30\UV$（$1.29\sim1.31\UV$ 均可），$0.40\UA$（$0.39\sim0.41\UA$ 均可）。
+ 
+ （3）由闭合电路欧姆定律可得 $U=E-Ir$，可得 $U-I$ 图象的纵轴截距为电源电动势，斜率为电源内阻。图甲中电流表外接，则实验测得的电源内阻 $r_{\text{测}}=r_{\text{内}}+r_{A}$，测量值偏大；图乙中电路 $r_{\text{测}}=\frac{r_{V}}{r_{\text{内}}+r_{V}}r_{\text{内}}$，测量值偏小，但是由于 $R_{V}\gg r_{\text{真}}$，故图乙实验测出的内阻误差更小，故图线Ⅰ对应图乙，图线Ⅱ对应的图甲。
+ 
 @@ -776,8 +776,8 @@ $-3\mu mg(L_{AB}-x)-3\mu mg\frac{h}{\tan\theta}-3mgh=0-\frac{1}{2}(3m)v'^{2}$
  \item
  %% number: 21
@@ -28,8 +162,39 @@ index 768e5d8..89e838c 100644
  %% chapter: 电磁感应
  %% point: 线圈过有界磁场
  %% method: 无
+@@ -798,12 +798,19 @@ $-3\mu mg(L_{AB}-x)-3\mu mg\frac{h}{\tan\theta}-3mgh=0-\frac{1}{2}(3m)v'^{2}$
+ \twopicture[numA=甲, numB=乙, labelA=20207月浙江21a, labelB=20207月浙江21b, wA=6.5cm, wB=6.0cm, align=right]
+ {figs/21a.png}
+ {figs/21b.png}
+-%% answer: BC
++%% answer:
++\jdanswer{
++\begin{enumerate}
++  \item $F=0.0625\UN$
++  \item 以秒为单位取 $t$ 的数值。$0\leq t\leq0.5$ 时 $B=0.25\UT$；$0.5<t\leq1$ 时 $B=0.5t\UT$；$1<t\leq1.3$ 时 $B=\frac{1}{6-4t}\UT$
++  \item $q=0.5\UC$
++\end{enumerate}
++}
+ %% memo:
+ \memoanswer{
+ （1）由图乙可知 $t_{0}=0$，$B_{0}=0.25\UT$，则回路电流 $I=\frac{B_{0}Lv}{R}$，安培力 $F_{A}=\frac{B_{0}^{2}L^{2}}{R}v$，所以外力 $F=F_{A}=0.0625\UN$。
+ 
+-（2）匀速出磁场，电流为 0，磁通量不变 $\Phi_{1}=\Phi$；$t_{1}=1.0\Us$ 时，$B_{1}=0.5\UT$，磁通量 $\Phi_{1}=B_{1}L^{2}$；则 $t$ 时刻，磁通量 $\Phi=BL[L-v(t-t_{1})]$，解得 $B=\frac{1}{6-4t}$。
++（2）在前 $0.5\Us$ 内由图乙读得 $B=0.25\UT$；随后至 $1.0\Us$，图线上两点确定 $B=(0.5t)\UT$（$t$ 以秒计）。在 $1.0\Us$ 后，线框匀速出磁场，电流为 0，磁通量不变 $\Phi_{1}=\Phi$；$t_{1}=1.0\Us$ 时，$B_{1}=0.5\UT$，磁通量 $\Phi_{1}=B_{1}L^{2}$；则 $t$ 时刻，磁通量 $\Phi=BL[L-v(t-t_{1})]$，解得 $B=\frac{1}{6-4t}$。
+ 
+ （3）$0\leq t\leq0.5\Us$ 电荷量 $q_{1}=\frac{B_{0}L^{2}}{R}=0.25\UC$；$0.5\Us\leq t\leq1.0\Us$ 电荷量 $q_{2}=\frac{B_{1}L^{2}-B_{0}L^{2}}{R}=0.25\UC$；总电荷量 $q=q_{1}+q_{2}=0.5\UC$。
+ }
+@@ -850,7 +857,7 @@ $-3\mu mg(L_{AB}-x)-3\mu mg\frac{h}{\tan\theta}-3mgh=0-\frac{1}{2}(3m)v'^{2}$
+ 
+ （2）a 束中的离子运动轨迹对应的圆心为 O$'$，从磁场边界 HG 边射出时距离 H 点的距离为 $x$，由几何关系可得 $HO'=aH-R=0.6R$，$x=\sqrt{R^{2}-HO'^{2}}=0.8R$，即 a、c 束中的离子从同一点 Q 射出，离开磁场的速度分别与竖直方向的夹角为 $\beta$、$\alpha$，由几何关系可得 $\alpha=\beta$，探测到三束离子，则 c 束中的离子恰好达到探测板的 D 点时，探测板与边界 HG 的距离最大，$\tan\alpha=\frac{R-s}{L_{max}}=\frac{OH}{s}$，则 $L_{max}=\frac{4}{15}R$。
+ 
+-（3）a 或 c 束中每个离子动量的竖直分量 $p_{z}=p\cos\alpha=0.8qBR$，当 $0<L\leq\frac{4}{15}R$ 时所有离子都打在探测板上，故单位时间内离子束对探测板的平均作用力 $F_{1}=Np+2Np_{z}=2.6NqBR$；当 $\frac{4}{15}R<L\leq0.4R$ 时，只有 b 和 c 束中离子打在探测板上，则单位时间内离子束对探测板的平均作用力为 $F_{2}=Np+Np_{z}=1.8NqBR$；当 $L>0.4R$ 时，只有 b 束中离子打在探测板上，则单位时间内离子束对探测板的平均作用力为 $F_{3}=Np=NqBR$。
++（3）a 或 c 束中每个离子动量的竖直分量 $p_{z}=p\cos\alpha=0.8qBR$，当 $0<L\leq\frac{4}{15}R$ 时所有离子都打在探测板上，故单位时间内离子束对探测板的平均作用力 $F_{1}=Np+2Np_{z}=2.6NqBR$；当 $\frac{4}{15}R<L\leq0.4R$ 时，只有 a 和 b 束中离子打在探测板上，则单位时间内离子束对探测板的平均作用力为 $F_{2}=Np+Np_{z}=1.8NqBR$；当 $L>0.4R$ 时，只有 b 束中离子打在探测板上，则单位时间内离子束对探测板的平均作用力为 $F_{3}=Np=NqBR$。
+ 
+ \onepicture[w=5.0cm]{figs/22_an.png}
+ }
 diff --git a/2020/上海/上海.tex b/2020/上海/上海.tex
-index 8c1809f..f68f703 100644
+index 8c1809f..2f563ff 100644
 --- a/2020/上海/上海.tex
 +++ b/2020/上海/上海.tex
 @@ -26,7 +26,11 @@ $\beta$ 射线是\xzanswer{A}
@@ -71,7 +236,18 @@ index 8c1809f..f68f703 100644
  }
  
  \item
-@@ -249,7 +261,19 @@ $r_{c} < r_{a} < r_{b}$
+@@ -187,9 +199,7 @@ $r_{c} < r_{a} < r_{b}$
+ %% answer: B
+ %% memo:
+ \memoanswer{
+-会不会产生电磁感应（自感）现象？如果产生感应电流的话如何进一步分析导体棒的受力？用楞次定律推广形式得出棒向左运动是否合理？
+-
+-感应电流应该不会大于原有的电流，只考虑左右两段导体中反向电流的相互斥力，选 B。
++闭合电键后，常规电流从电源正极沿左侧导线向下，经下导轨流向 b，再沿棒从 b 流向 a。左侧固定直导线与棒中电流反向，相互排斥。上下导轨通电段在棒所在处产生的磁场也垂直纸面向外，按左手定则，棒所受安培力向右。导轨光滑，故棒向右移动，选 B。
+ }
+ 
+ \item
+@@ -249,7 +259,19 @@ $r_{c} < r_{a} < r_{b}$
  %% answer: B
  %% memo:
  \memoanswer{
@@ -92,7 +268,7 @@ index 8c1809f..f68f703 100644
  }
  
  \item
-@@ -303,7 +327,21 @@ $\frac{s}{2} = \frac{v^{2}}{2a}$，解得：$v = 40\Ums$。
+@@ -303,7 +325,21 @@ $\frac{s}{2} = \frac{v^{2}}{2a}$，解得：$v = 40\Ums$。
  %% answer: C
  %% memo:
  \memoanswer{
@@ -115,7 +291,7 @@ index 8c1809f..f68f703 100644
  }
  
  \item
-@@ -355,11 +393,17 @@ $\frac{\Delta p}{\Delta V} = \frac{\rho g\Delta h\left(\frac{S_{2}}{S_{1}} - 1\r
+@@ -355,11 +391,17 @@ $\frac{\Delta p}{\Delta V} = \frac{\rho g\Delta h\left(\frac{S_{2}}{S_{1}} - 1\r
  %% degree: 710
  %% duplicateId: 0
  %% body:
@@ -135,7 +311,7 @@ index 8c1809f..f68f703 100644
  }
  
  \item
-@@ -414,7 +458,9 @@ $P_{m} = \frac{E^{2}}{4(R + r)} = \frac{3^{2}}{4 \times 5}\UW = 0.45\UW$。
+@@ -414,7 +456,9 @@ $P_{m} = \frac{E^{2}}{4(R + r)} = \frac{3^{2}}{4 \times 5}\UW = 0.45\UW$。
  %% answer: 值超过了光速，牛顿运动定律只能适用于宏观、低速的情况
  %% memo:
  \memoanswer{
@@ -146,7 +322,20 @@ index 8c1809f..f68f703 100644
  }
  
  \item
-@@ -587,8 +633,8 @@ $F_{\text{安}} = BIL = B \cdot \frac{E - BLv}{R + r} \cdot L = ma$
+@@ -507,6 +551,12 @@ $P_{m} = \frac{E^{2}}{4(R + r)} = \frac{3^{2}}{4 \times 5}\UW = 0.45\UW$。
+ }
+ %% memo:
+ \memoanswer{
++（1）（2）原材料未附这两问的推导，以下为编者补写。
++
++（1）摆线碰到定位挡片后，摆锤改绕新的支点运动，有效摆长改变。比较改变摆长前后的动能与重力势能之和，就能定性检验这一过程中机械能是否守恒。
++
++（2）计算 C 点的机械能时，重力势能按 C 点高度取值。若光电门装得偏低，测到的是更低处的较大速率，因而动能被高估，A 正确。若实际释放位置比 A 点高，初始重力势能较大，到 C 点的实际动能会比按 A 点释放时大，D 正确。释放前摆线松弛，绷紧时可能损失机械能；空气阻力也消耗机械能，两者均不能造成题述偏大。故选 AD。
++
+ （3）在图线上找到 $32^{\circ}$ 对应的纵坐标，动能为 $0.0060\UJ$，$0^{\circ}$ 对应的纵坐标对应为机械能 $0.0105\UJ$，因此重力势能为 $0.0045\UJ$。
+ 
+ 设摆长为 $l$，根据机械能守恒定律，释放位置的重力势能等于最低点的动能，则有：
+@@ -587,8 +637,8 @@ $F_{\text{安}} = BIL = B \cdot \frac{E - BLv}{R + r} \cdot L = ma$
  \item
  %% number: 20
  %% paperName: 2020年上海等级考第 20 题 15 分
@@ -157,10 +346,64 @@ index 8c1809f..f68f703 100644
  %% chapter: 运动和力
  %% point: 牛顿定律的应用
  %% method: 无
+@@ -607,7 +657,7 @@ $F_{\text{安}} = BIL = B \cdot \frac{E - BLv}{R + r} \cdot L = ma$
+ 	\item
+ 	分析说明为什么物体动能与势能相等的位置仅出现在沿斜面下行过程中；求该位置离斜面底端距离 $L$（取斜面底端所在水平面为零势能面）。
+ \end{enumerate}
+-%% answer: EEEE
++%% answer:
+ \jdanswer{
+ \begin{enumerate}
+ 	\item
+diff --git a/2020/全国理综Ⅰ/figs/14_an.svg b/2020/全国理综Ⅰ/figs/14_an.svg
+index c619325..3660c4d 100644
+--- a/2020/全国理综Ⅰ/figs/14_an.svg
++++ b/2020/全国理综Ⅰ/figs/14_an.svg
+@@ -1 +1,10 @@
+-<svg width="460" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-1970 -989)"><path d="M2003 1403 2198.5 1066 2394 1403Z" stroke="#000000" stroke-width="2.29167" stroke-miterlimit="8" stroke-dasharray="9.16667 6.875" fill="none" fill-rule="evenodd"/><path d="M2192 1067.5C2192 1062.81 2195.58 1059 2200 1059 2204.42 1059 2208 1062.81 2208 1067.5 2208 1072.19 2204.42 1076 2200 1076 2195.58 1076 2192 1072.19 2192 1067.5Z" fill-rule="evenodd"/><text font-family="Times New Roman,Times New Roman_MSFontService,sans-serif" font-weight="400" font-size="41" transform="matrix(1 0 0 1 1995.28 1452)">a</text><path d="M1997 1402.5C1997 1397.81 2000.81 1394 2005.5 1394 2010.19 1394 2014 1397.81 2014 1402.5 2014 1407.19 2010.19 1411 2005.5 1411 2000.81 1411 1997 1407.19 1997 1402.5Z" fill-rule="evenodd"/><path d="M2387 1402.5C2387 1397.81 2390.58 1394 2395 1394 2399.42 1394 2403 1397.81 2403 1402.5 2403 1407.19 2399.42 1411 2395 1411 2390.58 1411 2387 1407.19 2387 1402.5Z" fill-rule="evenodd"/><text font-family="Times New Roman,Times New Roman_MSFontService,sans-serif" font-weight="400" font-size="41" transform="matrix(1 0 0 1 2383.53 1454)">b</text><text font-family="Times New Roman,Times New Roman_MSFontService,sans-serif" font-weight="400" font-size="41" transform="matrix(1 0 0 1 2190.97 1042)">c</text></g></svg>
+\ No newline at end of file
++<svg width="460" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-1970 -989)"><path d="M2003 1403 2198.5 1066 2394 1403Z" stroke="#000000" stroke-width="2.29167" stroke-miterlimit="8" stroke-dasharray="9.16667 6.875" fill="none" fill-rule="evenodd"/><path d="M2192 1067.5C2192 1062.81 2195.58 1059 2200 1059 2204.42 1059 2208 1062.81 2208 1067.5 2208 1072.19 2204.42 1076 2200 1076 2195.58 1076 2192 1072.19 2192 1067.5Z" fill-rule="evenodd"/><text font-family="Times New Roman,Times New Roman_MSFontService,sans-serif" font-weight="400" font-size="41" transform="matrix(1 0 0 1 1995.28 1452)">a</text><path d="M1997 1402.5C1997 1397.81 2000.81 1394 2005.5 1394 2010.19 1394 2014 1397.81 2014 1402.5 2014 1407.19 2010.19 1411 2005.5 1411 2000.81 1411 1997 1407.19 1997 1402.5Z" fill-rule="evenodd"/><path d="M2387 1402.5C2387 1397.81 2390.58 1394 2395 1394 2399.42 1394 2403 1397.81 2403 1402.5 2403 1407.19 2399.42 1411 2395 1411 2390.58 1411 2387 1407.19 2387 1402.5Z" fill-rule="evenodd"/><text font-family="Times New Roman,Times New Roman_MSFontService,sans-serif" font-weight="400" font-size="41" transform="matrix(1 0 0 1 2383.53 1454)">b</text><text font-family="Times New Roman,Times New Roman_MSFontService,sans-serif" font-weight="400" font-size="41" transform="matrix(1 0 0 1 2190.97 1042)">c</text><g stroke="#333" fill="none" stroke-width="2.4">
++  <path d="M2394 1403 L2126 1192"/>
++  <circle cx="2126" cy="1192" r="5" fill="#111"/>
++</g>
++<g fill="#111" font-family="Times New Roman,serif" font-style="italic" font-size="30">
++  <text x="2095" y="1184">d</text>
++  <text x="2004" y="1295">r₁</text>
++  <text x="2250" y="1274">r₂</text>
++  <text x="2135" y="1124">s</text>
++</g></g></svg>
+\ No newline at end of file
 diff --git a/2020/全国理综Ⅰ/全国理综Ⅰ.tex b/2020/全国理综Ⅰ/全国理综Ⅰ.tex
-index e458b07..1112d93 100644
+index e458b07..fbc88ec 100644
 --- a/2020/全国理综Ⅰ/全国理综Ⅰ.tex
 +++ b/2020/全国理综Ⅰ/全国理综Ⅰ.tex
+@@ -266,7 +266,7 @@ D．物块下滑 $2.0\Um$ 时，重力势能减少 $12\UJ$，动能增加 $4\UJ$
+ \memoanswer{
+ 由 $bc$ 边切割磁感线产生电动势，形成电流，使得导体棒 $MN$ 受到向右的安培力，做加速运动，$bc$ 边受到向左的安培力，向右做加速运动。当 $MN$ 运动时，金属框的 $bc$ 边和导体棒 $MN$ 一起切割磁感线，设导体棒 $MN$ 和金属框的速度分别为 $v_{1}$、$v_{2}$，则电路中的电动势 $E=BL(v_{2}-v_{1})$
+ 
+-电流中的电流 $I=\frac{E}{R}=\frac{BL(v_{2}-v_{1})}{R}$
++电路中的电流 $I=\frac{E}{R}=\frac{BL(v_{2}-v_{1})}{R}$
+ 
+ 金属框和导体棒 $MN$ 受到的安培力 $F_{\text{安框}}=\frac{B^{2}L^{2}(v_{2}-v_{1})}{R}$，与运动方向相反；$F_{\text{安}MN}=\frac{B^{2}L^{2}(v_{2}-v_{1})}{R}$，与运动方向相同
+ 
+@@ -280,7 +280,7 @@ $F-\frac{B^{2}L^{2}(v_{2}-v_{1})}{R}=m_{2}a_{2}$
+ 
+ 初始速度均为零，则 $a_{1}$ 从零开始逐渐增加，$a_{2}$ 从 $\frac{F}{m_{2}}$ 开始逐渐减小。当 $a_{1}=a_{2}$ 时，相对速度
+ 
+-$v_{2}-v_{1}=\frac{FRm_{1}}{2B^{2}L^{2}(m_{1}+m_{2})}$
++$v_{2}-v_{1}=\frac{FRm_{1}}{B^{2}L^{2}(m_{1}+m_{2})}$
+ 
+ 大小恒定。整个运动过程用速度时间图象描述如下。
+ 
+@@ -356,7 +356,7 @@ $U=I(R+R_{\mathrm{A}})$
+ 
+ $\frac{1\UkO}{50\UO}<\frac{50\UO}{0.5\UO}$
+ 
+-说明电流表的分压较小，电流表的分流较大，所以电压表应跨接在 O、Q 之间，所以选择图线 I 得到的结果较为准确。
++说明电流表的分压较小，电压表的分流相对较大，所以电压表应跨接在 O、Q 之间，所以选择图线 I 得到的结果较为准确。
+ 
+ 根据图像可知
+ 
 @@ -394,7 +394,7 @@ $R_{\mathrm{x}}^{\prime}=R_{x}-r_{\mathrm{A}}=50.5\UO-0.5\UO=50.0\UO$
  	\item
  	令滑块在砝码和砝码盘的拉动下从左边开始运动，和计算机连接的光电门能测量出遮光片经过 A、B 两处的光电门的遮光时间 $\Delta t_{1}$、$\Delta t_{2}$ 及遮光片从 A 运动到 B 所用的时间 $t_{12}$；
@@ -170,8 +413,58 @@ index e458b07..1112d93 100644
  	\item
  	某次测量得到的一组数据为：$d=1.000\Ucm$，$m_{1}=1.50\times10^{-2}\Ukg$，$m_{2}=0.400\Ukg$，$\Delta t_{1}=3.900\times10^{-2}\Us$，$\Delta t_{2}=1.270\times10^{-2}\Us$，$t_{12}=1.50\Us$，取 $g=9.80\Umsq$。计算可得 $I=$\tkanswer[1.5cm]{0.221}$\UNs$，$\Delta p=$\tkanswer[1.5cm]{0.212}$\Ukgms$；（结果均保留 3 位有效数字）
  	\item
+@@ -417,7 +417,7 @@ $\Delta p=m_{2}\left(\frac{d}{\Delta t_{2}}-\frac{d}{\Delta t_{1}}\right)=0.212\
+ 
+ 动量改变量
+ 
+-（7）$\delta=\frac{|I-\Delta p|}{I}\times100\%=\frac{0.225-0.212}{0.225}\times100\%\approx4\%$
++（7）$\delta=\frac{|I-\Delta p|}{I}\times100\%=\frac{0.221-0.212}{0.221}\times100\%\approx4\%$
+ }
+ 
+ \item
+@@ -542,13 +542,13 @@ $x_{AC}=R=\frac{1}{2}at_{2}^{2}$
+ 
+ \item
+ %% number: 13
+-%% paperName: 2020年全国理综Ⅰ第 13 题 10 分
++%% paperName: 2020年全国理综Ⅰ第 13 题 15 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 气体性质
+ %% point: 玻意耳定律
+ %% method: 无
+-%% score: 10
++%% score: 15
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+@@ -609,13 +609,13 @@ $\frac{m_{\text{现}}}{m_{\text{原}}}=\frac{V'}{V}=\frac{2}{3}$
+ 
+ \item
+ %% number: 14
+-%% paperName: 2020年全国理综Ⅰ第 14 题 10 分
++%% paperName: 2020年全国理综Ⅰ第 14 题 15 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 机械波
+ %% point: 干涉衍射
+ %% method: 无
+-%% score: 10
++%% score: 15
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+@@ -654,7 +654,7 @@ B．超声波与血液中的血小板等细胞发生反射时，由于血小板
+ 
+ C．列车和人的位置相对变化了，所以听得的声音频率发生了变化，所以 C 正确；
+ 
+-D．波动传播速度不一样是由于波的频率不一样导致的，D 错误；
++D．同一声源决定的频率保持不变，空气和水的性质不同使声速及波长不同，题中没有观察者接收到的频率变化，D 错误；
+ 
+ E．双星在周期性运动时，会使得到地球的距离发生周期性变化，故接收到的光频率会发生变化，E 正确。故选 BCE。
+ 
 diff --git a/2020/全国理综Ⅱ/全国理综Ⅱ.tex b/2020/全国理综Ⅱ/全国理综Ⅱ.tex
-index b9b4732..e4b3391 100644
+index b9b4732..e55949c 100644
 --- a/2020/全国理综Ⅱ/全国理综Ⅱ.tex
 +++ b/2020/全国理综Ⅱ/全国理综Ⅱ.tex
 @@ -220,8 +220,8 @@ $m=\frac{Q}{q}=\frac{E_{0}}{q}\approx400\Ukg$
@@ -196,10 +489,114 @@ index b9b4732..e4b3391 100644
  %% chapter: 磁场
  %% point: 带电粒子在磁场中的运动
  %% method: 无
+@@ -442,7 +442,7 @@ $R=\frac{I_{1}(R_{g1}+R_{0})}{I_{2}-I_{1}}=\frac{173\times10^{-3}\times(10.0+10.
+ \end{enumerate}
+ 
+ \onepicture[w=5.00cm]{figs/11.png}
+-%% answer: B
++%% answer:
+ \jdanswer{
+ \begin{enumerate}
+ \item
+@@ -584,13 +584,13 @@ $L\geq\frac{152}{125}H$\ccnum{⑯}。
+ 
+ \item
+ %% number: 13
+-%% paperName: 2020年全国理综Ⅱ第 13 题 10 分
++%% paperName: 2020年全国理综Ⅱ第 13 题 15 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 气体性质
+ %% point: 玻意耳定律
+ %% method: 无
+-%% score: 10
++%% score: 15
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+@@ -671,13 +671,13 @@ $V=\frac{\rho gSHh}{p_{0}}$\ccnum{⑨}。
+ 
+ \item
+ %% number: 14
+-%% paperName: 2020年全国理综Ⅱ第 14 题 10 分
++%% paperName: 2020年全国理综Ⅱ第 14 题 15 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 光学
+ %% point: 全反射
+ %% method: 无
+-%% score: 10
++%% score: 15
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+@@ -715,7 +715,7 @@ $V=\frac{\rho gSHh}{p_{0}}$\ccnum{⑨}。
+ \memoanswer{
+ （1）开始时将摆球拉离平衡位置的距离最大，圆心角很小时，圆的弧长与弦长近似相等，则
+ 
+-$x=2\pi\times80\Ucm\times\frac{5^\circ}{360^\circ}\approx6.97\Ucm$
++$x=2\pi\times80\Ucm\times\frac{5^\circ}{360^\circ}\approx6.98\Ucm$
+ 
+ 题中要求摆动的最大角度小于 $5^\circ$，且保留 1 位小数，所以拉离平衡位置的距离不超过 6.9 $\Ucm$；
+ 
+diff --git a/2020/全国理综Ⅲ/全国理综Ⅲ.tex b/2020/全国理综Ⅲ/全国理综Ⅲ.tex
+index fbc9361..be52daf 100644
+--- a/2020/全国理综Ⅲ/全国理综Ⅲ.tex
++++ b/2020/全国理综Ⅲ/全国理综Ⅲ.tex
+@@ -450,13 +450,13 @@ $I=0$\ccnum{⑰}。
+ 
+ \item
+ %% number: 13
+-%% paperName: 2020年全国理综Ⅲ第 13 题 10 分
++%% paperName: 2020年全国理综Ⅲ第 13 题 15 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 气体性质
+ %% point: 气体多过程
+ %% method: 无
+-%% score: 10
++%% score: 15
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+@@ -514,13 +514,13 @@ $T_{2}=363\UK$\ccnum{⑧}。
+ 
+ \item
+ %% number: 14
+-%% paperName: 2020年全国理综Ⅲ第 14 题 10 分
++%% paperName: 2020年全国理综Ⅲ第 14 题 15 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 光学
+ %% point: 光的折射
+ %% method: 无
+-%% score: 10
++%% score: 15
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
 diff --git a/2020/北京/北京.tex b/2020/北京/北京.tex
-index a7d1354..3d9037b 100644
+index a7d1354..d8962e8 100644
 --- a/2020/北京/北京.tex
 +++ b/2020/北京/北京.tex
+@@ -104,7 +104,7 @@ B．发生明显衍射的条件是障碍物（或孔）的尺寸可以跟波长
+ 
+ C．光在真空中的传播速度都是相同的；光在介质中的传播速度为 $v=\frac{c}{n}$，5G 的频率比 4G 高，而频率越大折射率越大，光在介质中的传播速度越小，故 C 错误；
+ 
+-D．因 5G 使用的电磁波频率更高，根据 $v=\frac{c}{\lambda}$ 可知波长更短，故 D 错误；
++D．因 5G 使用的电磁波频率更高，根据 $\nu=\frac{c}{\lambda}$ 可知波长更短，故 D 错误；
+ 
+ 故选 A。
+ }
+@@ -631,7 +631,7 @@ D．让小车的运动趋近于匀速运动时，砂和桶的重力才近似等
+ 
+ （2）对甲图，考虑电表内阻时，根据闭合电路欧姆定律得 $E=U_{\text{路}}+Ir_{\text{内}}=U+I(r+R_{A})$，变形得 $U=-(r+R_{A})I+E$；直接通过实验获得数据，可得 $U=-rI+E$。图像与纵轴截距均为电源电动势 $E$，虚线对应的斜率大小为 $r$，实线对应的斜率大小为 $r+R_{A}$，所以对应图甲电路分析的 $U-I$ 图像是 C；
+ 
+-对乙图，考虑电表内阻时（即虚线对应的真实情况），根据闭合电路欧姆定律得 $E=U_{\text{路}}+Ir_{\text{内}}=U+(I+\frac{U}{R_{v}})r=U+Ir+U\frac{r}{R_{v}}$，变形得 $U=-\frac{R_{v}r}{R_{v}+r}I+\frac{R_{v}}{R_{v}+r}E$；直接通过实验获得数据，可得 $U=-rI+E$。虚线对应的斜率大小为 $r$，实线对应的斜率大小为 $\frac{R_{v}}{R_{v}+r}r<r$，虚线对应的纵轴截距为 $E$，实线对应的纵轴截距为 $\frac{R_{v}}{R_{v}+r}E<E$；两图线在 $U=0$ 时，对应的短路电流均为 $I_{\text{短}}=\frac{E}{r}$，所以对应图乙电路分析的 $U-I$ 图像是 A。
++对乙图，考虑电表内阻时（即实线对应的实验数据），根据闭合电路欧姆定律得 $E=U_{\text{路}}+Ir_{\text{内}}=U+(I+\frac{U}{R_{v}})r=U+Ir+U\frac{r}{R_{v}}$，变形得 $U=-\frac{R_{v}r}{R_{v}+r}I+\frac{R_{v}}{R_{v}+r}E$；直接通过实验获得数据，可得 $U=-rI+E$。虚线对应的斜率大小为 $r$，实线对应的斜率大小为 $\frac{R_{v}}{R_{v}+r}r<r$，虚线对应的纵轴截距为 $E$，实线对应的纵轴截距为 $\frac{R_{v}}{R_{v}+r}E<E$；两图线在 $U=0$ 时，对应的短路电流均为 $I_{\text{短}}=\frac{E}{r}$，所以对应图乙电路分析的 $U-I$ 图像是 A。
+ 
+ （3）图甲虽然测量的电源电动势准确，但电流表分压较为明显，所以内阻测量的误差很大；图乙虽然电动势和内阻测量均偏小，但是电压表内阻很大，分流不明显，所以电动势和内阻的测量误差较小，所以选择图乙可以减小由电表内电阻引起的实验误差。
+ }
 @@ -735,8 +735,8 @@ D．让小车的运动趋近于匀速运动时，砂和桶的重力才近似等
  \item
  %% number: 19
@@ -211,3 +608,151 @@ index a7d1354..3d9037b 100644
  %% chapter: 电场
  %% point: 带电粒子的直线运动
  %% method: 无
+@@ -763,7 +763,7 @@ D．让小车的运动趋近于匀速运动时，砂和桶的重力才近似等
+ {figs/19a.png}
+ {figs/19b.png}
+ 
+-%% answer: BI
++%% answer:
+ \jdanswer{
+ \begin{enumerate}
+ 	\item
+diff --git a/2020/天津/天津.tex b/2020/天津/天津.tex
+index 2a8ffa2..791c835 100644
+--- a/2020/天津/天津.tex
++++ b/2020/天津/天津.tex
+@@ -297,13 +297,13 @@ D．动车功率恒定，在 $t$ 时间内，牵引力做功为 $W=Pt$，根据
+ 
+ \item
+ %% number: 9
+-%% paperName: 2020年天津等级考第 9 题 6 分
++%% paperName: 2020年天津等级考第 9 题 12 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 电路
+ %% point: 测电动势与内阻
+ %% method: 无
+-%% score: 6
++%% score: 12
+ %% degree: 550
+ %% duplicateId: 0
+ %% body:
+diff --git a/2020/山东/山东.tex b/2020/山东/山东.tex
+index a112e6b..0b80531 100644
+--- a/2020/山东/山东.tex
++++ b/2020/山东/山东.tex
+@@ -387,13 +387,13 @@ D．对于 B，在从释放到速度最大过程中，B 机械能的减少量等
+ 
+ \item
+ %% number: 12
+-%% paperName: 2020年山东等级考第 12 题 3 分
++%% paperName: 2020年山东等级考第 12 题 4 分
+ %% typeId: 2
+ %% type: 多选题
+ %% chapter: 电磁感应
+ %% point: 电磁感应受力分析
+ %% method: 无
+-%% score: 3
++%% score: 4
+ %% degree: 350
+ %% duplicateId: 0
+ %% body:
+diff --git a/2020/江苏/江苏.tex b/2020/江苏/江苏.tex
+index 4e21217..f739c23 100644
+--- a/2020/江苏/江苏.tex
++++ b/2020/江苏/江苏.tex
+@@ -434,13 +434,13 @@ $g=\frac{\Delta x}{T^{2}}=\frac{(77.20-26.50)\times10^{-2}-(26.50-2.50)\times10^
+ 
+ \item
+ %% number: 12
+-%% paperName: 2020年江苏高考第 12 题 4 分
++%% paperName: 2020年江苏高考第 12 题 12 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 运动和力
+ %% point: 动量守恒定律
+ %% method: 无
+-%% score: 4
++%% score: 12
+ %% degree: 850
+ %% duplicateId: 0
+ %% body:
+@@ -486,13 +486,13 @@ $28\Ums$
+ 
+ \item
+ %% number: 13
+-%% paperName: 2020年江苏高考第 13 题 4 分
++%% paperName: 2020年江苏高考第 13 题 12 分
+ %% typeId: 6
+ %% type: 计算题
+ %% chapter: 光学
+ %% point: 光的电磁说
+ %% method: 无
+-%% score: 4
++%% score: 12
+ %% degree: 850
+ %% duplicateId: 0
+ %% body:
+@@ -556,7 +556,7 @@ B：（1）AB；（2）大，1.5；（3）$d=\frac{f\lambda\Delta t}{2}$。
+ 
+ （2）光纤通信利用了光的全反射现象，光由光密介质射入光疏介质时才会发生全反射，所以光纤内芯的折射率比外套的大；该内芯的折射率为 $n=\frac{1}{\sin C}=\frac{1}{\sin43^{\circ}}=\frac{1}{0.68}\approx1.5$。
+ 
+-（3）电磁波在土壤中的传播速度 $v=f\lambda$，由题意得 $2d=v\Delta t$，解得 $d=\frac{f\lambda\Delta t}{2}$。
++（3）电磁波在月壤中的传播速度 $v=f\lambda$，由题意得 $2d=v\Delta t$，解得 $d=\frac{f\lambda\Delta t}{2}$。
+ }
+ 
+ \item
+diff --git a/2020/海南/海南.tex b/2020/海南/海南.tex
+index 969def4..43feee2 100644
+--- a/2020/海南/海南.tex
++++ b/2020/海南/海南.tex
+@@ -412,20 +412,20 @@ B．根据右手定则可知，金属棒 a 第一次穿过磁场时回路中有
+ 
+ C．电路中产生的平均电动势为 $\overline{E}=\frac{\Delta\Phi}{\Delta t}=\frac{BLd}{\Delta t}$，平均电流为 $\overline{I}=\frac{\overline{E}}{2R}$，金属棒 a 受到的安培力为 $\overline{F}=B\overline{I}d$。规定向右为正方向，对金属棒 a，根据动量定理得 $-B\overline{I}d\cdot\Delta t=m_{a}v_{a}-m_{a}v_{0}$，解得金属棒第一次离开磁场时速度 $v_{a}=1.5\Ums$。金属棒 a 第一次穿过磁场区域的过程中，电路中产生的总热量等于金属棒 a 机械能的减少量，即 $Q=\frac{1}{2}m_{a}v_{0}^{2}-\frac{1}{2}m_{a}v_{a}^{2}$，联立并代入数据得 $Q=0.6875\UJ$。由于两棒电阻相同，两棒产生的焦耳热相同，则金属棒 b 上产生的焦耳热 $Q_{b}=\frac{Q}{2}=0.34375\UJ$，故 C 错误；
+ 
+-D．规定向右为正方向，两金属棒碰撞过程根据动量守恒和机械能守恒得 $m_{a}v_{a}=m_{a}v_{a}'+m_{b}v_{b}$，$\frac{1}{2}m_{a}v_{a}^{2}=\frac{1}{2}m_{a}v_{a}'^{2}+\frac{1}{2}m_{b}v_{b}^{2}$，联立并代入数据解得金属棒 a 反弹的速度为 $v_{a}'=-0.5\Ums$。设金属棒 a 最终停在距磁场左边界 $x$ 处，则从反弹进入磁场到停下来的过程，电路中产生的平均电动势为 $\overline{E}'=\frac{\Delta\Phi'}{\Delta t'}=\frac{B(L-x)d}{\Delta t'}$，平均电流为 $\overline{I}'=\frac{\overline{E}'}{2R}$，金属棒 a 受到的安培力为 $\overline{F}'=B\overline{I}'d$，规定向右为正方向，对金属棒 a，根据动量定理得 $-B\overline{I}'d\cdot\Delta t=0-m_{a}v_{a}'$，联立并代入数据解得 $x=0.8\Um$，故 D 正确。
++D．规定向右为正方向，两金属棒碰撞过程根据动量守恒和机械能守恒得 $m_{a}v_{a}=m_{a}v_{a}'+m_{b}v_{b}$，$\frac{1}{2}m_{a}v_{a}^{2}=\frac{1}{2}m_{a}v_{a}'^{2}+\frac{1}{2}m_{b}v_{b}^{2}$，联立并代入数据解得金属棒 a 反弹的速度为 $v_{a}'=-0.5\Ums$。设金属棒 a 最终停在距磁场左边界 $x$ 处，则从反弹进入磁场到停下来的过程，电路中产生的平均电动势为 $\overline{E}'=\frac{\Delta\Phi'}{\Delta t'}=\frac{B(L-x)d}{\Delta t'}$，平均电流为 $\overline{I}'=\frac{\overline{E}'}{2R}$，金属棒 a 受到的安培力为 $\overline{F}'=B\overline{I}'d$，规定向右为正方向，对金属棒 a，根据动量定理得 $B\overline{I}'d\cdot\Delta t=0-m_{a}v_{a}'$，联立并代入数据解得 $x=0.8\Um$，故 D 正确。
+ 
+ 故选 BD。
+ }
+ 
+ \item
+ %% number: 14
+-%% paperName: 2020年海南高考第 14 题 6 分
++%% paperName: 2020年海南高考第 14 题 10 分
+ %% typeId: 4
+ %% type: 实验题
+ %% chapter: 直线运动
+ %% point: 自由落体运动
+ %% method: 无
+-%% score: 6
++%% score: 10
+ %% degree: 650
+ %% duplicateId: 0
+ %% body:
+@@ -436,7 +436,7 @@ D．规定向右为正方向，两金属棒碰撞过程根据动量守恒和机
+ 	\item
+ 	找出轨道的最低点 O，把滑板车从 O 点移开一小段距离至 P 点，由静止释放，用手机测出它完成 $n$ 次全振动的时间 $t$，算出滑板车做往复运动的周期 $T=$ \tkanswer{$\frac{t}{n}$}；
+ 	\item
+-	将滑板车的运动视为简谐运动，则可将以上测量结果代入公式 $R=$ \tkanswer{$\frac{gt^{2}}{4n^{2}\pi^{2}}$}（用 $T$、$g$ 表示）计算出轨道半径。
++	将滑板车的运动视为简谐运动，则可将以上测量结果代入公式 $R=$ \tkanswer{$\frac{gT^{2}}{4\pi^{2}}$}（用 $T$、$g$ 表示）计算出轨道半径。
+ \end{enumerate}
+ 
+ \onepicture[align=right, w=7.0cm]{figs/14a.png}
+@@ -464,14 +464,14 @@ D．规定向右为正方向，两金属棒碰撞过程根据动量守恒和机
+ \jdanswer{
+ \begin{enumerate}
+ 	\item
+-	$\frac{t}{n}$，$\frac{gt^{2}}{4n^{2}\pi^{2}}$
++	$\frac{t}{n}$，$\frac{gT^{2}}{4\pi^{2}}$
+ 	\item
+ 	15.40，竖直，9.74
+ \end{enumerate}
+ }
+ %% memo:
+ \memoanswer{
+-（1）滑板车做往复运动的周期为 $T=\frac{t}{n}$；根据单摆的周期公式 $T=2\pi\sqrt{\frac{R}{g}}$，得 $R=\frac{gt^{2}}{4\pi^{2}}=\frac{gt^{2}}{4n^{2}\pi^{2}}$。
++（1）滑板车做往复运动的周期为 $T=\frac{t}{n}$；根据单摆的周期公式 $T=2\pi\sqrt{\frac{R}{g}}$，得 $R=\frac{gT^{2}}{4\pi^{2}}=\frac{gt^{2}}{4n^{2}\pi^{2}}$。
+ 
+ （2）两挡光片间的距离 $L=15.40\Ucm-0\Ucm=15.40\Ucm$；手提玻璃条上端使它静止在竖直方向上，让光电门的光束从玻璃条下端的透光部分通过。玻璃条下部挡光条通过光电门时玻璃条的速度为 $v_{1}=\frac{d}{t_{1}}=\frac{1.00\times10^{-2}}{10.003\times10^{-3}}\Ums=1\Ums$；玻璃条上部挡光条通过光电门时玻璃条的速度为 $v_{2}=\frac{d}{t_{2}}=\frac{1.00\times10^{-2}}{5.000\times10^{-3}}\Ums=2\Ums$；根据速度位移公式有 $v_{2}^{2}-v_{1}^{2}=2gL$，代入数据解得加速度 $g=\frac{v_{2}^{2}-v_{1}^{2}}{2L}=9.74\Umsq$。
+ }

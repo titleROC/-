@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="491" height="168" viewBox="0 0 491 168">
+  <title>上方物块质量为 m₂，下方木板质量为 m₁，水平力 F 向右作用在物块上</title>
+  <defs>
+    <pattern id="ground" width="32" height="28" patternUnits="userSpaceOnUse">
+      <path d="M-1 29L29 -1M31 29L61 -1" fill="none" stroke="black" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <path d="M3 133H488" fill="none" stroke="black" stroke-width="2"/>
+  <rect x="3" y="134" width="485" height="26" fill="url(#ground)"/>
+  <g fill="white" stroke="black" stroke-width="2.5">
+    <rect x="60" y="73" width="354" height="60"/>
+    <rect x="60" y="17" width="79" height="56"/>
+  </g>
+  <path d="M139 45H244" fill="none" stroke="black" stroke-width="2.5"/>
+  <path d="M253 45L236 38L240 45L236 52Z"/>
+  <g font-family="Liberation Serif, serif" font-style="italic" font-size="36">
+    <text x="81" y="52">m</text><text x="111" y="63" font-style="normal" font-size="22">2</text>
+    <text x="234" y="107">m</text><text x="264" y="118" font-style="normal" font-size="22">1</text>
+    <text x="199" y="32">F</text>
+  </g>
+</svg>

@@ -336,13 +336,13 @@ D．由题图~\ref{2026河南09b} 可知，Q 点对应的电压为负，即由�
 
 \item
 %% number: 10
-%% paperName: 2026年河南高考第 10 题 4 分
+%% paperName: 2026年河南高考第 10 题 6 分
 %% typeId: 2
 %% type: 多选题
 %% chapter: 直线运动
 %% point: 多段匀变速直线运动
 %% method: 无
-%% score: 4
+%% score: 6
 %% degree: 350
 %% duplicateId: 0
 %% body:
@@ -489,13 +489,21 @@ $x=290\Um+v_{6}\times1\Us+\frac{1}{2}a_{1}(1\Us)^{2}=282.75\Um$
 	根据图~\ref{2026河南12a} 所示原理图，完成图~\ref{2026河南12b} 中实物图的连线。
 	\item
 	使电流传感器和电压传感器正常工作，闭合 S，给电容器充电，直至电压传感器示数稳定。然后断开 S，电容器放电。图中 A、B、C、D 为电流传感器和电压传感器采集的电流-时间（$i_{C}-t$）和电压-时间（$u_{C}-t$）图像，属于充电过程的是 \tkanswer{AD}（填写图像对应的标号）。
+	% 保留原图的坐标轴和曲线，仅在排版时订正 C、D 纵轴单位。
+	\newcommand{\correctedvoltagegraph}[3]{%
+		\begingroup\setlength{\unitlength}{1mm}\setlength{\fboxsep}{0pt}%
+		\begin{picture}(0,0)
+			\put(0,0){\includegraphics[height=23mm]{#1}}%
+			\put(#2,#3){\colorbox{white}{\makebox[2.1mm][l]{\rule{0pt}{2.1mm}\fontsize{7.8}{8}\selectfont V}}}%
+		\end{picture}%
+		\phantom{\includegraphics[height=23mm]{#1}}\endgroup}
 	\fourpicture[labelprefix={}, numA=A, numB=B, numC=C, numD=D, h=2.3cm]
 	{figs/12c.png}
 	{figs/12d.png}
-	{figs/12e.png}
-	{figs/12f.png}
+	{\correctedvoltagegraph{figs/12e.png}{7.91}{19.96}}
+	{\correctedvoltagegraph{figs/12f.png}{8.47}{20.17}}
 	\item
-	经数据采集分析系统合成，得到电容器在充放电过程中的 $u_{C}-i_{C}$ 图像，如图~\ref{2026河南12g} 所示。设放电过程 $PQ$ 段的斜率为 $k_{1}$，由图作直线可得 $|k_{1}|=$ \tkanswer{10.0} $\UO$（保留 3 位有效数字），其对应于 \tkanswer{$R_{2}$} 的阻值 $R_{1}$（填“$R_{1}$”或“$R_{2}$”）。
+	经数据采集分析系统合成，得到电容器在充放电过程中的 $u_{C}-i_{C}$ 图像，如图~\ref{2026河南12g} 所示。设放电过程 $PQ$ 段的斜率为 $k_{1}$，由图作直线可得 $|k_{1}|=$ \tkanswer{10.0} $\UO$（保留 3 位有效数字），其对应于 \tkanswer{$R_{2}$} 的阻值（填“$R_{1}$”或“$R_{2}$”）。
 	\item
 	对充电过程 $MN$ 段，设流经 $R_{1}$、$R_{2}$ 的电流分别为 $i_{1}$ 和 $i_{2}$，则 $i_{1}=i_{2}+i_{C}$。电容器两端电压可表示为 $u_{C}=k_{2}i_{C}+b$，其中斜率 $k_{2}=$ \tkanswer{$-\frac{R_{1}R_{2}}{R_{1}+R_{2}}$}（用 $R_{1}$、$R_{2}$ 表示），截距 $b=$ \tkanswer{$\frac{ER_{2}}{R_{1}+R_{2}}$}（用 $R_{1}$、$R_{2}$、$E$ 表示）。由图~\ref{2026河南12g} 作直线求出 $k_{2}$ 和 $b$，得 $E=$ \tkanswer{3.55} $\UV$（保留 3 位有效数字）。
 \end{enumerate}
@@ -519,11 +527,11 @@ $x=290\Um+v_{6}\times1\Us+\frac{1}{2}a_{1}(1\Us)^{2}=282.75\Um$
 （1）根据电路图可知实物连接图如图所示
 \onepicture[w=7.0cm]{figs/12_an.png}
 
-（2）AB．充电电流 $i_{C}$ 初始最大，逐渐衰减到 0（方向为正），故 A 正确，B 错误；CD．电容器电压 $u_{C}$ 从 0 逐渐升高，最终稳定在两端的分压值 $R_{2}$，故 C 错误，D 正确。
+（2）AB．充电电流 $i_{C}$ 初始最大，逐渐衰减到 0（方向为正），故 A 正确，B 错误；CD．电容器电压 $u_{C}$ 从 0 逐渐升高，最终稳定在 $R_{2}$ 两端的分压值 $\frac{ER_{2}}{R_{1}+R_{2}}$，故 C 错误，D 正确。
 
 故选 AD。
 
-（3）根据题图可得斜率的绝对值 $|k_{1}|=\frac{0-2.0}{0-(-0.2)}\UO=10.0\UO$
+（3）根据题图可得斜率的绝对值 $|k_{1}|=\left|\frac{0-2.0}{0-(-0.2)}\right|\UO=10.0\UO$
 
 放电时，电容器仅通过 $R_{2}$ 放电，即其对应于 $R_{2}$ 的阻值。
 
@@ -537,9 +545,9 @@ $i_{2}=\frac{u_{C}}{R_{2}}$
 
 与 $u_{C}=k_{2}i_{C}+b$ 对比可知 $k_{2}=-\frac{R_{1}R_{2}}{R_{1}+R_{2}}$，$b=\frac{ER_{2}}{R_{1}+R_{2}}$
 
-根据题图可得 $-\frac{R_{1}R_{2}}{R_{1}+R_{2}}=\frac{0.8-2.7}{1.0-0.08}$，$\frac{ER_{2}}{R_{1}+R_{2}}=2.9$
+例如，在图中取 $(0.08\UA,2.7\UV)$、$(1.0\UA,0.8\UV)$ 两点，估得 $k_{2}\approx-2.065\UO$；延长拟合直线至纵轴，读得 $b\approx2.9\UV$。
 
-解得 $E\approx3.55\UV$
+由 $R_{2}=10.0\UO$ 得 $E=\frac{bR_{2}}{R_{2}+k_{2}}\approx3.65\UV$。参考答案给出 $3.55\UV$；作图选点和读数会影响所得数值。
 }
 
 \item
